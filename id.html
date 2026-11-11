@@ -6,13 +6,13 @@
 <title>Tanya Xiaozhi</title>
 <meta name="description" content="Tanya Xiaozhi: pertanyaan Alkitab, iman dan kehidupan · Persekutuan Udara Kerajaan 321">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1626">
-<link rel="icon" href="favicon.ico?v=v2026.1111.1626" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1626">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1626">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1626">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1626">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1626">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1718">
+<link rel="icon" href="favicon.ico?v=v2026.1111.1718" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1718">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1718">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1718">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1718">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1718">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tanya Xiaozhi">
@@ -896,7 +896,7 @@ var CONVS=[],CUR=null;
 function convKey(){ return 'convs_'+LANG; }
 function convById(id){ for(var i=0;i<CONVS.length;i++) if(CONVS[i].id===id) return CONVS[i]; return null; }
 function titleOf(msgs){ for(var i=0;i<msgs.length;i++) if(msgs[i].role==='user') return String(msgs[i].t).replace(/\s+/g,' ').slice(0,40); return ''; }
-function persistConvs(){ CONVS.sort(function(a,b){return b.ts-a.ts;}); if(CONVS.length>60) CONVS=CONVS.slice(0,60); lsSet(convKey(),CONVS); lsSet('cur_'+LANG,CUR||''); }
+function persistConvs(){ CONVS.sort(function(a,b){return b.ts-a.ts;}); if(CONVS.length>200) CONVS=CONVS.slice(0,200); lsSet(convKey(),CONVS); lsSet('cur_'+LANG,CUR||''); }
 function loadChat(){
  CONVS=lsGet(convKey(),null);
  if(!CONVS||typeof CONVS.length!=='number'){
@@ -1394,7 +1394,7 @@ setInterval(function(){ var els=document.querySelectorAll('[data-cd]'); if(!els.
 
 /* ---------- 側欄 ---------- */
 function openDrawer(){ S.drawer=true; S.delArm=''; renderDrawer(); }
-function closeDrawer(){ S.drawer=false; var d=$('drawer'); if(d){ d.classList.remove('open'); setTimeout(function(){ if(!S.drawer&&d.parentNode) d.parentNode.removeChild(d); },220); } }
+function closeDrawer(){ var dp=document.querySelector('#drawer .dpanel'); if(dp) S.drawerTop=dp.scrollTop; S.drawer=false; var d=$('drawer'); if(d){ d.classList.remove('open'); setTimeout(function(){ if(!S.drawer&&d.parentNode) d.parentNode.removeChild(d); },220); } }
 function convListHTML(){
  var q=S.convQ.trim().toLowerCase(),h='',list=CONVS.filter(function(c){ return !q||(c.title+' '+c.msgs.map(function(m){return m.t;}).join(' ')).toLowerCase().indexOf(q)>=0; });
  if(!list.length) return '<p class="dempty">'+(CONVS.length?T('convNoHit'):T('convEmpty'))+'</p>';
@@ -1404,7 +1404,7 @@ function convListHTML(){
 function renderDrawer(){
  var d=$('drawer'),first=!d;
  if(first){ d=document.createElement('div'); d.id='drawer'; document.body.appendChild(d); }
- var keep=0,old=d.querySelector('.dpanel'); if(old) keep=old.scrollTop;
+ var keep=first?(S.drawerTop||0):0,old=d.querySelector('.dpanel'); if(old) keep=old.scrollTop;
  var nav=[['newchat',IC.edit,T('newChat')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['settings',IC.gear,T('settings')]];
  var h='<div class="dmask" data-act="drawerclose"></div><nav class="dpanel" aria-label="'+esc(T('menu'))+'"><div class="dhead"><span class="dlamp">'+LAMP+'</span><b>'+T('name')+'</b>'+langBtns('dlang')+'</div>';
  h+='<div class="dsearch">'+IC.search+'<input id="convsearch" type="search" placeholder="'+esc(T('convSearch'))+'" value="'+esc(S.convQ)+'"></div><div class="dnav">';
@@ -1599,7 +1599,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1111.1626',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1111.1718',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
