@@ -6,13 +6,13 @@
 <title>Pangutana kang Xiaozhi</title>
 <meta name="description" content="Pangutana kang Xiaozhi: Bibliya, pagtuo ug kinabuhi · Kingdom 321 Air Fellowship">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1718">
-<link rel="icon" href="favicon.ico?v=v2026.1111.1718" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1718">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1718">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1718">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1718">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1718">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1723">
+<link rel="icon" href="favicon.ico?v=v2026.1111.1723" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1723">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1723">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1723">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1723">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1723">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi">
@@ -202,6 +202,7 @@ body.empty #flow{justify-content:flex-end;gap:14px}
 .cdel{flex:none;border:0;background:transparent;color:var(--faint);width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:.78em}
 .cdel svg{width:15px;height:15px}
 .cdel.arm{width:auto;padding:0 10px;color:#fff;background:var(--danger)}
+.ctag{display:inline-block;font-size:.72em;line-height:1.5;border:1px solid var(--line);border-radius:6px;padding:0 5px;margin-right:6px;color:var(--muted);vertical-align:1px}
 .dempty{color:var(--faint);font-size:.86em;padding:6px 8px;margin:0}
 
 /* 底部面板 */
@@ -893,31 +894,36 @@ function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'
 var S={chat:[],fs:lsGet('fs',1),cat:-1,shown:{},gen:lsGet('gen',{}),genBusy:'',busy:false,ctl:null,sheet:null,clearArm:false,speaking:-1,favOpen:{},favQ:'',drawer:false,convQ:'',delArm:''};
 var FAV=lsGet('fav',[]); if(!FAV||typeof FAV.length!=='number') FAV=[];
 var CONVS=[],CUR=null;
-function convKey(){ return 'convs_'+LANG; }
+function convKey(){ return 'convs_all'; }
 function convById(id){ for(var i=0;i<CONVS.length;i++) if(CONVS[i].id===id) return CONVS[i]; return null; }
 function titleOf(msgs){ for(var i=0;i<msgs.length;i++) if(msgs[i].role==='user') return String(msgs[i].t).replace(/\s+/g,' ').slice(0,40); return ''; }
-function persistConvs(){ CONVS.sort(function(a,b){return b.ts-a.ts;}); if(CONVS.length>200) CONVS=CONVS.slice(0,200); lsSet(convKey(),CONVS); lsSet('cur_'+LANG,CUR||''); }
+function persistConvs(){ CONVS.sort(function(a,b){return b.ts-a.ts;}); if(CONVS.length>200) CONVS=CONVS.slice(0,200); lsSet(convKey(),CONVS); lsSet('cur_all',CUR||''); }
 function loadChat(){
  CONVS=lsGet(convKey(),null);
  if(!CONVS||typeof CONVS.length!=='number'){
-  CONVS=[]; var old=lsGet(LANG==='zh'?'chat':'chat_'+LANG,[]);
-  if(old&&old.length){ var c0={id:'c'+Date.now().toString(36),title:titleOf(old),ts:Date.now(),msgs:old}; CONVS.push(c0); lsSet('cur_'+LANG,c0.id); }
+  CONVS=[]; var seen={};
+  for(var li=0;li<LANGS.length;li++){ var lg=LANGS[li], arr=lsGet('convs_'+lg,[]); if(!arr||typeof arr.length!=='number') arr=[];
+   for(var j=0;j<arr.length;j++){ var cv=arr[j]; if(!cv||!cv.id||seen[cv.id]) continue; seen[cv.id]=1; cv.lang=cv.lang||lg; CONVS.push(cv); }
+   if(!arr.length){ var old=lsGet(lg==='zh'?'chat':'chat_'+lg,[]); if(old&&old.length) CONVS.push({id:'c'+lg+Date.now().toString(36),title:titleOf(old),ts:Date.now()-li,msgs:old,lang:lg}); }
+  }
+  CONVS.sort(function(x,y){return y.ts-x.ts;});
   lsSet(convKey(),CONVS);
  }
- var c=convById(lsGet('cur_'+LANG,''));
+ var cid=lsGet('cur_all',null); if(cid===null) cid=lsGet('cur_'+LANG,'');
+ var c=convById(cid);
  CUR=c?c.id:null; S.chat=c?c.msgs:[];
  for(var z=0;z<S.chat.length;z++){ S.chat[z].fuBusy=false; if(S.chat[z].pending){S.chat[z].pending=false; if(!S.chat[z].t){S.chat[z].t=T('unfinished');S.chat[z].err=true;}} }
 }
 function save(){
  var c=convById(CUR);
  if(!S.chat.length){ if(c){ CONVS.splice(CONVS.indexOf(c),1); CUR=null; persistConvs(); } return; }
- if(!c){ c={id:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),ts:Date.now(),msgs:S.chat}; CONVS.unshift(c); CUR=c.id; }
+ if(!c){ c={id:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),ts:Date.now(),msgs:S.chat,lang:LANG}; CONVS.unshift(c); CUR=c.id; }
  if(S.chat.length>80){ S.chat.splice(0,S.chat.length-80); }
  c.msgs=S.chat; c.title=titleOf(S.chat); c.ts=Date.now();
  persistConvs();
 }
-function newChat(){ if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=null; S.chat=[]; lsSet('cur_'+LANG,''); }
-function openConv(id){ var c=convById(id); if(!c) return; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=id; S.chat=c.msgs; lsSet('cur_'+LANG,id); }
+function newChat(){ if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=null; S.chat=[]; lsSet('cur_all',''); }
+function openConv(id){ var c=convById(id); if(!c) return; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=id; S.chat=c.msgs; lsSet('cur_all',id); }
 function delConv(id){ var c=convById(id); if(!c) return; CONVS.splice(CONVS.indexOf(c),1); if(CUR===id){ CUR=null; S.chat=[]; } persistConvs(); }
 loadChat();
 function saveFav(){ lsSet('fav',FAV.slice(0,300)); }
@@ -1398,7 +1404,7 @@ function closeDrawer(){ var dp=document.querySelector('#drawer .dpanel'); if(dp)
 function convListHTML(){
  var q=S.convQ.trim().toLowerCase(),h='',list=CONVS.filter(function(c){ return !q||(c.title+' '+c.msgs.map(function(m){return m.t;}).join(' ')).toLowerCase().indexOf(q)>=0; });
  if(!list.length) return '<p class="dempty">'+(CONVS.length?T('convNoHit'):T('convEmpty'))+'</p>';
- for(var i=0;i<list.length;i++){ var c=list[i]; h+='<div class="cvrow'+(c.id===CUR?' on':'')+'"><button class="cbtn" data-act="conv" data-id="'+c.id+'">'+esc(c.title||'…')+'</button><button class="cdel'+(S.delArm===c.id?' arm':'')+'" data-act="convdel" data-id="'+c.id+'" aria-label="'+esc(T('delW'))+'">'+(S.delArm===c.id?T('delSure'):IC.x)+'</button></div>'; }
+ for(var i=0;i<list.length;i++){ var c=list[i]; h+='<div class="cvrow'+(c.id===CUR?' on':'')+'"><button class="cbtn" data-act="conv" data-id="'+c.id+'">'+(c.lang&&c.lang!==LANG?'<span class="ctag">'+LCODE[c.lang]+'</span>':'')+esc(c.title||'…')+'</button><button class="cdel'+(S.delArm===c.id?' arm':'')+'" data-act="convdel" data-id="'+c.id+'" aria-label="'+esc(T('delW'))+'">'+(S.delArm===c.id?T('delSure'):IC.x)+'</button></div>'; }
  return h;
 }
 function renderDrawer(){
@@ -1599,7 +1605,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1111.1718',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1111.1723',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
