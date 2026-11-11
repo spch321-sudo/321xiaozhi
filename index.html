@@ -5,250 +5,263 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
-<meta name="theme-color" content="#16316F">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1247b">
-<link rel="icon" href="favicon.ico?v=v2026.1111.1247b" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1247b">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1247b">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1247b">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1247b">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1247b">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1331">
+<link rel="icon" href="favicon.ico?v=v2026.1111.1331" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1331">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1331">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1331">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1331">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1331">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
 
+<meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600&family=Noto+Serif+SC:wght@500;600&display=swap">
 <style>
-/* 版面：深藍頂帶＋模式列；中間對話捲動；底部浮起的問句欄。燈與金色是小智的記號（詩119:105）。 */
+/* 版面：像 ChatGPT／Claude 的單欄對話。頂列只有選單、模式、新對話；左側抽屜放導覽與最近對話；底部一個圓角輸入框。 */
 :root{
-  --paper:#F2F4FA; --surface:#FFFFFF; --ink:#18213A; --muted:#5D6886; --line:#DDE3F0; --soft:#EAEEF8;
-  --brand:#1E3F8F; --btn:#1E3F8F; --on-btn:#FFFFFF; --band:#16316F; --band-2:#21459A; --on-band:#F4F1E8;
-  --gold:#B8862E; --gold-hi:#F0C66A; --gold-soft:#F6ECD7; --danger:#B4423C; --shadow:0 10px 30px rgba(22,49,111,.12);
-  --f-display:"Noto Serif TC","Songti TC","PMingLiU",Georgia,serif;
-  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --page:#FFFFFF; --side:#F7F7F8; --soft:#F1F2F4; --line:#E5E6EA; --ink:#1D1F24; --muted:#6B6E78; --faint:#9A9DA6;
+  --accent:#1E3F8F; --on-accent:#FFFFFF; --gold:#B8862E; --gold-soft:#F7EFDD; --danger:#C2453D; --shadow:0 6px 24px rgba(20,24,40,.08);
+  --f-display:"Noto Serif TC","Songti TC",Georgia,serif;
+  --f-body:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
   --fs:17px;
-  --xz2-ink:var(--ink); --xz2-card:var(--surface); --xz2-line:var(--line); --xz2-acc:var(--btn); --xz2-soft:var(--paper); --xz2-mut:var(--muted); --xz2-fs:16px;
+  --xz2-ink:var(--ink); --xz2-card:var(--page); --xz2-line:var(--line); --xz2-acc:var(--accent); --xz2-soft:var(--soft); --xz2-mut:var(--muted); --xz2-fs:16px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --paper:#0C1220; --surface:#151E33; --ink:#E7EBF6; --muted:#9DA8C5; --line:#26314B; --soft:#1C2640;
-  --brand:#8FAAF0; --btn:#3D63C9; --on-btn:#FFFFFF; --band:#111C3A; --band-2:#1B2C5C; --on-band:#EEF0F7;
-  --gold:#E2BA68; --gold-hi:#F0C66A; --gold-soft:#332A19; --danger:#E5867F; --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+  --page:#212121; --side:#171717; --soft:#303030; --line:#3A3A3D; --ink:#ECECEC; --muted:#A3A3AB; --faint:#7B7B84;
+  --accent:#6F8FE8; --on-accent:#0F1420; --gold:#E1B866; --gold-soft:#3A3122; --danger:#E5867F; --shadow:0 6px 24px rgba(0,0,0,.4); color-scheme:dark}}
 :root[data-theme="dark"]{
-  --paper:#0C1220; --surface:#151E33; --ink:#E7EBF6; --muted:#9DA8C5; --line:#26314B; --soft:#1C2640;
-  --brand:#8FAAF0; --btn:#3D63C9; --on-btn:#FFFFFF; --band:#111C3A; --band-2:#1B2C5C; --on-band:#EEF0F7;
-  --gold:#E2BA68; --gold-hi:#F0C66A; --gold-soft:#332A19; --danger:#E5867F; --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+  --page:#212121; --side:#171717; --soft:#303030; --line:#3A3A3D; --ink:#ECECEC; --muted:#A3A3AB; --faint:#7B7B84;
+  --accent:#6F8FE8; --on-accent:#0F1420; --gold:#E1B866; --gold-soft:#3A3122; --danger:#E5867F; --shadow:0 6px 24px rgba(0,0,0,.4); color-scheme:dark}
+html[lang="zh-Hans"]{--f-display:"Noto Serif SC","Songti SC",Georgia,serif;--f-body:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif}
+html[lang="en"]{--f-display:Georgia,"Times New Roman",serif;--f-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif}
 html.fs0{--fs:15.5px} html.fs1{--fs:17px} html.fs2{--fs:19.5px} html.fs3{--fs:22.5px}
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{height:100%}
-body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:var(--fs);line-height:1.75;overflow:hidden}
-button{font:inherit;color:inherit;cursor:pointer}
-button:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+body{background:var(--page);color:var(--ink);font-family:var(--f-body);font-size:var(--fs);line-height:1.7;overflow:hidden;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible,textarea:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+svg{width:22px;height:22px;display:block}
 #app{display:flex;flex-direction:column;height:100%}
-.wrap{width:100%;max-width:780px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{width:100%;max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 
-/* 頂帶 */
-.top{flex:none;background:linear-gradient(120deg,var(--band),var(--band-2));color:var(--on-band)}
-.top .wrap{display:flex;align-items:center;gap:11px;padding-block:9px}
-.lamp{width:40px;height:40px;flex:none;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(240,198,106,.45);display:grid;place-items:center}
-.lamp svg{width:24px;height:24px}
-.brandtxt{flex:1 1 auto;min-width:0;line-height:1.25}
-.brandtxt b{font-family:var(--f-display);font-size:1.18em;letter-spacing:.08em}
-.brandtxt small{display:block;opacity:.78;font-size:.7em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tbtn{flex:none;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--on-band);border-radius:999px;padding:5px 12px;font-size:.78em;white-space:nowrap}
-.tbtn:hover{background:rgba(255,255,255,.16)}
-.modebar{flex:none;background:var(--surface);border-bottom:1px solid var(--line)}
-.modebar .wrap{display:flex;gap:8px;padding-block:7px;align-items:center}
-.mode{flex:1 1 auto;min-width:0;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:.84em;text-align:left}
-.mode .mt{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mode .mk{flex:none;color:var(--brand);font-weight:700;font-size:.92em}
-.pfbtn{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:.84em;white-space:nowrap;max-width:42%;overflow:hidden;text-overflow:ellipsis}
-.pfbtn.on{border-color:var(--gold);background:var(--gold-soft)}
+/* 頂列 */
+.top{flex:none;background:var(--page)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:8px}
+.round{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--page);box-shadow:var(--shadow);display:grid;place-items:center;color:var(--ink)}
+.round:hover{background:var(--soft)}
+.modepill{min-width:0;display:flex;align-items:center;gap:6px;border:0;background:var(--soft);border-radius:999px;padding:8px 14px;font-size:.84em;font-weight:600}
+.modepill #modeTxt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.modepill svg{width:16px;height:16px;flex:none;color:var(--muted)}
 
-/* 對話區 */
+/* 對話 */
 #scroll{flex:1 1 auto;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
-#scroll .wrap{padding-block:18px 28px;display:flex;flex-direction:column;gap:18px}
-.hero{background:linear-gradient(135deg,var(--band),var(--band-2));color:var(--on-band);border-radius:22px;padding:22px 20px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;right:-50px;top:-50px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(240,198,106,.32),rgba(240,198,106,0) 70%);pointer-events:none}
-.hero h1{font-family:var(--f-display);font-size:1.6em;line-height:1.3;margin:0;text-wrap:balance;position:relative}
-.hero p{margin:0;opacity:.9;position:relative}
-.verse{position:relative;border-left:2px solid var(--gold-hi);padding:2px 0 2px 12px;font-family:var(--f-display);font-weight:600;color:var(--gold-hi)}
-.verse span{display:block;font-family:var(--f-body);font-weight:400;font-size:.76em;color:var(--on-band);opacity:.75}
+#flow{padding-block:12px 28px;display:flex;flex-direction:column;gap:22px;min-height:100%}
+#flow > *{min-width:0;max-width:100%}
+body.empty #flow{justify-content:flex-end;gap:14px}
+.hello{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:20px 8px}
+.hlamp{width:52px;height:52px;border-radius:16px;background:#16316F;display:grid;place-items:center;margin-bottom:6px}
+.hlamp svg{width:30px;height:30px}
+.hello h1{font-family:var(--f-display);font-weight:500;font-size:1.65em;line-height:1.3;margin:0;text-wrap:balance}
+.hello p{margin:0;color:var(--muted);font-size:.9em;max-width:30em}
+.sugg{display:flex;flex-direction:column}
+.srow{display:flex;align-items:flex-start;gap:14px;border:0;background:transparent;text-align:left;padding:11px 4px;border-radius:12px;color:var(--ink);line-height:1.5}
+.srow:hover{background:var(--soft)}
+.srow i{font-style:normal;flex:none;width:24px;text-align:center}
+.srow span{color:var(--ink);opacity:.85;overflow-wrap:anywhere;min-width:0}
+.srow2{display:flex;justify-content:space-between;gap:10px;padding:6px 4px 0}
+.slink{border:0;background:transparent;color:var(--muted);font-size:.84em;padding:4px 0}
+.slink:hover{color:var(--ink)}
 
-.panel{display:flex;flex-direction:column;gap:10px;min-width:0}
-#flow > *,.panel > *,.msg > *{min-width:0;max-width:100%}
-.ph{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.ph h2{font-family:var(--f-display);font-size:1.06em;margin:0;letter-spacing:.03em}
-.ph small{color:var(--muted);font-size:.76em;text-align:right}
-.audscroll{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:none;scroll-snap-type:x proximity}
-.audscroll::-webkit-scrollbar,.cats::-webkit-scrollbar{display:none}
-.aud{flex:0 0 auto;width:78px;scroll-snap-align:start;border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:9px 4px 7px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.8em;line-height:1.3}
-.aud .ic{font-size:1.6em;line-height:1.2}
-.aud.on{border-color:var(--btn);background:var(--btn);color:var(--on-btn);box-shadow:0 6px 16px rgba(30,63,143,.28)}
-.audhint{margin:0;font-size:.84em;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:8px 12px}
-.bgrow{display:flex;flex-wrap:wrap;gap:6px}
-.lenseg{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
-.lenseg button{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:8px 2px 6px;line-height:1.25;min-width:0;display:flex;flex-direction:column;align-items:center;gap:2px}
-.lenseg b{font-size:.92em;font-weight:700;word-break:keep-all}
-.lenseg small{font-size:.64em;color:var(--muted);text-align:center;line-height:1.2}
-.lenseg button.on{background:var(--btn);border-color:var(--btn);color:var(--on-btn)}
-.lenseg button.on small{color:var(--on-btn);opacity:.85}
-.cats{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:none}
-.chip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 13px;font-size:.86em;white-space:nowrap}
-.chip.on{background:var(--btn);color:var(--on-btn);border-color:var(--btn)}
-.qs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
-.q{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:11px 14px;line-height:1.55;font-size:.95em;min-width:0;overflow-wrap:anywhere;display:flex;gap:9px;align-items:flex-start;transition:border-color .15s,transform .15s}
-.q:hover{border-color:var(--brand);transform:translateY(-1px)}
-.q i{font-style:normal;flex:none}
-.moreq{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:1.5px dashed var(--gold);background:var(--gold-soft);color:var(--ink);border-radius:14px;padding:10px 14px;font-weight:700;font-size:.95em}
-.moreq small{font-weight:400;font-size:.8em;color:var(--muted)}
-.moreq.ai{border-style:solid;border-color:var(--btn);background:var(--surface);color:var(--brand)}
-.moreq:disabled{cursor:default;font-weight:500;color:var(--muted)}
-.q{animation:none}#qnew{box-shadow:0 0 0 2px var(--gold)}
-
-.msg{display:flex;flex-direction:column;gap:7px;min-width:0}
+.msg{display:flex;flex-direction:column;gap:6px;min-width:0}
 .msg.user{align-items:flex-end}
-.msg.user .bub{background:var(--btn);color:var(--on-btn);border-radius:18px 18px 5px 18px;padding:9px 15px;max-width:86%;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 4px 12px rgba(30,63,143,.18)}
-.who{display:flex;align-items:center;gap:8px;font-size:.76em;color:var(--muted);flex-wrap:wrap}
-.who .lamp{width:26px;height:26px;background:var(--band);border:0}
-.who .lamp svg{width:16px;height:16px}
-.who b{color:var(--ink);font-weight:700}
-.tag{border:1px solid var(--line);border-radius:999px;padding:0 8px;font-size:.92em;background:var(--surface)}
-.msg.ai .bub{background:var(--surface);border:1px solid var(--line);border-radius:5px 18px 18px 18px;padding:14px 16px;min-width:0;overflow-wrap:anywhere;box-shadow:0 2px 10px rgba(22,49,111,.05)}
-.msg.ai.crisis .bub{border-color:var(--gold);background:var(--gold-soft)}
-.msg.ai.err .bub{border-color:var(--danger);color:var(--danger)}
+.msg.user .bub{background:var(--soft);border-radius:22px;padding:10px 16px;max-width:85%;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg.ai .body{min-width:0;overflow-wrap:anywhere}
+.msg.ai.err .body{color:var(--danger)}
+.msg.ai.crisis{background:var(--gold-soft);border-radius:16px;padding:14px 16px}
 .body > :first-child{margin-top:0}.body > :last-child{margin-bottom:0}
-.body p{margin:.55em 0}
-.body h3,.body h4,.body h5,.body h6{font-family:var(--f-display);margin:1.1em 0 .35em;line-height:1.4;font-size:1.05em;color:var(--brand);display:flex;align-items:center;gap:8px}
-.body h3::before,.body h4::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
-.body h3{font-size:1.12em}
+.body p{margin:.6em 0}
+.body h3,.body h4,.body h5,.body h6{margin:1.2em 0 .4em;line-height:1.4;font-size:1.06em;font-weight:700}
+.body h3{font-size:1.14em}
 .body ul,.body ol{margin:.4em 0;padding-left:1.4em}
-.body li{margin:.25em 0}
-.body li::marker{color:var(--gold)}
-.body blockquote{margin:.9em 0;padding:9px 14px;border-left:3px solid var(--gold);background:var(--gold-soft);border-radius:0 12px 12px 0;font-weight:500;font-family:var(--f-display)}
-.body hr{border:0;border-top:1px dashed var(--line);margin:1em 0}
+.body li{margin:.3em 0}
+.body blockquote{margin:.9em 0;padding:2px 0 2px 14px;border-left:3px solid var(--gold);font-weight:600}
+.body hr{border:0;border-top:1px solid var(--line);margin:1.2em 0}
 .body code{background:var(--soft);padding:1px 5px;border-radius:4px;font-size:.9em}
-.tbl{overflow-x:auto;margin:.7em 0}
+.body strong{font-weight:700}
+.tbl{overflow-x:auto;margin:.8em 0}
 .body table{border-collapse:collapse;font-size:.92em;min-width:100%}
-.body th,.body td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
-.body th{background:var(--gold-soft)}
-.fold .body{max-height:11em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
-.more{align-self:flex-start;border:1px solid var(--line);background:var(--soft);color:var(--brand);border-radius:999px;padding:3px 12px;font-size:.78em;font-weight:500}
-.acts{display:flex;flex-wrap:wrap;gap:4px}
-.act{border:0;background:transparent;color:var(--muted);font-size:.8em;padding:3px 8px;border-radius:8px}
-.act:hover{background:var(--soft);color:var(--ink)}
-.typing{display:inline-flex;gap:4px;padding:4px 0}
-.typing span{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:dot 1.2s infinite}
+.body th,.body td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.body th{background:var(--soft)}
+.fold .body{max-height:12em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+.more{align-self:flex-start;border:1px solid var(--line);background:var(--page);color:var(--ink);border-radius:999px;padding:3px 12px;font-size:.78em}
+.acts{display:flex;align-items:center;flex-wrap:wrap;gap:2px;margin-left:-8px}
+.ib{width:36px;height:36px;border:0;background:transparent;border-radius:10px;display:grid;place-items:center;color:var(--muted)}
+.ib svg{width:19px;height:19px}
+.ib:hover{background:var(--soft);color:var(--ink)}
+.ib.faved{color:var(--gold)}
+.act{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:transparent;border-radius:999px;padding:4px 12px;font-size:.84em;color:var(--ink)}
+.act svg{width:16px;height:16px}
+.meta{font-size:.7em;color:var(--faint);margin-left:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:45%}
+.fu{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:4px}
+.fu button{display:flex;align-items:center;gap:10px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;padding:10px 2px;font-size:.92em;color:var(--ink)}
+.fu button::after{content:"＋";margin-left:auto;color:var(--faint);font-size:.9em}
+.fu button:hover{background:var(--soft)}
+.fuwait{display:flex;align-items:center;gap:8px;font-size:.84em;color:var(--muted);padding:10px 2px}
+.typing{display:inline-flex;gap:4px;padding:6px 0}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--faint);animation:dot 1.2s infinite}
 .typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
-@keyframes dot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+@keyframes dot{0%,80%,100%{opacity:.3}40%{opacity:1}}
 .contnote{font-size:.8em;color:var(--muted)}
-.after{display:flex;flex-direction:column;gap:8px;border-top:1px dashed var(--line);padding-top:10px;margin-top:2px}
-.after .lab{font-size:.74em;color:var(--muted);letter-spacing:.06em}
-.fu{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
-.fu::-webkit-scrollbar{display:none}
-.fu button{flex:none;border:1px solid var(--gold);background:transparent;border-radius:999px;padding:4px 12px;font-size:.84em;white-space:nowrap}
-.fuwait{display:inline-flex;align-items:center;gap:8px;font-size:.84em;color:var(--muted);padding:4px 0}
-.fu button:hover{background:var(--gold-soft)}
-.relen{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
-.relen button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:2px 10px;font-size:.78em}
-.relen button.on{background:var(--btn);border-color:var(--btn);color:var(--on-btn)}
 
-/* 問句欄 */
-.composer{flex:none;background:linear-gradient(to top,var(--paper) 70%,transparent)}
-.composer .wrap{padding-block:8px 6px}
-.cbox{display:flex;align-items:flex-end;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:6px;box-shadow:var(--shadow)}
-.ibtn{flex:0 0 auto;width:40px;height:40px;border-radius:50%;border:0;background:var(--gold-soft);font-size:1.05em;display:grid;place-items:center}
-#q{flex:1 1 0;width:0;min-width:0;resize:none;border:0;background:transparent;color:var(--ink);padding:8px 4px;font:inherit;line-height:1.5;max-height:9em}
+/* 輸入框 */
+.composer{flex:none;background:var(--page)}
+.composer .wrap{padding-block:6px 4px}
+.cbox{background:var(--page);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:10px 10px 8px 16px;display:flex;flex-direction:column;gap:4px}
+#q{width:100%;resize:none;border:0;background:transparent;color:var(--ink);font:inherit;line-height:1.5;max-height:9em;padding:4px 0;min-height:28px}
 #q:focus{outline:none}
-#send{flex:0 0 auto;height:40px;border:0;border-radius:20px;padding:0 18px;background:var(--btn);color:var(--on-btn);font-weight:700;white-space:nowrap}
-#send.stop{background:var(--danger)}
-.note{margin:6px 0 0;font-size:.68em;color:var(--muted);text-align:center}
+#q::placeholder{color:var(--faint)}
+.crow{display:flex;align-items:center;gap:6px}
+.cb{width:38px;height:38px;border-radius:50%;border:0;background:transparent;display:grid;place-items:center;color:var(--ink)}
+.cb:hover{background:var(--soft)}
+.lenbtn{display:flex;align-items:center;gap:5px;height:34px;border:1px solid var(--line);background:transparent;border-radius:999px;padding:0 11px;font-size:.8em;color:var(--muted)}
+.lenbtn svg{width:17px;height:17px;color:var(--accent)}
+.grow{flex:1}
+#send{width:40px;height:40px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+#send svg{width:20px;height:20px}
+#send.stop{background:var(--ink);color:var(--page)}
+.note{margin:6px 0 0;font-size:.66em;color:var(--faint);text-align:center;line-height:1.5}
+
+/* 側欄抽屜 */
+#drawer{position:fixed;inset:0;z-index:60;pointer-events:none}
+.dmask{position:absolute;inset:0;background:rgba(0,0,0,.28);opacity:0;transition:opacity .2s}
+.dpanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,340px);background:var(--side);transform:translateX(-102%);transition:transform .22s ease;overflow-y:auto;padding:calc(14px + env(safe-area-inset-top,0px)) 14px calc(24px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:4px}
+#drawer.open{pointer-events:auto}
+#drawer.open .dmask{opacity:1}
+#drawer.open .dpanel{transform:none}
+.dhead{display:flex;align-items:center;gap:10px;padding:4px 4px 10px}
+.dlamp{width:32px;height:32px;border-radius:10px;background:#16316F;display:grid;place-items:center;flex:none}
+.dlamp svg{width:20px;height:20px}
+.dhead b{font-family:var(--f-display);font-size:1.3em;font-weight:600;flex:1}
+.dlang{display:flex;background:var(--soft);border-radius:999px;padding:2px}
+.dlang button{border:0;background:transparent;border-radius:999px;padding:2px 9px;font-size:.72em;color:var(--muted)}
+.dlang button.on{background:var(--page);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.dsearch{display:flex;align-items:center;gap:8px;background:var(--page);border-radius:12px;padding:0 12px;margin:2px 0 8px;color:var(--faint)}
+.dsearch svg{width:17px;height:17px}
+.dsearch input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;font-size:.92em;padding:9px 0}
+.dsearch input:focus{outline:none}
+.dnav{display:flex;flex-direction:column}
+.ditem{display:flex;align-items:center;gap:14px;border:0;background:transparent;text-align:left;padding:10px 8px;border-radius:12px;font-size:1em;color:var(--ink)}
+.ditem:hover{background:var(--soft)}
+.ditem .di svg{width:21px;height:21px}
+.dsec{font-size:.78em;color:var(--muted);padding:16px 8px 6px}
+.applinks{display:flex;flex-direction:column;gap:2px}
+.applink{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);padding:8px;border-radius:12px;min-width:0}
+.applink:hover{background:var(--soft)}
+.applink .ai{flex:none;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-size:1.05em;background:#16316F}
+.applink .at{flex:1 1 auto;min-width:0;line-height:1.35}
+.applink .at b{display:block;font-size:.92em;font-weight:600}
+.applink .at small{display:block;font-size:.72em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.applink .ago{flex:none;color:var(--faint)}
+.clist{display:flex;flex-direction:column}
+.cvrow{display:flex;align-items:center;border-radius:12px}
+.cvrow:hover,.cvrow.on{background:var(--soft)}
+.cbtn{flex:1;min-width:0;border:0;background:transparent;text-align:left;padding:9px 8px;font-size:.95em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cdel{flex:none;border:0;background:transparent;color:var(--faint);width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:.78em}
+.cdel svg{width:15px;height:15px}
+.cdel.arm{width:auto;padding:0 10px;color:#fff;background:var(--danger)}
+.dempty{color:var(--faint);font-size:.86em;padding:6px 8px;margin:0}
 
 /* 底部面板 */
-.mask{position:fixed;inset:0;background:rgba(8,14,30,.5);z-index:50;display:flex;align-items:flex-end}
-.sheet{background:var(--surface);width:100%;max-width:780px;margin:0 auto;max-height:88vh;max-height:88dvh;overflow-y:auto;border-radius:22px 22px 0 0;padding:14px max(16px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
-.grab{width:42px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 10px}
-.sheethead{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.sheethead h2{margin:0;font-family:var(--f-display);font-size:1.15em}
-.xbtn{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 12px;font-size:.82em}
+.mask{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:70;display:flex;align-items:flex-end}
+.sheet{background:var(--page);width:100%;max-width:760px;margin:0 auto;max-height:88vh;max-height:88dvh;overflow-y:auto;border-radius:24px 24px 0 0;padding:12px max(18px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px))}
+.grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 12px}
+.sheethead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.sheethead h2{margin:0;font-size:1.12em;font-weight:700}
+.xbtn{border:0;background:var(--soft);border-radius:999px;padding:5px 14px;font-size:.84em}
 .sec{padding:14px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:9px}
 .sec:last-child{border-bottom:0}
-.sec h3{margin:0;font-size:.82em;color:var(--muted);font-weight:700;letter-spacing:.08em}
+.sec h3{margin:0;font-size:.8em;color:var(--muted);font-weight:600;letter-spacing:.04em}
+.hint{font-size:.8em;color:var(--muted);margin:0}
+.chip{flex:none;border:1px solid var(--line);background:var(--page);border-radius:999px;padding:6px 13px;font-size:.86em;white-space:nowrap}
+.chip.on{background:var(--ink);color:var(--page);border-color:var(--ink)}
+.bgrow,.audrow{display:flex;flex-wrap:wrap;gap:6px}
 .audgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:7px}
-.audcard{display:flex;gap:9px;align-items:flex-start;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:9px 11px;line-height:1.4;min-width:0}
-.audcard .ic{font-size:1.4em;line-height:1.1;flex:none}
+.audcard{display:flex;gap:9px;align-items:flex-start;text-align:left;border:1px solid var(--line);background:var(--page);border-radius:14px;padding:9px 11px;line-height:1.4;min-width:0}
+.audcard .ic{font-size:1.3em;line-height:1.1;flex:none}
 .audcard b{display:block;font-size:.92em}
 .audcard small{display:block;font-size:.72em;color:var(--muted);overflow-wrap:anywhere}
-.audcard.on{border-color:var(--btn);background:var(--btn);color:var(--on-btn)}
-.audcard.on small{color:var(--on-btn);opacity:.85}
+.audcard.on{border-color:var(--ink);background:var(--soft);box-shadow:inset 0 0 0 1px var(--ink)}
+.lenseg{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.lenseg button{border:1px solid var(--line);background:var(--page);border-radius:14px;padding:9px 2px 7px;line-height:1.25;min-width:0;display:flex;flex-direction:column;align-items:center;gap:2px}
+.lenseg b{font-size:.92em;font-weight:700;word-break:keep-all}
+.lenseg small{font-size:.64em;color:var(--muted);text-align:center;line-height:1.2}
+.lenseg button.on{background:var(--ink);border-color:var(--ink);color:var(--page)}
+.lenseg button.on small{color:var(--page);opacity:.8}
 .seg4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
-.seg4 button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:8px 4px;font-size:.88em;word-break:keep-all;min-width:0}
-.seg4 button.on{background:var(--btn);color:var(--on-btn);border-color:var(--btn)}
-.hint{font-size:.8em;color:var(--muted);margin:0}
-.wide{border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:10px 14px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.danger{border:1px solid var(--danger);color:var(--danger);background:transparent;border-radius:12px;padding:8px 14px;align-self:flex-start}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(100px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:999px;font-size:.85em;z-index:100000;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
-.hbtn{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-width:46px;height:44px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:var(--on-band);border-radius:14px;padding:2px 6px;line-height:1.1}
-.hbtn .hi{font-size:1.05em}
-.hbtn .hl{font-size:.6em;opacity:.85;white-space:nowrap}
-.hbtn:hover{background:rgba(255,255,255,.16)}
-.hbtn .hi.fav{color:var(--gold-hi)}
-html[lang="zh-Hans"]{--f-display:"Noto Serif SC","Songti SC","STSong","SimSun",Georgia,serif;--f-body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
-html[lang="en"]{--f-display:Georgia,"Noto Serif TC",serif;--f-body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.seg4 button,.langseg button{border:1px solid var(--line);background:var(--page);border-radius:12px;padding:8px 4px;font-size:.88em;word-break:keep-all;min-width:0}
+.seg4 button.on,.langseg button.on{background:var(--ink);color:var(--page);border-color:var(--ink)}
 .langseg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
-.langseg button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:8px 4px;font-size:.9em}
-.langseg button.on{background:var(--btn);color:var(--on-btn);border-color:var(--btn)}
-.herolang{position:absolute;right:14px;top:14px;display:flex;gap:2px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:2px;z-index:1}
-.herolang button{border:0;background:transparent;color:var(--on-band);border-radius:999px;padding:2px 9px;font-size:.74em}
-.herolang button.on{background:var(--gold-hi);color:#1A2440;font-weight:700}
-.hero h1{padding-right:96px}
-.act.faved{color:var(--gold)}
-.favitem{border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:11px 13px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.wide{border:1px solid var(--line);background:var(--page);border-radius:14px;padding:10px 14px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.danger{border:1px solid var(--danger);color:var(--danger);background:transparent;border-radius:12px;padding:8px 14px;align-self:flex-start}
+.panel{display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel > *{min-width:0;max-width:100%}
+.ph{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.ph h2{font-size:1em;margin:0}
+.ph small{color:var(--muted);font-size:.76em;text-align:right}
+.cats{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.qs{display:flex;flex-direction:column}
+.q{text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:11px 4px;line-height:1.55;font-size:.95em;min-width:0;overflow-wrap:anywhere;display:flex;gap:12px;align-items:flex-start}
+.q:hover{background:var(--soft)}
+.q i{font-style:normal;flex:none}
+#qnew{background:var(--gold-soft)}
+.moreq{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:1px solid var(--line);background:var(--page);color:var(--ink);border-radius:14px;padding:10px 14px;font-weight:600;font-size:.92em}
+.moreq small{font-weight:400;font-size:.8em;color:var(--muted)}
+.moreq.ai{border-color:var(--accent);color:var(--accent)}
+.moreq:disabled{cursor:default;font-weight:500;color:var(--muted)}
+.favitem{border:1px solid var(--line);border-radius:14px;padding:11px 13px;display:flex;flex-direction:column;gap:6px;min-width:0}
 .favq{font-weight:700;line-height:1.5;text-align:left;border:0;background:transparent;padding:0;overflow-wrap:anywhere}
 .favmeta{font-size:.72em;color:var(--muted)}
 .favprev{font-size:.88em;color:var(--muted);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.favitem .body{font-size:.95em;border-top:1px dashed var(--line);padding-top:8px}
+.favitem .body{font-size:.95em;border-top:1px solid var(--line);padding-top:8px}
+.favitem .acts{margin-left:0;gap:6px}
+.favitem .act{padding:3px 10px;font-size:.78em}
 .favlist{display:flex;flex-direction:column;gap:9px}
 .favempty{color:var(--muted);text-align:center;padding:24px 8px;line-height:1.8}
-.favsearch{width:100%;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:8px 12px;font:inherit;font-size:.92em}
-.applinks{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:9px}
-.applink{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px;min-width:0;transition:border-color .15s,transform .15s}
-.applink:hover{border-color:var(--brand);transform:translateY(-1px)}
-.applink .ai{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.4em;background:linear-gradient(135deg,var(--band),var(--band-2))}
-.applink .at{flex:1 1 auto;min-width:0;line-height:1.4}
-.applink .at b{display:block;font-size:.98em}
-.applink .at small{display:block;font-size:.76em;color:var(--muted)}
-.applink .ago{flex:none;color:var(--brand);font-weight:700}
-@media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.q{transition:none}}
-@media (max-width:420px){.qs{grid-template-columns:1fr}.audgrid{grid-template-columns:1fr 1fr}.hero h1{font-size:1.4em}}
+.favsearch{width:100%;border:1px solid var(--line);background:var(--soft);color:var(--ink);border-radius:12px;padding:8px 12px;font:inherit;font-size:.92em}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(120px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--page);padding:8px 16px;border-radius:999px;font-size:.85em;z-index:100000;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+@media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}}
+@media (max-width:420px){.audgrid{grid-template-columns:1fr 1fr}}
 </style>
 
 <div id="app">
   <header class="top"><div class="wrap">
-    <div class="lamp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5c1.9 2.4 2.9 4.2 2.9 5.6a2.9 2.9 0 0 1-5.8 0c0-1.4 1-3.2 2.9-5.6z" fill="#F0C66A"/><path d="M4 14.5c2.2 0 3.4-1.6 8-1.6s6.2 1 8.6-.6c-.6 3.6-3.9 6.2-8.6 6.2-3.5 0-6.6-1.6-8-4z" fill="#FFFFFF"/><rect x="9" y="19.2" width="6" height="2" rx="1" fill="#FFFFFF"/></svg></div>
-    <div class="brandtxt"><b id="brandName">小智</b><small id="brandSub"></small></div>
-    <button class="hbtn" data-act="newchat" id="newBtn" hidden><span class="hi">＋</span><span class="hl" id="newLbl"></span></button>
-    <button class="hbtn" data-act="favs" id="favBtn"><span class="hi">★</span><span class="hl" id="favLbl"></span></button>
-    <button class="hbtn" data-act="settings" id="setBtn"><span class="hi">⚙</span><span class="hl" id="setLbl"></span></button>
+    <button class="round" data-act="drawer" id="menuBtn"></button>
+    <button class="modepill" data-act="settings" id="modeBtn"><span id="modeTxt"></span><span id="modeChev"></span></button>
+    <button class="round" data-act="newchat" id="newBtn"></button>
   </div></header>
-  <div class="modebar"><div class="wrap">
-    <button class="mode" data-act="settings" id="modeBtn"><span class="mt" id="modeTxt"></span><span class="mk" id="modeKey"></span></button>
-    <button class="pfbtn" data-act="profile" id="pfBtn"></button>
-  </div></div>
 
   <main id="scroll"><div class="wrap" id="flow"></div></main>
 
   <footer class="composer"><div class="wrap">
     <div class="cbox">
-      <button class="ibtn" data-act="bank" id="bankBtn">💡</button>
       <textarea id="q" rows="1"></textarea>
-      <button id="send" data-act="send"></button>
+      <div class="crow">
+        <button class="cb" data-act="bank" id="bankBtn"></button>
+        <button class="lenbtn" data-act="lenmenu" id="lenBtn"></button>
+        <span class="grow"></span>
+        <button id="send" data-act="send"></button>
+      </div>
     </div>
     <p class="note" id="note"></p>
   </div></footer>
@@ -751,7 +764,7 @@ var LS='xz321_';
 function lsGet(k,d){try{var v=localStorage.getItem(LS+k);return v?JSON.parse(v):d;}catch(e){return d;}}
 function lsSet(k,v){try{localStorage.setItem(LS+k,JSON.stringify(v));}catch(e){}}
 var LAMP='<svg viewBox="0 0 24 24"><path d="M12 2.5c1.9 2.4 2.9 4.2 2.9 5.6a2.9 2.9 0 0 1-5.8 0c0-1.4 1-3.2 2.9-5.6z" fill="#F0C66A"/><path d="M4 14.5c2.2 0 3.4-1.6 8-1.6s6.2 1 8.6-.6c-.6 3.6-3.9 6.2-8.6 6.2-3.5 0-6.6-1.6-8-4z" fill="#FFFFFF"/><rect x="9" y="19.2" width="6" height="2" rx="1" fill="#FFFFFF"/></svg>';
-var STR={"zh": {"title": "小智問答", "name": "小智", "brandSub": "國度321空中團契・聖經陪讀與生活百科", "newChat": "新對話", "favs": "收藏", "settings": "設定", "adjust": "調整 ›", "myProfile": "我的資料", "bankTitle": "範例問題", "placeholder": "問小智任何問題…", "note": "小智是 AI，可能會出錯；重要的事請查證，並與牧者或專業人士討論。", "send": "送出", "stop": "停止", "dot": "・", "colon": "：", "lenWord": "長度", "lenXs": "100字內", "lenS": "約300字", "lenMid": "約600字", "lenLong": "約1200字", "lenXl": "2000字+", "sysBase": "你是「小智」，國度321空中團契的AI聖經陪讀與生活百科。你博學多聞：天文、地理、歷史、科學、健康常識、科技、語言寫作、理財、家庭、職場、生活實用，到聖經與神學，都能回答。你也是敬虔愛神的福音派基督徒，充滿信心、盼望和愛心。\n【回答原則】先直接回答問題本身：準確、條理清楚、深入淺出、善用比喻，文字精練流暢。信仰、生命、關係、家庭、職場這類問題，用321理念回應：三個基礎「耶穌是我的榜樣、聖經是我的準則、聖靈是我的引導」；兩個核心「讓耶穌作王、讓耶穌得著一切的榮耀」；一個目的「建立屬神的體系」。看見舊人有己、以自己為中心、驕傲是問題的根源；謙卑無己，讓耶穌在裡面活。先生命、再關係、後事工；人比事重要，關係比東西重要。引用聖經一律用和合本並註明出處。醫療、法律、投資問題提供一般知識，並建議諮詢專業人士。價格、時事、法規這類會變動的資訊，提醒對方查證最新資料。一律使用繁體中文，除非使用者明確要求其他語言。\n【格式】可以用短的小標題、粗體、條列、表格；請把最重要的一句用「> 」標成引言。不要用程式碼區塊、ASCII 圖或唸不出來的裝飾符號。", "sysGeneral": "\n【一般知識問題】上面「回答長度」裡列的段落結構（經文脈絡、321應用、引導禱告、討論題等）是給信仰、生命、關係類問題用的。天文、地理、科學、歷史、科技、生活實用、語言寫作這類一般問題，只遵守字數範圍，以把知識講清楚、講正確為主；最多在結尾自然帶一句屬靈的連結，不必寫禱告。使用者請你寫祝福、信件、文案時，直接交出成品。", "sampleRole": "【小智的角色與規則】", "sampleQ": "【使用者的問題】", "jsonOnly": "你只輸出 JSON。", "unfinished": "（這則回答沒有完成，請再問一次。）", "noAnswer": "（小智這次沒有回答，請再問一次。）", "stopped": "（已停止）", "cutOff": "（連線中斷，這則回答可能不完整。）", "errGrant": "小智還沒有得到使用許可。請在這個頁面的權限設定裡允許「詢問 Claude」，再問一次。", "errRate": "問得有點快，小智需要喘口氣。請稍等一分鐘再問。", "errOffline": "目前沒有網路連線。連上網路後，再按一次送出。", "errConn": "小智暫時連不上{0}。請稍後再試一次。", "fuWait": "小智正在想延伸問題…", "fuLab": "延伸追問", "relenLab": "換個長度重新回答", "fuAsk": "使用者問小智：「{0}」\n小智的回答重點：\n{1}\n\n請想出 5 個使用者看完這個回答後，最可能接著想問的延伸問題。要求：\n1. 必須緊扣這個問題的主題和回答裡的具體內容（例如問煮白飯，就可以問電鍋怎麼煮、糙米怎麼煮、水要放多少、隔夜飯怎麼保存）；不要出現和主題無關的婚姻、職場、家庭等泛用題。\n2. 五題要有不同方向：更深入的細節、實際操作或例子、常見困難或錯誤、延伸到相關的新話題；如果主題本身和信仰、生命或關係有關，可以有一題談聖經怎麼看或怎樣活出來，否則不要硬加。\n3. 用使用者自己的口吻，每題一句完整問句，30 字內，使用繁體中文。\n4. 回答對象是「{2}」，用字要適合他。\n只輸出 JSON 陣列：[{\"i\":\"一個表情符號\",\"t\":\"2到6個字的短標\",\"q\":\"完整問句\"}]，不要任何其他文字。", "FU_GEN": [["🌿", "舉個例子", "請針對你剛才的回答，舉一個生活中的實際例子，幫助我更明白。"], ["🪞", "說得更簡單", "請把你剛才的回答，用更簡單的話和一個比喻再說一次。"], ["🔍", "再深入一點", "關於你剛才的回答，請再深入說明最重要的那一點。"], ["👣", "我可以怎麼做", "根據你剛才的回答，我今天可以踏出哪一個具體的小步驟？"]], "recFor": "為{0}推薦", "askLike": "可以這樣問", "tapToAsk": "點一題，直接問小智", "genWait": "小智正在想新題目…", "moreQ": "＋ 更多題目", "moreLeft": "還有 {0} 題", "moreAi": "✨ 更多題目", "moreAiSub": "請小智再出 6 題", "genTopicAud": "適合「{0}」的人問的生活與信仰問題", "genTopicCat": "「{0}」這個範疇", "genAsk": "請為{0}，想出 6 個新的提問，讓使用者可以直接拿來問 AI 助理小智。要求：每題一句、繁體中文、具體貼近生活、用使用者自己的口吻、以問號或句號結尾；不要和下面這些題目重複或太相近：\n{1}\n只輸出 JSON 字串陣列，例如 [\"題目一？\",\"題目二？\"]，不要任何其他文字。", "genFail": "小智暫時想不出新題目，請稍後再試", "faved": "已加入收藏", "unfaved": "已從收藏移除", "favOn": "★ 已收藏", "favOff": "☆ 收藏", "favTitle": "我的收藏", "favEmpty": "還沒有收藏。<br>在小智的回答下面按「☆ 收藏」，好答案就會留在這裡。", "favNoHit": "找不到符合的收藏。", "favNoQ": "（沒有問題文字）", "favRead": "展開閱讀", "favAsk": "↻ 再問一次", "favDel": "✕ 移除", "favSearch": "搜尋收藏…", "foldMore": "展開全文 ▾", "foldLess": "收合 ▴", "contNote": "小智還在接著寫…", "retry": "↻ 再試一次", "speak": "🔊 朗讀", "speakStop": "⏸ 停止朗讀", "copy": "⧉ 複製", "share": "↗ 分享", "del": "✕ 刪除", "heroH": "平安！我是小智，<br>什麼都可以問我。", "heroP": "天文地理、歷史科學、健康理財，婚姻家庭、職場人際，到聖經真理和生命成長，我都樂意陪你一起想。", "verse": "你的話是我腳前的燈，是我路上的光。", "verseRef": "詩篇 119:105", "whoAmI": "我是誰", "whoSub": "小智會照你的身分調整口氣", "myBg": "我的信仰背景", "myBgSub": "小智會尊重你的背景來回答", "lenH": "回答長度", "lenSub": "隨時可以換", "close": "關閉", "setTitle": "小智設定", "done": "完成", "langH": "語言", "langName_zh": "繁體中文", "langName_zs": "简体中文", "langName_en": "English", "audH": "回答對象・十種", "bgH": "慕道友的信仰背景", "bgHint": "小智會尊重你原本的信仰，先回答真正的問題，不嘲笑、不施壓。", "lenH5": "回答長度・五種", "lenHint": "剛問完的問題，換長度會自動用新長度重新回答。", "fillProfile": "填寫我的資料", "profileHint": "暱稱、年齡、身分、工作、信仰階段、最想得到的幫助", "fsH": "字級", "fsNames": "標準|大|特大|超大", "histH": "對話紀錄", "histHint": "紀錄只存在這台裝置的瀏覽器裡，每種語言各自一份。", "clearAll": "清除全部對話", "clearSure": "再按一次，確定清除全部對話", "copyFail": "無法自動複製，請長按文字自行複製", "shareTitle": "小智的回答", "copiedShare": "已複製，可以貼到 LINE 分享", "qPrefix": "問：", "shareSign": "—— 小智・國度321空中團契", "copied": "已複製回答", "langDone": "已切換成繁體中文", "audSet": "回答對象：", "bgRe": "信仰背景：{0}，重新回答", "bgSet": "信仰背景：{0}", "lenRe": "改成「{0}」重新回答", "lenSet": "回答長度：{0}（{1}）", "newDone": "已開始新對話", "cleared": "對話紀錄已清除", "deleted": "已刪除這則問答", "appsH": "321 App", "appsSub": "點一下開啟", "appFel": "國度321空中團契", "appFelD": "每日晨讀聚會、最新消息、團契生活與奉獻", "appBible": "321互動聖經", "appBibleD": "讀經、真人朗讀、畫線默想、小智陪讀、經文美圖", "verH": "版本與更新", "verNow": "目前版本：", "updCheck": "🔄 檢查更新", "updHard": "⚡ 強制更新", "updHint": "發佈新版後會自動換新；如果畫面還是舊的，按「強制更新」。", "updChecking": "正在檢查…", "upToDate": "已經是最新版本", "netErr": "連不上網路，請稍後再試", "updating": "有新版本，正在更新…"}, "zs": {"title": "小智问答", "name": "小智", "brandSub": "国度321空中团契・圣经陪读与生活百科", "newChat": "新对话", "favs": "收藏", "settings": "设定", "adjust": "调整 ›", "myProfile": "我的资料", "bankTitle": "范例问题", "placeholder": "问小智任何问题…", "note": "小智是 AI，可能会出错；重要的事请查证，并与牧者或专业人士讨论。", "send": "送出", "stop": "停止", "dot": "・", "colon": "：", "lenWord": "长度", "lenXs": "100字内", "lenS": "约300字", "lenMid": "约600字", "lenLong": "约1200字", "lenXl": "2000字+", "sysBase": "你是「小智」，国度321空中团契的AI圣经陪读与生活百科。你博学多闻：天文、地理、历史、科学、健康常识、科技、语言写作、理财、家庭、职场、生活实用，到圣经与神学，都能回答。你也是敬虔爱神的福音派基督徒，充满信心、盼望和爱心。\n【回答原则】先直接回答问题本身：准确、条理清楚、深入浅出、善用比喻，文字精练流畅。信仰、生命、关系、家庭、职场这类问题，用321理念回应：三个基础「耶稣是我的榜样、圣经是我的准则、圣灵是我的引导」；两个核心「让耶稣作王、让耶稣得著一切的荣耀」；一个目的「建立属神的体系」。看见旧人有己、以自己为中心、骄傲是问题的根源；谦卑无己，让耶稣在里面活。先生命、再关系、后事工；人比事重要，关系比东西重要。引用圣经一律用和合本（简体）并注明出处。医疗、法律、投资问题提供一般知识，并建议咨询专业人士。价格、时事、法规这类会变动的资讯，提醒对方查证最新资料。一律使用简体中文，除非使用者明确要求其他语言。\n【格式】可以用短的小标题、粗体、条列、表格；请把最重要的一句用「> 」标成引言。不要用程式码区块、ASCII 图或念不出来的装饰符号。", "sysGeneral": "\n【一般知识问题】上面「回答长度」里列的段落结构（经文脉络、321应用、引导祷告、讨论题等）是给信仰、生命、关系类问题用的。天文、地理、科学、历史、科技、生活实用、语言写作这类一般问题，只遵守字数范围，以把知识讲清楚、讲正确为主；最多在结尾自然带一句属灵的连结，不必写祷告。使用者请你写祝福、信件、文案时，直接交出成品。", "sampleRole": "【小智的角色与规则】", "sampleQ": "【使用者的问题】", "jsonOnly": "你只输出 JSON。", "unfinished": "（这则回答没有完成，请再问一次。）", "noAnswer": "（小智这次没有回答，请再问一次。）", "stopped": "（已停止）", "cutOff": "（连线中断，这则回答可能不完整。）", "errGrant": "小智还没有得到使用许可。请在这个页面的权限设定里允许「询问 Claude」，再问一次。", "errRate": "问得有点快，小智需要喘口气。请稍等一分钟再问。", "errOffline": "目前没有网路连线。连上网路后，再按一次送出。", "errConn": "小智暂时连不上{0}。请稍后再试一次。", "fuWait": "小智正在想延伸问题…", "fuLab": "延伸追问", "relenLab": "换个长度重新回答", "fuAsk": "使用者问小智：「{0}」\n小智的回答重点：\n{1}\n\n请想出 5 个使用者看完这个回答后，最可能接著想问的延伸问题。要求：\n1. 必须紧扣这个问题的主题和回答里的具体内容（例如问煮白饭，就可以问电锅怎么煮、糙米怎么煮、水要放多少、隔夜饭怎么保存）；不要出现和主题无关的婚姻、职场、家庭等泛用题。\n2. 五题要有不同方向：更深入的细节、实际操作或例子、常见困难或错误、延伸到相关的新话题；如果主题本身和信仰、生命或关系有关，可以有一题谈圣经怎么看或怎样活出来，否则不要硬加。\n3. 用使用者自己的口吻，每题一句完整问句，30 字内，使用简体中文。\n4. 回答对象是「{2}」，用字要适合他。\n只输出 JSON 阵列：[{\"i\":\"一个表情符号\",\"t\":\"2到6个字的短标\",\"q\":\"完整问句\"}]，不要任何其他文字。", "FU_GEN": [["🌿", "举个例子", "请针对你刚才的回答，举一个生活中的实际例子，帮助我更明白。"], ["🪞", "说得更简单", "请把你刚才的回答，用更简单的话和一个比喻再说一次。"], ["🔍", "再深入一点", "关于你刚才的回答，请再深入说明最重要的那一点。"], ["👣", "我可以怎么做", "根据你刚才的回答，我今天可以踏出哪一个具体的小步骤？"]], "recFor": "为{0}推荐", "askLike": "可以这样问", "tapToAsk": "点一题，直接问小智", "genWait": "小智正在想新题目…", "moreQ": "＋ 更多题目", "moreLeft": "还有 {0} 题", "moreAi": "✨ 更多题目", "moreAiSub": "请小智再出 6 题", "genTopicAud": "适合「{0}」的人问的生活与信仰问题", "genTopicCat": "「{0}」这个范畴", "genAsk": "请为{0}，想出 6 个新的提问，让使用者可以直接拿来问 AI 助理小智。要求：每题一句、简体中文、具体贴近生活、用使用者自己的口吻、以问号或句号结尾；不要和下面这些题目重复或太相近：\n{1}\n只输出 JSON 字串阵列，例如 [\"题目一？\",\"题目二？\"]，不要任何其他文字。", "genFail": "小智暂时想不出新题目，请稍后再试", "faved": "已加入收藏", "unfaved": "已从收藏移除", "favOn": "★ 已收藏", "favOff": "☆ 收藏", "favTitle": "我的收藏", "favEmpty": "还没有收藏。<br>在小智的回答下面按「☆ 收藏」，好答案就会留在这里。", "favNoHit": "找不到符合的收藏。", "favNoQ": "（没有问题文字）", "favRead": "展开阅读", "favAsk": "↻ 再问一次", "favDel": "✕ 移除", "favSearch": "搜寻收藏…", "foldMore": "展开全文 ▾", "foldLess": "收合 ▴", "contNote": "小智还在接著写…", "retry": "↻ 再试一次", "speak": "🔊 朗读", "speakStop": "⏸ 停止朗读", "copy": "⧉ 复制", "share": "↗ 分享", "del": "✕ 删除", "heroH": "平安！我是小智，<br>什么都可以问我。", "heroP": "天文地理、历史科学、健康理财，婚姻家庭、职场人际，到圣经真理和生命成长，我都乐意陪你一起想。", "verse": "你的话是我脚前的灯，是我路上的光。", "verseRef": "诗篇 119:105", "whoAmI": "我是谁", "whoSub": "小智会照你的身分调整口气", "myBg": "我的信仰背景", "myBgSub": "小智会尊重你的背景来回答", "lenH": "回答长度", "lenSub": "随时可以换", "close": "关闭", "setTitle": "小智设定", "done": "完成", "langH": "语言", "langName_zh": "繁體中文", "langName_zs": "简体中文", "langName_en": "English", "audH": "回答对象・十种", "bgH": "慕道友的信仰背景", "bgHint": "小智会尊重你原本的信仰，先回答真正的问题，不嘲笑、不施压。", "lenH5": "回答长度・五种", "lenHint": "刚问完的问题，换长度会自动用新长度重新回答。", "fillProfile": "填写我的资料", "profileHint": "暱称、年龄、身分、工作、信仰阶段、最想得到的帮助", "fsH": "字级", "fsNames": "标准|大|特大|超大", "histH": "对话纪录", "histHint": "纪录只存在这台装置的浏览器里，每种语言各自一份。", "clearAll": "清除全部对话", "clearSure": "再按一次，确定清除全部对话", "copyFail": "无法自动复制，请长按文字自行复制", "shareTitle": "小智的回答", "copiedShare": "已复制，可以粘贴到微信或 LINE 分享", "qPrefix": "问：", "shareSign": "—— 小智・国度321空中团契", "copied": "已复制回答", "langDone": "已切换成简体中文", "audSet": "回答对象：", "bgRe": "信仰背景：{0}，重新回答", "bgSet": "信仰背景：{0}", "lenRe": "改成「{0}」重新回答", "lenSet": "回答长度：{0}（{1}）", "newDone": "已开始新对话", "cleared": "对话纪录已清除", "deleted": "已删除这则问答", "appsH": "321 App", "appsSub": "点一下开启", "appFel": "国度321空中团契", "appFelD": "每日晨读聚会、最新消息、团契生活与奉献", "appBible": "321互动圣经", "appBibleD": "读经、真人朗读、画线默想、小智陪读、经文美图", "verH": "版本与更新", "verNow": "目前版本：", "updCheck": "🔄 检查更新", "updHard": "⚡ 强制更新", "updHint": "发布新版后会自动换新；如果画面还是旧的，按「强制更新」。", "updChecking": "正在检查…", "upToDate": "已经是最新版本", "netErr": "连不上网路，请稍后再试", "updating": "有新版本，正在更新…"}, "en": {"title": "Xiaozhi Q&A", "name": "Xiaozhi", "brandSub": "Kingdom 321 Fellowship · Bible companion & everyday guide", "newChat": "New", "favs": "Saved", "settings": "Settings", "adjust": "Adjust ›", "myProfile": "About me", "bankTitle": "Sample questions", "placeholder": "Ask Xiaozhi anything…", "note": "Xiaozhi is an AI and can make mistakes. Check important things, and talk them over with a pastor or a professional.", "send": "Send", "stop": "Stop", "dot": " · ", "colon": ": ", "lenWord": "Length", "lenXs": "~60 words", "lenS": "~150 words", "lenMid": "~330 words", "lenLong": "~700 words", "lenXl": "1,200+ words", "sysBase": "You are \"Xiaozhi\", the AI Bible companion and everyday guide of Kingdom 321 Fellowship. You are widely knowledgeable: astronomy, geography, history, science, health basics, technology, language and writing, money, family, work and practical life, as well as the Bible and theology. You are also a devout evangelical Christian, full of faith, hope and love.\nPRINCIPLES: First answer the question itself: accurate, well organised, clear and simple, using good analogies, in fluent concise English. For questions about faith, life, relationships, family or work, answer in the spirit of the 321 vision: three foundations (\"Jesus is my example, the Bible is my standard, the Holy Spirit is my guide\"); two cores (\"let Jesus reign, let Jesus receive all the glory\"); one purpose (\"build God's system\"). See that the self-centred old self and pride are the root of our problems; in humility and selflessness, let Jesus live in us. Life first, then relationships, then ministry; people matter more than tasks, relationships more than things. Quote Scripture from the World English Bible and give the reference. For medical, legal or investment questions give general information and recommend a professional. For prices, news or regulations that change, remind the reader to check current sources. Always answer in English unless the user clearly asks for another language.\nFORMAT: You may use short headings, bold, bullet lists and tables; mark the single most important sentence as a \"> \" quote. No code blocks, ASCII art or decorative symbols that cannot be read aloud.", "sysGeneral": "\nGENERAL-KNOWLEDGE QUESTIONS: The section structure listed in the answer-length instruction above (passage context, 321 application, guided prayer, discussion questions, etc.) is for faith, life and relationship questions. For general questions such as astronomy, geography, science, history, technology, practical life, language and writing, keep only the word range and focus on explaining the knowledge clearly and correctly; at most add one natural spiritual connection at the end, and no prayer. When asked to write a blessing, letter or copy, simply deliver the finished text.", "sampleRole": "XIAOZHI'S ROLE AND RULES:", "sampleQ": "THE USER'S QUESTION:", "jsonOnly": "Output JSON only.", "unfinished": "(This answer did not finish. Please ask again.)", "noAnswer": "(Xiaozhi did not answer this time. Please ask again.)", "stopped": "(Stopped)", "cutOff": "(The connection dropped; this answer may be incomplete.)", "errGrant": "Xiaozhi has not been given permission yet. Allow \"Ask Claude\" in this page's permissions, then ask again.", "errRate": "That was a lot of questions at once. Please wait a minute and ask again.", "errOffline": "You are offline. Connect to the internet, then tap Send again.", "errConn": "Xiaozhi could not connect{0}. Please try again in a moment.", "fuWait": "Xiaozhi is thinking of follow-up questions…", "fuLab": "Follow-up questions", "relenLab": "Answer again at another length", "fuAsk": "The user asked Xiaozhi: \"{0}\"\nKey points of Xiaozhi's answer:\n{1}\n\nSuggest 5 follow-up questions the user is most likely to ask next after reading this answer. Requirements:\n1. Stay tightly on this question's topic and on the specific content of the answer (for example, after \"how to cook rice\", ask about rice-cooker settings, brown rice, how much water, storing leftover rice). Do not add unrelated generic questions about marriage, work or family.\n2. Vary the direction: deeper detail, practical steps or examples, common problems or mistakes, a related new topic. Only if the topic itself concerns faith, life or relationships may one question ask what the Bible says or how to live it out.\n3. Write in the user's own voice, one complete question each, under 15 words, in English.\n4. The reader is \"{2}\"; choose words that suit them.\nOutput only a JSON array: [{\"i\":\"one emoji\",\"t\":\"short label of 1 to 3 words\",\"q\":\"full question\"}] and nothing else.", "FU_GEN": [["🌿", "An example", "Please give me a real-life example to help me understand your answer better."], ["🪞", "Say it simpler", "Please explain your answer again in simpler words, with an analogy."], ["🔍", "Go deeper", "Please go deeper into the most important point of your answer."], ["👣", "What can I do", "Based on your answer, what is one concrete small step I can take today?"]], "recFor": "For {0}", "askLike": "Try asking", "tapToAsk": "Tap a question to ask Xiaozhi", "genWait": "Xiaozhi is writing new questions…", "moreQ": "＋ More questions", "moreLeft": "{0} more", "moreAi": "✨ More questions", "moreAiSub": "Ask Xiaozhi for 6 new ones", "genTopicAud": "life and faith questions that a \"{0}\" reader would ask", "genTopicCat": "the category \"{0}\"", "genAsk": "For {0}, write 6 new questions a user could ask the AI assistant Xiaozhi. Requirements: one sentence each, in English, concrete and close to everyday life, in the user's own voice, ending with a question mark or full stop; do not repeat or closely resemble these existing questions:\n{1}\nOutput only a JSON array of strings, e.g. [\"Question one?\",\"Question two?\"], and nothing else.", "genFail": "Xiaozhi could not come up with new questions. Please try again later.", "faved": "Saved", "unfaved": "Removed from saved", "favOn": "★ Saved", "favOff": "☆ Save", "favTitle": "Saved answers", "favEmpty": "Nothing saved yet.<br>Tap \"☆ Save\" under any answer to keep it here.", "favNoHit": "No saved answers match.", "favNoQ": "(no question text)", "favRead": "Read", "favAsk": "↻ Ask again", "favDel": "✕ Remove", "favSearch": "Search saved answers…", "foldMore": "Show all ▾", "foldLess": "Collapse ▴", "contNote": "Xiaozhi is still writing…", "retry": "↻ Try again", "speak": "🔊 Read aloud", "speakStop": "⏸ Stop reading", "copy": "⧉ Copy", "share": "↗ Share", "del": "✕ Delete", "heroH": "Peace to you! I'm Xiaozhi.<br>Ask me anything.", "heroP": "Stars and maps, history and science, health and money, marriage and family, work and friendships, Bible truth and spiritual growth: I am glad to think it through with you.", "verse": "Your word is a lamp to my feet, and a light for my path.", "verseRef": "Psalm 119:105", "whoAmI": "Who am I", "whoSub": "Xiaozhi adjusts its tone for you", "myBg": "My faith background", "myBgSub": "Xiaozhi will answer with respect for it", "lenH": "Answer length", "lenSub": "Change it any time", "close": "Close", "setTitle": "Xiaozhi settings", "done": "Done", "langH": "Language", "langName_zh": "繁體中文", "langName_zs": "简体中文", "langName_en": "English", "audH": "Answering for (10 options)", "bgH": "Seeker's faith background", "bgHint": "Xiaozhi will respect your own beliefs, answer the real question first, never mock and never pressure.", "lenH5": "Answer length (5 options)", "lenHint": "Changing the length re-answers your latest question at the new length.", "fillProfile": "Fill in About me", "profileHint": "Nickname, age, status, work, faith stage, the help you most want", "fsH": "Text size", "fsNames": "Standard|Large|X-Large|XX-Large", "histH": "Chat history", "histHint": "History is stored only in this browser, separately for each language.", "clearAll": "Clear all chats", "clearSure": "Tap again to clear all chats", "copyFail": "Could not copy automatically. Long-press the text to copy it.", "shareTitle": "Xiaozhi's answer", "copiedShare": "Copied. You can paste it into a message to share.", "qPrefix": "Q: ", "shareSign": "— Xiaozhi · Kingdom 321 Fellowship", "copied": "Answer copied", "langDone": "Switched to English", "audSet": "Answering for: ", "bgRe": "Faith background: {0}. Answering again", "bgSet": "Faith background: {0}", "lenRe": "Answering again as \"{0}\"", "lenSet": "Answer length: {0} ({1})", "newDone": "New chat started", "cleared": "Chat history cleared", "deleted": "Deleted this Q&A", "appsH": "321 Apps", "appsSub": "Tap to open", "appFel": "Kingdom 321 Fellowship", "appFelD": "Daily morning gatherings, news, fellowship life and giving", "appBible": "321 Interactive Bible", "appBibleD": "Read the Bible, listen aloud, highlight and reflect, study with Xiaozhi, verse images", "verH": "Version & updates", "verNow": "Current version:", "updCheck": "🔄 Check for updates", "updHard": "⚡ Force update", "updHint": "New versions install automatically. If the screen still looks old, tap Force update.", "updChecking": "Checking…", "upToDate": "You have the latest version", "netErr": "Cannot reach the internet. Please try again later.", "updating": "New version found, updating…"}};
+var STR={"zh": {"title": "小智問答", "name": "小智", "brandSub": "國度321空中團契・聖經陪讀與生活百科", "newChat": "新對話", "favs": "收藏", "settings": "設定", "adjust": "調整 ›", "myProfile": "我的資料", "bankTitle": "範例問題", "placeholder": "問小智任何問題…", "note": "小智是 AI，可能會出錯；重要的事請查證，並與牧者或專業人士討論。", "send": "送出", "stop": "停止", "dot": "・", "colon": "：", "lenWord": "長度", "lenXs": "100字內", "lenS": "約300字", "lenMid": "約600字", "lenLong": "約1200字", "lenXl": "2000字+", "sysBase": "你是「小智」，國度321空中團契的AI聖經陪讀與生活百科。你博學多聞：天文、地理、歷史、科學、健康常識、科技、語言寫作、理財、家庭、職場、生活實用，到聖經與神學，都能回答。你也是敬虔愛神的福音派基督徒，充滿信心、盼望和愛心。\n【回答原則】先直接回答問題本身：準確、條理清楚、深入淺出、善用比喻，文字精練流暢。信仰、生命、關係、家庭、職場這類問題，用321理念回應：三個基礎「耶穌是我的榜樣、聖經是我的準則、聖靈是我的引導」；兩個核心「讓耶穌作王、讓耶穌得著一切的榮耀」；一個目的「建立屬神的體系」。看見舊人有己、以自己為中心、驕傲是問題的根源；謙卑無己，讓耶穌在裡面活。先生命、再關係、後事工；人比事重要，關係比東西重要。引用聖經一律用和合本並註明出處。醫療、法律、投資問題提供一般知識，並建議諮詢專業人士。價格、時事、法規這類會變動的資訊，提醒對方查證最新資料。一律使用繁體中文，除非使用者明確要求其他語言。\n【格式】可以用短的小標題、粗體、條列、表格；請把最重要的一句用「> 」標成引言。不要用程式碼區塊、ASCII 圖或唸不出來的裝飾符號。", "sysGeneral": "\n【一般知識問題】上面「回答長度」裡列的段落結構（經文脈絡、321應用、引導禱告、討論題等）是給信仰、生命、關係類問題用的。天文、地理、科學、歷史、科技、生活實用、語言寫作這類一般問題，只遵守字數範圍，以把知識講清楚、講正確為主；最多在結尾自然帶一句屬靈的連結，不必寫禱告。使用者請你寫祝福、信件、文案時，直接交出成品。", "sampleRole": "【小智的角色與規則】", "sampleQ": "【使用者的問題】", "jsonOnly": "你只輸出 JSON。", "unfinished": "（這則回答沒有完成，請再問一次。）", "noAnswer": "（小智這次沒有回答，請再問一次。）", "stopped": "（已停止）", "cutOff": "（連線中斷，這則回答可能不完整。）", "errGrant": "小智還沒有得到使用許可。請在這個頁面的權限設定裡允許「詢問 Claude」，再問一次。", "errRate": "問得有點快，小智需要喘口氣。請稍等一分鐘再問。", "errOffline": "目前沒有網路連線。連上網路後，再按一次送出。", "errConn": "小智暫時連不上{0}。請稍後再試一次。", "fuWait": "小智正在想延伸問題…", "fuLab": "延伸追問", "relenLab": "換個長度重新回答", "fuAsk": "使用者問小智：「{0}」\n小智的回答重點：\n{1}\n\n請想出 5 個使用者看完這個回答後，最可能接著想問的延伸問題。要求：\n1. 必須緊扣這個問題的主題和回答裡的具體內容（例如問煮白飯，就可以問電鍋怎麼煮、糙米怎麼煮、水要放多少、隔夜飯怎麼保存）；不要出現和主題無關的婚姻、職場、家庭等泛用題。\n2. 五題要有不同方向：更深入的細節、實際操作或例子、常見困難或錯誤、延伸到相關的新話題；如果主題本身和信仰、生命或關係有關，可以有一題談聖經怎麼看或怎樣活出來，否則不要硬加。\n3. 用使用者自己的口吻，每題一句完整問句，30 字內，使用繁體中文。\n4. 回答對象是「{2}」，用字要適合他。\n只輸出 JSON 陣列：[{\"i\":\"一個表情符號\",\"t\":\"2到6個字的短標\",\"q\":\"完整問句\"}]，不要任何其他文字。", "FU_GEN": [["🌿", "舉個例子", "請針對你剛才的回答，舉一個生活中的實際例子，幫助我更明白。"], ["🪞", "說得更簡單", "請把你剛才的回答，用更簡單的話和一個比喻再說一次。"], ["🔍", "再深入一點", "關於你剛才的回答，請再深入說明最重要的那一點。"], ["👣", "我可以怎麼做", "根據你剛才的回答，我今天可以踏出哪一個具體的小步驟？"]], "recFor": "為{0}推薦", "askLike": "可以這樣問", "tapToAsk": "點一題，直接問小智", "genWait": "小智正在想新題目…", "moreQ": "＋ 更多題目", "moreLeft": "還有 {0} 題", "moreAi": "✨ 更多題目", "moreAiSub": "請小智再出 6 題", "genTopicAud": "適合「{0}」的人問的生活與信仰問題", "genTopicCat": "「{0}」這個範疇", "genAsk": "請為{0}，想出 6 個新的提問，讓使用者可以直接拿來問 AI 助理小智。要求：每題一句、繁體中文、具體貼近生活、用使用者自己的口吻、以問號或句號結尾；不要和下面這些題目重複或太相近：\n{1}\n只輸出 JSON 字串陣列，例如 [\"題目一？\",\"題目二？\"]，不要任何其他文字。", "genFail": "小智暫時想不出新題目，請稍後再試", "faved": "已加入收藏", "unfaved": "已從收藏移除", "favOn": "★ 已收藏", "favOff": "☆ 收藏", "favTitle": "我的收藏", "favEmpty": "還沒有收藏。<br>在小智的回答下面按「☆ 收藏」，好答案就會留在這裡。", "favNoHit": "找不到符合的收藏。", "favNoQ": "（沒有問題文字）", "favRead": "展開閱讀", "favAsk": "↻ 再問一次", "favDel": "✕ 移除", "favSearch": "搜尋收藏…", "foldMore": "展開全文 ▾", "foldLess": "收合 ▴", "contNote": "小智還在接著寫…", "retry": "↻ 再試一次", "speak": "🔊 朗讀", "speakStop": "⏸ 停止朗讀", "copy": "⧉ 複製", "share": "↗ 分享", "del": "✕ 刪除", "heroH": "平安！我是小智，<br>什麼都可以問我。", "heroP": "天文地理、歷史科學、健康理財，婚姻家庭、職場人際，到聖經真理和生命成長，我都樂意陪你一起想。", "verse": "你的話是我腳前的燈，是我路上的光。", "verseRef": "詩篇 119:105", "whoAmI": "我是誰", "whoSub": "小智會照你的身分調整口氣", "myBg": "我的信仰背景", "myBgSub": "小智會尊重你的背景來回答", "lenH": "回答長度", "lenSub": "隨時可以換", "close": "關閉", "setTitle": "小智設定", "done": "完成", "langH": "語言", "langName_zh": "繁體中文", "langName_zs": "简体中文", "langName_en": "English", "audH": "回答對象・十種", "bgH": "慕道友的信仰背景", "bgHint": "小智會尊重你原本的信仰，先回答真正的問題，不嘲笑、不施壓。", "lenH5": "回答長度・五種", "lenHint": "剛問完的問題，換長度會自動用新長度重新回答。", "fillProfile": "填寫我的資料", "profileHint": "暱稱、年齡、身分、工作、信仰階段、最想得到的幫助", "fsH": "字級", "fsNames": "標準|大|特大|超大", "histH": "對話紀錄", "histHint": "對話只存在這台裝置的瀏覽器裡，每種語言各自一份。這會刪除這個語言的全部對話。", "clearAll": "清除全部對話", "clearSure": "再按一次，確定清除全部對話", "copyFail": "無法自動複製，請長按文字自行複製", "shareTitle": "小智的回答", "copiedShare": "已複製，可以貼到 LINE 分享", "qPrefix": "問：", "shareSign": "—— 小智・國度321空中團契", "copied": "已複製回答", "langDone": "已切換成繁體中文", "audSet": "回答對象：", "bgRe": "信仰背景：{0}，重新回答", "bgSet": "信仰背景：{0}", "lenRe": "改成「{0}」重新回答", "lenSet": "回答長度：{0}（{1}）", "newDone": "已開始新對話", "cleared": "對話紀錄已清除", "deleted": "已刪除這則問答", "menu": "選單", "retryW": "再試一次", "copyW": "複製", "favOnW": "已收藏", "favOffW": "收藏", "speakW": "朗讀", "speakStopW": "停止朗讀", "shareW": "分享", "reW": "換個長度重新回答", "delW": "刪除", "helloH": "有什麼想問小智？", "helloP": "天文地理、生活百科、家庭職場，到聖經真理，什麼都可以問。", "sugShuffle": "換一組", "sugAll": "更多範例問題", "convSearch": "搜尋對話", "convNoHit": "找不到符合的對話。", "convEmpty": "還沒有對話紀錄。", "recent": "最近", "delSure": "刪除？", "convDeleted": "已刪除這段對話", "appsH": "321 App", "appsSub": "點一下開啟", "appFel": "國度321空中團契", "appFelD": "每日晨讀聚會、最新消息、團契生活與奉獻", "appBible": "321互動聖經", "appBibleD": "讀經、真人朗讀、畫線默想、小智陪讀、經文美圖", "verH": "版本與更新", "verNow": "目前版本：", "updCheck": "🔄 檢查更新", "updHard": "⚡ 強制更新", "updHint": "發佈新版後會自動換新；如果畫面還是舊的，按「強制更新」。", "updChecking": "正在檢查…", "upToDate": "已經是最新版本", "netErr": "連不上網路，請稍後再試", "updating": "有新版本，正在更新…"}, "zs": {"title": "小智问答", "name": "小智", "brandSub": "国度321空中团契・圣经陪读与生活百科", "newChat": "新对话", "favs": "收藏", "settings": "设定", "adjust": "调整 ›", "myProfile": "我的资料", "bankTitle": "范例问题", "placeholder": "问小智任何问题…", "note": "小智是 AI，可能会出错；重要的事请查证，并与牧者或专业人士讨论。", "send": "送出", "stop": "停止", "dot": "・", "colon": "：", "lenWord": "长度", "lenXs": "100字内", "lenS": "约300字", "lenMid": "约600字", "lenLong": "约1200字", "lenXl": "2000字+", "sysBase": "你是「小智」，国度321空中团契的AI圣经陪读与生活百科。你博学多闻：天文、地理、历史、科学、健康常识、科技、语言写作、理财、家庭、职场、生活实用，到圣经与神学，都能回答。你也是敬虔爱神的福音派基督徒，充满信心、盼望和爱心。\n【回答原则】先直接回答问题本身：准确、条理清楚、深入浅出、善用比喻，文字精练流畅。信仰、生命、关系、家庭、职场这类问题，用321理念回应：三个基础「耶稣是我的榜样、圣经是我的准则、圣灵是我的引导」；两个核心「让耶稣作王、让耶稣得著一切的荣耀」；一个目的「建立属神的体系」。看见旧人有己、以自己为中心、骄傲是问题的根源；谦卑无己，让耶稣在里面活。先生命、再关系、后事工；人比事重要，关系比东西重要。引用圣经一律用和合本（简体）并注明出处。医疗、法律、投资问题提供一般知识，并建议咨询专业人士。价格、时事、法规这类会变动的资讯，提醒对方查证最新资料。一律使用简体中文，除非使用者明确要求其他语言。\n【格式】可以用短的小标题、粗体、条列、表格；请把最重要的一句用「> 」标成引言。不要用程式码区块、ASCII 图或念不出来的装饰符号。", "sysGeneral": "\n【一般知识问题】上面「回答长度」里列的段落结构（经文脉络、321应用、引导祷告、讨论题等）是给信仰、生命、关系类问题用的。天文、地理、科学、历史、科技、生活实用、语言写作这类一般问题，只遵守字数范围，以把知识讲清楚、讲正确为主；最多在结尾自然带一句属灵的连结，不必写祷告。使用者请你写祝福、信件、文案时，直接交出成品。", "sampleRole": "【小智的角色与规则】", "sampleQ": "【使用者的问题】", "jsonOnly": "你只输出 JSON。", "unfinished": "（这则回答没有完成，请再问一次。）", "noAnswer": "（小智这次没有回答，请再问一次。）", "stopped": "（已停止）", "cutOff": "（连线中断，这则回答可能不完整。）", "errGrant": "小智还没有得到使用许可。请在这个页面的权限设定里允许「询问 Claude」，再问一次。", "errRate": "问得有点快，小智需要喘口气。请稍等一分钟再问。", "errOffline": "目前没有网路连线。连上网路后，再按一次送出。", "errConn": "小智暂时连不上{0}。请稍后再试一次。", "fuWait": "小智正在想延伸问题…", "fuLab": "延伸追问", "relenLab": "换个长度重新回答", "fuAsk": "使用者问小智：「{0}」\n小智的回答重点：\n{1}\n\n请想出 5 个使用者看完这个回答后，最可能接著想问的延伸问题。要求：\n1. 必须紧扣这个问题的主题和回答里的具体内容（例如问煮白饭，就可以问电锅怎么煮、糙米怎么煮、水要放多少、隔夜饭怎么保存）；不要出现和主题无关的婚姻、职场、家庭等泛用题。\n2. 五题要有不同方向：更深入的细节、实际操作或例子、常见困难或错误、延伸到相关的新话题；如果主题本身和信仰、生命或关系有关，可以有一题谈圣经怎么看或怎样活出来，否则不要硬加。\n3. 用使用者自己的口吻，每题一句完整问句，30 字内，使用简体中文。\n4. 回答对象是「{2}」，用字要适合他。\n只输出 JSON 阵列：[{\"i\":\"一个表情符号\",\"t\":\"2到6个字的短标\",\"q\":\"完整问句\"}]，不要任何其他文字。", "FU_GEN": [["🌿", "举个例子", "请针对你刚才的回答，举一个生活中的实际例子，帮助我更明白。"], ["🪞", "说得更简单", "请把你刚才的回答，用更简单的话和一个比喻再说一次。"], ["🔍", "再深入一点", "关于你刚才的回答，请再深入说明最重要的那一点。"], ["👣", "我可以怎么做", "根据你刚才的回答，我今天可以踏出哪一个具体的小步骤？"]], "recFor": "为{0}推荐", "askLike": "可以这样问", "tapToAsk": "点一题，直接问小智", "genWait": "小智正在想新题目…", "moreQ": "＋ 更多题目", "moreLeft": "还有 {0} 题", "moreAi": "✨ 更多题目", "moreAiSub": "请小智再出 6 题", "genTopicAud": "适合「{0}」的人问的生活与信仰问题", "genTopicCat": "「{0}」这个范畴", "genAsk": "请为{0}，想出 6 个新的提问，让使用者可以直接拿来问 AI 助理小智。要求：每题一句、简体中文、具体贴近生活、用使用者自己的口吻、以问号或句号结尾；不要和下面这些题目重复或太相近：\n{1}\n只输出 JSON 字串阵列，例如 [\"题目一？\",\"题目二？\"]，不要任何其他文字。", "genFail": "小智暂时想不出新题目，请稍后再试", "faved": "已加入收藏", "unfaved": "已从收藏移除", "favOn": "★ 已收藏", "favOff": "☆ 收藏", "favTitle": "我的收藏", "favEmpty": "还没有收藏。<br>在小智的回答下面按「☆ 收藏」，好答案就会留在这里。", "favNoHit": "找不到符合的收藏。", "favNoQ": "（没有问题文字）", "favRead": "展开阅读", "favAsk": "↻ 再问一次", "favDel": "✕ 移除", "favSearch": "搜寻收藏…", "foldMore": "展开全文 ▾", "foldLess": "收合 ▴", "contNote": "小智还在接著写…", "retry": "↻ 再试一次", "speak": "🔊 朗读", "speakStop": "⏸ 停止朗读", "copy": "⧉ 复制", "share": "↗ 分享", "del": "✕ 删除", "heroH": "平安！我是小智，<br>什么都可以问我。", "heroP": "天文地理、历史科学、健康理财，婚姻家庭、职场人际，到圣经真理和生命成长，我都乐意陪你一起想。", "verse": "你的话是我脚前的灯，是我路上的光。", "verseRef": "诗篇 119:105", "whoAmI": "我是谁", "whoSub": "小智会照你的身分调整口气", "myBg": "我的信仰背景", "myBgSub": "小智会尊重你的背景来回答", "lenH": "回答长度", "lenSub": "随时可以换", "close": "关闭", "setTitle": "小智设定", "done": "完成", "langH": "语言", "langName_zh": "繁體中文", "langName_zs": "简体中文", "langName_en": "English", "audH": "回答对象・十种", "bgH": "慕道友的信仰背景", "bgHint": "小智会尊重你原本的信仰，先回答真正的问题，不嘲笑、不施压。", "lenH5": "回答长度・五种", "lenHint": "刚问完的问题，换长度会自动用新长度重新回答。", "fillProfile": "填写我的资料", "profileHint": "暱称、年龄、身分、工作、信仰阶段、最想得到的帮助", "fsH": "字级", "fsNames": "标准|大|特大|超大", "histH": "对话纪录", "histHint": "对话只存在这台装置的浏览器里，每种语言各自一份。这会删除这个语言的全部对话。", "clearAll": "清除全部对话", "clearSure": "再按一次，确定清除全部对话", "copyFail": "无法自动复制，请长按文字自行复制", "shareTitle": "小智的回答", "copiedShare": "已复制，可以粘贴到微信或 LINE 分享", "qPrefix": "问：", "shareSign": "—— 小智・国度321空中团契", "copied": "已复制回答", "langDone": "已切换成简体中文", "audSet": "回答对象：", "bgRe": "信仰背景：{0}，重新回答", "bgSet": "信仰背景：{0}", "lenRe": "改成「{0}」重新回答", "lenSet": "回答长度：{0}（{1}）", "newDone": "已开始新对话", "cleared": "对话纪录已清除", "deleted": "已删除这则问答", "menu": "选单", "retryW": "再试一次", "copyW": "复制", "favOnW": "已收藏", "favOffW": "收藏", "speakW": "朗读", "speakStopW": "停止朗读", "shareW": "分享", "reW": "换个长度重新回答", "delW": "删除", "helloH": "有什么想问小智？", "helloP": "天文地理、生活百科、家庭职场，到圣经真理，什么都可以问。", "sugShuffle": "换一组", "sugAll": "更多范例问题", "convSearch": "搜寻对话", "convNoHit": "找不到符合的对话。", "convEmpty": "还没有对话纪录。", "recent": "最近", "delSure": "删除？", "convDeleted": "已删除这段对话", "appsH": "321 App", "appsSub": "点一下开启", "appFel": "国度321空中团契", "appFelD": "每日晨读聚会、最新消息、团契生活与奉献", "appBible": "321互动圣经", "appBibleD": "读经、真人朗读、画线默想、小智陪读、经文美图", "verH": "版本与更新", "verNow": "目前版本：", "updCheck": "🔄 检查更新", "updHard": "⚡ 强制更新", "updHint": "发布新版后会自动换新；如果画面还是旧的，按「强制更新」。", "updChecking": "正在检查…", "upToDate": "已经是最新版本", "netErr": "连不上网路，请稍后再试", "updating": "有新版本，正在更新…"}, "en": {"title": "Xiaozhi Q&A", "name": "Xiaozhi", "brandSub": "Kingdom 321 Fellowship · Bible companion & everyday guide", "newChat": "New chat", "favs": "Saved", "settings": "Settings", "adjust": "Adjust ›", "myProfile": "About me", "bankTitle": "Sample questions", "placeholder": "Ask Xiaozhi anything…", "note": "Xiaozhi is an AI and can make mistakes. Check important things, and talk them over with a pastor or a professional.", "send": "Send", "stop": "Stop", "dot": " · ", "colon": ": ", "lenWord": "Length", "lenXs": "~60 words", "lenS": "~150 words", "lenMid": "~330 words", "lenLong": "~700 words", "lenXl": "1,200+ words", "sysBase": "You are \"Xiaozhi\", the AI Bible companion and everyday guide of Kingdom 321 Fellowship. You are widely knowledgeable: astronomy, geography, history, science, health basics, technology, language and writing, money, family, work and practical life, as well as the Bible and theology. You are also a devout evangelical Christian, full of faith, hope and love.\nPRINCIPLES: First answer the question itself: accurate, well organised, clear and simple, using good analogies, in fluent concise English. For questions about faith, life, relationships, family or work, answer in the spirit of the 321 vision: three foundations (\"Jesus is my example, the Bible is my standard, the Holy Spirit is my guide\"); two cores (\"let Jesus reign, let Jesus receive all the glory\"); one purpose (\"build God's system\"). See that the self-centred old self and pride are the root of our problems; in humility and selflessness, let Jesus live in us. Life first, then relationships, then ministry; people matter more than tasks, relationships more than things. Quote Scripture from the World English Bible and give the reference. For medical, legal or investment questions give general information and recommend a professional. For prices, news or regulations that change, remind the reader to check current sources. Always answer in English unless the user clearly asks for another language.\nFORMAT: You may use short headings, bold, bullet lists and tables; mark the single most important sentence as a \"> \" quote. No code blocks, ASCII art or decorative symbols that cannot be read aloud.", "sysGeneral": "\nGENERAL-KNOWLEDGE QUESTIONS: The section structure listed in the answer-length instruction above (passage context, 321 application, guided prayer, discussion questions, etc.) is for faith, life and relationship questions. For general questions such as astronomy, geography, science, history, technology, practical life, language and writing, keep only the word range and focus on explaining the knowledge clearly and correctly; at most add one natural spiritual connection at the end, and no prayer. When asked to write a blessing, letter or copy, simply deliver the finished text.", "sampleRole": "XIAOZHI'S ROLE AND RULES:", "sampleQ": "THE USER'S QUESTION:", "jsonOnly": "Output JSON only.", "unfinished": "(This answer did not finish. Please ask again.)", "noAnswer": "(Xiaozhi did not answer this time. Please ask again.)", "stopped": "(Stopped)", "cutOff": "(The connection dropped; this answer may be incomplete.)", "errGrant": "Xiaozhi has not been given permission yet. Allow \"Ask Claude\" in this page's permissions, then ask again.", "errRate": "That was a lot of questions at once. Please wait a minute and ask again.", "errOffline": "You are offline. Connect to the internet, then tap Send again.", "errConn": "Xiaozhi could not connect{0}. Please try again in a moment.", "fuWait": "Xiaozhi is thinking of follow-up questions…", "fuLab": "Follow-up questions", "relenLab": "Answer again at another length", "fuAsk": "The user asked Xiaozhi: \"{0}\"\nKey points of Xiaozhi's answer:\n{1}\n\nSuggest 5 follow-up questions the user is most likely to ask next after reading this answer. Requirements:\n1. Stay tightly on this question's topic and on the specific content of the answer (for example, after \"how to cook rice\", ask about rice-cooker settings, brown rice, how much water, storing leftover rice). Do not add unrelated generic questions about marriage, work or family.\n2. Vary the direction: deeper detail, practical steps or examples, common problems or mistakes, a related new topic. Only if the topic itself concerns faith, life or relationships may one question ask what the Bible says or how to live it out.\n3. Write in the user's own voice, one complete question each, under 15 words, in English.\n4. The reader is \"{2}\"; choose words that suit them.\nOutput only a JSON array: [{\"i\":\"one emoji\",\"t\":\"short label of 1 to 3 words\",\"q\":\"full question\"}] and nothing else.", "FU_GEN": [["🌿", "An example", "Please give me a real-life example to help me understand your answer better."], ["🪞", "Say it simpler", "Please explain your answer again in simpler words, with an analogy."], ["🔍", "Go deeper", "Please go deeper into the most important point of your answer."], ["👣", "What can I do", "Based on your answer, what is one concrete small step I can take today?"]], "recFor": "For {0}", "askLike": "Try asking", "tapToAsk": "Tap a question to ask Xiaozhi", "genWait": "Xiaozhi is writing new questions…", "moreQ": "＋ More questions", "moreLeft": "{0} more", "moreAi": "✨ More questions", "moreAiSub": "Ask Xiaozhi for 6 new ones", "genTopicAud": "life and faith questions that a \"{0}\" reader would ask", "genTopicCat": "the category \"{0}\"", "genAsk": "For {0}, write 6 new questions a user could ask the AI assistant Xiaozhi. Requirements: one sentence each, in English, concrete and close to everyday life, in the user's own voice, ending with a question mark or full stop; do not repeat or closely resemble these existing questions:\n{1}\nOutput only a JSON array of strings, e.g. [\"Question one?\",\"Question two?\"], and nothing else.", "genFail": "Xiaozhi could not come up with new questions. Please try again later.", "faved": "Saved", "unfaved": "Removed from saved", "favOn": "★ Saved", "favOff": "☆ Save", "favTitle": "Saved answers", "favEmpty": "Nothing saved yet.<br>Tap \"☆ Save\" under any answer to keep it here.", "favNoHit": "No saved answers match.", "favNoQ": "(no question text)", "favRead": "Read", "favAsk": "↻ Ask again", "favDel": "✕ Remove", "favSearch": "Search saved answers…", "foldMore": "Show all ▾", "foldLess": "Collapse ▴", "contNote": "Xiaozhi is still writing…", "retry": "↻ Try again", "speak": "🔊 Read aloud", "speakStop": "⏸ Stop reading", "copy": "⧉ Copy", "share": "↗ Share", "del": "✕ Delete", "heroH": "Peace to you! I'm Xiaozhi.<br>Ask me anything.", "heroP": "Stars and maps, history and science, health and money, marriage and family, work and friendships, Bible truth and spiritual growth: I am glad to think it through with you.", "verse": "Your word is a lamp to my feet, and a light for my path.", "verseRef": "Psalm 119:105", "whoAmI": "Who am I", "whoSub": "Xiaozhi adjusts its tone for you", "myBg": "My faith background", "myBgSub": "Xiaozhi will answer with respect for it", "lenH": "Answer length", "lenSub": "Change it any time", "close": "Close", "setTitle": "Xiaozhi settings", "done": "Done", "langH": "Language", "langName_zh": "繁體中文", "langName_zs": "简体中文", "langName_en": "English", "audH": "Answering for (10 options)", "bgH": "Seeker's faith background", "bgHint": "Xiaozhi will respect your own beliefs, answer the real question first, never mock and never pressure.", "lenH5": "Answer length (5 options)", "lenHint": "Changing the length re-answers your latest question at the new length.", "fillProfile": "Fill in About me", "profileHint": "Nickname, age, status, work, faith stage, the help you most want", "fsH": "Text size", "fsNames": "Standard|Large|X-Large|XX-Large", "histH": "Chat history", "histHint": "Chats are stored only in this browser, separately for each language. This deletes every chat in this language.", "clearAll": "Clear all chats", "clearSure": "Tap again to clear all chats", "copyFail": "Could not copy automatically. Long-press the text to copy it.", "shareTitle": "Xiaozhi's answer", "copiedShare": "Copied. You can paste it into a message to share.", "qPrefix": "Q: ", "shareSign": "— Xiaozhi · Kingdom 321 Fellowship", "copied": "Answer copied", "langDone": "Switched to English", "audSet": "Answering for: ", "bgRe": "Faith background: {0}. Answering again", "bgSet": "Faith background: {0}", "lenRe": "Answering again as \"{0}\"", "lenSet": "Answer length: {0} ({1})", "newDone": "New chat started", "cleared": "Chat history cleared", "deleted": "Deleted this Q&A", "menu": "Menu", "retryW": "Try again", "copyW": "Copy", "favOnW": "Saved", "favOffW": "Save", "speakW": "Read aloud", "speakStopW": "Stop reading", "shareW": "Share", "reW": "Answer again at another length", "delW": "Delete", "helloH": "What would you like to ask?", "helloP": "Science and nature, everyday life, family and work, Bible truth: ask Xiaozhi anything.", "sugShuffle": "Show others", "sugAll": "More sample questions", "convSearch": "Search chats", "convNoHit": "No chats match.", "convEmpty": "No chats yet.", "recent": "Recent", "delSure": "Delete?", "convDeleted": "Chat deleted", "appsH": "321 Apps", "appsSub": "Tap to open", "appFel": "Kingdom 321 Fellowship", "appFelD": "Daily morning gatherings, news, fellowship life and giving", "appBible": "321 Interactive Bible", "appBibleD": "Read the Bible, listen aloud, highlight and reflect, study with Xiaozhi, verse images", "verH": "Version & updates", "verNow": "Current version:", "updCheck": "🔄 Check for updates", "updHard": "⚡ Force update", "updHint": "New versions install automatically. If the screen still looks old, tap Force update.", "updChecking": "Checking…", "upToDate": "You have the latest version", "netErr": "Cannot reach the internet. Please try again later.", "updating": "New version found, updating…"}};
 var BANKS={"zh": [["✝️", "信仰真理", ["神真的存在嗎？有什麼理由相信？", "三位一體要怎麼用簡單的比喻來理解？", "耶穌為什麼一定要死在十字架上？", "好人可以上天堂嗎？為什麼還需要耶穌？", "神既然是愛，為什麼世界上還有苦難？", "聖靈是誰？我怎麼知道聖靈在引導我？", "什麼是因信稱義？", "基督徒還會犯罪嗎？得救會不會失去？", "耶穌復活有什麼歷史證據？", "天堂和地獄是真的嗎？", "為什麼要受洗？受洗代表什麼？", "聖餐的意義是什麼？"]], ["📖", "聖經導讀", ["第一次讀聖經，應該從哪一卷開始？", "舊約和新約有什麼關係？", "請用五分鐘帶我認識約翰福音。", "詩篇23篇在說什麼？可以怎麼默想？", "登山寶訓的八福是什麼意思？", "啟示錄要怎麼讀才不會看不懂？", "摩西五經各在講什麼？", "怎樣讀箴言最有幫助？", "羅馬書的主題是什麼？", "先知書看不懂，有什麼入門的方法？", "為什麼有四本福音書？各有什麼不同？", "怎樣一年讀完整本聖經？"]], ["🌱", "生命成長", ["什麼是「舊人有己」？我怎麼看出自己有己？", "謙卑和自卑有什麼不同？", "怎樣才算是「讓耶穌作王」？", "每天靈修總是三天打魚兩天曬網，怎麼辦？", "我常常為同一個軟弱跌倒，要怎樣得勝？", "怎樣分辨是聖靈的感動，還是自己的想法？", "怎樣培養每天禱告的習慣？", "什麼是聖靈的果子？怎樣結出來？", "信心軟弱、懷疑神的時候，該怎麼辦？", "怎樣從失敗中重新站起來，反敗為勝？", "捨己和無己是什麼意思？", "怎樣找到神給我的呼召和恩賜？"]], ["💑", "婚姻家庭", ["夫妻常為小事吵架，怎樣停止惡性循環？", "另一半還沒信主，我可以怎樣活出見證？", "怎樣跟公婆、岳父母相處得好？", "結婚多年感情變淡，怎樣重新點燃？", "夫妻對錢的看法不同，要怎麼協調？", "婚前要先談清楚哪些重要的事？", "怎樣用對方聽得懂的方式表達愛？", "冷戰時誰該先開口？怎樣開口？", "夫妻怎樣一起靈修禱告？", "怎樣在忙碌中經營夫妻約會時間？", "發現另一半可能有外遇的跡象，我該怎麼辦？", "再婚家庭要怎樣建立新的關係？"]], ["🧒", "親子教養", ["孩子沉迷手機，父母可以怎麼做？", "青春期的孩子不跟我說話，怎麼辦？", "怎樣教小孩認識神，又不讓他反感？", "管教和打罵的界線在哪裡？", "怎樣培養孩子的自信心和責任感？", "孩子在學校被欺負，父母該如何陪伴？", "孩子說謊時，父母該怎麼處理？", "兄弟姊妹常吵架，要怎麼調解？", "怎樣跟孩子談性教育？", "怎樣陪孩子做家庭禮拜又不無聊？", "孩子成績不好，我該怎麼看待？", "隔代教養要注意哪些事？"]], ["💼", "職場工作", ["遇到愛搶功勞的同事，我該怎麼面對？", "怎樣在職場上作光作鹽，又不被排擠？", "我該不該換工作？可以怎樣做決定？", "怎樣管理時間、提高工作效率？", "當主管要怎樣帶人，才能帶心？", "工作壓力很大，怎樣找到平衡？", "被主管不公平對待，我該怎麼辦？", "怎樣寫一份讓人印象深刻的履歷？", "面試時要注意哪些事？", "想創業，要先評估哪些事？", "公司要我做違背良心的事，怎麼辦？", "怎樣在工作中保持熱情、不倦怠？"]], ["🤝", "人際關係", ["被朋友誤會了，要怎麼化解？", "怎樣饒恕一個深深傷害過我的人？", "怎樣拒絕別人又不傷感情？", "我很內向，怎樣自然地和人聊天？", "怎樣在教會建立真正的屬靈同伴關係？", "怎樣向朋友分享福音才不尷尬？", "朋友借錢不還，該怎麼處理？", "怎樣和個性很強勢的人相處？", "怎樣交到真心的好朋友？", "被背叛之後，還能再信任人嗎？", "怎樣化解和家人多年的心結？", "怎樣安慰正在難過的朋友？"]], ["💭", "情緒心理", ["常常焦慮、睡不著，可以怎麼調適？", "怎樣面對親人過世的悲傷？", "容易生氣，事後又後悔，怎麼辦？", "總覺得自己不夠好，怎樣走出自我否定？", "孤單的時候可以怎麼做？", "怎樣分辨一般的低落和需要求助的憂鬱？", "壓力大到想逃避，可以怎麼辦？", "怎樣走出失戀的痛苦？", "一直想著過去的錯誤，怎樣放下？", "怎樣建立健康的自我價值？", "嫉妒別人的時候，該怎麼面對？", "怎樣面對對未來的不安？"]], ["🥗", "健康養生", ["怎樣吃比較健康？有簡單的原則嗎？", "中老年人適合做哪些運動？", "怎樣改善睡眠品質？", "每天喝多少水才夠？", "久坐對身體有什麼影響？怎樣改善？", "怎樣養成規律運動的習慣？", "每天走多少步才算健康？", "怎樣減重才不會復胖？", "長時間看手機，怎樣保護眼睛？", "怎樣改善駝背和姿勢不良？", "季節變換時，怎樣預防感冒？", "怎樣用安息的觀念調整生活節奏？"]], ["🏥", "醫療保健", ["感冒和流感有什麼不同？什麼時候要看醫生？", "健康檢查報告上的數字要怎麼看？", "有高血壓的人，日常要注意什麼？", "糖尿病前期要怎樣調整生活？", "膝蓋退化疼痛，日常可以怎麼保養？", "哪些症狀可能是中風，要立刻送醫？", "長輩同時吃很多種藥，要注意哪些事？", "胃食道逆流要怎麼改善？", "失智症早期有哪些徵兆？", "骨質疏鬆要怎麼預防？", "照顧生病的家人，怎樣才不會累垮自己？", "看病時，怎樣跟醫生有效溝通？"]], ["💰", "理財金錢", ["聖經對金錢有什麼教導？", "怎樣開始做家庭記帳和預算？", "什麼是複利？用簡單的例子說明。", "十分之一奉獻在新約還適用嗎？", "怎樣避免卡債和衝動購物？", "退休前要先準備哪些事？", "緊急預備金要存多少才夠？", "定期定額投資是什麼？", "保險要怎麼買才不會買錯？", "怎樣教孩子正確的金錢觀？", "怎樣分辨投資詐騙？", "基督徒可以借錢給親友嗎？"]], ["🔭", "天文宇宙", ["宇宙有多大？用比喻讓我感受一下。", "為什麼會有月圓月缺？", "黑洞是什麼？", "太陽還能燃燒多久？", "「諸天述說神的榮耀」，從天文學怎麼看？", "地球在宇宙中有什麼特別之處？", "為什麼會有四季？", "流星和彗星有什麼不同？", "伯利恆之星可能是什麼？", "光年是什麼意思？", "人類真的登陸過月球嗎？", "大爆炸理論在說什麼？跟創造有衝突嗎？"]], ["🌍", "地理環境", ["以色列的地理環境是怎樣的？", "約旦河在聖經裡有什麼重要性？", "為什麼死海那麼鹹，人會浮起來？", "保羅的宣教旅程走過哪些城市？", "台灣為什麼有那麼多地震？", "世界上最長的河流是哪一條？", "世界上最高的山是哪一座？有多高？", "沙漠是怎麼形成的？", "颱風是怎麼形成的？", "為什麼赤道附近那麼熱？", "地球上的水是怎麼循環的？", "板塊運動是什麼？"]], ["✈️", "旅遊觀光", ["第一次去以色列聖地，推薦哪些地方？", "出國旅行要準備哪些東西？", "長輩出國旅遊要注意什麼？", "帶小孩旅行，怎樣安排比較輕鬆？", "第一次去日本自由行，推薦怎麼玩？", "台灣環島旅行可以怎麼規劃？", "怎樣訂到划算的機票和住宿？", "歐洲宗教改革之旅可以去哪些地方？", "旅行時怎樣防範扒手和詐騙？", "坐長途飛機，怎樣減少疲勞和時差？", "跟團和自由行各有什麼優缺點？", "旅行時怎樣保持靈修的習慣？"]], ["🏛️", "歷史文化", ["宗教改革是怎麼一回事？", "聖經是怎樣一路流傳到今天的？", "基督教是怎樣傳到中國的？", "中秋節和端午節的由來是什麼？", "羅馬帝國為什麼會衰亡？", "死海古卷的發現有什麼重要性？", "中國古代四大發明是什麼？", "第一次世界大戰是怎麼開始的？", "台灣的歷史可以怎樣簡單介紹？", "聖誕節的由來是什麼？", "君士坦丁大帝對基督教有什麼影響？", "古埃及的金字塔是怎麼建成的？"]], ["🔬", "科學自然", ["為什麼天空是藍色的？", "人體大約有多少細胞？最奇妙的是什麼？", "彩虹是怎麼形成的？", "科學和信仰會互相衝突嗎？", "蜜蜂為什麼把蜂巢做成六角形？", "DNA 是什麼？請用比喻說明。", "地球為什麼有磁場？", "為什麼海水是鹹的？", "人為什麼一定要睡覺？", "植物怎麼行光合作用？", "閃電和打雷是怎麼回事？", "疫苗是怎樣讓身體產生保護力的？"]], ["💻", "科技生活", ["AI 是什麼？它真的會思考嗎？", "怎樣分辨網路上的假消息和詐騙？", "手機越用越慢，可以怎麼處理？", "長輩用 LINE 要注意哪些安全事項？", "怎樣設定一個安全又好記的密碼？", "用 AI 讀聖經，有什麼好處和要小心的地方？", "雲端備份是什麼？要怎麼用？", "手機中毒了會有哪些徵兆？", "怎樣用手機拍出好看的照片？", "5G 跟 4G 有什麼不同？", "怎樣保護孩子的上網安全？", "怎樣用 AI 幫忙寫東西，又不失去自己的想法？"]], ["✍️", "語言寫作", ["幫我寫一段給媽媽的生日祝福。", "怎樣寫一篇三分鐘的得救見證？", "「謙卑」的英文怎麼說？順便教我幾句常用英文。", "幫我把這句話改得更溫暖：「你又遲到了。」", "幫我寫一封感謝信給牧師。", "成語「塞翁失馬」是什麼意思？", "幫我寫一段結婚祝福。", "幫我寫一段安慰喪親朋友的話。", "怎樣寫好一篇讀經心得？", "怎樣上台講話不緊張？", "「的、得、地」要怎麼分？", "幫我寫一段教會活動的邀請文。"]], ["🧺", "生活實用", ["怎樣快速整理亂糟糟的房間？", "衣服沾到油漬要怎麼洗？", "搬家要注意哪些事？", "怎樣讓家裡的盆栽長得好？", "怎樣省水省電又環保？", "冰箱裡的食物怎樣保存比較久？", "家裡有螞蟻、蟑螂要怎麼處理？", "怎樣挑選適合自己的床墊和枕頭？", "颱風來之前要做哪些準備？", "怎樣規劃家人的家事分工？", "怎樣避免買太多用不到的東西？", "怎樣準備家庭急救箱？"]], ["🍜", "美食餐飲", ["一週的家常菜可以怎麼安排？", "推薦幾道簡單又下飯的家常菜。", "怎樣煮出一鍋好吃的白飯？", "一家四口的簡單早餐有什麼建議？", "素食者怎樣吃得營養均衡？", "教會愛宴適合準備哪些菜？", "怎樣挑選新鮮的魚和肉？", "台灣有哪些必吃的小吃？", "聖經時代的人平常吃些什麼？", "怎樣做一個簡單的蛋糕？", "剩菜可以怎麼變化成新料理？", "外食族怎樣吃得比較健康？"]], ["📚", "學習成長", ["怎樣背東西記得又快又牢？", "中年想學新技能，從哪裡開始？", "怎樣養成閱讀的習慣？", "推薦幾本適合初信者的屬靈書籍。", "怎樣在小組裡帶好一次查經？", "怎樣做筆記最有效？", "怎樣提高專注力？", "怎樣訂定目標，並且真的做到？", "自學英文有什麼好方法？", "怎樣培養孩子的閱讀興趣？", "怎樣克服拖延？", "怎樣整理思緒，把想法說清楚？"]], ["🎨", "興趣嗜好", ["想學一樣樂器，從哪一種開始比較好？", "怎樣開始學畫畫？", "手機攝影有什麼入門技巧？", "推薦幾種適合退休後培養的興趣。", "怎樣在陽台開始種菜、種香草？", "登山健行要準備什麼？", "怎樣開始寫日記或手帳？", "想學書法，要怎麼入門？", "推薦幾款適合全家一起玩的桌遊。", "怎樣用自己的興趣來服事教會？", "學敬拜吉他，要先練什麼？", "怎樣在忙碌中留時間給興趣？"]]], "zs": [["✝️", "信仰真理", ["神真的存在吗？有什么理由相信？", "三位一体要怎么用简单的比喻来理解？", "耶稣为什么一定要死在十字架上？", "好人可以上天堂吗？为什么还需要耶稣？", "神既然是爱，为什么世界上还有苦难？", "圣灵是谁？我怎么知道圣灵在引导我？", "什么是因信称义？", "基督徒还会犯罪吗？得救会不会失去？", "耶稣复活有什么历史证据？", "天堂和地狱是真的吗？", "为什么要受洗？受洗代表什么？", "圣餐的意义是什么？"]], ["📖", "圣经导读", ["第一次读圣经，应该从哪一卷开始？", "旧约和新约有什么关系？", "请用五分钟带我认识约翰福音。", "诗篇23篇在说什么？可以怎么默想？", "登山宝训的八福是什么意思？", "启示录要怎么读才不会看不懂？", "摩西五经各在讲什么？", "怎样读箴言最有帮助？", "罗马书的主题是什么？", "先知书看不懂，有什么入门的方法？", "为什么有四本福音书？各有什么不同？", "怎样一年读完整本圣经？"]], ["🌱", "生命成长", ["什么是「旧人有己」？我怎么看出自己有己？", "谦卑和自卑有什么不同？", "怎样才算是「让耶稣作王」？", "每天灵修总是三天打鱼两天晒网，怎么办？", "我常常为同一个软弱跌倒，要怎样得胜？", "怎样分辨是圣灵的感动，还是自己的想法？", "怎样培养每天祷告的习惯？", "什么是圣灵的果子？怎样结出来？", "信心软弱、怀疑神的时候，该怎么办？", "怎样从失败中重新站起来，反败为胜？", "舍己和无己是什么意思？", "怎样找到神给我的呼召和恩赐？"]], ["💑", "婚姻家庭", ["夫妻常为小事吵架，怎样停止恶性循环？", "另一半还没信主，我可以怎样活出见证？", "怎样跟公婆、岳父母相处得好？", "结婚多年感情变淡，怎样重新点燃？", "夫妻对钱的看法不同，要怎么协调？", "婚前要先谈清楚哪些重要的事？", "怎样用对方听得懂的方式表达爱？", "冷战时谁该先开口？怎样开口？", "夫妻怎样一起灵修祷告？", "怎样在忙碌中经营夫妻约会时间？", "发现另一半可能有外遇的迹象，我该怎么办？", "再婚家庭要怎样建立新的关系？"]], ["🧒", "亲子教养", ["孩子沉迷手机，父母可以怎么做？", "青春期的孩子不跟我说话，怎么办？", "怎样教小孩认识神，又不让他反感？", "管教和打骂的界线在哪里？", "怎样培养孩子的自信心和责任感？", "孩子在学校被欺负，父母该如何陪伴？", "孩子说谎时，父母该怎么处理？", "兄弟姊妹常吵架，要怎么调解？", "怎样跟孩子谈性教育？", "怎样陪孩子做家庭礼拜又不无聊？", "孩子成绩不好，我该怎么看待？", "隔代教养要注意哪些事？"]], ["💼", "职场工作", ["遇到爱抢功劳的同事，我该怎么面对？", "怎样在职场上作光作盐，又不被排挤？", "我该不该换工作？可以怎样做决定？", "怎样管理时间、提高工作效率？", "当主管要怎样带人，才能带心？", "工作压力很大，怎样找到平衡？", "被主管不公平对待，我该怎么办？", "怎样写一份让人印象深刻的履历？", "面试时要注意哪些事？", "想创业，要先评估哪些事？", "公司要我做违背良心的事，怎么办？", "怎样在工作中保持热情、不倦怠？"]], ["🤝", "人际关系", ["被朋友误会了，要怎么化解？", "怎样饶恕一个深深伤害过我的人？", "怎样拒绝别人又不伤感情？", "我很内向，怎样自然地和人聊天？", "怎样在教会建立真正的属灵同伴关系？", "怎样向朋友分享福音才不尴尬？", "朋友借钱不还，该怎么处理？", "怎样和个性很强势的人相处？", "怎样交到真心的好朋友？", "被背叛之后，还能再信任人吗？", "怎样化解和家人多年的心结？", "怎样安慰正在难过的朋友？"]], ["💭", "情绪心理", ["常常焦虑、睡不著，可以怎么调适？", "怎样面对亲人过世的悲伤？", "容易生气，事后又后悔，怎么办？", "总觉得自己不够好，怎样走出自我否定？", "孤单的时候可以怎么做？", "怎样分辨一般的低落和需要求助的忧郁？", "压力大到想逃避，可以怎么办？", "怎样走出失恋的痛苦？", "一直想著过去的错误，怎样放下？", "怎样建立健康的自我价值？", "嫉妒别人的时候，该怎么面对？", "怎样面对对未来的不安？"]], ["🥗", "健康养生", ["怎样吃比较健康？有简单的原则吗？", "中老年人适合做哪些运动？", "怎样改善睡眠品质？", "每天喝多少水才够？", "久坐对身体有什么影响？怎样改善？", "怎样养成规律运动的习惯？", "每天走多少步才算健康？", "怎样减重才不会复胖？", "长时间看手机，怎样保护眼睛？", "怎样改善驼背和姿势不良？", "季节变换时，怎样预防感冒？", "怎样用安息的观念调整生活节奏？"]], ["🏥", "医疗保健", ["感冒和流感有什么不同？什么时候要看医生？", "健康检查报告上的数字要怎么看？", "有高血压的人，日常要注意什么？", "糖尿病前期要怎样调整生活？", "膝盖退化疼痛，日常可以怎么保养？", "哪些症状可能是中风，要立刻送医？", "长辈同时吃很多种药，要注意哪些事？", "胃食道逆流要怎么改善？", "失智症早期有哪些征兆？", "骨质疏松要怎么预防？", "照顾生病的家人，怎样才不会累垮自己？", "看病时，怎样跟医生有效沟通？"]], ["💰", "理财金钱", ["圣经对金钱有什么教导？", "怎样开始做家庭记帐和预算？", "什么是复利？用简单的例子说明。", "十分之一奉献在新约还适用吗？", "怎样避免卡债和冲动购物？", "退休前要先准备哪些事？", "紧急预备金要存多少才够？", "定期定额投资是什么？", "保险要怎么买才不会买错？", "怎样教孩子正确的金钱观？", "怎样分辨投资诈骗？", "基督徒可以借钱给亲友吗？"]], ["🔭", "天文宇宙", ["宇宙有多大？用比喻让我感受一下。", "为什么会有月圆月缺？", "黑洞是什么？", "太阳还能燃烧多久？", "「诸天述说神的荣耀」，从天文学怎么看？", "地球在宇宙中有什么特别之处？", "为什么会有四季？", "流星和彗星有什么不同？", "伯利恒之星可能是什么？", "光年是什么意思？", "人类真的登陆过月球吗？", "大爆炸理论在说什么？跟创造有冲突吗？"]], ["🌍", "地理环境", ["以色列的地理环境是怎样的？", "约旦河在圣经里有什么重要性？", "为什么死海那么咸，人会浮起来？", "保罗的宣教旅程走过哪些城市？", "台湾为什么有那么多地震？", "世界上最长的河流是哪一条？", "世界上最高的山是哪一座？有多高？", "沙漠是怎么形成的？", "台风是怎么形成的？", "为什么赤道附近那么热？", "地球上的水是怎么循环的？", "板块运动是什么？"]], ["✈️", "旅游观光", ["第一次去以色列圣地，推荐哪些地方？", "出国旅行要准备哪些东西？", "长辈出国旅游要注意什么？", "带小孩旅行，怎样安排比较轻松？", "第一次去日本自由行，推荐怎么玩？", "台湾环岛旅行可以怎么规划？", "怎样订到划算的机票和住宿？", "欧洲宗教改革之旅可以去哪些地方？", "旅行时怎样防范扒手和诈骗？", "坐长途飞机，怎样减少疲劳和时差？", "跟团和自由行各有什么优缺点？", "旅行时怎样保持灵修的习惯？"]], ["🏛️", "历史文化", ["宗教改革是怎么一回事？", "圣经是怎样一路流传到今天的？", "基督教是怎样传到中国的？", "中秋节和端午节的由来是什么？", "罗马帝国为什么会衰亡？", "死海古卷的发现有什么重要性？", "中国古代四大发明是什么？", "第一次世界大战是怎么开始的？", "台湾的历史可以怎样简单介绍？", "圣诞节的由来是什么？", "君士坦丁大帝对基督教有什么影响？", "古埃及的金字塔是怎么建成的？"]], ["🔬", "科学自然", ["为什么天空是蓝色的？", "人体大约有多少细胞？最奇妙的是什么？", "彩虹是怎么形成的？", "科学和信仰会互相冲突吗？", "蜜蜂为什么把蜂巢做成六角形？", "DNA 是什么？请用比喻说明。", "地球为什么有磁场？", "为什么海水是咸的？", "人为什么一定要睡觉？", "植物怎么行光合作用？", "闪电和打雷是怎么回事？", "疫苗是怎样让身体产生保护力的？"]], ["💻", "科技生活", ["AI 是什么？它真的会思考吗？", "怎样分辨网路上的假消息和诈骗？", "手机越用越慢，可以怎么处理？", "长辈用 LINE 要注意哪些安全事项？", "怎样设定一个安全又好记的密码？", "用 AI 读圣经，有什么好处和要小心的地方？", "云端备份是什么？要怎么用？", "手机中毒了会有哪些征兆？", "怎样用手机拍出好看的照片？", "5G 跟 4G 有什么不同？", "怎样保护孩子的上网安全？", "怎样用 AI 帮忙写东西，又不失去自己的想法？"]], ["✍️", "语言写作", ["帮我写一段给妈妈的生日祝福。", "怎样写一篇三分钟的得救见证？", "「谦卑」的英文怎么说？顺便教我几句常用英文。", "帮我把这句话改得更温暖：「你又迟到了。」", "帮我写一封感谢信给牧师。", "成语「塞翁失马」是什么意思？", "帮我写一段结婚祝福。", "帮我写一段安慰丧亲朋友的话。", "怎样写好一篇读经心得？", "怎样上台讲话不紧张？", "「的、得、地」要怎么分？", "帮我写一段教会活动的邀请文。"]], ["🧺", "生活实用", ["怎样快速整理乱糟糟的房间？", "衣服沾到油渍要怎么洗？", "搬家要注意哪些事？", "怎样让家里的盆栽长得好？", "怎样省水省电又环保？", "冰箱里的食物怎样保存比较久？", "家里有蚂蚁、蟑螂要怎么处理？", "怎样挑选适合自己的床垫和枕头？", "台风来之前要做哪些准备？", "怎样规划家人的家事分工？", "怎样避免买太多用不到的东西？", "怎样准备家庭急救箱？"]], ["🍜", "美食餐饮", ["一周的家常菜可以怎么安排？", "推荐几道简单又下饭的家常菜。", "怎样煮出一锅好吃的白饭？", "一家四口的简单早餐有什么建议？", "素食者怎样吃得营养均衡？", "教会爱宴适合准备哪些菜？", "怎样挑选新鲜的鱼和肉？", "台湾有哪些必吃的小吃？", "圣经时代的人平常吃些什么？", "怎样做一个简单的蛋糕？", "剩菜可以怎么变化成新料理？", "外食族怎样吃得比较健康？"]], ["📚", "学习成长", ["怎样背东西记得又快又牢？", "中年想学新技能，从哪里开始？", "怎样养成阅读的习惯？", "推荐几本适合初信者的属灵书籍。", "怎样在小组里带好一次查经？", "怎样做笔记最有效？", "怎样提高专注力？", "怎样订定目标，并且真的做到？", "自学英文有什么好方法？", "怎样培养孩子的阅读兴趣？", "怎样克服拖延？", "怎样整理思绪，把想法说清楚？"]], ["🎨", "兴趣嗜好", ["想学一样乐器，从哪一种开始比较好？", "怎样开始学画画？", "手机摄影有什么入门技巧？", "推荐几种适合退休后培养的兴趣。", "怎样在阳台开始种菜、种香草？", "登山健行要准备什么？", "怎样开始写日记或手帐？", "想学书法，要怎么入门？", "推荐几款适合全家一起玩的桌游。", "怎样用自己的兴趣来服事教会？", "学敬拜吉他，要先练什么？", "怎样在忙碌中留时间给兴趣？"]]], "en": [["✝️", "Faith basics", ["Does God really exist? What reasons are there to believe?", "How can I understand the Trinity with a simple analogy?", "Why did Jesus have to die on the cross?", "Can good people go to heaven? Why do we still need Jesus?", "If God is love, why is there suffering in the world?", "Who is the Holy Spirit? How do I know he is guiding me?", "What does \"justified by faith\" mean?", "Do Christians still sin? Can salvation be lost?", "What historical evidence is there for the resurrection?", "Are heaven and hell real?", "Why be baptized? What does baptism mean?", "What is the meaning of the Lord's Supper?"]], ["📖", "Bible guide", ["Reading the Bible for the first time, which book should I start with?", "How are the Old and New Testaments related?", "Give me a five-minute introduction to the Gospel of John.", "What is Psalm 23 about, and how can I meditate on it?", "What do the Beatitudes in the Sermon on the Mount mean?", "How can I read Revelation without getting lost?", "What is each of the five books of Moses about?", "What is the most helpful way to read Proverbs?", "What is the main theme of Romans?", "The prophets are hard to understand. Where do I begin?", "Why are there four Gospels, and how are they different?", "How can I read through the whole Bible in a year?"]], ["🌱", "Spiritual growth", ["What is the \"self-centred old self\"? How do I see it in myself?", "What is the difference between humility and low self-esteem?", "What does it mean to \"let Jesus reign\" in my life?", "My quiet time keeps starting and stopping. What can I do?", "I keep falling to the same weakness. How can I overcome it?", "How can I tell the Holy Spirit's prompting from my own ideas?", "How can I build a daily habit of prayer?", "What is the fruit of the Spirit, and how does it grow?", "What should I do when my faith is weak and I doubt God?", "How do I get up again after failure and turn defeat into victory?", "What do self-denial and selflessness mean?", "How can I discover God's calling and my gifts?"]], ["💑", "Marriage & family", ["We keep fighting over small things. How do we break the cycle?", "My spouse is not a believer yet. How can I live out my faith at home?", "How can I get along well with my in-laws?", "After many years our love has cooled. How can we rekindle it?", "We see money differently. How do we work it out?", "What important things should we talk through before marriage?", "How can I show love in a way my spouse understands?", "After a silent treatment, who should speak first, and how?", "How can a couple pray and read the Bible together?", "How can we keep dating each other when life is busy?", "I see signs my spouse may be having an affair. What should I do?", "How can a blended family build new relationships?"]], ["🧒", "Parenting", ["My child is hooked on the phone. What can parents do?", "My teenager won't talk to me. What should I do?", "How can I teach my kids about God without turning them off?", "Where is the line between discipline and hitting or yelling?", "How can I build my child's confidence and sense of responsibility?", "My child is bullied at school. How do I walk with them?", "How should parents respond when a child lies?", "My kids fight all the time. How do I make peace?", "How do I talk with my child about sex?", "How can family devotions be fun for kids?", "My child's grades are poor. How should I see it?", "What should grandparents raising grandchildren keep in mind?"]], ["💼", "Work & career", ["A coworker keeps taking credit for my work. How should I respond?", "How can I be salt and light at work without being pushed out?", "Should I change jobs? How can I decide?", "How can I manage my time and work more efficiently?", "As a manager, how do I lead people and win their hearts?", "Work stress is heavy. How do I find balance?", "My boss treats me unfairly. What should I do?", "How do I write a résumé that stands out?", "What should I pay attention to in a job interview?", "I want to start a business. What should I think through first?", "My company wants me to do something against my conscience. What now?", "How do I stay passionate at work and avoid burnout?"]], ["🤝", "Relationships", ["A friend misunderstood me. How can we clear it up?", "How can I forgive someone who hurt me deeply?", "How do I say no without hurting the relationship?", "I'm introverted. How can I chat with people naturally?", "How can I build real spiritual friendships at church?", "How can I share the gospel with friends without it being awkward?", "A friend borrowed money and won't pay it back. What should I do?", "How do I get along with someone very domineering?", "How can I make true friends?", "After being betrayed, can I trust people again?", "How can I heal a years-long rift with a family member?", "How can I comfort a friend who is hurting?"]], ["💭", "Emotions", ["I'm often anxious and can't sleep. What can help?", "How do I cope with grief after a loved one dies?", "I lose my temper and regret it later. What can I do?", "I always feel I'm not good enough. How do I stop putting myself down?", "What can I do when I feel lonely?", "How can I tell ordinary sadness from depression that needs help?", "The pressure is so high I want to run away. What can I do?", "How do I get through the pain of a breakup?", "I keep dwelling on past mistakes. How do I let go?", "How can I build a healthy sense of self-worth?", "How should I handle feeling jealous of others?", "How do I face anxiety about the future?"]], ["🥗", "Healthy living", ["What does healthy eating look like? Are there simple rules?", "What kinds of exercise suit middle-aged and older adults?", "How can I sleep better?", "How much water should I drink each day?", "What does sitting all day do to my body, and how can I fix it?", "How can I build a regular exercise habit?", "How many steps a day is healthy?", "How can I lose weight without gaining it back?", "I look at screens a lot. How do I protect my eyes?", "How can I improve a slouching posture?", "How can I avoid catching colds when the seasons change?", "How can the idea of Sabbath rest reshape the rhythm of my life?"]], ["🏥", "Medical care", ["What is the difference between a cold and the flu? When should I see a doctor?", "How do I read the numbers on my health check report?", "What should people with high blood pressure watch in daily life?", "How can I change my lifestyle if I'm prediabetic?", "My knees ache from wear and tear. How can I care for them?", "Which symptoms could mean a stroke and need the ER right away?", "What should older adults taking many medicines be careful about?", "How can I ease acid reflux?", "What are the early signs of dementia?", "How can I prevent osteoporosis?", "How do I care for a sick family member without burning out?", "How can I communicate well with my doctor?"]], ["💰", "Money", ["What does the Bible teach about money?", "How do I start a family budget and track spending?", "What is compound interest? Explain with a simple example.", "Does tithing still apply in the New Testament?", "How can I avoid credit card debt and impulse buying?", "What should I prepare before retirement?", "How big should my emergency fund be?", "What is dollar-cost averaging?", "How do I buy insurance without making mistakes?", "How can I teach my kids a healthy view of money?", "How can I spot an investment scam?", "Should Christians lend money to family and friends?"]], ["🔭", "Astronomy", ["How big is the universe? Help me feel it with an analogy.", "Why does the moon have phases?", "What is a black hole?", "How much longer will the sun keep burning?", "\"The heavens declare the glory of God\": how does astronomy show this?", "What makes Earth special in the universe?", "Why do we have seasons?", "What is the difference between a meteor and a comet?", "What might the Star of Bethlehem have been?", "What does \"light-year\" mean?", "Did humans really land on the moon?", "What is the Big Bang theory, and does it conflict with creation?"]], ["🌍", "Geography", ["What is the land of Israel like geographically?", "Why is the Jordan River important in the Bible?", "Why is the Dead Sea so salty that people float?", "Which cities did Paul visit on his missionary journeys?", "Why does Taiwan have so many earthquakes?", "What is the longest river in the world?", "What is the highest mountain in the world, and how high is it?", "How do deserts form?", "How do typhoons form?", "Why is it so hot near the equator?", "How does water cycle around the Earth?", "What is plate tectonics?"]], ["✈️", "Travel", ["Visiting the Holy Land for the first time, which places do you recommend?", "What should I pack for an overseas trip?", "What should older travellers keep in mind abroad?", "How can I plan an easy trip with young kids?", "First independent trip to Japan: how should I plan it?", "How can I plan a road trip around Taiwan?", "How do I find good deals on flights and hotels?", "Where could a Reformation tour of Europe go?", "How do I avoid pickpockets and scams while travelling?", "How can I reduce fatigue and jet lag on long flights?", "What are the pros and cons of group tours versus travelling on my own?", "How can I keep up my quiet time while travelling?"]], ["🏛️", "History & culture", ["What was the Reformation all about?", "How has the Bible been passed down to us today?", "How did Christianity come to China?", "What are the origins of the Mid-Autumn and Dragon Boat festivals?", "Why did the Roman Empire fall?", "Why was the discovery of the Dead Sea Scrolls important?", "What were the Four Great Inventions of ancient China?", "How did the First World War begin?", "Can you give a simple overview of Taiwan's history?", "Where does Christmas come from?", "How did Emperor Constantine affect Christianity?", "How were the Egyptian pyramids built?"]], ["🔬", "Science & nature", ["Why is the sky blue?", "About how many cells are in the human body? What is most amazing about them?", "How does a rainbow form?", "Do science and faith conflict?", "Why do bees build hexagonal honeycombs?", "What is DNA? Please explain with an analogy.", "Why does the Earth have a magnetic field?", "Why is seawater salty?", "Why do we need to sleep?", "How does photosynthesis work?", "What causes lightning and thunder?", "How does a vaccine teach the body to protect itself?"]], ["💻", "Tech life", ["What is AI? Can it really think?", "How can I spot fake news and online scams?", "My phone keeps getting slower. What can I do?", "What safety tips should seniors know when using messaging apps?", "How do I make a password that is strong but easy to remember?", "What are the benefits and cautions of using AI to study the Bible?", "What is cloud backup and how do I use it?", "What are signs my phone has malware?", "How can I take good photos with my phone?", "What is the difference between 5G and 4G?", "How can I keep my kids safe online?", "How can I use AI to help me write without losing my own voice?"]], ["✍️", "Writing & language", ["Help me write a birthday blessing for my mum.", "How do I write a three-minute salvation testimony?", "How do you say \"humility\" in Chinese? Teach me a few useful phrases too.", "Help me make this sentence warmer: \"You're late again.\"", "Help me write a thank-you letter to my pastor.", "What does the Chinese idiom about the old man who lost his horse mean?", "Help me write a wedding blessing.", "Help me write words of comfort for a friend who lost a loved one.", "How do I write a good Bible reflection?", "How can I speak in public without getting nervous?", "When should I use \"who\" and when \"whom\"?", "Help me write an invitation to a church event."]], ["🧺", "Practical life", ["How can I quickly tidy a messy room?", "How do I get an oil stain out of clothes?", "What should I watch out for when moving house?", "How can I keep my house plants healthy?", "How can I save water and electricity at home?", "How can I keep food in the fridge fresh longer?", "How do I deal with ants and cockroaches at home?", "How do I choose the right mattress and pillow?", "How should I prepare before a typhoon or big storm?", "How can our family share the housework fairly?", "How can I stop buying things I don't need?", "What should go in a home first-aid kit?"]], ["🍜", "Food & dining", ["How can I plan a week of home-cooked meals?", "Suggest a few simple dishes that go well with rice.", "How do I cook a perfect pot of rice?", "Any ideas for a simple breakfast for a family of four?", "How can vegetarians eat a balanced diet?", "What dishes work well for a church potluck?", "How do I choose fresh fish and meat?", "What street foods should I try in Taiwan?", "What did people eat in Bible times?", "How do I make a simple cake?", "How can I turn leftovers into a new dish?", "How can people who eat out a lot eat healthier?"]], ["📚", "Learning", ["How can I memorise things quickly and remember them well?", "I'm middle-aged and want to learn a new skill. Where do I start?", "How can I build a reading habit?", "Recommend a few spiritual books for new believers.", "How can I lead a good Bible study in a small group?", "What is the most effective way to take notes?", "How can I improve my focus?", "How do I set goals and actually reach them?", "What are good ways to teach myself a new language?", "How can I help my kids love reading?", "How do I beat procrastination?", "How can I organise my thoughts and say them clearly?"]], ["🎨", "Hobbies", ["I want to learn an instrument. Which one is easiest to start with?", "How do I start learning to draw?", "What are some beginner tips for phone photography?", "Suggest some hobbies to take up after retirement.", "How can I start growing vegetables and herbs on a balcony?", "What do I need for hiking?", "How can I start keeping a journal or planner?", "How do I get started with calligraphy?", "Suggest some board games the whole family can enjoy.", "How can I use my hobbies to serve the church?", "Learning guitar for worship, what should I practise first?", "How can I make time for hobbies when life is busy?"]]]};
 var LANGS=['zh','zs','en'];
 var PAGE_LANG=window.XZ_PAGE_LANG||'';
@@ -771,18 +784,38 @@ var LEN_SUB_K={xs:'lenXs',s:'lenS',mid:'lenMid',long:'lenLong',xl:'lenXl'};
 var NOPASSAGE=/這段|這節|這章|本章|這卷|經文裡|這裡的|這個故事|這一句|这段|这节|这章|这卷|经文里|这里的|这个故事|这一句|this passage|this story|this verse|this chapter|in this text/i;
 function sysPrompt(){ return T('sysBase')+X.sysExtra()+T('sysGeneral'); }
 
-function chatKey(){ return LANG==='zh'?'chat':'chat_'+LANG; }
-var S={chat:[],fs:lsGet('fs',1),cat:-1,shown:{},gen:lsGet('gen',{}),genBusy:'',busy:false,ctl:null,sheet:null,clearArm:false,speaking:-1,favOpen:{},favQ:''};
-var FAV=lsGet('fav',[]); if(!FAV||typeof FAV.length!=='number') FAV=[];
-function loadChat(){
- S.chat=lsGet(chatKey(),[]); if(!S.chat||typeof S.chat.length!=='number') S.chat=[];
- for(var z=0;z<S.chat.length;z++){ S.chat[z].fuBusy=false; if(S.chat[z].pending){S.chat[z].pending=false; if(!S.chat[z].t){S.chat[z].t=T('unfinished');S.chat[z].err=true;}} }
-}
-loadChat();
-
 function $(id){return document.getElementById(id);}
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function save(){ lsSet(chatKey(),S.chat.slice(-80)); }
+var S={chat:[],fs:lsGet('fs',1),cat:-1,shown:{},gen:lsGet('gen',{}),genBusy:'',busy:false,ctl:null,sheet:null,clearArm:false,speaking:-1,favOpen:{},favQ:'',drawer:false,convQ:'',delArm:''};
+var FAV=lsGet('fav',[]); if(!FAV||typeof FAV.length!=='number') FAV=[];
+var CONVS=[],CUR=null;
+function convKey(){ return 'convs_'+LANG; }
+function convById(id){ for(var i=0;i<CONVS.length;i++) if(CONVS[i].id===id) return CONVS[i]; return null; }
+function titleOf(msgs){ for(var i=0;i<msgs.length;i++) if(msgs[i].role==='user') return String(msgs[i].t).replace(/\s+/g,' ').slice(0,40); return ''; }
+function persistConvs(){ CONVS.sort(function(a,b){return b.ts-a.ts;}); if(CONVS.length>60) CONVS=CONVS.slice(0,60); lsSet(convKey(),CONVS); lsSet('cur_'+LANG,CUR||''); }
+function loadChat(){
+ CONVS=lsGet(convKey(),null);
+ if(!CONVS||typeof CONVS.length!=='number'){
+  CONVS=[]; var old=lsGet(LANG==='zh'?'chat':'chat_'+LANG,[]);
+  if(old&&old.length){ var c0={id:'c'+Date.now().toString(36),title:titleOf(old),ts:Date.now(),msgs:old}; CONVS.push(c0); lsSet('cur_'+LANG,c0.id); }
+  lsSet(convKey(),CONVS);
+ }
+ var c=convById(lsGet('cur_'+LANG,''));
+ CUR=c?c.id:null; S.chat=c?c.msgs:[];
+ for(var z=0;z<S.chat.length;z++){ S.chat[z].fuBusy=false; if(S.chat[z].pending){S.chat[z].pending=false; if(!S.chat[z].t){S.chat[z].t=T('unfinished');S.chat[z].err=true;}} }
+}
+function save(){
+ var c=convById(CUR);
+ if(!S.chat.length){ if(c){ CONVS.splice(CONVS.indexOf(c),1); CUR=null; persistConvs(); } return; }
+ if(!c){ c={id:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),ts:Date.now(),msgs:S.chat}; CONVS.unshift(c); CUR=c.id; }
+ if(S.chat.length>80){ S.chat.splice(0,S.chat.length-80); }
+ c.msgs=S.chat; c.title=titleOf(S.chat); c.ts=Date.now();
+ persistConvs();
+}
+function newChat(){ if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=null; S.chat=[]; lsSet('cur_'+LANG,''); }
+function openConv(id){ var c=convById(id); if(!c) return; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=id; S.chat=c.msgs; lsSet('cur_'+LANG,id); }
+function delConv(id){ var c=convById(id); if(!c) return; CONVS.splice(CONVS.indexOf(c),1); if(CUR===id){ CUR=null; S.chat=[]; } persistConvs(); }
+loadChat();
 function saveFav(){ lsSet('fav',FAV.slice(0,300)); }
 function modeText(){ var a=X.aud(); return X.AUD_ICON[a]+' '+X.audName(a)+(a==='seeker'?T('dot')+X.skName(X.skbg()):'')+T('dot')+T('lenWord')+' '+X.lenName(X.alen()); }
 
@@ -936,8 +969,8 @@ function foldOld(last){ for(var i=0;i<S.chat.length;i++){ var m=S.chat[i]; if(m.
 /* ---------- 延伸追問 ---------- */
 function fuHTML(m){
  if(m.fuBusy&&!m.fu) return '<span class="fuwait"><span class="typing"><span></span><span></span><span></span></span> '+T('fuWait')+'</span>';
- var fu=m.fu&&m.fu.length?m.fu:STR[LANG].FU_GEN||STR.zh.FU_GEN,h='';
- for(var k=0;k<fu.length;k++) h+='<button data-act="ask" data-q="'+esc(fu[k][2])+'">'+fu[k][0]+' '+esc(fu[k][1])+'</button>';
+ var own=!!(m.fu&&m.fu.length),fu=own?m.fu:(STR[LANG].FU_GEN||STR.zh.FU_GEN),h='';
+ for(var k=0;k<fu.length;k++) h+='<button data-act="ask" data-q="'+esc(fu[k][2])+'"><span>'+fu[k][0]+'</span><span>'+esc(own?fu[k][2]:fu[k][1])+'</span></button>';
  return h;
 }
 function paintFU(idx){ var el=$('fu'+idx); if(el&&S.chat[idx]) el.innerHTML=fuHTML(S.chat[idx]); }
@@ -993,7 +1026,7 @@ function toggleFav(i){
  if(k>=0){ FAV.splice(k,1); m.favId=null; toast(T('unfaved')); }
  else { var id='f'+Date.now().toString(36)+Math.random().toString(36).slice(2,6); FAV.unshift({id:id,q:qOf(i),t:m.t,ts:Date.now(),lang:LANG,meta:m.meta||''}); m.favId=id; toast(T('faved')); }
  saveFav(); save();
- var el=$('m'+i); if(el){ var b=el.querySelector('[data-act="fav"]'); if(b){ var on=favOf(m)>=0; b.className='act'+(on?' faved':''); b.textContent=on?T('favOn'):T('favOff'); } }
+ var el=$('m'+i); if(el){ var b=el.querySelector('[data-act="fav"]'); if(b){ var on=favOf(m)>=0; b.className='ib'+(on?' faved':''); b.innerHTML=on?IC.starF:IC.star; b.title=on?T('favOnW'):T('favOffW'); } }
  paintHead();
 }
 function fmtDate(ts){ var d=new Date(ts); function p(n){return (n<10?'0':'')+n;} return d.getFullYear()+'/'+p(d.getMonth()+1)+'/'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes()); }
@@ -1013,14 +1046,36 @@ function favListHTML(){
 function favById(id){ for(var i=0;i<FAV.length;i++) if(FAV[i].id===id) return FAV[i]; return null; }
 
 /* ---------- 畫面 ---------- */
+var IC={
+ menu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h11M4 17h16"/></svg>',
+ edit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+ bulb:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V17h5v-1.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3Z"/></svg>',
+ star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></svg>',
+ starF:'<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></svg>',
+ user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
+ gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>',
+ copy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg>',
+ speak:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+ pause:'<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>',
+ share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>',
+ trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>',
+ retry:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
+ up:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>',
+ stop:'<svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="7" width="10" height="10" rx="2"/></svg>',
+ plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+ gauge:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4.9 18a8.5 8.5 0 1 1 14.2 0"/><path d="m12 13 3.5-4"/><circle cx="12" cy="13" r="1.4" fill="currentColor"/></svg>',
+ chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
+ x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+ search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
+};
 function appsHTML(){
  var A=[['https://spch321-sudo.github.io/321fellowship/','⛪','appFel','appFelD'],['https://spch321-sudo.github.io/bible/','📖','appBible','appBibleD']],h='<div class="applinks">';
  for(var i=0;i<A.length;i++) h+='<a class="applink" href="'+A[i][0]+'" target="_blank" rel="noopener"><span class="ai">'+A[i][1]+'</span><span class="at"><b>'+T(A[i][2])+'</b><small>'+T(A[i][3])+'</small></span><span class="ago">↗</span></a>';
  return h+'</div>';
 }
-function audScroll(){
- var h='<div class="audscroll" id="audscroll">';
- for(var i=0;i<X.AUD_KEYS.length;i++){ var k=X.AUD_KEYS[i]; h+='<button class="aud'+(X.aud()===k?' on':'')+'" data-act="aud" data-v="'+k+'"><span class="ic">'+X.AUD_ICON[k]+'</span>'+esc(X.audName(k))+'</button>'; }
+function audRow(){
+ var h='<div class="audrow">';
+ for(var i=0;i<X.AUD_KEYS.length;i++){ var k=X.AUD_KEYS[i]; h+='<button class="chip'+(X.aud()===k?' on':'')+'" data-act="aud" data-v="'+k+'">'+X.AUD_ICON[k]+' '+esc(X.audName(k))+'</button>'; }
  return h+'</div>';
 }
 function bgRow(){
@@ -1034,64 +1089,90 @@ function lenSeg(){
  return h+'</div>';
 }
 function langBtns(cls){ var N={zh:'繁',zs:'简',en:'EN'},h='<div class="'+cls+'">'; for(var i=0;i<LANGS.length;i++) h+='<button class="'+(LANG===LANGS[i]?'on':'')+'" data-act="lang" data-v="'+LANGS[i]+'">'+(cls==='langseg'?T('langName_'+LANGS[i]):N[LANGS[i]])+'</button>'; return h+'</div>'; }
+function ab(act,i,icon,label,extra){ return '<button class="ib'+(extra||'')+'" data-act="'+act+'" data-i="'+i+'" title="'+esc(label)+'" aria-label="'+esc(label)+'">'+icon+'</button>'; }
 function msgHTML(m,i,lastOk){
  if(m.role==='user') return '<div class="msg user" id="m'+i+'"><div class="bub">'+esc(m.t)+'</div></div>';
- var h='<div class="msg ai'+(m.err?' err':'')+(m.crisis?' crisis':'')+(m.fold?' fold':'')+'" id="m'+i+'"><div class="who"><div class="lamp" aria-hidden="true">'+LAMP+'</div><b>'+T('name')+'</b>'+(m.meta?'<span class="tag">'+esc(m.meta)+'</span>':'')+'</div><div class="bub"><div class="body">';
+ var h='<div class="msg ai'+(m.err?' err':'')+(m.crisis?' crisis':'')+(m.fold?' fold':'')+'" id="m'+i+'"><div class="body">';
  h+=m.t?(m.err?'<p>'+esc(m.t)+'</p>':md(m.t)):'<span class="typing"><span></span><span></span><span></span></span>';
- h+='</div></div>';
+ h+='</div>';
  if(m.pending){ h+='<div class="contnote"'+(m.cont?'':' hidden')+'>'+T('contNote')+'</div>'; return h+'</div>'; }
  if(m.crisis) return h+'</div>';
  if(isLong(m)) h+='<button class="more" data-act="fold" data-i="'+i+'">'+(m.fold?T('foldMore'):T('foldLess'))+'</button>';
  h+='<div class="acts">';
- if(m.err) h+='<button class="act" data-act="retry" data-i="'+i+'">'+T('retry')+'</button>';
+ if(m.err) h+='<button class="act" data-act="retry" data-i="'+i+'">'+IC.retry+'<span>'+T('retryW')+'</span></button>';
  else {
   var on=m.favId&&favOf(m)>=0;
-  h+='<button class="act'+(on?' faved':'')+'" data-act="fav" data-i="'+i+'">'+(on?T('favOn'):T('favOff'))+'</button>';
-  if(window.speechSynthesis) h+='<button class="act" data-act="speak" data-i="'+i+'">'+(S.speaking===i?T('speakStop'):T('speak'))+'</button>';
-  h+='<button class="act" data-act="copy" data-i="'+i+'">'+T('copy')+'</button><button class="act" data-act="share" data-i="'+i+'">'+T('share')+'</button>';
+  h+=ab('copy',i,IC.copy,T('copyW'));
+  h+=ab('fav',i,on?IC.starF:IC.star,on?T('favOnW'):T('favOffW'),on?' faved':'');
+  if(window.speechSynthesis) h+=ab('speak',i,S.speaking===i?IC.pause:IC.speak,S.speaking===i?T('speakStopW'):T('speakW'));
+  h+=ab('share',i,IC.share,T('shareW'));
+  if(i===lastOk&&!S.busy) h+=ab('lenmenu',i,IC.retry,T('reW'));
  }
- h+='<button class="act" data-act="del" data-i="'+i+'">'+T('del')+'</button></div>';
- if(i===lastOk&&!S.busy){
-  h+='<div class="after"><span class="lab">'+T('fuLab')+'</span><div class="fu" id="fu'+i+'">'+fuHTML(m)+'</div><span class="lab">'+T('relenLab')+'</span><div class="relen">';
-  for(var j=0;j<X.LEN_KEYS.length;j++){ var lk=X.LEN_KEYS[j]; h+='<button class="'+(X.alen()===lk?'on':'')+'" data-act="len" data-v="'+lk+'">'+esc(X.lenName(lk))+'</button>'; }
-  h+='</div></div>';
- }
+ h+=ab('del',i,IC.trash,T('delW'))+(m.meta?'<span class="meta">'+esc(m.meta)+'</span>':'')+'</div>';
+ if(i===lastOk&&!S.busy) h+='<div class="fu" id="fu'+i+'">'+fuHTML(m)+'</div>';
+ return h+'</div>';
+}
+function suggestHTML(){
+ var all=recAll(),B=BANK(),list=[],n=S.sugBatch||0;
+ for(var k=0;k<2&&all.length;k++) list.push([X.AUD_ICON[X.aud()],all[(n*2+k)%all.length]]);
+ for(var j=0;j<2;j++){ var c=B[(n*2+j*7+3)%B.length]; list.push([c[0],c[2][(n+j)%c[2].length]]); }
+ var h='<div class="sugg">';
+ for(var q=0;q<list.length;q++) h+='<button class="srow" data-act="ask" data-q="'+esc(list[q][1])+'"><i>'+list[q][0]+'</i><span>'+esc(list[q][1])+'</span></button>';
+ h+='<div class="srow2"><button class="slink" data-act="sugmore">'+T('sugShuffle')+'</button><button class="slink" data-act="bank">'+T('sugAll')+' ›</button></div>';
  return h+'</div>';
 }
 function paintHead(){
  var hl=document.documentElement; hl.setAttribute('lang',LANG==='en'?'en':(LANG==='zs'?'zh-Hans':'zh-Hant'));
  document.title=T('title');
- $('brandName').textContent=T('name'); $('brandSub').textContent=T('brandSub');
- $('newLbl').textContent=T('newChat'); $('favLbl').textContent=T('favs'); $('setLbl').textContent=T('settings');
- $('favBtn').querySelector('.hi').className='hi'+(FAV.length?' fav':'');
- $('modeKey').textContent=T('adjust'); $('modeTxt').textContent=modeText();
- var pb=$('pfBtn'); pb.textContent='👤 '+(X.nick()||T('myProfile')); pb.className='pfbtn'+(X.hasProfile()?' on':'');
- var bb=$('bankBtn'); bb.title=T('bankTitle'); bb.setAttribute('aria-label',T('bankTitle'));
+ $('menuBtn').innerHTML=IC.menu; $('menuBtn').setAttribute('aria-label',T('menu'));
+ $('newBtn').innerHTML=IC.edit; $('newBtn').setAttribute('aria-label',T('newChat')); $('newBtn').title=T('newChat');
+ $('modeTxt').textContent=modeText(); $('modeChev').innerHTML=IC.chev;
+ $('bankBtn').innerHTML=IC.plus; $('bankBtn').title=T('bankTitle'); $('bankBtn').setAttribute('aria-label',T('bankTitle'));
+ $('lenBtn').innerHTML=IC.gauge+'<span>'+esc(X.lenName(X.alen()))+'</span>'; $('lenBtn').title=T('lenH');
  var q=$('q'); q.placeholder=T('placeholder'); q.setAttribute('aria-label',T('placeholder'));
  $('note').textContent=T('note');
- $('newBtn').hidden=!S.chat.length;
- var sb=$('send'); sb.textContent=S.busy?T('stop'):T('send'); sb.className=S.busy?'stop':'';
+ var sb=$('send'); sb.innerHTML=S.busy?IC.stop:IC.up; sb.className=S.busy?'stop':''; sb.setAttribute('aria-label',S.busy?T('stop'):T('send'));
+ document.body.classList.toggle('empty',!S.chat.length);
 }
 function render(){
  var f=$('flow'),h='';
  document.documentElement.className='fs'+S.fs;
  paintHead();
  if(!S.chat.length){
-  var a=X.aud();
-  h+='<section class="hero">'+langBtns('herolang')+'<h1>'+T('heroH')+'</h1><p>'+T('heroP')+'</p><div class="verse">'+T('verse')+'<span>'+T('verseRef')+'</span></div></section>'+
-   '<section class="panel"><div class="ph"><h2>'+T('whoAmI')+'</h2><small>'+T('whoSub')+'</small></div>'+audScroll()+
-   '<p class="audhint">'+X.AUD_ICON[a]+' <b>'+esc(X.audName(a))+'</b>'+T('colon')+esc(X.audHint(a))+'</p>'+
-   (a==='seeker'?'<div class="ph"><h2>'+T('myBg')+'</h2><small>'+T('myBgSub')+'</small></div>'+bgRow():'')+
-   '</section><section class="panel"><div class="ph"><h2>'+T('lenH')+'</h2><small>'+T('lenSub')+'</small></div>'+lenSeg()+'</section>'+bankHTML()+'<section class="panel"><div class="ph"><h2>'+T('appsH')+'</h2><small>'+T('appsSub')+'</small></div>'+appsHTML()+'</section>';
+  h+='<section class="hello"><div class="hlamp">'+LAMP+'</div><h1>'+T('helloH')+'</h1><p>'+T('helloP')+'</p></section>'+suggestHTML();
  } else {
   var lastOk=-1; for(var j=S.chat.length-1;j>=0;j--){ if(S.chat[j].role==='ai'&&!S.chat[j].crisis){ if(S.chat[j].ok&&!S.chat[j].err) lastOk=j; break; } }
   for(var i=0;i<S.chat.length;i++) h+=msgHTML(S.chat[i],i,lastOk);
  }
  f.innerHTML=h;
- var on=document.querySelector('#audscroll .aud.on'); if(on) try{ on.scrollIntoView({block:'nearest',inline:'center'}); }catch(e){}
  if(S.sheet) renderSheet();
+ if(S.drawer) renderDrawer();
 }
 function scrollTo(i){ var el=$('m'+i); if(el) el.scrollIntoView({block:'start'}); }
+
+/* ---------- 側欄 ---------- */
+function openDrawer(){ S.drawer=true; S.delArm=''; renderDrawer(); }
+function closeDrawer(){ S.drawer=false; var d=$('drawer'); if(d){ d.classList.remove('open'); setTimeout(function(){ if(!S.drawer&&d.parentNode) d.parentNode.removeChild(d); },220); } }
+function convListHTML(){
+ var q=S.convQ.trim().toLowerCase(),h='',list=CONVS.filter(function(c){ return !q||(c.title+' '+c.msgs.map(function(m){return m.t;}).join(' ')).toLowerCase().indexOf(q)>=0; });
+ if(!list.length) return '<p class="dempty">'+(CONVS.length?T('convNoHit'):T('convEmpty'))+'</p>';
+ for(var i=0;i<list.length;i++){ var c=list[i]; h+='<div class="cvrow'+(c.id===CUR?' on':'')+'"><button class="cbtn" data-act="conv" data-id="'+c.id+'">'+esc(c.title||'…')+'</button><button class="cdel'+(S.delArm===c.id?' arm':'')+'" data-act="convdel" data-id="'+c.id+'" aria-label="'+esc(T('delW'))+'">'+(S.delArm===c.id?T('delSure'):IC.x)+'</button></div>'; }
+ return h;
+}
+function renderDrawer(){
+ var d=$('drawer'),first=!d;
+ if(first){ d=document.createElement('div'); d.id='drawer'; document.body.appendChild(d); }
+ var keep=0,old=d.querySelector('.dpanel'); if(old) keep=old.scrollTop;
+ var nav=[['newchat',IC.edit,T('newChat')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['settings',IC.gear,T('settings')]];
+ var h='<div class="dmask" data-act="drawerclose"></div><nav class="dpanel" aria-label="'+esc(T('menu'))+'"><div class="dhead"><span class="dlamp">'+LAMP+'</span><b>'+T('name')+'</b>'+langBtns('dlang')+'</div>';
+ h+='<div class="dsearch">'+IC.search+'<input id="convsearch" type="search" placeholder="'+esc(T('convSearch'))+'" value="'+esc(S.convQ)+'"></div><div class="dnav">';
+ for(var i=0;i<nav.length;i++) h+='<button class="ditem" data-act="'+nav[i][0]+'"><span class="di">'+nav[i][1]+'</span><span>'+esc(nav[i][2])+'</span></button>';
+ h+='</div><div class="dsec">'+T('appsH')+'</div>'+appsHTML()+'<div class="dsec">'+T('recent')+'</div><div class="clist" id="clist">'+convListHTML()+'</div></nav>';
+ d.innerHTML=h;
+ var p=d.querySelector('.dpanel'); if(p&&keep) p.scrollTop=keep;
+ if(first){ d.offsetWidth; } d.classList.add('open');
+ var cs=$('convsearch'); if(cs) cs.oninput=function(){ S.convQ=cs.value; $('clist').innerHTML=convListHTML(); };
+}
 
 /* ---------- 面板 ---------- */
 function openSheet(k){ S.sheet=k; S.clearArm=false; renderSheet(); }
@@ -1099,10 +1180,12 @@ function closeSheet(){ S.sheet=null; var x=$('sheetmask'); if(x) x.parentNode.re
 function renderSheet(){
  var x=$('sheetmask'),keep=0; if(!x){ x=document.createElement('div'); x.id='sheetmask'; x.className='mask'; document.body.appendChild(x); } else { var old=x.querySelector('.sheet'); if(old) keep=old.scrollTop; }
  var h='<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>';
- if(S.sheet==='bank'){
-  h+='<div class="sheethead"><h2>💡 '+T('bankTitle')+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>'+bankHTML();
+ if(S.sheet==='lenmenu'){
+  h+='<div class="sheethead"><h2>'+T('lenH')+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>'+lenSeg()+'<p class="hint" style="margin-top:10px">'+T('lenHint')+'</p>';
+ } else if(S.sheet==='bank'){
+  h+='<div class="sheethead"><h2>'+T('bankTitle')+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>'+bankHTML();
  } else if(S.sheet==='favs'){
-  h+='<div class="sheethead"><h2>★ '+T('favTitle')+(FAV.length?' ('+FAV.length+')':'')+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+  h+='<div class="sheethead"><h2>'+T('favTitle')+(FAV.length?' ('+FAV.length+')':'')+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
   if(FAV.length>3) h+='<input class="favsearch" id="favsearch" type="search" placeholder="'+esc(T('favSearch'))+'" value="'+esc(S.favQ)+'">';
   h+='<div class="favlist" id="favlist" style="margin-top:10px">'+favListHTML()+'</div>';
  } else {
@@ -1113,7 +1196,6 @@ function renderSheet(){
   h+='</div></div>';
   if(X.aud()==='seeker') h+='<div class="sec"><h3>'+T('bgH')+'</h3>'+bgRow()+'<p class="hint">'+T('bgHint')+'</p></div>';
   h+='<div class="sec"><h3>'+T('lenH5')+'</h3>'+lenSeg()+'<p class="hint">'+T('lenHint')+'</p></div>';
-  h+='<div class="sec"><h3>'+T('appsH')+'</h3>'+appsHTML()+'</div>';
   h+='<div class="sec"><h3>'+T('myProfile')+'</h3><button class="wide" data-act="profile"><span>👤 '+esc(X.nick()||T('fillProfile'))+'<br><small class="hint">'+T('profileHint')+'</small></span><span>›</span></button></div>';
   var FS=T('fsNames').split('|');
   h+='<div class="sec"><h3>'+T('fsH')+'</h3><div class="seg4">';
@@ -1167,15 +1249,21 @@ document.addEventListener('click',function(e){
  else if(a==='lang') setLang(v);
  else if(a==='aud'){ if(v===X.aud()) return; X.setAud(v); S.cat=-1; render(); toast(T('audSet')+X.AUD_ICON[v]+' '+X.audName(v)); }
  else if(a==='bg'){ if(v===X.skbg()) return; X.setBg(v); render(); if(!reAnswerLast(T('bgRe',X.skName(v)))) toast(T('bgSet',X.skName(v))); }
- else if(a==='len'){ if(v===X.alen()) return; X.setLen(v); render(); if(!reAnswerLast(T('lenRe',X.lenName(v)))) toast(T('lenSet',X.lenName(v),T(LEN_SUB_K[v]))); }
+ else if(a==='len'){ if(v===X.alen()){ if(S.sheet==='lenmenu') closeSheet(); return; } X.setLen(v); if(S.sheet==='lenmenu') closeSheet(); render(); if(!reAnswerLast(T('lenRe',X.lenName(v)))) toast(T('lenSet',X.lenName(v),T(LEN_SUB_K[v]))); }
  else if(a==='fs'){ S.fs=parseInt(v,10); lsSet('fs',S.fs); render(); }
- else if(a==='profile'){ closeSheet(); X.openProfile(function(){ render(); }); }
- else if(a==='bank') openSheet('bank');
- else if(a==='favs'){ S.favQ=''; openSheet('favs'); }
- else if(a==='settings') openSheet('settings');
+ else if(a==='profile'){ closeSheet(); closeDrawer(); X.openProfile(function(){ render(); }); }
+ else if(a==='bank'){ closeDrawer(); openSheet('bank'); }
+ else if(a==='lenmenu') openSheet('lenmenu');
+ else if(a==='drawer') openDrawer();
+ else if(a==='drawerclose') closeDrawer();
+ else if(a==='conv'){ openConv(fid); closeDrawer(); foldOld(S.chat.length-1); render(); var sc0=$('scroll'); sc0.scrollTop=sc0.scrollHeight; }
+ else if(a==='convdel'){ if(S.delArm!==fid){ S.delArm=fid; $('clist').innerHTML=convListHTML(); return; } S.delArm=''; delConv(fid); render(); toast(T('convDeleted')); }
+ else if(a==='sugmore'){ S.sugBatch=(S.sugBatch||0)+1; render(); }
+ else if(a==='favs'){ closeDrawer(); S.favQ=''; openSheet('favs'); }
+ else if(a==='settings'){ closeDrawer(); openSheet('settings'); }
  else if(a==='close') closeSheet();
- else if(a==='newchat'){ if(S.busy) return; stopSpeak(); S.chat=[]; save(); render(); $('scroll').scrollTop=0; toast(T('newDone')); }
- else if(a==='clear'){ if(!S.clearArm){ S.clearArm=true; renderSheet(); return; } if(S.ctl) S.ctl.abort(); stopSpeak(); S.chat=[]; save(); closeSheet(); render(); toast(T('cleared')); }
+ else if(a==='newchat'){ if(S.busy&&S.ctl) S.ctl.abort(); newChat(); closeDrawer(); S.sugBatch=(S.sugBatch||0)+1; render(); $('scroll').scrollTop=0; setTimeout(function(){ try{$('q').focus();}catch(e){} },50); }
+ else if(a==='clear'){ if(!S.clearArm){ S.clearArm=true; renderSheet(); return; } newChat(); CONVS=[]; persistConvs(); closeSheet(); render(); toast(T('cleared')); }
  else if(a==='fold'){ var m=S.chat[i]; m.fold=!m.fold; save(); var el=$('m'+i); el.classList.toggle('fold',m.fold); b.textContent=m.fold?T('foldMore'):T('foldLess'); if(m.fold) el.scrollIntoView({block:'nearest'}); }
  else if(a==='fav') toggleFav(i);
  else if(a==='speak') speak(i);
@@ -1198,7 +1286,7 @@ qEl.addEventListener('keydown',function(e){
  var touch=('ontouchstart' in window)&&window.innerWidth<820;
  if(e.key==='Enter'&&!e.shiftKey&&!touch&&!e.isComposing&&e.keyCode!==229){ e.preventDefault(); send(qEl.value); }
 });
-document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&S.sheet) closeSheet(); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(S.sheet) closeSheet(); else if(S.drawer) closeDrawer(); } });
 
 foldOld(S.chat.length-1); render();
 if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
@@ -1209,7 +1297,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1111.1247b',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1111.1331',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
