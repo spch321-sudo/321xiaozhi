@@ -3,6 +3,42 @@
      已在空中團契 App 開通過的手機，打開小智問答會直接通過，不必再輸入。
    ‧ 雜湊：fnv('321|' + 正規化代碼)，正規化 = 去空白與連字號、轉大寫（與空中團契、321學神院相同）。
    ‧ 換授權碼：把下面 hash 改成空中團契「設定 → 授權碼 → 同工專用」產生的新雜湊值。 */
+/* -lg1111：語言同步
+   ‧ 收：網址帶 ?lang321=zh|zs|en|ko|ja|id|ceb（由空中團契等 321 App 帶入）→ 記住這個語言，並轉到對應語言頁。
+   ‧ 送：點小智裡連到其他 321 App 的連結時，自動加上 lang321=目前語言，讓對方用同一種語言打開。 */
+(function () {
+  var PAGES = { zh: 'index.html', zs: 'sc.html', en: 'en.html', ko: 'ko.html', ja: 'ja.html', id: 'id.html', ceb: 'ceb.html' };
+  try {
+    var m = location.search.match(/[?&]lang321=([a-z]+)/);
+    if (m && PAGES[m[1]]) {
+      var code = m[1], q = location.search.replace(/([?&])lang321=[^&]*&?/, '$1').replace(/[?&]$/, '');
+      try { localStorage.setItem('xz321_lang', JSON.stringify(code)); } catch (e) { }
+      var file = location.pathname.replace(/^.*\//, '') || 'index.html', dir = location.pathname.replace(/[^\/]*$/, '');
+      if (file !== PAGES[code]) { location.replace(dir + (code === 'zh' ? '' : PAGES[code]) + q + location.hash); return; }
+      history.replaceState(history.state, '', location.pathname + q + location.hash);
+    }
+  } catch (e) { }
+  function curCode() {
+    var l = window.LANG; if (PAGES[l]) return l;
+    var p = window.XZ_PAGE_LANG; if (PAGES[p]) return p;
+    try { var v = JSON.parse(localStorage.getItem('xz321_lang')); if (PAGES[v]) return v; } catch (e) { }
+    return 'zh';
+  }
+  function tag(a) {
+    var u = a.getAttribute('href') || '';
+    if (!/^https:\/\/spch321-sudo\.github\.io\//.test(u) || /\/321xiaozhi\//.test(u)) return;
+    var h = '', i = u.indexOf('#'); if (i >= 0) { h = u.slice(i); u = u.slice(0, i); }
+    u = u.replace(/([?&])lang321=[^&]*&?/, '$1').replace(/[?&]$/, '');
+    a.setAttribute('href', u + (u.indexOf('?') >= 0 ? '&' : '?') + 'lang321=' + curCode() + h);
+  }
+  function onAct(e) { var t = e.target; while (t && t.nodeName !== 'A') t = t.parentNode; if (t && t.getAttribute) tag(t); }
+  document.addEventListener('click', onAct, true);
+  document.addEventListener('touchstart', onAct, true);
+  document.addEventListener('contextmenu', onAct, true);
+  var oo = window.open;
+  if (oo) window.open = function (u) { try { if (typeof u === 'string' && /^https:\/\/spch321-sudo\.github\.io\//.test(u) && !/\/321xiaozhi\//.test(u)) { var a = document.createElement('a'); a.setAttribute('href', u); tag(a); arguments[0] = a.getAttribute('href'); } } catch (e) { } return oo.apply(window, arguments); };
+})();
+
 (function () {
   var G = { hash: 'dbd788bb', key: 'k321_auth' }, ok = false;
   function lsGet(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
