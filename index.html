@@ -6,13 +6,13 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#16316F">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1943">
-<link rel="icon" href="favicon.ico?v=v2026.1111.1943" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1943">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1943">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1943">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1943">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1943">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1215">
+<link rel="icon" href="favicon.ico?v=v2026.1111.1215" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1215">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1215">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1215">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1215">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1215">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
@@ -105,7 +105,11 @@ button:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outlin
 .q{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:11px 14px;line-height:1.55;font-size:.95em;min-width:0;overflow-wrap:anywhere;display:flex;gap:9px;align-items:flex-start;transition:border-color .15s,transform .15s}
 .q:hover{border-color:var(--brand);transform:translateY(-1px)}
 .q i{font-style:normal;flex:none}
-.shuffle{align-self:flex-start;border:1px dashed var(--gold);background:var(--gold-soft);border-radius:999px;padding:6px 14px;font-size:.86em}
+.moreq{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:1.5px dashed var(--gold);background:var(--gold-soft);color:var(--ink);border-radius:14px;padding:10px 14px;font-weight:700;font-size:.95em}
+.moreq small{font-weight:400;font-size:.8em;color:var(--muted)}
+.moreq.ai{border-style:solid;border-color:var(--btn);background:var(--surface);color:var(--brand)}
+.moreq:disabled{cursor:default;font-weight:500;color:var(--muted)}
+.q{animation:none}#qnew{box-shadow:0 0 0 2px var(--gold)}
 
 .msg{display:flex;flex-direction:column;gap:7px;min-width:0}
 .msg.user{align-items:flex-end}
@@ -719,24 +723,28 @@ X.init({app:'xiaozhi',pfx:'xz321-',lang:function(){return 'zh';},ctxWord:'背景
 (function(){ var old=lsGet('aud',''); if(old&&!lsGet('migrated',0)){ var st=X.state(); if(!st.aud) X.setAud(old); lsSet('migrated',1);} })();
 
 var BANK=[
- ['✝️','信仰真理',['神真的存在嗎？有什麼理由相信？','三位一體要怎麼用簡單的比喻來理解？','耶穌為什麼一定要死在十字架上？','好人可以上天堂嗎？為什麼還需要耶穌？','神既然是愛，為什麼世界上還有苦難？','聖靈是誰？我怎麼知道聖靈在引導我？']],
- ['📖','聖經導讀',['第一次讀聖經，應該從哪一卷開始？','舊約和新約有什麼關係？','請用五分鐘帶我認識約翰福音。','詩篇23篇在說什麼？可以怎麼默想？','登山寶訓的八福是什麼意思？','啟示錄要怎麼讀才不會看不懂？']],
- ['🌱','生命成長',['什麼是「舊人有己」？我怎麼看出自己有己？','謙卑和自卑有什麼不同？','怎樣才算是「讓耶穌作王」？','每天靈修總是三天打魚兩天曬網，怎麼辦？','我常常為同一個軟弱跌倒，要怎樣得勝？','怎樣分辨是聖靈的感動，還是自己的想法？']],
- ['💑','婚姻家庭',['夫妻常為小事吵架，怎樣停止惡性循環？','另一半還沒信主，我可以怎樣活出見證？','怎樣跟公婆、岳父母相處得好？','結婚多年感情變淡，怎樣重新點燃？','夫妻對錢的看法不同，要怎麼協調？','婚前要先談清楚哪些重要的事？']],
- ['🧒','親子教養',['孩子沉迷手機，父母可以怎麼做？','青春期的孩子不跟我說話，怎麼辦？','怎樣教小孩認識神，又不讓他反感？','管教和打罵的界線在哪裡？','怎樣培養孩子的自信心和責任感？','孩子在學校被欺負，父母該如何陪伴？']],
- ['💼','職場工作',['遇到愛搶功勞的同事，我該怎麼面對？','怎樣在職場上作光作鹽，又不被排擠？','我該不該換工作？可以怎樣做決定？','怎樣管理時間、提高工作效率？','當主管要怎樣帶人，才能帶心？','工作壓力很大，怎樣找到平衡？']],
- ['🤝','人際關係',['被朋友誤會了，要怎麼化解？','怎樣饒恕一個深深傷害過我的人？','怎樣拒絕別人又不傷感情？','我很內向，怎樣自然地和人聊天？','怎樣在教會建立真正的屬靈同伴關係？','怎樣向朋友分享福音才不尷尬？']],
- ['💭','情緒心理',['常常焦慮、睡不著，可以怎麼調適？','怎樣面對親人過世的悲傷？','容易生氣，事後又後悔，怎麼辦？','總覺得自己不夠好，怎樣走出自我否定？','孤單的時候可以怎麼做？','怎樣分辨一般的低落和需要求助的憂鬱？']],
- ['🩺','健康養生',['怎樣吃比較健康？有簡單的原則嗎？','中老年人適合做哪些運動？','怎樣改善睡眠品質？','有高血壓的人，日常要注意什麼？','每天喝多少水才夠？','久坐對身體有什麼影響？怎樣改善？']],
- ['💰','理財金錢',['聖經對金錢有什麼教導？','怎樣開始做家庭記帳和預算？','什麼是複利？用簡單的例子說明。','十分之一奉獻在新約還適用嗎？','怎樣避免卡債和衝動購物？','退休前要先準備哪些事？']],
- ['🔭','天文宇宙',['宇宙有多大？用比喻讓我感受一下。','為什麼會有月圓月缺？','黑洞是什麼？','太陽還能燃燒多久？','「諸天述說神的榮耀」，從天文學怎麼看？','地球在宇宙中有什麼特別之處？']],
- ['🌍','地理旅遊',['以色列的地理環境是怎樣的？','第一次去以色列聖地，推薦哪些地方？','為什麼死海那麼鹹，人會浮起來？','保羅的宣教旅程走過哪些城市？','台灣為什麼有那麼多地震？','世界上最長的河流是哪一條？']],
- ['🏛️','歷史文化',['宗教改革是怎麼一回事？','聖經是怎樣一路流傳到今天的？','基督教是怎樣傳到中國的？','中秋節和端午節的由來是什麼？','羅馬帝國為什麼會衰亡？','死海古卷的發現有什麼重要性？']],
- ['🔬','科學自然',['為什麼天空是藍色的？','人體大約有多少細胞？最奇妙的是什麼？','彩虹是怎麼形成的？','科學和信仰會互相衝突嗎？','蜜蜂為什麼把蜂巢做成六角形？','DNA 是什麼？請用比喻說明。']],
- ['💻','科技生活',['AI 是什麼？它真的會思考嗎？','怎樣分辨網路上的假消息和詐騙？','手機越用越慢，可以怎麼處理？','長輩用 LINE 要注意哪些安全事項？','怎樣設定一個安全又好記的密碼？','用 AI 讀聖經，有什麼好處和要小心的地方？']],
- ['✍️','語言寫作',['幫我寫一段給媽媽的生日祝福。','怎樣寫一篇三分鐘的得救見證？','「謙卑」的英文怎麼說？順便教我幾句常用英文。','幫我把這句話改得更溫暖：「你又遲到了。」','幫我寫一封感謝信給牧師。','成語「塞翁失馬」是什麼意思？']],
- ['🍳','生活實用',['一週的家常菜可以怎麼安排？','怎樣快速整理亂糟糟的房間？','衣服沾到油漬要怎麼洗？','搬家要注意哪些事？','一家四口的簡單早餐有什麼建議？','怎樣讓家裡的盆栽長得好？']],
- ['📚','學習成長',['怎樣背東西記得又快又牢？','中年想學新技能，從哪裡開始？','怎樣養成閱讀的習慣？','推薦幾本適合初信者的屬靈書籍。','怎樣在小組裡帶好一次查經？','怎樣做筆記最有效？']]
+ ['✝️','信仰真理',['神真的存在嗎？有什麼理由相信？','三位一體要怎麼用簡單的比喻來理解？','耶穌為什麼一定要死在十字架上？','好人可以上天堂嗎？為什麼還需要耶穌？','神既然是愛，為什麼世界上還有苦難？','聖靈是誰？我怎麼知道聖靈在引導我？','什麼是因信稱義？','基督徒還會犯罪嗎？得救會不會失去？','耶穌復活有什麼歷史證據？','天堂和地獄是真的嗎？','為什麼要受洗？受洗代表什麼？','聖餐的意義是什麼？']],
+ ['📖','聖經導讀',['第一次讀聖經，應該從哪一卷開始？','舊約和新約有什麼關係？','請用五分鐘帶我認識約翰福音。','詩篇23篇在說什麼？可以怎麼默想？','登山寶訓的八福是什麼意思？','啟示錄要怎麼讀才不會看不懂？','摩西五經各在講什麼？','怎樣讀箴言最有幫助？','羅馬書的主題是什麼？','先知書看不懂，有什麼入門的方法？','為什麼有四本福音書？各有什麼不同？','怎樣一年讀完整本聖經？']],
+ ['🌱','生命成長',['什麼是「舊人有己」？我怎麼看出自己有己？','謙卑和自卑有什麼不同？','怎樣才算是「讓耶穌作王」？','每天靈修總是三天打魚兩天曬網，怎麼辦？','我常常為同一個軟弱跌倒，要怎樣得勝？','怎樣分辨是聖靈的感動，還是自己的想法？','怎樣培養每天禱告的習慣？','什麼是聖靈的果子？怎樣結出來？','信心軟弱、懷疑神的時候，該怎麼辦？','怎樣從失敗中重新站起來，反敗為勝？','捨己和無己是什麼意思？','怎樣找到神給我的呼召和恩賜？']],
+ ['💑','婚姻家庭',['夫妻常為小事吵架，怎樣停止惡性循環？','另一半還沒信主，我可以怎樣活出見證？','怎樣跟公婆、岳父母相處得好？','結婚多年感情變淡，怎樣重新點燃？','夫妻對錢的看法不同，要怎麼協調？','婚前要先談清楚哪些重要的事？','怎樣用對方聽得懂的方式表達愛？','冷戰時誰該先開口？怎樣開口？','夫妻怎樣一起靈修禱告？','怎樣在忙碌中經營夫妻約會時間？','發現另一半可能有外遇的跡象，我該怎麼辦？','再婚家庭要怎樣建立新的關係？']],
+ ['🧒','親子教養',['孩子沉迷手機，父母可以怎麼做？','青春期的孩子不跟我說話，怎麼辦？','怎樣教小孩認識神，又不讓他反感？','管教和打罵的界線在哪裡？','怎樣培養孩子的自信心和責任感？','孩子在學校被欺負，父母該如何陪伴？','孩子說謊時，父母該怎麼處理？','兄弟姊妹常吵架，要怎麼調解？','怎樣跟孩子談性教育？','怎樣陪孩子做家庭禮拜又不無聊？','孩子成績不好，我該怎麼看待？','隔代教養要注意哪些事？']],
+ ['💼','職場工作',['遇到愛搶功勞的同事，我該怎麼面對？','怎樣在職場上作光作鹽，又不被排擠？','我該不該換工作？可以怎樣做決定？','怎樣管理時間、提高工作效率？','當主管要怎樣帶人，才能帶心？','工作壓力很大，怎樣找到平衡？','被主管不公平對待，我該怎麼辦？','怎樣寫一份讓人印象深刻的履歷？','面試時要注意哪些事？','想創業，要先評估哪些事？','公司要我做違背良心的事，怎麼辦？','怎樣在工作中保持熱情、不倦怠？']],
+ ['🤝','人際關係',['被朋友誤會了，要怎麼化解？','怎樣饒恕一個深深傷害過我的人？','怎樣拒絕別人又不傷感情？','我很內向，怎樣自然地和人聊天？','怎樣在教會建立真正的屬靈同伴關係？','怎樣向朋友分享福音才不尷尬？','朋友借錢不還，該怎麼處理？','怎樣和個性很強勢的人相處？','怎樣交到真心的好朋友？','被背叛之後，還能再信任人嗎？','怎樣化解和家人多年的心結？','怎樣安慰正在難過的朋友？']],
+ ['💭','情緒心理',['常常焦慮、睡不著，可以怎麼調適？','怎樣面對親人過世的悲傷？','容易生氣，事後又後悔，怎麼辦？','總覺得自己不夠好，怎樣走出自我否定？','孤單的時候可以怎麼做？','怎樣分辨一般的低落和需要求助的憂鬱？','壓力大到想逃避，可以怎麼辦？','怎樣走出失戀的痛苦？','一直想著過去的錯誤，怎樣放下？','怎樣建立健康的自我價值？','嫉妒別人的時候，該怎麼面對？','怎樣面對對未來的不安？']],
+ ['🥗','健康養生',['怎樣吃比較健康？有簡單的原則嗎？','中老年人適合做哪些運動？','怎樣改善睡眠品質？','每天喝多少水才夠？','久坐對身體有什麼影響？怎樣改善？','怎樣養成規律運動的習慣？','每天走多少步才算健康？','怎樣減重才不會復胖？','長時間看手機，怎樣保護眼睛？','怎樣改善駝背和姿勢不良？','季節變換時，怎樣預防感冒？','怎樣用安息的觀念調整生活節奏？']],
+ ['🏥','醫療保健',['感冒和流感有什麼不同？什麼時候要看醫生？','健康檢查報告上的數字要怎麼看？','有高血壓的人，日常要注意什麼？','糖尿病前期要怎樣調整生活？','膝蓋退化疼痛，日常可以怎麼保養？','哪些症狀可能是中風，要立刻送醫？','長輩同時吃很多種藥，要注意哪些事？','胃食道逆流要怎麼改善？','失智症早期有哪些徵兆？','骨質疏鬆要怎麼預防？','照顧生病的家人，怎樣才不會累垮自己？','看病時，怎樣跟醫生有效溝通？']],
+ ['💰','理財金錢',['聖經對金錢有什麼教導？','怎樣開始做家庭記帳和預算？','什麼是複利？用簡單的例子說明。','十分之一奉獻在新約還適用嗎？','怎樣避免卡債和衝動購物？','退休前要先準備哪些事？','緊急預備金要存多少才夠？','定期定額投資是什麼？','保險要怎麼買才不會買錯？','怎樣教孩子正確的金錢觀？','怎樣分辨投資詐騙？','基督徒可以借錢給親友嗎？']],
+ ['🔭','天文宇宙',['宇宙有多大？用比喻讓我感受一下。','為什麼會有月圓月缺？','黑洞是什麼？','太陽還能燃燒多久？','「諸天述說神的榮耀」，從天文學怎麼看？','地球在宇宙中有什麼特別之處？','為什麼會有四季？','流星和彗星有什麼不同？','伯利恆之星可能是什麼？','光年是什麼意思？','人類真的登陸過月球嗎？','大爆炸理論在說什麼？跟創造有衝突嗎？']],
+ ['🌍','地理環境',['以色列的地理環境是怎樣的？','約旦河在聖經裡有什麼重要性？','為什麼死海那麼鹹，人會浮起來？','保羅的宣教旅程走過哪些城市？','台灣為什麼有那麼多地震？','世界上最長的河流是哪一條？','世界上最高的山是哪一座？有多高？','沙漠是怎麼形成的？','颱風是怎麼形成的？','為什麼赤道附近那麼熱？','地球上的水是怎麼循環的？','板塊運動是什麼？']],
+ ['✈️','旅遊觀光',['第一次去以色列聖地，推薦哪些地方？','出國旅行要準備哪些東西？','長輩出國旅遊要注意什麼？','帶小孩旅行，怎樣安排比較輕鬆？','第一次去日本自由行，推薦怎麼玩？','台灣環島旅行可以怎麼規劃？','怎樣訂到划算的機票和住宿？','歐洲宗教改革之旅可以去哪些地方？','旅行時怎樣防範扒手和詐騙？','坐長途飛機，怎樣減少疲勞和時差？','跟團和自由行各有什麼優缺點？','旅行時怎樣保持靈修的習慣？']],
+ ['🏛️','歷史文化',['宗教改革是怎麼一回事？','聖經是怎樣一路流傳到今天的？','基督教是怎樣傳到中國的？','中秋節和端午節的由來是什麼？','羅馬帝國為什麼會衰亡？','死海古卷的發現有什麼重要性？','中國古代四大發明是什麼？','第一次世界大戰是怎麼開始的？','台灣的歷史可以怎樣簡單介紹？','聖誕節的由來是什麼？','君士坦丁大帝對基督教有什麼影響？','古埃及的金字塔是怎麼建成的？']],
+ ['🔬','科學自然',['為什麼天空是藍色的？','人體大約有多少細胞？最奇妙的是什麼？','彩虹是怎麼形成的？','科學和信仰會互相衝突嗎？','蜜蜂為什麼把蜂巢做成六角形？','DNA 是什麼？請用比喻說明。','地球為什麼有磁場？','為什麼海水是鹹的？','人為什麼一定要睡覺？','植物怎麼行光合作用？','閃電和打雷是怎麼回事？','疫苗是怎樣讓身體產生保護力的？']],
+ ['💻','科技生活',['AI 是什麼？它真的會思考嗎？','怎樣分辨網路上的假消息和詐騙？','手機越用越慢，可以怎麼處理？','長輩用 LINE 要注意哪些安全事項？','怎樣設定一個安全又好記的密碼？','用 AI 讀聖經，有什麼好處和要小心的地方？','雲端備份是什麼？要怎麼用？','手機中毒了會有哪些徵兆？','怎樣用手機拍出好看的照片？','5G 跟 4G 有什麼不同？','怎樣保護孩子的上網安全？','怎樣用 AI 幫忙寫東西，又不失去自己的想法？']],
+ ['✍️','語言寫作',['幫我寫一段給媽媽的生日祝福。','怎樣寫一篇三分鐘的得救見證？','「謙卑」的英文怎麼說？順便教我幾句常用英文。','幫我把這句話改得更溫暖：「你又遲到了。」','幫我寫一封感謝信給牧師。','成語「塞翁失馬」是什麼意思？','幫我寫一段結婚祝福。','幫我寫一段安慰喪親朋友的話。','怎樣寫好一篇讀經心得？','怎樣上台講話不緊張？','「的、得、地」要怎麼分？','幫我寫一段教會活動的邀請文。']],
+ ['🧺','生活實用',['怎樣快速整理亂糟糟的房間？','衣服沾到油漬要怎麼洗？','搬家要注意哪些事？','怎樣讓家裡的盆栽長得好？','怎樣省水省電又環保？','冰箱裡的食物怎樣保存比較久？','家裡有螞蟻、蟑螂要怎麼處理？','怎樣挑選適合自己的床墊和枕頭？','颱風來之前要做哪些準備？','怎樣規劃家人的家事分工？','怎樣避免買太多用不到的東西？','怎樣準備家庭急救箱？']],
+ ['🍜','美食餐飲',['一週的家常菜可以怎麼安排？','推薦幾道簡單又下飯的家常菜。','怎樣煮出一鍋好吃的白飯？','一家四口的簡單早餐有什麼建議？','素食者怎樣吃得營養均衡？','教會愛宴適合準備哪些菜？','怎樣挑選新鮮的魚和肉？','台灣有哪些必吃的小吃？','聖經時代的人平常吃些什麼？','怎樣做一個簡單的蛋糕？','剩菜可以怎麼變化成新料理？','外食族怎樣吃得比較健康？']],
+ ['📚','學習成長',['怎樣背東西記得又快又牢？','中年想學新技能，從哪裡開始？','怎樣養成閱讀的習慣？','推薦幾本適合初信者的屬靈書籍。','怎樣在小組裡帶好一次查經？','怎樣做筆記最有效？','怎樣提高專注力？','怎樣訂定目標，並且真的做到？','自學英文有什麼好方法？','怎樣培養孩子的閱讀興趣？','怎樣克服拖延？','怎樣整理思緒，把想法說清楚？']],
+ ['🎨','興趣嗜好',['想學一樣樂器，從哪一種開始比較好？','怎樣開始學畫畫？','手機攝影有什麼入門技巧？','推薦幾種適合退休後培養的興趣。','怎樣在陽台開始種菜、種香草？','登山健行要準備什麼？','怎樣開始寫日記或手帳？','想學書法，要怎麼入門？','推薦幾款適合全家一起玩的桌遊。','怎樣用自己的興趣來服事教會？','學敬拜吉他，要先練什麼？','怎樣在忙碌中留時間給興趣？']]
 ];
 var LEN_SUB={xs:'100字內',s:'約300字',mid:'約600字',long:'約1200字',xl:'2000字+'};
 var NOPASSAGE=/這段|這節|這章|本章|這卷|經文裡|這裡的|這個故事|這一句/;
@@ -747,7 +755,7 @@ var BASE='你是「小智」，國度321空中團契的AI聖經陪讀與生活�
 var GENERAL='\n【一般知識問題】上面「回答長度」裡列的段落結構（經文脈絡、321應用、引導禱告、討論題等）是給信仰、生命、關係類問題用的。天文、地理、科學、歷史、科技、生活實用、語言寫作這類一般問題，只遵守字數範圍，以把知識講清楚、講正確為主；最多在結尾自然帶一句屬靈的連結，不必寫禱告。使用者請你寫祝福、信件、文案時，直接交出成品。';
 function sysPrompt(){ return BASE+X.sysExtra()+GENERAL; }
 
-var S={chat:lsGet('chat',[]),fs:lsGet('fs',1),cat:-1,batch:lsGet('batch',0),busy:false,ctl:null,sheet:null,clearArm:false,speaking:-1};
+var S={chat:lsGet('chat',[]),fs:lsGet('fs',1),cat:-1,shown:{},gen:lsGet('gen',{}),genBusy:'',busy:false,ctl:null,sheet:null,clearArm:false,speaking:-1};
 if(!S.chat||typeof S.chat.length!=='number') S.chat=[];
 for(var z=0;z<S.chat.length;z++){ if(S.chat[z].pending){S.chat[z].pending=false; if(!S.chat[z].t){S.chat[z].t='（這則回答沒有完成，請再問一次。）';S.chat[z].err=true;}} }
 
@@ -893,26 +901,43 @@ function reAnswerLast(msg){
 function foldOld(last){ for(var i=0;i<S.chat.length;i++){ var m=S.chat[i]; if(m.role==='ai') m.fold=(i!==last)&&isLong(m); } }
 
 /* ---------- 畫面 ---------- */
-function recQs(){
- var all=X.questions().filter(function(q){return !NOPASSAGE.test(q);}), out=[];
- if(!all.length) return out;
- var start=(S.batch*6)%all.length;
- for(var k=0;k<Math.min(6,all.length);k++) out.push(all[(start+k)%all.length]);
- return out;
-}
+function recAll(){ return X.questions().filter(function(q){return !NOPASSAGE.test(q);}); }
+function bankKey(){ return S.cat<0?('rec_'+X.aud()+'_'+(X.aud()==='seeker'?X.skbg():'')):('c'+BANK[S.cat][1]); }
+function bankAll(){ var key=bankKey(),base=S.cat<0?recAll():BANK[S.cat][2]; return base.concat(S.gen[key]||[]); }
 function bankHTML(){
  var a=X.aud(), recName=X.AUD_ICON[a]+' 為'+X.audName(a)+(a==='seeker'&&X.skbg()!=='none'?'（'+X.skName(X.skbg())+'）':'')+'推薦';
  var h='<div class="panel"><div class="ph"><h2>可以這樣問</h2><small>點一題，直接問小智</small></div><div class="cats" id="cats"><button class="chip'+(S.cat<0?' on':'')+'" data-act="cat" data-i="-1">'+esc(recName)+'</button>';
  for(var i=0;i<BANK.length;i++) h+='<button class="chip'+(S.cat===i?' on':'')+'" data-act="cat" data-i="'+i+'">'+BANK[i][0]+' '+BANK[i][1]+'</button>';
  h+='</div><div class="qs">';
- var list;
- if(S.cat<0) list=recQs().map(function(q){return [X.AUD_ICON[a],q];});
- else list=BANK[S.cat][2].map(function(q){return [BANK[S.cat][0],q];});
- for(var j=0;j<list.length;j++) h+='<button class="q" data-act="ask" data-q="'+esc(list[j][1])+'"><i>'+list[j][0]+'</i><span>'+esc(list[j][1])+'</span></button>';
+ var key=bankKey(),all=bankAll(),n=Math.min(S.shown[key]||6,all.length),icon=S.cat<0?X.AUD_ICON[a]:BANK[S.cat][0],first=S.firstNew&&S.firstNew[0]===key?S.firstNew[1]:-1;
+ for(var j=0;j<n;j++) h+='<button class="q"'+(j===first?' id="qnew"':'')+' data-act="ask" data-q="'+esc(all[j])+'"><i>'+icon+'</i><span>'+esc(all[j])+'</span></button>';
  h+='</div>';
- if(S.cat<0) h+='<button class="shuffle" data-act="shuffle">🔀 換一批</button>';
+ if(S.genBusy===key) h+='<button class="moreq" disabled><span class="typing"><span></span><span></span><span></span></span> 小智正在想新題目…</button>';
+ else if(n<all.length) h+='<button class="moreq" data-act="moreq">＋ 更多題目<small>還有 '+(all.length-n)+' 題</small></button>';
+ else h+='<button class="moreq ai" data-act="moreq">✨ 更多題目<small>請小智再出 6 題</small></button>';
  return h+'</div>';
 }
+function moreQ(){
+ var key=bankKey(),all=bankAll(),n=Math.min(S.shown[key]||6,all.length);
+ if(n<all.length){ S.shown[key]=n+6; S.firstNew=[key,n]; render(); focusNew(); return; }
+ if(S.genBusy) return;
+ var topic=S.cat<0?('適合「'+X.audName(X.aud())+(X.aud()==='seeker'?'（信仰背景：'+X.skName(X.skbg())+'）':'')+'」的人問的生活與信仰問題'):('「'+BANK[S.cat][1]+'」這個範疇');
+ var ask='請為'+topic+'，想出 6 個新的提問，讓使用者可以直接拿來問 AI 助理小智。要求：每題一句、繁體中文、具體貼近生活、用使用者自己的口吻、以問號或句號結尾；不要和下面這些題目重複或太相近：\n'+all.join('\n')+'\n只輸出 JSON 字串陣列，例如 ["題目一？","題目二？"]，不要任何其他文字。';
+ S.genBusy=key; render();
+ getSample().then(function(sm){
+  if(sm) return sm(ask,{cache:false,modelTier:'quick'}).then(function(r){return r&&r.text||'';});
+  return postRetry({model:MODEL,max_tokens:700,system:'你只輸出 JSON。',messages:[{role:'user',content:ask}]}).then(extractReply);
+ }).then(function(t){
+  var m=String(t||'').match(/\[[\s\S]*\]/),arr=[];
+  try{ arr=JSON.parse(m?m[0]:'[]'); }catch(e){ arr=[]; }
+  var seen={}; all.forEach(function(q){seen[q]=1;});
+  arr=arr.filter(function(q){ return typeof q==='string'&&q.length>=5&&q.length<=70&&!seen[q]&&(seen[q]=1); }).slice(0,6);
+  if(!arr.length) throw new Error('none');
+  S.gen[key]=(S.gen[key]||[]).concat(arr); lsSet('gen',S.gen);
+  S.shown[key]=n+arr.length; S.firstNew=[key,n];
+ }).catch(function(){ toast('小智暫時想不出新題目，請稍後再試'); }).then(function(){ S.genBusy=''; render(); focusNew(); });
+}
+function focusNew(){ setTimeout(function(){ var el=document.querySelector(S.sheet?'#sheetmask #qnew':'#qnew'); if(el) try{ el.scrollIntoView({block:'center',behavior:'smooth'}); }catch(e){ el.scrollIntoView(); } },30); }
 function audScroll(){
  var h='<div class="audscroll" id="audscroll">';
  for(var i=0;i<X.AUD_KEYS.length;i++){ var k=X.AUD_KEYS[i]; h+='<button class="aud'+(X.aud()===k?' on':'')+'" data-act="aud" data-v="'+k+'"><span class="ic">'+X.AUD_ICON[k]+'</span>'+esc(X.audName(k))+'</button>'; }
@@ -1034,7 +1059,7 @@ document.addEventListener('click',function(e){
  if(a==='send'){ if(S.busy){ if(S.ctl) S.ctl.abort(); } else send($('q').value); }
  else if(a==='ask') send(b.getAttribute('data-q'));
  else if(a==='cat'){ S.cat=i; render(); var c=document.querySelector('.cats .chip.on'); if(c) try{c.scrollIntoView({block:'nearest',inline:'center'});}catch(x){} }
- else if(a==='shuffle'){ S.batch++; lsSet('batch',S.batch); render(); }
+ else if(a==='moreq') moreQ();
  else if(a==='aud'){ if(v===X.aud()) return; X.setAud(v); S.cat=-1; render(); toast('回答對象：'+X.AUD_ICON[v]+' '+X.audName(v)); }
  else if(a==='bg'){ if(v===X.skbg()) return; X.setBg(v); render(); if(!reAnswerLast('信仰背景：'+X.skName(v)+'，重新回答')) toast('信仰背景：'+X.skName(v)); }
  else if(a==='len'){ if(v===X.alen()) return; X.setLen(v); render(); if(!reAnswerLast('改成「'+X.lenName(v)+'」重新回答')) toast('回答長度：'+X.lenName(v)+'（'+LEN_SUB[v]+'）'); }
@@ -1069,7 +1094,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1111.1943';window.APPVER=APPVER;
+var APPVER='v2026.1111.1215';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 function busy(){var s=document.getElementById('send'),q=document.getElementById('q');return (s&&s.classList.contains('stop'))||(q&&q.value.trim())||document.getElementById('sheetmask');}
 var reg=null,pending=null;
