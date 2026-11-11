@@ -6,13 +6,13 @@
 <title>Xiaozhi Q&A</title>
 <meta name="description" content="Xiaozhi Q&A: Bible, faith and everyday questions, Kingdom 321 Fellowship.">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1359">
-<link rel="icon" href="favicon.ico?v=v2026.1111.1359" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1359">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1359">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1359">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1359">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1359">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1400">
+<link rel="icon" href="favicon.ico?v=v2026.1111.1400" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1400">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1400">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1400">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1400">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1400">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi Q&A">
@@ -143,23 +143,21 @@ body.empty #flow{justify-content:flex-end;gap:14px}
 @keyframes dot{0%,80%,100%{opacity:.3}40%{opacity:1}}
 .contnote{font-size:.8em;color:var(--muted)}
 
-/* 輸入框 */
+/* 輸入框：像 Claude 一樣貼在最底下的一列膠囊 */
 .composer{flex:none;background:var(--page)}
-.composer .wrap{padding-block:6px 4px}
-.cbox{background:var(--page);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:10px 10px 8px 16px;display:flex;flex-direction:column;gap:4px}
-#q{width:100%;resize:none;border:0;background:transparent;color:var(--ink);font:inherit;line-height:1.5;max-height:9em;padding:4px 0;min-height:28px}
+.composer .wrap{padding-block:6px 8px}
+.cbox{display:flex;align-items:flex-end;gap:4px;background:var(--soft);border:1px solid var(--line);border-radius:26px;padding:4px}
+#q{flex:1 1 0;width:0;min-width:0;resize:none;border:0;background:transparent;color:var(--ink);font:inherit;line-height:1.45;max-height:8.5em;padding:9px 6px;min-height:42px}
 #q:focus{outline:none}
 #q::placeholder{color:var(--faint)}
-.crow{display:flex;align-items:center;gap:6px}
-.cb{width:38px;height:38px;border-radius:50%;border:0;background:transparent;display:grid;place-items:center;color:var(--ink)}
-.cb:hover{background:var(--soft)}
-.lenbtn{display:flex;align-items:center;gap:5px;height:34px;border:1px solid var(--line);background:transparent;border-radius:999px;padding:0 11px;font-size:.8em;color:var(--muted)}
-.lenbtn svg{width:17px;height:17px;color:var(--accent)}
-.grow{flex:1}
-#send{width:40px;height:40px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.cb{flex:none;width:42px;height:42px;border-radius:50%;border:0;background:var(--page);display:grid;place-items:center;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.cb svg{width:20px;height:20px}
+.lenbtn{flex:none;display:flex;align-items:center;gap:3px;height:42px;border:0;background:transparent;border-radius:999px;padding:0 8px;font-size:.78em;color:var(--muted)}
+.lenbtn svg{width:18px;height:18px;color:var(--accent)}
+#send{flex:none;width:42px;height:42px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
 #send svg{width:20px;height:20px}
 #send.stop{background:var(--ink);color:var(--page)}
-.note{margin:6px 0 0;font-size:.66em;color:var(--faint);text-align:center;line-height:1.5}
+.hnote{margin-top:6px;font-size:.72em;color:var(--faint);max-width:30em}
 
 /* 側欄抽屜 */
 #drawer{position:fixed;inset:0;z-index:60;pointer-events:none}
@@ -284,7 +282,7 @@ body.empty #flow{justify-content:flex-end;gap:14px}
 .favlist{display:flex;flex-direction:column;gap:9px}
 .favempty{color:var(--muted);text-align:center;padding:24px 8px;line-height:1.8}
 .favsearch{width:100%;border:1px solid var(--line);background:var(--soft);color:var(--ink);border-radius:12px;padding:8px 12px;font:inherit;font-size:.92em}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(120px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--page);padding:8px 16px;border-radius:999px;font-size:.85em;z-index:100000;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--page);padding:8px 16px;border-radius:999px;font-size:.85em;z-index:100000;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
 @media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}}
 @media (max-width:420px){.audgrid{grid-template-columns:1fr 1fr}}
 </style>
@@ -300,15 +298,12 @@ body.empty #flow{justify-content:flex-end;gap:14px}
 
   <footer class="composer"><div class="wrap">
     <div class="cbox">
+      <button class="cb" data-act="bank" id="bankBtn"></button>
       <textarea id="q" rows="1"></textarea>
-      <div class="crow">
-        <button class="cb" data-act="bank" id="bankBtn"></button>
-        <button class="lenbtn" data-act="lenmenu" id="lenBtn"></button>
-        <span class="grow"></span>
-        <button id="send" data-act="send"></button>
-      </div>
+      <button class="lenbtn" data-act="lenmenu" id="lenBtn"></button>
+      <button id="send" data-act="send"></button>
     </div>
-    <p class="note" id="note"></p>
+    <p class="note" id="note" hidden></p>
   </div></footer>
 </div>
 
@@ -1232,7 +1227,7 @@ function render(){
  document.documentElement.className='fs'+S.fs;
  paintHead();
  if(!S.chat.length){
-  h+=(NAV.length?'<div class="navrow top1"><button class="navb" data-act="back">'+IC.back+'<span>'+T('navBack')+'</span></button></div>':'')+'<section class="hello"><div class="hlamp">'+LAMP+'</div><h1>'+T('helloH')+'</h1><p>'+T('helloP')+'</p></section>'+suggestHTML();
+  h+=(NAV.length?'<div class="navrow top1"><button class="navb" data-act="back">'+IC.back+'<span>'+T('navBack')+'</span></button></div>':'')+'<section class="hello"><div class="hlamp">'+LAMP+'</div><h1>'+T('helloH')+'</h1><p>'+T('helloP')+'</p><p class="hnote">'+T('note')+'</p></section>'+suggestHTML();
  } else {
   var lastOk=-1; for(var j=S.chat.length-1;j>=0;j--){ if(S.chat[j].role==='ai'&&!S.chat[j].crisis){ if(S.chat[j].ok&&!S.chat[j].err) lastOk=j; break; } }
   for(var i=0;i<S.chat.length;i++) h+=msgHTML(S.chat[i],i,lastOk);
@@ -1408,7 +1403,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1111.1359',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1111.1400',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
