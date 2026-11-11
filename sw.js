@@ -1,4 +1,4 @@
-var VER='v2026.1111.1521',PFX='xiaozhi321-',CACHE=PFX+VER;
+var VER='v2026.1111.1521b',PFX='xiaozhi321-',CACHE=PFX+VER;
 var SHELL=['./','index.html','sc.html','en.html','manifest.webmanifest','icon-180.png','icon-192.png','icon-512.png','favicon.ico'];
 self.addEventListener('install',function(e){self.skipWaiting();e.waitUntil(caches.open(CACHE).then(function(c){return Promise.all(SHELL.map(function(u){return fetch(new Request(u,{cache:'reload'})).then(function(r){if(r.ok)return c.put(u,r);}).catch(function(){});}));}));});
 self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.filter(function(k){return k.indexOf(PFX)===0&&k!==CACHE;}).map(function(k){return caches.delete(k);}));}).then(function(){return self.clients.claim();}).then(function(){return self.clients.matchAll({type:'window'});}).then(function(cs){cs.forEach(function(c){try{c.postMessage({t:'sw-updated',v:VER});if(c.visibilityState==='hidden'&&c.navigate)c.navigate(c.url);}catch(e){}});}));});
