@@ -1,4 +1,4 @@
-# 小智問答（v2026.1111.1545）
+# 小智問答（v2026.1111.1557）
 
 上傳到 GitHub（例如 spch321-sudo/xiaozhi），把這個資料夾裡的全部檔案放在 repo 根目錄，啟用 GitHub Pages。
 
@@ -8,3 +8,4 @@
 - 繁體：index.html　简体：sc.html　English：en.html（App 內也可隨時切換語言）
 - 收藏存在手機瀏覽器裡，三種語言共用一份。
 - 한국어：ko.html　日本語：ja.html（經文：개역한글 1961／口語訳 1955，與321互動聖經相同）
+- Bahasa Indonesia：id.html（AYT／Terjemahan Baru）　Cebuano：ceb.html（Ang Pulong sa Dios／Balaan nga Bibliya），與321互動聖經相同
