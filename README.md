@@ -9,3 +9,9 @@
 - 收藏存在手機瀏覽器裡，三種語言共用一份。
 - 한국어：ko.html　日本語：ja.html（經文：개역한글 1961／口語訳 1955，與321互動聖經相同）
 - Bahasa Indonesia：id.html（AYT／Terjemahan Baru）　Cebuano：ceb.html（Ang Pulong sa Dios／Balaan nga Bibliya），與321互動聖經相同
+
+
+## 授權碼開通（v2026.1111.2130）
+- 新增 `k321gate.js`：開啟時先要求輸入授權碼，與國度321空中團契共用同一組授權碼與記錄（同網域 `k321_auth`）；已在空中團契開通的手機自動通過。
+- 開通後播放小智專屬慶祝動畫（小智圖示從光中彈出、金色光芒旋轉、光環擴散、星光迸發，約 5 秒，點一下略過），七種語言。
+- **之後整批上傳新版時，請保留 `k321gate.js`，並在每個 .html 的 `</head>` 前保留這一行：** `<script src="k321gate.js?v=版本"></script>`。
