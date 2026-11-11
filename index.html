@@ -6,13 +6,13 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1510">
-<link rel="icon" href="favicon.ico?v=v2026.1111.1510" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1510">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1510">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1510">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1510">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1510">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1521">
+<link rel="icon" href="favicon.ico?v=v2026.1111.1521" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1521">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1521">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1521">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1521">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1521">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
@@ -102,7 +102,7 @@ body.empty #flow{justify-content:flex-end;gap:14px}
 .body p{margin:.7em 0}
 .body h2,.body h3,.body h4{line-height:1.4;font-weight:700;color:var(--ink);margin:1.5em 0 .5em}
 .body h2{font-size:1.28em}
-.body h3{font-size:1.14em;padding-bottom:.3em;border-bottom:1px solid var(--line)}
+.body h3{font-size:1.14em}
 .body h4{font-size:1.02em}
 .body h2+p,.body h3+p,.body h4+p,.body h3+ul,.body h3+ol,.body h4+ul,.body h4+ol{margin-top:.3em}
 .body ul,.body ol{margin:.6em 0;padding-left:1.5em}
@@ -113,7 +113,7 @@ body.empty #flow{justify-content:flex-end;gap:14px}
 .body strong{font-weight:700;color:var(--ink)}
 .body em{font-style:normal;color:var(--accent)}
 .body blockquote{margin:1em 0;padding:11px 16px;border-left:3px solid var(--gold);background:var(--gold-soft);border-radius:0 12px 12px 0;font-weight:500;line-height:1.75}
-.body hr{border:0;border-top:1px solid var(--line);margin:1.6em 0}
+.body hr{border:0;height:0;margin:.8em 0}
 .body code{background:var(--soft);padding:1px 6px;border-radius:5px;font-size:.88em}
 .tbl{overflow-x:auto;margin:1em 0;border:1px solid var(--line);border-radius:12px}
 .body table{border-collapse:collapse;font-size:.92em;min-width:100%}
@@ -941,7 +941,7 @@ function md(src){
   if(hm){flush(); var lv=Math.min(4,hm[1].length+1); out.push('<h'+lv+'>'+inl(hm[2].replace(/\*\*/g,''))+'</h'+lv+'>'); i++; continue;}
   var bh=t.match(/^\*\*([^*]{1,40})\*\*[：:]?$/);
   if(bh&&!para.length){flush(); out.push('<h4>'+esc(bh[1])+'</h4>'); i++; continue;}
-  if(/^(-{3,}|\*{3,}|_{3,})$/.test(t)){flush();out.push('<hr>');i++;continue;}
+  if(/^(-{3,}|\*{3,}|_{3,})$/.test(t)){flush();i++;continue;}
   if(/^>/.test(t)){flush(); var q=[]; while(i<L.length&&/^>/.test(L[i].trim())){q.push(inl(L[i].trim().replace(/^>\s?/,'')));i++;} out.push('<blockquote>'+q.join('<br>')+'</blockquote>'); continue;}
   if(isItem(t)){flush(); var res=listHTML(L,i); out.push(res[0]); i=res[1]; continue;}
   para.push(t); i++;
@@ -1509,7 +1509,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1111.1510',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1111.1521',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
