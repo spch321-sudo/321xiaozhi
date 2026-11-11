@@ -6,13 +6,13 @@
 <title>Xiaozhi Q&A</title>
 <meta name="description" content="Xiaozhi Q&A: Bible, faith and everyday questions, Kingdom 321 Fellowship.">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1404">
-<link rel="icon" href="favicon.ico?v=v2026.1111.1404" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1404">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1404">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1404">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1404">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1404">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1412">
+<link rel="icon" href="favicon.ico?v=v2026.1111.1412" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1412">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1412">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1412">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1412">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1412">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi Q&A">
@@ -34,7 +34,7 @@
   --f-display:"Noto Serif TC","Songti TC",Georgia,serif;
   --f-body:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
   --fs:17px;
-  --xz2-ink:var(--ink); --xz2-card:var(--page); --xz2-line:var(--line); --xz2-acc:var(--accent); --xz2-soft:var(--soft); --xz2-mut:var(--muted); --xz2-fs:16px;
+  --xz2-ink:var(--ink); --xz2-card:var(--page); --xz2-line:var(--line); --xz2-acc:var(--accent); --xz2-soft:var(--soft); --xz2-mut:var(--muted); --xz2-fs:var(--fs);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --page:#212121; --side:#171717; --soft:#303030; --line:#3A3A3D; --ink:#ECECEC; --muted:#A3A3AB; --faint:#7B7B84;
@@ -282,6 +282,17 @@ body.empty #flow{justify-content:flex-end;gap:14px}
 .favempty{color:var(--muted);text-align:center;padding:24px 8px;line-height:1.8}
 .favsearch{width:100%;border:1px solid var(--line);background:var(--soft);color:var(--ink);border-radius:12px;padding:8px 12px;font:inherit;font-size:.92em}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--page);padding:8px 16px;border-radius:999px;font-size:.85em;z-index:100000;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+/* 讀者資料面板：字級跟著設定裡的字級走 */
+html #xz2pf .xz2-pfbox{font-size:var(--fs);line-height:1.55;max-height:92vh;max-height:92dvh}
+html #xz2pf .xz2-fl{font-size:.9em}
+html #xz2pf .xz2-seg button{font-size:.92em;padding:.4em .85em}
+html #xz2pf .xz2-in{font-size:max(16px,1em)}
+html #xz2pf .xz2-note{font-size:.84em}
+html #xz2pf .xz2-act button{font-size:1em}
+html #xz2pf .xz2-chip{font-size:.9em}
+html #xz2pf [style*="font-size:16px"]{font-size:1.08em!important}
+html #xz2pf [style*="font-size:13px"]{font-size:.88em!important}
+html #xz2pf input[style*="width:120px"]{width:7.5em!important}
 @media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}}
 @media (max-width:420px){.audgrid{grid-template-columns:1fr 1fr}}
 </style>
@@ -1402,7 +1413,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1111.1404',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1111.1412',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
