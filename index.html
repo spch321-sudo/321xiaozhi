@@ -6,13 +6,13 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#16316F">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1215">
-<link rel="icon" href="favicon.ico?v=v2026.1111.1215" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1215">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1215">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1215">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1215">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1215">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.1223">
+<link rel="icon" href="favicon.ico?v=v2026.1111.1223" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.1223">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.1223">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.1223">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.1223">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.1223">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
@@ -152,6 +152,7 @@ button:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outlin
 .fu{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
 .fu::-webkit-scrollbar{display:none}
 .fu button{flex:none;border:1px solid var(--gold);background:transparent;border-radius:999px;padding:4px 12px;font-size:.84em;white-space:nowrap}
+.fuwait{display:inline-flex;align-items:center;gap:8px;font-size:.84em;color:var(--muted);padding:4px 0}
 .fu button:hover{background:var(--gold-soft)}
 .relen{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 .relen button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:2px 10px;font-size:.78em}
@@ -757,7 +758,7 @@ function sysPrompt(){ return BASE+X.sysExtra()+GENERAL; }
 
 var S={chat:lsGet('chat',[]),fs:lsGet('fs',1),cat:-1,shown:{},gen:lsGet('gen',{}),genBusy:'',busy:false,ctl:null,sheet:null,clearArm:false,speaking:-1};
 if(!S.chat||typeof S.chat.length!=='number') S.chat=[];
-for(var z=0;z<S.chat.length;z++){ if(S.chat[z].pending){S.chat[z].pending=false; if(!S.chat[z].t){S.chat[z].t='（這則回答沒有完成，請再問一次。）';S.chat[z].err=true;}} }
+for(var z=0;z<S.chat.length;z++){ S.chat[z].fuBusy=false; if(S.chat[z].pending){S.chat[z].pending=false; if(!S.chat[z].t){S.chat[z].t='（這則回答沒有完成，請再問一次。）';S.chat[z].err=true;}} }
 
 function $(id){return document.getElementById(id);}
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -890,6 +891,7 @@ function send(text){
  }).then(function(){
   m.pending=false; m.cont=false; S.busy=false; S.ctl=null;
   foldOld(idx); save(); render();
+  if(m.ok&&!m.err) genFU(idx);
  });
 }
 function reAnswerLast(msg){
@@ -900,6 +902,30 @@ function reAnswerLast(msg){
 }
 function foldOld(last){ for(var i=0;i<S.chat.length;i++){ var m=S.chat[i]; if(m.role==='ai') m.fold=(i!==last)&&isLong(m); } }
 
+
+var FU_GEN=[['🌿','舉個例子','請針對你剛才的回答，舉一個生活中的實際例子，幫助我更明白。'],['🪞','說得更簡單','請把你剛才的回答，用更簡單的話和一個比喻再說一次。'],['🔍','再深入一點','關於你剛才的回答，請再深入說明最重要的那一點。'],['👣','我可以怎麼做','根據你剛才的回答，我今天可以踏出哪一個具體的小步驟？']];
+function fuHTML(m){
+ if(m.fuBusy&&!m.fu) return '<span class="fuwait"><span class="typing"><span></span><span></span><span></span></span> 小智正在想延伸問題…</span>';
+ var fu=m.fu&&m.fu.length?m.fu:FU_GEN,h='';
+ for(var k=0;k<fu.length;k++) h+='<button data-act="ask" data-q="'+esc(fu[k][2])+'">'+fu[k][0]+' '+esc(fu[k][1])+'</button>';
+ return h;
+}
+function paintFU(idx){ var el=$('fu'+idx); if(el&&S.chat[idx]) el.innerHTML=fuHTML(S.chat[idx]); }
+function genFU(idx){
+ var m=S.chat[idx]; if(!m||m.fu) return;
+ var q=qOf(idx), ans=plain(m.t).slice(0,900);
+ var ask='使用者問小智：「'+q+'」\n小智的回答重點：\n'+ans+'\n\n請想出 5 個使用者看完這個回答後，最可能接著想問的延伸問題。要求：\n1. 必須緊扣這個問題的主題和回答裡的具體內容（例如問煮白飯，就可以問電鍋怎麼煮、糙米怎麼煮、水要放多少、隔夜飯怎麼保存）；不要出現和主題無關的婚姻、職場、家庭等泛用題。\n2. 五題要有不同方向：更深入的細節、實際操作或例子、常見困難或錯誤、延伸到相關的新話題；如果主題本身和信仰、生命或關係有關，可以有一題談聖經怎麼看或怎樣活出來，否則不要硬加。\n3. 用使用者自己的口吻，每題一句完整問句，30 字內。\n4. 回答對象是「'+X.audName(X.aud())+'」，用字要適合他。\n只輸出 JSON 陣列：[{"i":"一個表情符號","t":"2到6個字的短標","q":"完整問句"}]，不要任何其他文字。';
+ m.fuBusy=true; paintFU(idx);
+ getSample().then(function(sm){
+  if(sm) return sm(ask,{cache:false,modelTier:'quick'}).then(function(r){return r&&r.text||'';});
+  return postRetry({model:MODEL,max_tokens:600,system:'你只輸出 JSON。',messages:[{role:'user',content:ask}]}).then(extractReply);
+ }).then(function(t){
+  var mm=String(t||'').match(/\[[\s\S]*\]/),arr=[];
+  try{ arr=JSON.parse(mm?mm[0]:'[]'); }catch(e){ arr=[]; }
+  arr=arr.filter(function(o){ return o&&typeof o.q==='string'&&o.q.length>=4&&o.q.length<=60; }).slice(0,5).map(function(o){ return [String(o.i||'💬').slice(0,4),String(o.t||o.q).slice(0,8),o.q]; });
+  if(arr.length) m.fu=arr;
+ }).catch(function(){}).then(function(){ m.fuBusy=false; save(); paintFU(idx); });
+}
 /* ---------- 畫面 ---------- */
 function recAll(){ return X.questions().filter(function(q){return !NOPASSAGE.test(q);}); }
 function bankKey(){ return S.cat<0?('rec_'+X.aud()+'_'+(X.aud()==='seeker'?X.skbg():'')):('c'+BANK[S.cat][1]); }
@@ -969,10 +995,7 @@ function msgHTML(m,i,lastOk){
  }
  h+='<button class="act" data-act="del" data-i="'+i+'">✕ 刪除</button></div>';
  if(i===lastOk&&!S.busy){
-  var fu=X.followups();
-  h+='<div class="after"><span class="lab">延伸應用</span><div class="fu">';
-  for(var k=0;k<fu.length;k++) h+='<button data-act="ask" data-q="'+esc(fu[k][2])+'">'+fu[k][0]+' '+esc(fu[k][1])+'</button>';
-  h+='</div><span class="lab">換個長度重新回答</span><div class="relen">';
+  h+='<div class="after"><span class="lab">延伸追問</span><div class="fu" id="fu'+i+'">'+fuHTML(m)+'</div><span class="lab">換個長度重新回答</span><div class="relen">';
   for(var j=0;j<X.LEN_KEYS.length;j++){ var lk=X.LEN_KEYS[j]; h+='<button class="'+(X.alen()===lk?'on':'')+'" data-act="len" data-v="'+lk+'">'+esc(X.lenName(lk))+'</button>'; }
   h+='</div></div>';
  }
@@ -1087,6 +1110,7 @@ qEl.addEventListener('keydown',function(e){
 document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&S.sheet) closeSheet(); });
 
 foldOld(S.chat.length-1); render();
+(function(){ for(var j=S.chat.length-1;j>=0;j--){ var c=S.chat[j]; if(c.role==='ai'&&!c.crisis){ if(c.ok&&!c.err&&!c.fu) genFU(j); break; } } })();
 if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 })();
 
@@ -1094,7 +1118,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1111.1215';window.APPVER=APPVER;
+var APPVER='v2026.1111.1223';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 function busy(){var s=document.getElementById('send'),q=document.getElementById('q');return (s&&s.classList.contains('stop'))||(q&&q.value.trim())||document.getElementById('sheetmask');}
 var reg=null,pending=null;
