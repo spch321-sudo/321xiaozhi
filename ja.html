@@ -6,20 +6,20 @@
 <title>シャオジー Q&A</title>
 <meta name="description" content="シャオジー Q&A：聖書・信仰・生活の質問 · キングダム321空中フェローシップ">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.2230">
-<link rel="icon" href="favicon.ico?v=v2026.1111.2230" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.2230">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.2230">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.2230">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.2230">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.2230">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.2240">
+<link rel="icon" href="favicon.ico?v=v2026.1111.2240" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.2240">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.2240">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.2240">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.2240">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.2240">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="シャオジー Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1111.2230"></script>
+<script src="k321gate.js?v=v2026.1111.2240"></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ja';</script>
@@ -878,6 +878,7 @@ var LANG=(function(){
  var v=lsGet('lang',''); if(LANGS.indexOf(v)>=0) return v;
  return 'zh';
 })();
+window.XZ_LANG=LANG;
 function T(k){ var d=STR[LANG]||STR.zh, s=d[k]; if(s==null) s=FOREIGN()?STR.en[k]:STR.zh[k]; if(s==null) s=STR.zh[k]; if(s==null) s=k; for(var i=1;i<arguments.length;i++) s=s.split('{'+(i-1)+'}').join(arguments[i]); return s; }
 function BANK(){ return BANKS[LANG]||BANKS.zh; }
 
@@ -1575,7 +1576,7 @@ function shareText(q,t){ return (q?T('qPrefix')+q+'\n\n':'')+plain(t)+'\n\n'+T('
 function setLang(v){
  if(v===LANG||LANGS.indexOf(v)<0) return;
  if(S.ctl) S.ctl.abort(); stopSpeak();
- LANG=v; lsSet('lang',v); closeDrawer(); closeSheet(); S.cat=-1; S.firstNew=null; loadChat(); foldOld(S.chat.length-1); render();
+ LANG=v; window.XZ_LANG=v; lsSet('lang',v); try{ var WL=window.location; window.history.replaceState(window.history.state,'',WL.pathname.replace(/[^\/]*$/,'')+({zh:'',zs:'sc.html',en:'en.html',ko:'ko.html',ja:'ja.html',id:'id.html',ceb:'ceb.html'}[v]||'')+WL.search+WL.hash); }catch(e){} closeDrawer(); closeSheet(); S.cat=-1; S.firstNew=null; loadChat(); foldOld(S.chat.length-1); render();
  var sc=$('scroll'); sc.scrollTop=S.chat.length?sc.scrollHeight:0;
  toast(T('langDone'));
 }
@@ -1645,7 +1646,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1111.2230',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1111.2240',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}

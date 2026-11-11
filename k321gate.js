@@ -19,7 +19,7 @@
     }
   } catch (e) { }
   function curCode() {
-    var l = window.LANG; if (PAGES[l]) return l;
+    var l = window.XZ_LANG || window.LANG; if (PAGES[l]) return l;
     var p = window.XZ_PAGE_LANG; if (PAGES[p]) return p;
     try { var v = JSON.parse(localStorage.getItem('xz321_lang')); if (PAGES[v]) return v; } catch (e) { }
     return 'zh';
