@@ -6,20 +6,20 @@
 <title>샤오즈 Q&A</title>
 <meta name="description" content="샤오즈 Q&A: 성경, 신앙, 생활 질문 · 킹덤 321 공중 펠로십">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1111.2240">
-<link rel="icon" href="favicon.ico?v=v2026.1111.2240" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1111.2240">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1111.2240">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1111.2240">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1111.2240">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1111.2240">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.0105">
+<link rel="icon" href="favicon.ico?v=v2026.1113.0105" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.0105">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.0105">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.0105">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.0105">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.0105">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="샤오즈 Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1111.2240"></script>
+<script src="k321gate.js?v=v2026.1113.0105"></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ko';</script>
@@ -162,6 +162,14 @@ body.empty #flow{justify-content:flex-end;gap:14px}
 #send{flex:none;width:42px;height:42px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
 #send svg{width:20px;height:20px}
 #send.stop{background:var(--ink);color:var(--page)}
+.micbtn{flex:none;width:40px;height:42px;border:0;border-radius:50%;background:transparent;color:var(--muted);display:grid;place-items:center}
+.micbtn svg{width:22px;height:22px}
+.micbtn.on{background:var(--danger);color:#fff;width:42px;animation:micp 1.4s ease-in-out infinite}
+@keyframes micp{0%,100%{box-shadow:0 0 0 0 rgba(194,69,61,.45)}50%{box-shadow:0 0 0 8px rgba(194,69,61,0)}}
+.micwave{display:flex;gap:3px;align-items:center;height:18px}
+.micwave i{display:block;width:3px;height:8px;border-radius:2px;background:currentColor;animation:mw .9s ease-in-out infinite}
+.micwave i:nth-child(2){animation-delay:.15s}.micwave i:nth-child(3){animation-delay:.3s}
+@keyframes mw{0%,100%{height:5px}50%{height:17px}}
 .hnote{margin-top:6px;font-size:.72em;color:var(--faint);max-width:30em}
 
 /* 側欄抽屜 */
@@ -341,7 +349,7 @@ html #xz2pf input[style*="width:120px"]{width:7.5em!important}
 .body blockquote .ql{display:block}
 .body blockquote .tr{margin:.15em 0 .35em;font-weight:400}
 .qtr{display:block;color:var(--muted);font-size:.86em;margin-top:2px}
-@media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}}
+@media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}.micbtn.on,.micwave i{animation:none}}
 @media (max-width:420px){.audgrid{grid-template-columns:1fr 1fr}}
 </style>
 
@@ -359,6 +367,7 @@ html #xz2pf input[style*="width:120px"]{width:7.5em!important}
       <button class="cb" data-act="bank" id="bankBtn"></button>
       <textarea id="q" rows="1"></textarea>
       <button class="lenbtn" data-act="lenmenu" id="lenBtn"></button>
+      <button class="micbtn" id="micBtn" type="button"></button>
       <button id="send" data-act="send"></button>
     </div>
     <p class="note" id="note" hidden></p>
@@ -1100,6 +1109,7 @@ function history(){
  return h;
 }
 function send(text){
+ if(MIC.on) micStop(true);
  text=String(text||'').trim(); if(!text||S.busy) return;
  if(!S.chat.length&&NAV[NAV.length-1]!=='home') NAV.push('home');
  stopSpeak(); closeSheet();
@@ -1261,6 +1271,7 @@ var IC={
  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
  gauge:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4.9 18a8.5 8.5 0 1 1 14.2 0"/><path d="m12 13 3.5-4"/><circle cx="12" cy="13" r="1.4" fill="currentColor"/></svg>',
  chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
+ mic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>',
  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>',
  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>',
@@ -1629,8 +1640,57 @@ document.addEventListener('click',function(e){
  else if(a==='favdel'){ for(var k=0;k<FAV.length;k++) if(FAV[k].id===fid){ FAV.splice(k,1); break; } saveFav(); renderSheet(); render(); toast(T('unfaved')); }
 });
 var qEl=$('q');
-function autosize(){ qEl.style.height='auto'; qEl.style.height=Math.min(qEl.scrollHeight,200)+'px'; }
-qEl.addEventListener('input',autosize);
+/* ---------- 語音輸入 ---------- */
+var MIC={on:false,rec:null,dict:null,base:'',tmr:null,lock:false};
+var SRC=window.SpeechRecognition||window.webkitSpeechRecognition;
+var MICLANG={zh:'zh-TW',zs:'zh-CN',en:'en-US',ko:'ko-KR',ja:'ja-JP',id:'id-ID',ceb:'fil-PH'};
+var MICS={
+ zh:['語音輸入','停止語音輸入','正在聽…請說出你的問題','沒有麥克風權限，請到手機「設定」允許這個 App 使用麥克風','這裡無法直接語音輸入，請點手機鍵盤上的麥克風 🎤 用說的','沒有聽到聲音，請再試一次'],
+ zs:['语音输入','停止语音输入','正在听…请说出你的问题','没有麦克风权限，请到手机「设置」允许这个 App 使用麦克风','这里无法直接语音输入，请点手机键盘上的麦克风 🎤 用说的','没有听到声音，请再试一次'],
+ en:['Voice input','Stop voice input','Listening… ask your question','Microphone access is blocked. Please allow it in your phone settings.','Voice input is not available here. Tap the microphone 🎤 on your keyboard to dictate.','No speech heard. Please try again.'],
+ ko:['음성 입력','음성 입력 중지','듣고 있어요… 질문을 말씀하세요','마이크 권한이 없습니다. 휴대폰 설정에서 허용해 주세요.','여기서는 음성 입력을 바로 쓸 수 없습니다. 키보드의 마이크 🎤를 눌러 말씀하세요.','소리가 들리지 않았어요. 다시 시도해 주세요.'],
+ ja:['音声入力','音声入力を停止','聞いています…質問をどうぞ','マイクが許可されていません。端末の設定で許可してください。','ここでは音声入力を直接使えません。キーボードのマイク 🎤 を押して話してください。','声が聞き取れませんでした。もう一度どうぞ。'],
+ id:['Input suara','Hentikan input suara','Mendengarkan… ucapkan pertanyaan Anda','Akses mikrofon diblokir. Izinkan di pengaturan ponsel.','Input suara tidak tersedia di sini. Ketuk mikrofon 🎤 di keyboard untuk mendikte.','Tidak terdengar suara. Silakan coba lagi.'],
+ ceb:['Pagsulti aron mosulat','Hunongon ang pagsulti','Naminaw… isulti ang imong pangutana','Gibabagan ang mikropono. Palihog tugoti kini sa settings sa telepono.','Dili magamit dinhi ang voice input. Pindota ang mikropono 🎤 sa keyboard aron magsulti.','Walay nadungog. Palihog sulayi pag-usab.']};
+function MT(i){ return (MICS[LANG]||MICS.en)[i]; }
+try{ if(window.claude&&claude.use) claude.use('dictation').then(function(d){ if(d){ MIC.dict=d;
+ d.onPartial(function(o){ if(MIC.on){ qEl.value=MIC.base+(o.text||''); autosize(); } });
+ d.onFinal(function(o){ if(MIC.on){ MIC.base+=(o.text||''); qEl.value=MIC.base; autosize(); } });
+ d.onState(function(o){ if(o.state==='idle'&&MIC.on) micEnd(); });
+} }).catch(function(){}); }catch(e){}
+function micBtn(){
+ var b=$('micBtn'); if(!b) return;
+ b.classList.toggle('on',MIC.on);
+ b.hidden=!MIC.on&&!!qEl.value.trim();
+ b.setAttribute('aria-label',MIC.on?MT(1):MT(0)); b.title=MIC.on?MT(1):MT(0);
+ b.innerHTML=MIC.on?'<span class="micwave"><i></i><i></i><i></i></span>':IC.mic;
+}
+function micEnd(){ MIC.on=false; clearTimeout(MIC.tmr); MIC.rec=null; qEl.placeholder=T('placeholder'); autosize(); micBtn(); }
+function micStop(quiet){ clearTimeout(MIC.tmr); if(MIC.dict&&MIC.on){ try{ MIC.dict.stop(); }catch(e){} } if(MIC.rec){ try{ MIC.rec.stop(); }catch(e){} } micEnd(); }
+function micStart(){
+ if(MIC.on){ micStop(); return; }
+ try{ stopSpeak(); }catch(e){}
+ var v=qEl.value.replace(/\s+$/,''); MIC.base=v?v+((LANG==='zh'||LANG==='zs'||LANG==='ja')?'':' '):'';
+ if(MIC.dict){
+  MIC.on=true; qEl.placeholder=MT(2); micBtn();
+  var pr; try{ pr=MIC.dict.start(); }catch(e){ pr=Promise.reject(e); }
+  Promise.resolve(pr).catch(function(e){ micEnd(); if(e&&e.code==='not_granted'){ MIC.dict=null; } toast(e&&e.code==='not_granted'?MT(3):MT(4)); });
+  return;
+ }
+ if(!SRC){ toast(MT(4)); try{ qEl.focus(); }catch(e){} return; }
+ var r; try{ r=new SRC(); }catch(e){ toast(MT(4)); return; }
+ MIC.rec=r; r.lang=MICLANG[LANG]||'en-US'; r.interimResults=true; r.continuous=true; r.maxAlternatives=1;
+ var heard=false;
+ function idle(){ clearTimeout(MIC.tmr); MIC.tmr=setTimeout(function(){ if(MIC.on) micStop(); },heard?2200:7000); }
+ r.onresult=function(ev){ heard=true; var fin='',tmp=''; for(var i=0;i<ev.results.length;i++){ var t=ev.results[i][0].transcript; if(ev.results[i].isFinal) fin+=t; else tmp+=t; } qEl.value=MIC.base+fin+tmp; autosize(); idle(); };
+ r.onerror=function(ev){ var c=ev&&ev.error; if(c==='not-allowed'||c==='service-not-allowed'){ toast(c==='not-allowed'?MT(3):MT(4)); if(c==='service-not-allowed') SRC=null; } else if(c==='no-speech'){ toast(MT(5)); } else if(c!=='aborted'){ toast(MT(4)); } };
+ r.onend=function(){ if(MIC.rec===r) micEnd(); };
+ try{ r.start(); MIC.on=true; qEl.placeholder=MT(2); micBtn(); idle(); }catch(e){ MIC.rec=null; toast(MT(4)); }
+}
+$('micBtn').addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); micStart(); });
+micBtn();
+function autosize(){ qEl.style.height='auto'; qEl.style.height=Math.min(qEl.scrollHeight,200)+'px'; if($('micBtn')) micBtn(); }
+qEl.addEventListener('input',function(){ autosize(); micBtn(); });
 qEl.addEventListener('keydown',function(e){
  var touch=('ontouchstart' in window)&&window.innerWidth<820;
  if(e.key==='Enter'&&!e.shiftKey&&!touch&&!e.isComposing&&e.keyCode!==229){ e.preventDefault(); send(qEl.value); }
@@ -1646,7 +1706,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1111.2240',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1113.0105',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
