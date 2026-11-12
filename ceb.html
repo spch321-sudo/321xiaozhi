@@ -6,20 +6,20 @@
 <title>Pangutana kang Xiaozhi</title>
 <meta name="description" content="Pangutana kang Xiaozhi: Bibliya, pagtuo ug kinabuhi · Kingdom 321 Air Fellowship">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.0111">
-<link rel="icon" href="favicon.ico?v=v2026.1113.0111" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.0111">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.0111">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.0111">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.0111">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.0111">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.0114">
+<link rel="icon" href="favicon.ico?v=v2026.1113.0114" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.0114">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.0114">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.0114">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.0114">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.0114">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1113.0111"></script>
+<script src="k321gate.js?v=v2026.1113.0114"></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ceb';</script>
@@ -1115,7 +1115,8 @@ function send(text){
  stopSpeak(); closeSheet();
  S.chat.push({role:'user',t:text,ts:Date.now()});
  if(X.crisisHit(text)) S.chat.push({role:'ai',t:X.crisisCard(),crisis:true,ts:Date.now()});
- var m={role:'ai',t:'',pending:true,ts:Date.now(),meta:modeText()}; S.chat.push(m);
+ var voice=!!S.voiceNext; S.voiceNext=false;
+ var m={role:'ai',t:'',pending:true,ts:Date.now(),meta:modeText()}; if(voice) m.voice=true; S.chat.push(m);
  var idx=S.chat.length-1, msgs=history();
  S.busy=true; S.ctl=window.AbortController?new AbortController():null;
  $('q').value=''; autosize(); render(); scrollTo(idx-1);
@@ -1140,6 +1141,7 @@ function send(text){
   m.pending=false; m.cont=false; S.busy=false; S.ctl=null;
   foldOld(idx); save(); render();
   if(m.ok&&!m.err) genFU(idx);
+  if(voice&&m.ok&&!m.err&&m.t.length>12) speak(idx);
  });
 }
 function reAnswerLast(msg){
@@ -1551,9 +1553,13 @@ function speakFallback(i,segs,from){
  var gen=SP.gen,k=from||0;
  if(!window.speechSynthesis){ stopSpeak(); toast(T('ttsFail')); return; }
  toast(T('ttsLocal'));
- function nx(){ if(SP.gen!==gen) return; if(k>=segs.length){ S.speaking=-1; spPaint(); return; }
+ function nx(){ if(SP.gen!==gen) return; if(k>=segs.length){ S.speaking=-1; spPaint(); spDone(i); return; }
   var u=new SpeechSynthesisUtterance(segs[k++]); u.lang={en:'en-US',zs:'zh-CN',ko:'ko-KR',ja:'ja-JP',id:'id-ID',ceb:'fil-PH'}[LANG]||'zh-TW'; u.rate=.95; u.onend=nx; u.onerror=nx; speechSynthesis.speak(u); }
  nx();
+}
+function spDone(i){
+ var m=S.chat[i]; if(!m||!m.voice||i!==S.chat.length-1||S.busy||S.sheet||S.drawer) return;
+ setTimeout(function(){ if(!MIC.on&&S.speaking<0&&!S.busy&&!qEl.value.trim()){ MIC.loop=true; micStart(); } },450);
 }
 function speak(i){
  if(S.speaking===i){ stopSpeak(); return; }
@@ -1564,7 +1570,7 @@ function speak(i){
  function pre(n){ for(var j=n;j<Math.min(segs.length,n+2);j++) ttsGet(segs[j],gen); }
  function play(){
   if(SP.gen!==gen) return;
-  if(k>=segs.length){ S.speaking=-1; spPaint(); return; }
+  if(k>=segs.length){ S.speaking=-1; spPaint(); spDone(i); return; }
   var me=k; pre(me+1);
   ttsGet(segs[me],gen).then(function(url){
    if(SP.gen!==gen) return;
@@ -1666,16 +1672,18 @@ function micBtn(){
  b.innerHTML=MIC.on?'<span class="micwave"><i></i><i></i><i></i></span>':IC.mic;
 }
 function micEnd(quiet){ var was=MIC.on,got=MIC.got; MIC.on=false; MIC.got=false; clearTimeout(MIC.tmr); MIC.rec=null; qEl.placeholder=T('placeholder'); autosize(); micBtn();
- if(was&&got&&!quiet&&qEl.value.trim()&&!S.busy){ setTimeout(function(){ if(!MIC.on&&qEl.value.trim()) send(qEl.value); },250); } }
+ if(was&&got&&!quiet&&qEl.value.trim()&&!S.busy){ setTimeout(function(){ if(!MIC.on&&qEl.value.trim()){ S.voiceNext=true; send(qEl.value); } },250); } }
 function micStop(quiet){ clearTimeout(MIC.tmr); var r=MIC.rec; MIC.rec=null; if(MIC.dict&&MIC.on){ try{ MIC.dict.stop(); }catch(e){} } if(r){ try{ r.stop(); }catch(e){} } micEnd(quiet); }
 function micStart(){
  if(MIC.on){ micStop(); return; }
+ var looped=MIC.loop; MIC.loop=false;
  try{ stopSpeak(); }catch(e){}
+ if(!looped){ try{ spUnlock(); }catch(e){} }
  var v=qEl.value.replace(/\s+$/,''); MIC.base=v?v+((LANG==='zh'||LANG==='zs'||LANG==='ja')?'':' '):'';
  if(MIC.dict){
   MIC.on=true; qEl.placeholder=MT(2); micBtn();
   var pr; try{ pr=MIC.dict.start(); }catch(e){ pr=Promise.reject(e); }
-  Promise.resolve(pr).catch(function(e){ micEnd(true); if(e&&e.code==='not_granted'){ MIC.dict=null; } toast(e&&e.code==='not_granted'?MT(3):MT(4)); });
+  Promise.resolve(pr).catch(function(e){ micEnd(true); if(looped) return; if(e&&e.code==='not_granted'){ MIC.dict=null; } toast(e&&e.code==='not_granted'?MT(3):MT(4)); });
   return;
  }
  if(!SRC){ toast(MT(4)); try{ qEl.focus(); }catch(e){} return; }
@@ -1684,9 +1692,9 @@ function micStart(){
  var heard=false;
  function idle(){ clearTimeout(MIC.tmr); MIC.tmr=setTimeout(function(){ if(MIC.on) micStop(); },heard?2200:7000); }
  r.onresult=function(ev){ heard=true; MIC.got=true; var fin='',tmp=''; for(var i=0;i<ev.results.length;i++){ var t=ev.results[i][0].transcript; if(ev.results[i].isFinal) fin+=t; else tmp+=t; } qEl.value=MIC.base+fin+tmp; autosize(); idle(); };
- r.onerror=function(ev){ var c=ev&&ev.error; if(c!=='no-speech'&&c!=='aborted') MIC.got=false; if(c==='not-allowed'||c==='service-not-allowed'){ toast(c==='not-allowed'?MT(3):MT(4)); if(c==='service-not-allowed') SRC=null; } else if(c==='no-speech'){ toast(MT(5)); } else if(c!=='aborted'){ toast(MT(4)); } };
+ r.onerror=function(ev){ var c=ev&&ev.error; if(c!=='no-speech'&&c!=='aborted') MIC.got=false; if(c==='not-allowed'||c==='service-not-allowed'){ if(!looped) toast(c==='not-allowed'?MT(3):MT(4)); if(c==='service-not-allowed') SRC=null; } else if(c==='no-speech'){ if(!looped) toast(MT(5)); } else if(c!=='aborted'&&!looped){ toast(MT(4)); } };
  r.onend=function(){ if(MIC.rec===r) micEnd(); };
- try{ r.start(); MIC.on=true; qEl.placeholder=MT(2); micBtn(); idle(); }catch(e){ MIC.rec=null; toast(MT(4)); }
+ try{ r.start(); MIC.on=true; qEl.placeholder=MT(2); micBtn(); idle(); }catch(e){ MIC.rec=null; if(!looped) toast(MT(4)); }
 }
 $('micBtn').addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); micStart(); });
 micBtn();
@@ -1707,7 +1715,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1113.0111',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1113.0114',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
