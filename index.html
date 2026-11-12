@@ -6,21 +6,21 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.1900">
-<link rel="icon" href="favicon.ico?v=v2026.1113.1900" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.1900">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.1900">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.1900">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.1900">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.1900">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.2000">
+<link rel="icon" href="favicon.ico?v=v2026.1113.2000" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.2000">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.2000">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.2000">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.2000">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.2000">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1113.1900"></script>
-<script src="xzplus.js?v=v2026.1113.1900" defer></script>
+<script src="k321gate.js?v=v2026.1113.2000"></script>
+<script src="xzplus.js?v=v2026.1113.2000" defer></script>
 </head>
 <body>
 
@@ -351,6 +351,17 @@ html #xz2pf input[style*="width:120px"]{width:7.5em!important}
 .qtr{display:block;color:var(--muted);font-size:.86em;margin-top:2px}
 @media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}.micbtn.on,.micwave i{animation:none}}
 @media (max-width:420px){.audgrid{grid-template-columns:1fr 1fr}}
+/* ct5-1113 牧者工具 */
+.c5tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.c5tools button{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;border:1px solid var(--line);background:var(--page);color:var(--ink);border-radius:16px;padding:12px}
+.c5tools span{font-size:1.6em;line-height:1}.c5tools b{font-size:.98em}.c5tools small{font-size:.76em;color:var(--muted);line-height:1.35}
+.c5on{font-style:normal;font-size:.75em;color:#fff;background:var(--accent);border-radius:999px;padding:1px 8px;margin-left:4px}
+.c5mm{margin:12px 0;overflow-x:auto;width:100%;box-sizing:border-box}
+.c5svg{display:block;width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px;cursor:zoom-in}
+.c5svg svg{width:100%;height:auto}.c5big svg{max-width:100%;height:auto}
+.c5big{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px;margin:6px 0 12px;max-height:62vh}
+.c5big svg{width:100%;height:auto}
+.c5err{font-size:.82em;color:var(--muted);margin:8px 0}.c5err pre{white-space:pre-wrap;font-size:.9em;background:var(--soft);border-radius:10px;padding:8px}
 /* ct4-1113 陪伴助手 */
 .c4think{margin:0 0 10px;border:1px dashed var(--line);border-radius:12px;padding:6px 12px;font-size:.88em;color:var(--muted)}
 .c4think summary{cursor:pointer;font-weight:600;color:var(--accent)}.c4think[open] summary{margin-bottom:4px}
@@ -1038,7 +1049,7 @@ function BI(){ var v=lsGet('bi_'+LANG,''); return (v&&v!==LANG&&LANGS.indexOf(v)
 function biSys(){ var b=BI(); if(!b) return '';
  return '\n\nBILINGUAL MODE (parallel reading): The reader is reading two languages side by side. Write the whole answer in '+LNAME[LANG]+' exactly as the rules above say, but right after EVERY heading, every paragraph line, every list item and every quote line, add ONE new line that starts with "%% " followed by a faithful, natural '+LNAME[b]+' translation of that line. Put the "%% " line directly under the line it translates (for list items, indent it two spaces under the item). Keep markdown markers (#, -, 1., >, **) on the original line only; the "%% " line is plain text (bold inside it is allowed). In tables, write each cell as "original / translation". When the translation quotes Scripture, use the wording of '+LBIBLE[b]+'. Do not add any other extra text. Make the answer a little shorter than usual so both languages fit.';
 }
-function sysPrompt(){ return T('sysBase')+X.sysExtra()+T('sysGeneral')+biSys()+ctSys2()+c4Sys(); }
+function sysPrompt(){ return T('sysBase')+X.sysExtra()+T('sysGeneral')+biSys()+ctSys2()+c4Sys()+c5Sys(); }
 function maxTok(){ return Math.round((c4On()?1.4:1)*maxTok0()); }
 function maxTok0(){ return BI()?Math.min(8000,Math.round(X.maxTokens()*1.8)):X.maxTokens(); }
 function noTr(s){ return String(s||'').split('\n').filter(function(l){ return !/^\s*(>\s*)?%%/.test(l); }).join('\n'); }
@@ -1138,7 +1149,8 @@ function listHTML(L,i){
  for(var k=0;k<items.length;k++) h+='<li>'+items[k].h+items[k].sub+'</li>';
  return [h+'</'+tag+'>',i];
 }
-function md(src){
+function md(src){ return c5md(src); }
+function md0(src){
  var L=String(src||'').replace(/\r/g,'').split('\n'),out=[],i=0,para=[];
  var TRL=/^%%\s?/;
  function flush(){ if(para.length){ var a=[]; for(var k=0;k<para.length;k++) a.push(inl(para[k])); out.push('<p>'+a.join('<br>')+'</p>'); para=[]; } }
@@ -1164,7 +1176,7 @@ function md(src){
  flush(); return out.join('');
 }
 function plain(s){
- return String(s||'').replace(/\r/g,'').split('\n').map(function(l){
+ return String(s||'').replace(/```mermaid[\s\S]*?```/g,'').replace(/\r/g,'').split('\n').map(function(l){
   var t=l.trim();
   if(/^\|?\s*:?-{2,}/.test(t)&&t.indexOf('|')>=0) return '';
   if(/^\|.*\|$/.test(t)) return '・'+cells(t).map(function(x){return x.trim();}).join('　');
@@ -1243,7 +1255,7 @@ function send(text){
  text=String(text||'').trim(); if(!text&&S.c3Img&&!S.busy) text=C3('imgAsk'); if(!text||S.busy) return;
  if(!S.chat.length&&NAV[NAV.length-1]!=='home') NAV.push('home');
  stopSpeak(); closeSheet();
- S.chat.push(c3UserMsg({role:'user',t:text,ts:Date.now()}));
+ S.chat.push(c5UserMsg(c3UserMsg({role:'user',t:text,ts:Date.now()})));
  if(X.crisisHit(text)) S.chat.push({role:'ai',t:X.crisisCard(),crisis:true,ts:Date.now()});
  var voice=!!S.voiceNext; S.voiceNext=false;
  var m={role:'ai',t:'',pending:true,ts:Date.now(),meta:modeText()+c4Meta()}; if(S.persona) m.persona=S.persona.name; if(voice) m.voice=true; S.chat.push(m);
@@ -1459,7 +1471,7 @@ function msgHTML(m,i,lastOk){
   if(i===lastOk&&!S.busy) h+=ab('lenmenu',i,IC.retry,T('reW'));
  }
  h+=ab('del',i,IC.trash,T('delW'))+(m.meta?'<span class="meta">'+esc(m.meta)+'</span>':'')+'</div>';
- h+=ctMemNote(m)+c3RwNote(m,i);
+ h+=c5Dia(m)+ctMemNote(m)+c3RwNote(m,i);
  if(i===lastOk&&!S.busy) h+='<div class="fu" id="fu'+i+'">'+fuHTML(m)+'</div>';
  return h+'</div>';
 }
@@ -1601,7 +1613,7 @@ function renderDrawer(){
  var d=$('drawer'),first=!d;
  if(first){ d=document.createElement('div'); d.id='drawer'; document.body.appendChild(d); }
  var keep=first?(S.drawerTop||0):0,old=d.querySelector('.dscroll'); if(old) keep=old.scrollTop;
- var nav=[['newchat',IC.edit,T('newChat')],['ctincog',CTI.incog,CT('incogStart')],['ctcall',C2I.call,C2('callNav')],['ctrole',C4I.role,C4('roleNav')],['ctkid',C4I.kid,C4('kid')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['ctmemopen',C2I.mem,C2('memNav')],['ctciopen',C2I.ci,C2('ciNav')],['settings',IC.gear,T('settings')]];
+ var nav=[['newchat',IC.edit,T('newChat')],['ctincog',CTI.incog,CT('incogStart')],['ctcall',C2I.call,C2('callNav')],['cttools',C5I.tb,C5('tbNav')],['ctstyle',C5I.st,C5('stNav')],['ctrole',C4I.role,C4('roleNav')],['ctkid',C4I.kid,C4('kid')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['ctmemopen',C2I.mem,C2('memNav')],['ctciopen',C2I.ci,C2('ciNav')],['settings',IC.gear,T('settings')]];
  var h='<div class="dmask" data-act="drawerclose"></div><nav class="dpanel" aria-label="'+esc(T('menu'))+'"><div class="dhead"><span class="dlamp">'+LAMP+'</span><b>'+T('name')+'</b>'+langBtns('dlang')+'</div>';
  h+='<div class="dsearch">'+IC.search+'<input id="convsearch" type="search" placeholder="'+esc(T('convSearch'))+'" value="'+esc(S.convQ)+'"></div><div class="dscroll"><div class="dnav">';
  for(var i=0;i<nav.length;i++) h+='<button class="ditem" data-act="'+nav[i][0]+'"><span class="di">'+nav[i][1]+'</span><span>'+esc(nav[i][2])+'</span></button>';
@@ -1739,6 +1751,273 @@ function setLang(v){
 }
 
 /* ---------- 事件 ---------- */
+/* ---------- 牧者工具（ct5-1113）：牧養工具箱、寫作風格、存成 Word／講道投影片、圖表與關係圖 ---------- */
+function C5L(s){ var a=String(s).split('|'),i={zh:0,zs:1,en:2,ko:3,ja:4,id:5,ceb:6}[LANG]; if(i==null) i=2; return a[i]!=null&&a[i]!==''?a[i]:(a[2]||a[0]); }
+var C5S={
+ tbNav:'牧養工具箱|牧养工具箱|Pastoral toolbox|목회 도구함|牧会ツールボックス|Kotak alat pastoral|Kahon sa himan sa pastor',
+ tbH:'🧰 牧養工具箱|🧰 牧养工具箱|🧰 Pastoral toolbox|🧰 목회 도구함|🧰 牧会ツールボックス|🧰 Kotak alat pastoral|🧰 Kahon sa himan sa pastor',
+ tbShort:'備課・探訪・寫作|备课・探访・写作|Prep · visits · writing|설교·심방·글쓰기|説教・訪問・執筆|Khotbah · kunjungan · tulisan|Wali · bisita · pagsulat',
+ tbHint:'選一個工具，填幾個重點，小智就產出完整的預備。這只是幫助預備，不能取代真實的陪伴與禱告。|选一个工具，填几个重点，小智就产出完整的预备。这只是帮助预备，不能取代真实的陪伴与祷告。|Pick a tool, fill in a few points, and Xiaozhi prepares the rest. It helps you prepare; it never replaces real presence and prayer.|도구를 골라 몇 가지만 적으면 샤오즈가 준비를 도와요. 실제 함께함과 기도를 대신하지는 않아요.|ツールを選び、いくつか書き込むと、シャオジーが準備を整えます。実際の寄り添いと祈りの代わりにはなりません。|Pilih alat, isi beberapa poin, Xiaozhi menyiapkan sisanya. Ini membantu persiapan, bukan pengganti kehadiran dan doa.|Pilia ang himan, isulat ang pipila ka punto, ug si Xiaozhi ang mag-andam. Tabang kini, dili puli sa tinuod nga pag-uban ug pag-ampo.',
+ tbGo:'請小智產出|请小智产出|Prepare it|만들어 줘|作成する|Siapkan|Andama',
+ tbNeed:'請至少填第一欄|请至少填第一栏|Please fill in the first box|첫 칸은 꼭 적어 주세요|最初の欄は入力してください|Isi kotak pertama|Isulat ang unang kahon',
+ tbUseStyle:'用我的寫作風格：{0}|用我的写作风格：{0}|Use my writing style: {0}|내 글 스타일 사용: {0}|わたしの文体を使う：{0}|Pakai gaya tulisan saya: {0}|Gamita ang akong estilo: {0}',
+ stNav:'寫作風格|写作风格|Writing style|글쓰기 스타일|文体|Gaya tulisan|Estilo sa pagsulat',
+ stH:'✍️ 我的寫作風格|✍️ 我的写作风格|✍️ My writing style|✍️ 나의 글쓰기 스타일|✍️ わたしの文体|✍️ Gaya tulisan saya|✍️ Akong estilo sa pagsulat',
+ stHint:'貼上或上傳幾篇你寫的講章、靈修或信件（越多越準），小智會整理出你的寫作風格。開啟後，小智起草講章、信件、致詞時就會像你寫的。|粘贴或上传几篇你写的讲章、灵修或信件（越多越准），小智会整理出你的写作风格。开启后，小智起草讲章、信件、致词时就会像你写的。|Paste or upload a few of your sermons, devotionals or letters (the more the better). Xiaozhi will describe your style and use it when drafting sermons, letters and speeches.|직접 쓴 설교, 묵상, 편지 몇 편을 붙여넣거나 올리면 샤오즈가 문체를 정리해요. 켜 두면 초안이 내가 쓴 것처럼 나와요.|ご自身の説教・デボーション・手紙をいくつか貼り付けるかアップロードすると、シャオジーが文体をまとめます。オンにすると下書きがあなたの文体になります。|Tempel atau unggah beberapa khotbah, renungan, atau surat Anda. Xiaozhi merangkum gaya Anda dan memakainya saat menulis draf.|I-paste o i-upload ang pipila nimo ka wali, debosyon o sulat. Si Xiaozhi mohulagway sa imong estilo ug mogamit niini sa mga draft.',
+ stNew:'＋ 建立新的寫作風格|＋ 建立新的写作风格|+ New writing style|＋ 새 스타일 만들기|＋ 新しい文体を作る|+ Gaya baru|+ Bag-ong estilo',
+ stName:'風格名稱（例如：講台、靈修、給長輩的信）|风格名称（例如：讲台、灵修、给长辈的信）|Style name (e.g. Pulpit, Devotional, Letters to seniors)|스타일 이름(예: 설교단, 묵상, 어르신께 편지)|文体の名前（例：説教、デボーション、高齢の方への手紙）|Nama gaya (mis. Mimbar, Renungan, Surat)|Ngalan sa estilo (pananglitan: Pulpito, Debosyon, Sulat)',
+ stSamples:'把你的文章貼在這裡（可以貼好幾篇）|把你的文章粘贴在这里（可以贴好几篇）|Paste your writing here (several pieces are fine)|여기에 글을 붙여넣으세요(여러 편 가능)|ここに文章を貼り付け（複数可）|Tempel tulisan Anda di sini (boleh beberapa)|I-paste dinhi ang imong sinulat (pwede daghan)',
+ stFile:'＋ 從檔案加入（Word、PDF、文字檔）|＋ 从文件加入（Word、PDF、文本）|+ Add from a file (Word, PDF, text)|＋ 파일에서 추가(Word, PDF, 텍스트)|＋ ファイルから追加（Word、PDF、テキスト）|+ Tambah dari file (Word, PDF, teks)|+ Idugang gikan sa file (Word, PDF, text)',
+ stMake:'整理我的風格|整理我的风格|Analyze my style|내 스타일 정리하기|文体をまとめる|Analisis gaya saya|Analisaha ang akong estilo',
+ stMaking:'小智正在讀你的文章，整理風格…|小智正在读你的文章，整理风格…|Xiaozhi is reading your writing…|샤오즈가 글을 읽고 정리하는 중…|シャオジーが文章を読んでいます…|Xiaozhi sedang membaca tulisan Anda…|Gibasa ni Xiaozhi ang imong sinulat…',
+ stShort:'文章太短了，請至少貼 300 字|文章太短了，请至少贴 300 字|Too short — please paste at least 300 characters|너무 짧아요. 300자 이상 붙여넣어 주세요|短すぎます。300字以上貼り付けてください|Terlalu pendek — minimal 300 karakter|Mubo kaayo — labing menos 300 ka karakter',
+ stFail:'整理失敗，請再試一次|整理失败，请再试一次|Couldn’t analyze — please try again|정리하지 못했어요. 다시 시도해 주세요|まとめられませんでした。もう一度お試しください|Gagal — coba lagi|Napakyas — sulayi pag-usab',
+ stOn:'使用中|使用中|In use|사용 중|使用中|Dipakai|Gigamit',
+ stUse:'使用這個風格|使用这个风格|Use this style|이 스타일 사용|この文体を使う|Pakai gaya ini|Gamita kini',
+ stOff:'不使用風格|不使用风格|Don’t use a style|스타일 사용 안 함|文体を使わない|Tanpa gaya|Ayaw gamita',
+ stGuide:'風格說明（可以自己修改）|风格说明（可以自己修改）|Style guide (you can edit it)|스타일 설명(직접 고칠 수 있어요)|文体の説明（編集できます）|Panduan gaya (bisa diubah)|Giya sa estilo (mahimong usbon)',
+ stSave:'儲存|保存|Save|저장|保存|Simpan|I-save',
+ stDel:'刪除這個風格|删除这个风格|Delete this style|이 스타일 삭제|この文体を削除|Hapus gaya ini|Papasa kini nga estilo',
+ stSaved:'已儲存|已保存|Saved|저장했어요|保存しました|Tersimpan|Na-save',
+ docx:'📄 存成 Word|📄 存成 Word|📄 Save as Word|📄 Word로 저장|📄 Word で保存|📄 Simpan sebagai Word|📄 I-save isip Word',
+ pptx:'📊 做成講道投影片|📊 做成讲道投影片|📊 Make sermon slides|📊 설교 슬라이드 만들기|📊 説教スライドを作る|📊 Buat slide khotbah|📊 Himoa nga slides sa wali',
+ pptMaking:'小智正在整理投影片…|小智正在整理投影片…|Xiaozhi is preparing the slides…|슬라이드를 만드는 중…|スライドを作っています…|Menyiapkan slide…|Gihimo ang slides…',
+ pptFail:'投影片做不出來，請再試一次|投影片做不出来，请再试一次|Couldn’t make slides — please try again|슬라이드를 만들지 못했어요|スライドを作れませんでした|Gagal membuat slide|Wala nahimo ang slides',
+ fileDone:'檔案已做好|文件已做好|File ready|파일이 준비됐어요|ファイルができました|File siap|Andam na ang file',
+ dia:'🗺 畫成圖|🗺 画成图|🗺 Draw a diagram|🗺 그림으로 그리기|🗺 図にする|🗺 Buat diagram|🗺 Iguhit',
+ diaH:'🗺 畫成圖|🗺 画成图|🗺 Diagram|🗺 그림|🗺 図|🗺 Diagram|🗺 Diagram',
+ dTime:'📅 時間軸|📅 时间轴|📅 Timeline|📅 연대표|📅 年表|📅 Garis waktu|📅 Timeline',
+ dRel:'👨‍👩‍👧 人物關係圖|👨‍👩‍👧 人物关系图|👨‍👩‍👧 People & relationships|👨‍👩‍👧 인물 관계도|👨‍👩‍👧 人物関係図|👨‍👩‍👧 Hubungan tokoh|👨‍👩‍👧 Relasyon sa mga tawo',
+ dFlow:'➡️ 流程圖|➡️ 流程图|➡️ Flowchart|➡️ 순서도|➡️ フローチャート|➡️ Diagram alur|➡️ Flowchart',
+ dMind:'🧠 心智圖|🧠 思维导图|🧠 Mind map|🧠 마인드맵|🧠 マインドマップ|🧠 Peta pikiran|🧠 Mind map',
+ diaMaking:'小智正在畫圖…|小智正在画图…|Xiaozhi is drawing…|그리는 중…|描いています…|Sedang menggambar…|Nagguhit…',
+ diaFail:'圖畫不出來，請換一種圖再試|图画不出来，请换一种图再试|Couldn’t draw it — try another type|그리지 못했어요. 다른 종류로 해 보세요|描けませんでした。別の種類でお試しください|Gagal — coba jenis lain|Napakyas — sulayi ang lain',
+ diaSave:'存成圖片|保存为图片|Save image|이미지 저장|画像を保存|Simpan gambar|I-save ang hulagway',
+ diaKeep:'放進回答下面|放进回答下面|Add under the answer|답변 아래에 넣기|回答の下に追加|Taruh di bawah jawaban|Ibutang sa ilawom sa tubag',
+ diaCode:'圖的原始碼|图的源代码|Diagram code|그림 코드|図のコード|Kode diagram|Code sa diagram',
+ diaOff:'（需要網路才能畫圖）|（需要网络才能画图）|(Needs internet to draw)|(그리려면 인터넷이 필요해요)|（描画にはネット接続が必要です）|(Perlu internet)|(Kinahanglan og internet)'
+};
+function C5(k,a){ var s=C5L(C5S[k]||k); return a!=null?s.replace('{0}',a):s; }
+var C5_COMMON=' Write in the same language as the user. Quote Bible verses in full with references. Where it fits naturally, apply the 321 vision (Jesus is my model, the Bible is my standard, the Holy Spirit is my guide; let Jesus be King and receive all the glory). Use clear headings and lists.';
+var C5T=[
+ {k:'visit',ic:'🏠',n:'探訪預備|探访预备|Visit preparation|심방 준비|訪問の準備|Persiapan kunjungan|Pag-andam sa pagbisita',d:'對象的狀況 → 談話方向、經文、要避開的話、跟進|对象的状况 → 谈话方向、经文、要避开的话、跟进|Situation → direction, verses, what to avoid, follow-up|상황 → 대화 방향, 말씀, 피할 말, 후속|状況 → 話の方向、聖句、避ける言葉、フォロー|Situasi → arah, ayat, yang dihindari, tindak lanjut|Kahimtang → direksyon, bersikulo, likayan, follow-up',
+  f:[['who','in','探訪對象（稱呼、年紀、和你的關係）|探访对象（称呼、年纪、和你的关系）|Who you are visiting (name, age, relationship)|심방 대상(호칭, 나이, 관계)|訪問する相手（呼び名・年齢・関係）|Siapa yang dikunjungi|Kinsa ang bisitahon'],['sit','ta','目前的狀況|目前的状况|Current situation|현재 상황|現在の状況|Situasi sekarang|Kahimtang karon'],['goal','in','這次探訪的目的（可不填）|这次探访的目的（可不填）|Purpose of the visit (optional)|이번 심방의 목적(선택)|訪問の目的（任意）|Tujuan kunjungan (opsional)|Katuyoan (dili kinahanglan)']],
+  spec:'Prepare a pastoral visit plan: 1) the person\'s likely feelings and needs; 2) two or three gentle opening lines; 3) conversation direction with open, caring questions; 4) two or three fitting Bible verses quoted in full and how to share them; 5) things to avoid saying; 6) a short prayer to pray together; 7) follow-up actions, and when to suggest professional help (medical, counseling, legal or crisis services).'},
+ {k:'evan',ic:'🙋',n:'傳福音談道預備|传福音谈道预备|Gospel conversation prep|전도 대화 준비|伝道の対話の準備|Persiapan penginjilan|Pag-andam sa pagsangyaw',d:'對方的背景與疑問 → 切入點、回應、邀請、跟進|对方的背景与疑问 → 切入点、回应、邀请、跟进|Background & questions → entry points, answers, invitation, follow-up|배경과 질문 → 접점, 답변, 초청, 후속|背景と疑問 → 糸口、答え、招き、フォロー|Latar & pertanyaan → titik masuk, jawaban, undangan|Kagikan ug pangutana → sugdanan, tubag, imbitasyon',
+  f:[['who','in','對象（稱呼、和你的關係）|对象（称呼、和你的关系）|Who (name, relationship)|대상(호칭, 관계)|相手（呼び名・関係）|Siapa (nama, hubungan)|Kinsa (ngalan, relasyon)'],['bg','ta','信仰背景、最近關心的事|信仰背景、最近关心的事|Faith background and current concerns|신앙 배경, 요즘 관심사|信仰の背景、最近の関心|Latar iman, hal yang dipikirkan|Kagikan sa pagtuo, mga gikabalak-an'],['q','ta','他問過的問題或反對（可不填）|他问过的问题或反对（可不填）|Questions or objections (optional)|질문이나 반대(선택)|質問や反論（任意）|Pertanyaan/keberatan (opsional)|Mga pangutana (dili kinahanglan)']],
+  spec:'Prepare a one-to-one gospel conversation: 1) natural entry points from their life; 2) an opening; 3) honest, gentle answers to their questions or objections with Scripture; 4) a simple gospel outline in 4 short points; 5) whether and how to invite a response without pressure (respect their freedom; no manipulative tactics; the Holy Spirit works); 6) follow-up and first steps of discipleship.'},
+ {k:'serm',ic:'📖',n:'講章大綱|讲章大纲|Sermon outline|설교 개요|説教のアウトライン|Kerangka khotbah|Outline sa wali',d:'經文與主題 → 引言、三要點、比喻、應用、結語|经文与主题 → 引言、三要点、比喻、应用、结语|Passage & theme → intro, 3 points, illustrations, application|본문과 주제 → 서론, 세 대지, 예화, 적용|聖書箇所と主題 → 序論、3つの要点、例話、適用|Nas & tema → pembuka, 3 poin, ilustrasi, aplikasi|Teksto ug tema → pasiuna, 3 ka punto, ilustrasyon',
+  f:[['p','in','經文（例如：約翰福音 15:1-8）|经文（例如：约翰福音 15:1-8）|Passage (e.g. John 15:1-8)|본문(예: 요한복음 15:1-8)|聖書箇所（例：ヨハネ 15:1-8）|Nas (mis. Yohanes 15:1-8)|Teksto (pananglitan: Juan 15:1-8)'],['t','in','主題或想強調的重點（可不填）|主题或想强调的重点（可不填）|Theme or emphasis (optional)|주제나 강조점(선택)|主題・強調点（任意）|Tema (opsional)|Tema (dili kinahanglan)'],['a','in','會眾與時間（例如：主日 30 分鐘）|会众与时间（例如：主日 30 分钟）|Audience & length (e.g. Sunday, 30 min)|청중과 시간(예: 주일 30분)|会衆と時間（例：主日30分）|Jemaat & durasi|Mamiminaw ug gidugayon']],
+  spec:'Write a sermon outline: title; big idea in one sentence; an opening story; three main points, each with explanation of the text, an illustration and a concrete application; a 321 life application; conclusion and response/call; closing prayer. Indicate approximate minutes for each part.'},
+ {k:'grp',ic:'👥',n:'小組帶領單|小组带领单|Small-group guide|소그룹 인도지|小グループの進行表|Panduan kelompok kecil|Giya sa gamay nga grupo',d:'經文或主題 → 破冰、讀經、討論題、禱告|经文或主题 → 破冰、读经、讨论题、祷告|Passage → icebreaker, reading, questions, prayer|본문 → 아이스브레이크, 말씀, 질문, 기도|箇所 → アイスブレイク、聖書、質問、祈り|Nas → pemecah es, bacaan, pertanyaan, doa|Teksto → icebreaker, pagbasa, pangutana, pag-ampo',
+  f:[['p','in','經文或主題|经文或主题|Passage or topic|본문 또는 주제|聖書箇所・テーマ|Nas atau topik|Teksto o topiko'],['g','in','小組對象與人數（例如：青少年 8 人）|小组对象与人数（例如：青少年 8 人）|Group (e.g. 8 youth)|그룹(예: 청소년 8명)|グループ（例：中高生8人）|Kelompok (mis. 8 remaja)|Grupo (pananglitan: 8 ka batan-on)'],['m','in','時間（例如：90 分鐘）|时间（例如：90 分钟）|Time (e.g. 90 min)|시간(예: 90분)|時間（例：90分）|Waktu (mis. 90 menit)|Oras (pananglitan: 90 minutos)']],
+  spec:'Write a small-group leader guide with a time plan: welcome and icebreaker; worship/prayer; the passage quoted in full; observation, interpretation and application questions (3 each, open-ended); personal sharing prompts; a 321 practice for the week; prayer focus and how to close. Add tips for the leader (handling silence, a dominant talker, someone hurting).'},
+ {k:'letter',ic:'💌',n:'代禱信／感謝信|代祷信／感谢信|Prayer or thank-you letter|기도 편지/감사 편지|祈りの手紙・感謝の手紙|Surat doa/terima kasih|Sulat sa pag-ampo/pasalamat',d:'給誰、想說什麼 → 一封完整的信|给谁、想说什么 → 一封完整的信|To whom & what → a complete letter|받는 사람과 내용 → 완성된 편지|宛先と内容 → 完成した手紙|Untuk siapa & isi → surat lengkap|Para kang kinsa → kompleto nga sulat',
+  f:[['kind','in','信的種類（代禱信、感謝信、關懷信…）|信的种类（代祷信、感谢信、关怀信…）|Kind (prayer letter, thank-you, care…)|종류(기도, 감사, 위로…)|種類（祈り・感謝・お見舞い…）|Jenis (doa, terima kasih, peduli…)|Klase (pag-ampo, pasalamat…)'],['to','in','寫給誰|写给谁|To whom|받는 사람|宛先|Untuk siapa|Para kang kinsa'],['pts','ta','想說的重點|想说的重点|Points to include|담을 내용|伝えたいこと|Poin yang ingin disampaikan|Mga punto']],
+  spec:'Write the complete letter, warm and sincere, with a fitting Bible verse, ready to send. Keep it concise (about 300-500 Chinese characters or 200-350 English words) unless the points need more.'},
+ {k:'wed',ic:'💍',n:'婚禮祝福|婚礼祝福|Wedding blessing|결혼 축사|結婚式の祝辞|Berkat pernikahan|Panalangin sa kasal',d:'新人與故事 → 3–5 分鐘祝福|新人与故事 → 3–5 分钟祝福|Couple & stories → 3–5 min blessing|신랑신부와 이야기 → 3–5분 축사|新郎新婦と思い出 → 3〜5分の祝辞|Pasangan & cerita → 3–5 menit|Magtiayon ug istorya → 3–5 minutos',
+  f:[['c','in','新人的名字|新人的名字|The couple’s names|신랑 신부 이름|新郎新婦の名前|Nama pasangan|Ngalan sa magtiayon'],['s','ta','你和他們的關係、想提的故事|你和他们的关系、想提的故事|Your relationship and stories to mention|관계와 나누고 싶은 이야기|関係・エピソード|Hubungan & cerita|Relasyon ug istorya']],
+  spec:'Write a 3-5 minute wedding blessing speech to be spoken aloud: warm opening, a short story, the meaning of Christian marriage with Scripture (e.g. Ephesians 5, 1 Corinthians 13, Ecclesiastes 4:12), practical encouragement to both, and a closing blessing/prayer.'},
+ {k:'fun',ic:'🕊',n:'追思致詞|追思致词|Memorial tribute|추모사|追悼の言葉|Kata penghiburan|Pahinumdom sa namatay',d:'生平與信仰 → 溫柔有盼望的致詞|生平与信仰 → 温柔有盼望的致词|Life & faith → a gentle, hopeful tribute|생애와 신앙 → 소망의 추모사|生涯と信仰 → 希望のある言葉|Hidup & iman → kata penuh pengharapan|Kinabuhi ug pagtuo → malumo nga mensahe',
+  f:[['n','in','逝者的稱呼|逝者的称呼|Name of the departed|고인의 호칭|故人のお名前|Nama almarhum/almarhumah|Ngalan sa namatay'],['l','ta','生平、個性、令人懷念的事|生平、个性、令人怀念的事|Life, character, memories|생애, 성품, 추억|生涯・人柄・思い出|Hidup, sifat, kenangan|Kinabuhi, kinaiya, mga panumduman'],['f','in','信仰狀況（可不填）|信仰状况（可不填）|Faith (optional)|신앙(선택)|信仰（任意）|Iman (opsional)|Pagtuo (dili kinahanglan)']],
+  spec:'Write a memorial tribute of about 4-6 minutes: honor the person with specific memories, comfort the family gently, share the Christian hope of resurrection in Jesus with Scripture (e.g. John 11:25-26, 1 Thessalonians 4:13-14, Revelation 21:4) without pressure, and close with a prayer. If the person\'s faith is unknown, do not claim where they are; focus on God\'s comfort and hope.'}
+];
+function c5UserMsg(u){ if(S.c5Spec){ u.spec=S.c5Spec; S.c5Spec=null; } return u; }
+var C5I={tb:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2"/></svg>',st:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="M13 7l4 4M4 20l3-1"/></svg>'};
+function c5Tool(k){ for(var i=0;i<C5T.length;i++) if(C5T[i].k===k) return C5T[i]; return null; }
+/* ---------- 寫作風格 ---------- */
+function c5Styles(){ var a=lsGet('styles',[]); return (a&&typeof a.length==='number')?a:[]; }
+function c5Active(){ var id=lsGet('style',''),S2=c5Styles(); for(var i=0;i<S2.length;i++) if(S2[i].id===id) return S2[i]; return null; }
+function c5Sys(){
+ var s='',st=c5Active(),u=null;
+ for(var i=S.chat.length-1;i>=0;i--) if(S.chat[i].role==='user'){ u=S.chat[i]; break; }
+ if(u&&u.spec) s+='\n\n[Pastoral toolbox task] '+u.spec+C5_COMMON;
+ if(st) s+='\n\n[The user\'s own writing style — when you draft sermons, letters, devotionals or speeches for them, write in this style; for ordinary answers just let it flavor the tone]\n'+String(st.guide).slice(0,1500);
+ s+='\n\n[Diagrams] Only when the user asks for a diagram, chart, timeline, family tree, relationship map or flowchart, include exactly one Mermaid code block (```mermaid … ```) with short labels in the user\'s language; use "flowchart TD" or "flowchart LR" for relationships and processes, "timeline" for timelines, "mindmap" for mind maps. Avoid parentheses, quotes and colons inside node labels. Never include a diagram otherwise.';
+ return s;
+}
+function c5StyleHTML(){
+ var L=c5Styles(),act=c5Active(),h='<div class="sheethead"><h2>'+esc(C5('stH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C5('stHint'))+'</p>';
+ if(S.c5Edit){
+  var e=S.c5Edit;
+  if(e.busy) return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C5('stMaking'))+'</p>';
+  if(e.id){ h+='<div class="sec"><input id="c5sn" class="ctin" maxlength="30" value="'+esc(e.name||'')+'"><h3>'+esc(C5('stGuide'))+'</h3><textarea id="c5sg" class="ctta" rows="12">'+esc(e.guide||'')+'</textarea><button class="ctgo" data-act="ctstsave">'+esc(C5('stSave'))+'</button>'+(act&&act.id===e.id?'':'<button class="ctbtn" data-act="ctstuse" data-id="'+e.id+'" style="margin-top:8px">'+esc(C5('stUse'))+'</button>')+'</div><div class="sec"><button class="danger" data-act="ctstdel">'+esc(S.ctArm?CT('delSure'):C5('stDel'))+'</button></div>'; return h; }
+  return h+'<div class="sec"><input id="c5sn" class="ctin" maxlength="30" placeholder="'+esc(C5('stName'))+'" value="'+esc(e.name||'')+'"><textarea id="c5ss" class="ctta" rows="10" placeholder="'+esc(C5('stSamples'))+'">'+esc(e.text||'')+'</textarea><button class="wide" data-act="ctstfile"><span>'+esc(C5('stFile'))+'</span><span>›</span></button><button class="ctgo" data-act="ctstmake">'+esc(C5('stMake'))+'</button></div>';
+ }
+ h+='<div class="sec">';
+ for(var i=0;i<L.length;i++) h+='<div class="ctmemrow"><span><b>'+esc(L[i].name)+'</b>'+(act&&act.id===L[i].id?' <em class="c5on">'+esc(C5('stOn'))+'</em>':'')+'<small>'+esc(String(L[i].guide).slice(0,60))+'…</small></span><button class="ctbtn" data-act="ctstopen" data-id="'+L[i].id+'">✎</button>'+(act&&act.id===L[i].id?'':'<button class="ctbtn pri" data-act="ctstuse" data-id="'+L[i].id+'">'+esc(C5('stUse'))+'</button>')+'</div>';
+ if(act) h+='<button class="ctbtn" data-act="ctstuse" data-id="" style="margin-top:8px">'+esc(C5('stOff'))+'</button>';
+ return h+'<button class="ctgo" data-act="ctstnew">'+esc(C5('stNew'))+'</button></div>';
+}
+function c5MakeStyle(){
+ var nm=(($('c5sn')||{}).value||'').trim()||C5('stNav'),tx=(($('c5ss')||{}).value||'').trim();
+ if(tx.length<300){ toast(C5('stShort')); return; }
+ S.c5Edit={busy:true,name:nm,text:tx}; renderSheet();
+ var LNM={zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English';
+ var ask='Analyze the WRITING SAMPLES below and write a concise STYLE GUIDE in '+LNM+' (at most 900 characters, bullet points) that another writer could follow to sound like this author: voice and tone; how the author addresses the reader; sentence length and rhythm; typical structure; favorite expressions, phrases and terminology (quote short examples); how Scripture is used; illustrations and humor; how pieces open and close. Do not summarize the content. Output only the guide.\nWRITING SAMPLES:\n'+tx.slice(0,14000);
+ getSample().then(function(sm){ if(sm) return sm(ask,{cache:false}).then(function(r){ return r&&r.text||''; }); return postRetry({model:MODEL,max_tokens:1400,system:'You are a careful writing coach.',messages:[{role:'user',content:ask}]}).then(extractReply); }).then(function(g){
+  g=String(g||'').trim(); if(g.length<20) throw new Error('short');
+  var L=c5Styles(),st={id:'w'+Date.now().toString(36),name:nm,guide:g,ts:Date.now()}; L.push(st); lsSet('styles',L); lsSet('style',st.id);
+  S.c5Edit={id:st.id,name:st.name,guide:st.guide}; if(S.sheet==='ctstyle') renderSheet(); toast(C5('stSaved'));
+ }).catch(function(){ S.c5Edit={name:nm,text:tx}; if(S.sheet==='ctstyle') renderSheet(); toast(C5('stFail')); });
+}
+/* ---------- 牧養工具箱 ---------- */
+function c5ToolsHTML(){
+ var h='<div class="sheethead"><h2>'+esc(C5('tbH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C5('tbHint'))+'</p><div class="c5tools">';
+ for(var i=0;i<C5T.length;i++) h+='<button data-act="cttool" data-v="'+C5T[i].k+'"><span>'+C5T[i].ic+'</span><b>'+esc(C5L(C5T[i].n))+'</b><small>'+esc(C5L(C5T[i].d))+'</small></button>';
+ h+='</div><div class="sec"><button class="wide" data-act="ctstyle"><span>'+esc(C5('stH'))+(c5Active()?'<br><small class="hint">'+esc(C5('stOn'))+'：'+esc(c5Active().name)+'</small>':'')+'</span><span>›</span></button></div>';
+ return h;
+}
+function c5ToolHTML(){
+ var t=c5Tool(S.c5T); if(!t) return '';
+ var h='<div class="sheethead"><h2>'+t.ic+' '+esc(C5L(t.n))+'</h2><button class="xbtn" data-act="cttools">‹</button></div><p class="hint">'+esc(C5L(t.d))+'</p><div class="sec">';
+ for(var i=0;i<t.f.length;i++){ var f=t.f[i]; h+='<h3>'+esc(C5L(f[2]))+'</h3>'+(f[1]==='ta'?'<textarea id="c5f_'+f[0]+'" class="ctta" rows="4"></textarea>':'<input id="c5f_'+f[0]+'" class="ctin">'); }
+ var st=c5Active(); if(st) h+='<p class="hint">✍️ '+esc(C5('tbUseStyle',st.name))+'</p>';
+ return h+'<button class="ctgo" data-act="cttoolgo">'+esc(C5('tbGo'))+'</button></div>';
+}
+function c5ToolGo(){
+ var t=c5Tool(S.c5T); if(!t) return; var lines=[t.ic+' '+C5L(t.n)],first='';
+ for(var i=0;i<t.f.length;i++){ var el=$('c5f_'+t.f[i][0]),v=el?el.value.trim():''; if(i===0) first=v; if(v) lines.push('・'+C5L(t.f[i][2]).replace(/（[^）]*）|\([^)]*\)/g,'').trim()+'：'+v); }
+ if(!first){ toast(C5('tbNeed')); var e0=$('c5f_'+t.f[0][0]); if(e0) e0.focus(); return; }
+ closeSheet(); S.c5Spec=t.spec; send(lines.join('\n'));
+}
+/* ---------- 存成 Word ---------- */
+var C5CRC=null;
+function c5crc(u){ if(!C5CRC){ C5CRC=[]; for(var n=0;n<256;n++){ var c=n; for(var k=0;k<8;k++) c=c&1?0xEDB88320^(c>>>1):c>>>1; C5CRC[n]=c>>>0; } } var x=0xFFFFFFFF; for(var i=0;i<u.length;i++) x=C5CRC[(x^u[i])&255]^(x>>>8); return (x^0xFFFFFFFF)>>>0; }
+function c5Zip(files){
+ var enc=new TextEncoder(),parts=[],cen=[],off=0;
+ function u16(v){ return [v&255,(v>>8)&255]; } function u32(v){ return [v&255,(v>>8)&255,(v>>16)&255,(v>>>24)&255]; }
+ files.forEach(function(f){ var nm=enc.encode(f[0]),d=enc.encode(f[1]),c=c5crc(d);
+  var lh=[].concat(u32(0x04034b50),u16(20),u16(0x0800),u16(0),u16(0),u16(0),u32(c),u32(d.length),u32(d.length),u16(nm.length),u16(0));
+  parts.push(new Uint8Array(lh),nm,d);
+  cen.push(new Uint8Array([].concat(u32(0x02014b50),u16(20),u16(20),u16(0x0800),u16(0),u16(0),u16(0),u32(c),u32(d.length),u32(d.length),u16(nm.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(off))),nm);
+  off+=lh.length+nm.length+d.length; });
+ var cl=0; cen.forEach(function(x){ cl+=x.length; });
+ var end=new Uint8Array([].concat(u32(0x06054b50),u16(0),u16(0),u16(files.length),u16(files.length),u32(cl),u32(off),u16(0)));
+ return new Blob(parts.concat(cen,[end]),{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+}
+function c5X(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function c5Runs(t,extra){ var out='',re=/\*\*([^*]+)\*\*/g,last=0,m; t=String(t).replace(/`/g,'');
+ function r(x,b){ if(!x) return ''; return '<w:r><w:rPr>'+(b?'<w:b/>':'')+(extra||'')+'</w:rPr><w:t xml:space="preserve">'+c5X(x)+'</w:t></w:r>'; }
+ while((m=re.exec(t))){ out+=r(t.slice(last,m.index)); out+=r(m[1],1); last=m.index+m[0].length; } return out+r(t.slice(last)); }
+function c5Docx(title,blocks){
+ var F={zh:'PMingLiU',zs:'SimSun',ja:'Yu Mincho',ko:'Malgun Gothic'}[LANG]||'Calibri';
+ var body='<w:p><w:pPr><w:pStyle w:val="Title"/></w:pPr>'+c5Runs(title)+'</w:p>';
+ blocks.forEach(function(b){ var L=String(b.t).replace(/```mermaid[\s\S]*?```/g,'').replace(/\r/g,'').split('\n');
+  if(b.h) body+='<w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr>'+c5Runs(b.h)+'</w:p>';
+  for(var i=0;i<L.length;i++){ var t=L[i].trim(),m; if(!t||/^(-{3,}|\*{3,})$/.test(t)) continue;
+   if(/^\|?\s*:?-{2,}/.test(t)&&t.indexOf('|')>=0) continue;
+   if((m=t.match(/^(#{1,6})\s+(.*)$/))) body+='<w:p><w:pPr><w:pStyle w:val="Heading'+(m[1].length<=2?2:3)+'"/></w:pPr>'+c5Runs(m[2].replace(/\*\*/g,''))+'</w:p>';
+   else if((m=t.match(/^>\s?(.*)$/))) body+='<w:p><w:pPr><w:pStyle w:val="Quote"/></w:pPr>'+c5Runs(m[1])+'</w:p>';
+   else if((m=t.match(/^[-*•]\s+(.*)$/))) body+='<w:p><w:pPr><w:ind w:left="480" w:hanging="240"/></w:pPr>'+c5Runs('• '+m[1])+'</w:p>';
+   else if(/^\|.*\|$/.test(t)) body+='<w:p>'+c5Runs(t.replace(/^\||\|$/g,'').split('|').map(function(x){ return x.trim(); }).join('　'))+'</w:p>';
+   else body+='<w:p>'+c5Runs(t.replace(/^%%\s?/,''))+'</w:p>'; } });
+ var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+body+'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1300" w:right="1200" w:bottom="1300" w:left="1200" w:header="708" w:footer="708" w:gutter="0"/></w:sectPr></w:body></w:document>';
+ function sty(id,name,sz,b,col,ext){ return '<w:style w:type="paragraph" w:styleId="'+id+'"><w:name w:val="'+name+'"/><w:basedOn w:val="Normal"/><w:qFormat/><w:pPr><w:spacing w:before="240" w:after="120"/>'+(ext||'')+'</w:pPr><w:rPr>'+(b?'<w:b/>':'')+'<w:color w:val="'+col+'"/><w:sz w:val="'+sz+'"/><w:szCs w:val="'+sz+'"/></w:rPr></w:style>'; }
+ var styles='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="'+F+'" w:hAnsi="'+F+'" w:eastAsia="'+F+'" w:cs="'+F+'"/><w:sz w:val="26"/><w:szCs w:val="26"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="120" w:line="360" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:qFormat/></w:style>'+sty('Title','Title',40,1,'1E3F8F','<w:jc w:val="center"/>')+sty('Heading1','heading 1',32,1,'1E3F8F')+sty('Heading2','heading 2',28,1,'1E3F8F')+sty('Heading3','heading 3',26,1,'8A5F12')+sty('Quote','Quote',26,0,'555555','<w:ind w:left="480"/>')+'</w:styles>';
+ return c5Zip([['[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>'],
+  ['_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>'],
+  ['word/_rels/document.xml.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'],
+  ['word/document.xml',doc],['word/styles.xml',styles]]);
+}
+function c5FileName(t,ext){ return String(t||CT('appName')).replace(/[\\\/:*?"<>|\r\n\t]+/g,' ').trim().slice(0,40)+ext; }
+function c5SaveBlob(bl,name){ ctShareFile(bl,name,function(){ ctDownload(bl,name); }); }
+function c5MsgDocx(i){ var m=S.chat[i]; if(!m) return; var q=String(qOf(i)||CT('appName')).split('\n')[0],title=(m.persona?'🎭 '+m.persona+'：':'')+q.replace(/\s+/g,' ').slice(0,40); c5SaveBlob(c5Docx(title,[{t:m.t}]),c5FileName(title,'.docx')); }
+function c5ConvDocx(){ var ms=ctMsgs(),ti=ctTitle()||CT('appName'),bl=[]; for(var i=0;i<ms.length;i++){ if(ms[i].role==='user') bl.push({h:ms[i].t.split('\n')[0].slice(0,80),t:ms[i].t.indexOf('\n')>0?ms[i].t:''}); else bl.push({t:ms[i].t}); } c5SaveBlob(c5Docx(ti,bl),c5FileName(ti,'.docx')); }
+/* ---------- 講道投影片 ---------- */
+var C5PPT='https://cdnjs.cloudflare.com/ajax/libs/pptxgenjs/3.12.0/pptxgen.bundle.js';
+function c5Lib(url,name){ if(window[name]) return Promise.resolve(window[name]); return new Promise(function(res,rej){ var s=document.createElement('script'); s.src=url; s.onload=function(){ window[name]?res(window[name]):rej(new Error('lib')); }; s.onerror=rej; document.head.appendChild(s); }); }
+function c5Slides(i){
+ var m=S.chat[i]; if(!m) return; toast(C5('pptMaking'));
+ var LNM={zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English';
+ var ask='Turn the ANSWER into sermon/teaching slides in '+LNM+'. Return ONLY JSON: {"title":"","subtitle":"","slides":[{"t":"slide title","p":["short point"],"v":"full Bible verse text or empty","r":"verse reference or empty"}]}. 6-10 slides; at most 4 points per slide; each point under 20 Chinese characters or 10 English words; verse slides may have no points; keep verse quotations exactly as in the answer; last slide is a short application or prayer.\nQUESTION:\n'+String(qOf(i)).slice(0,300)+'\nANSWER:\n'+plain(m.t).slice(0,5000);
+ Promise.all([quickAsk(ask,2200),c5Lib(C5PPT,'PptxGenJS')]).then(function(r){
+  var s=String(r[0]||''),a=s.indexOf('{'),b=s.lastIndexOf('}'),d=JSON.parse(s.slice(a,b+1)); if(!d||!d.slides||!d.slides.length) throw new Error('bad');
+  var P=new window.PptxGenJS(); P.layout='LAYOUT_16x9'; var F={zh:'PMingLiU',zs:'SimSun',ja:'Yu Mincho',ko:'Malgun Gothic'}[LANG]||'Calibri',NAVY='1E3F8F',GOLD='B8862E';
+  var t0=P.addSlide(); t0.background={color:NAVY}; t0.addShape(P.ShapeType.rect,{x:0,y:4.9,w:10,h:0.08,fill:{color:GOLD}});
+  t0.addText(String(d.title||qOf(i)).slice(0,60),{x:0.5,y:1.4,w:9,h:1.8,fontFace:F,fontSize:48,bold:true,color:'FFFFFF',align:'center',valign:'middle',fit:'shrink'});
+  if(d.subtitle) t0.addText(String(d.subtitle).slice(0,80),{x:0.5,y:3.2,w:9,h:0.9,fontFace:F,fontSize:28,color:'F3D9A0',align:'center',fit:'shrink'});
+  d.slides.slice(0,14).forEach(function(sd){ var sl=P.addSlide(); sl.background={color:'FFFFFF'}; sl.addShape(P.ShapeType.rect,{x:0,y:0,w:10,h:0.12,fill:{color:GOLD}});
+   sl.addText(String(sd.t||'').slice(0,40),{x:0.5,y:0.3,w:9,h:0.9,fontFace:F,fontSize:36,bold:true,color:NAVY,fit:'shrink'});
+   var y=1.3,pts=(sd.p||[]).filter(function(x){ return x; }).slice(0,4);
+   if(pts.length){ sl.addText(pts.map(function(x){ return {text:String(x),options:{bullet:true,breakLine:true}}; }),{x:0.6,y:y,w:8.8,h:sd.v?2.2:3.9,fontFace:F,fontSize:30,color:'222222',valign:'top',paraSpaceAfter:8,fit:'shrink'}); y+=2.3; }
+   if(sd.v) sl.addText([{text:String(sd.v),options:{breakLine:true}},{text:sd.r?'—— '+sd.r:'',options:{fontSize:22,color:GOLD}}],{x:0.6,y:pts.length?y:1.4,w:8.8,h:pts.length?1.6:3.6,fontFace:F,fontSize:28,color:'333333',italic:false,valign:'middle',fill:{color:'F7EFDD'},margin:0.2,fit:'shrink'}); });
+  return P.write({outputType:'blob'}).then(function(bl){ c5SaveBlob(bl,c5FileName(d.title||qOf(i),'.pptx')); toast(C5('fileDone')); });
+ }).catch(function(){ toast(C5('pptFail')); });
+}
+/* ---------- 圖表與關係圖（Mermaid） ---------- */
+var C5MM='https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js',C5MMI=0;
+function c5Mermaid(){ return c5Lib(C5MM,'mermaid').then(function(mm){ if(!mm.__xz){ var dark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches; mm.initialize({startOnLoad:false,securityLevel:'strict',theme:dark?'dark':'default',flowchart:{htmlLabels:false,useMaxWidth:true},fontFamily:'-apple-system,"PingFang TC","Noto Sans TC",sans-serif'}); mm.__xz=1; } return mm; }); }
+function c5Clean(code){ return String(code||'').replace(/^```(?:mermaid)?\s*/i,'').replace(/```\s*$/,'').trim(); }
+function c5md(src){
+ var s=String(src||''),out='',re=/```mermaid[ \t]*\n([\s\S]*?)```/g,last=0,m;
+ while((m=re.exec(s))){ out+=md0(s.slice(last,m.index)); out+='<div class="c5mm" data-src="'+esc(c5Clean(m[1]))+'"></div>'; last=m.index+m[0].length; }
+ var rest=s.slice(last),op=rest.indexOf('```mermaid'); if(op>=0) rest=rest.slice(0,op);
+ return out+md0(rest);
+}
+function c5Dia(m){ return m.dia&&m.dia.length?m.dia.map(function(c){ return '<div class="c5mm" data-src="'+esc(c)+'"></div>'; }).join(''):''; }
+function c5Draw(el){
+ if(el.getAttribute('data-done')) return; el.setAttribute('data-done','1'); var code=el.getAttribute('data-src');
+ el.innerHTML='<p class="hint">'+esc(C5('diaMaking'))+'</p>';
+ c5Mermaid().then(function(mm){ return mm.render('c5mm'+(++C5MMI),code); }).then(function(r){ el.innerHTML='<button class="c5svg" data-act="ctdiazoom">'+r.svg+'</button>'; }).catch(function(){ el.innerHTML='<details class="c5err"><summary>'+esc(C5('diaFail'))+' '+esc(navigator.onLine===false?C5('diaOff'):'')+'</summary><pre>'+esc(code)+'</pre></details>'; });
+}
+function c5Post(){ var L=document.querySelectorAll('.c5mm:not([data-done])'); for(var i=0;i<L.length;i++) c5Draw(L[i]); }
+function c5DiaAsk(i,kind){
+ var m=S.chat[i]; if(!m) return; S.c5D={i:i,busy:true,code:''}; openSheet('ctdia');
+ var LNM={zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English';
+ var how={time:'a timeline. Use Mermaid "timeline" syntax (title, then "period : event" lines).',rel:'a people-and-relationships map (family tree / who is related to whom). Use "flowchart TD" with labeled edges like A -- 兒子 --> B.',flow:'a flowchart of the steps or process. Use "flowchart TD".',mind:'a mind map of the key ideas. Use Mermaid "mindmap" syntax with indentation.'}[kind];
+ var ask='Draw '+how+' Summarize the ANSWER below. Labels in '+LNM+', short (under 12 Chinese characters or 5 English words), no parentheses, quotes, colons or semicolons inside labels (except the timeline colon separator). Return ONLY the Mermaid code, no explanation, no code fences.\nANSWER:\n'+plain(m.t).slice(0,4000);
+ quickAsk(ask,1200).then(function(t){ var c=c5Clean(t); if(c.length<10) throw new Error('bad'); return c5Mermaid().then(function(mm){ return mm.render('c5mm'+(++C5MMI),c); }).then(function(r){ S.c5D={i:i,code:c,svg:r.svg}; }); }).catch(function(){ S.c5D={i:i,fail:true}; }).then(function(){ if(S.sheet==='ctdia') renderSheet(); });
+}
+function c5DiaHTML(){
+ var D=S.c5D||{},h='<div class="sheethead"><h2>'+esc(C5('diaH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+ if(D.busy) return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C5('diaMaking'))+'</p>';
+ if(D.fail) return h+'<p class="hint">'+esc(C5('diaFail'))+'</p>'+c5DiaKinds(D.i);
+ if(D.svg) return h+'<div class="c5big">'+D.svg+'</div><div class="ctrow2"><button class="ctbtn" data-act="ctdiasave">⬇︎ '+esc(C5('diaSave'))+'</button>'+(D.code?'<button class="ctbtn pri" data-act="ctdiakeep">'+esc(C5('diaKeep'))+'</button>':'')+'</div>'+(D.code?'<details class="c5err"><summary>'+esc(C5('diaCode'))+'</summary><pre>'+esc(D.code)+'</pre></details>':'');
+ return h+c5DiaKinds(D.i);
+}
+function c5DiaKinds(i){ return '<div class="ctchips"><button class="chip" data-act="ctdiago" data-v="time" data-i="'+i+'">'+esc(C5('dTime'))+'</button><button class="chip" data-act="ctdiago" data-v="rel" data-i="'+i+'">'+esc(C5('dRel'))+'</button><button class="chip" data-act="ctdiago" data-v="flow" data-i="'+i+'">'+esc(C5('dFlow'))+'</button><button class="chip" data-act="ctdiago" data-v="mind" data-i="'+i+'">'+esc(C5('dMind'))+'</button></div>'; }
+function c5SvgPng(svg,cb){
+ var d=document.createElement('div'); d.innerHTML=svg; var el=d.querySelector('svg'); if(!el){ cb(null); return; }
+ var vb=(el.getAttribute('viewBox')||'').split(/[\s,]+/).map(Number),w=vb[2]||el.getBoundingClientRect().width||800,h=vb[3]||600,sc=Math.min(3,2400/Math.max(w,h))||2;
+ el.setAttribute('width',w); el.setAttribute('height',h); if(!el.getAttribute('xmlns')) el.setAttribute('xmlns','http://www.w3.org/2000/svg');
+ var img=new Image(); img.onload=function(){ var cv=document.createElement('canvas'); cv.width=Math.round(w*sc)+80; cv.height=Math.round(h*sc)+80; var cx=cv.getContext('2d'); cx.fillStyle='#fff'; cx.fillRect(0,0,cv.width,cv.height); cx.drawImage(img,40,40,w*sc,h*sc); cv.toBlob(function(b){ cb(b); },'image/png'); };
+ img.onerror=function(){ cb(null); }; img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(new XMLSerializer().serializeToString(el));
+}
+/* ---------- 面板與事件 ---------- */
+function c5MsgExtra(i){ return '<div class="sec"><button class="wide" data-act="ctdia" data-i="'+i+'"><span>'+esc(C5('dia'))+'</span><span>›</span></button><button class="wide" data-act="ctdocx" data-i="'+i+'"><span>'+esc(C5('docx'))+'</span><span>›</span></button><button class="wide" data-act="ctppt" data-i="'+i+'"><span>'+esc(C5('pptx'))+'</span><span>›</span></button></div>'; }
+function ct5Sheet(k){
+ if(k==='cttools') return c5ToolsHTML();
+ if(k==='cttool') return c5ToolHTML();
+ if(k==='ctstyle') return c5StyleHTML();
+ if(k==='ctdia') return c5DiaHTML();
+ return null;
+}
+function ct5Act(a,b,i,fid,v){
+ if(a==='cttools'){ closeDrawer(); openSheet('cttools'); }
+ else if(a==='cttool'){ S.c5T=v; openSheet('cttool'); setTimeout(function(){ var t=c5Tool(v),e=t&&$('c5f_'+t.f[0][0]); if(e) e.focus(); },60); }
+ else if(a==='cttoolgo') c5ToolGo();
+ else if(a==='ctstyle'){ closeDrawer(); S.c5Edit=null; S.ctArm=false; openSheet('ctstyle'); }
+ else if(a==='ctstnew'){ S.c5Edit={name:'',text:''}; renderSheet(); }
+ else if(a==='ctstfile'){ var tx=$('c5ss'),nm=$('c5sn'); S.c5Edit={name:nm?nm.value:'',text:tx?tx.value:''}; var inp=$('c5file'); if(!inp){ inp=document.createElement('input'); inp.type='file'; inp.id='c5file'; inp.accept='.pdf,.docx,.txt,.md,.html,.htm'; inp.style.display='none'; document.body.appendChild(inp); }
+  inp.onchange=function(){ var f=inp.files&&inp.files[0]; inp.value=''; if(!f) return; toast(C3('srcReading',f.name)); c3ReadFile(f).then(function(t){ S.c5Edit.text=(S.c5Edit.text?S.c5Edit.text+'\n\n':'')+String(t||'').trim(); if(S.sheet==='ctstyle') renderSheet(); }).catch(function(){ toast(C3('srcBad')); }); }; inp.click(); }
+ else if(a==='ctstmake') c5MakeStyle();
+ else if(a==='ctstopen'){ var L=c5Styles(); for(var k=0;k<L.length;k++) if(L[k].id===fid) S.c5Edit={id:L[k].id,name:L[k].name,guide:L[k].guide}; S.ctArm=false; renderSheet(); }
+ else if(a==='ctstsave'){ var L2=c5Styles(),e=S.c5Edit; for(var k2=0;k2<L2.length;k2++) if(e&&L2[k2].id===e.id){ L2[k2].name=(($('c5sn')||{}).value||L2[k2].name).trim().slice(0,30); L2[k2].guide=(($('c5sg')||{}).value||'').slice(0,3000); } lsSet('styles',L2); S.c5Edit=null; renderSheet(); toast(C5('stSaved')); }
+ else if(a==='ctstuse'){ lsSet('style',fid||''); S.c5Edit=null; renderSheet(); toast(fid?C5('stSaved'):C5('stOff')); }
+ else if(a==='ctstdel'){ if(!S.ctArm){ S.ctArm=true; renderSheet(); return true; } S.ctArm=false; var id=S.c5Edit&&S.c5Edit.id; lsSet('styles',c5Styles().filter(function(x){ return x.id!==id; })); if(lsGet('style','')===id) lsSet('style',''); S.c5Edit=null; renderSheet(); }
+ else if(a==='ctdocx'){ closeSheet(); c5MsgDocx(i); }
+ else if(a==='ctdocxconv'){ closeSheet(); c5ConvDocx(); }
+ else if(a==='ctppt'){ closeSheet(); c5Slides(i); }
+ else if(a==='ctdia'){ S.c5D={i:i}; openSheet('ctdia'); }
+ else if(a==='ctdiago') c5DiaAsk(i,v);
+ else if(a==='ctdiakeep'){ var D=S.c5D,m=D&&S.chat[D.i]; if(!m||!D.code) return true; m.dia=(m.dia||[]).concat([D.code]); save(); closeSheet(); render(); scrollTo(D.i); }
+ else if(a==='ctdiasave'){ var svg=S.c5D&&S.c5D.svg; if(!svg) return true; c5SvgPng(svg,function(bl){ if(bl) c5SaveBlob(bl,c5FileName(qOf(S.c5D.i),'.png')); else toast(C5('diaFail')); }); }
+ else if(a==='ctdiazoom'){ var sv=b.innerHTML; S.c5D={i:-1,svg:sv}; openSheet('ctdia'); }
+ else return false;
+ return true;
+}
+(function(){ try{ var f=document.getElementById('flow'); if(f&&window.MutationObserver){ var t5=0; new MutationObserver(function(){ clearTimeout(t5); t5=setTimeout(c5Post,200); }).observe(f,{childList:true,subtree:true}); } }catch(e){} setTimeout(c5Post,500); })();
 /* ---------- 陪伴助手（ct4-1113）：深思模式、分享辨別、兒童模式、會動的小智、聖經人物對話 ---------- */
 var CT4X={
  zh:{think:'🤔 深思模式',thinkOn:'已開啟深思模式：小智會想得更仔細（回答比較慢）',thinkOff:'已關閉深思模式',thinkSteps:'🤔 小智的思考步驟',thinkHint:'難的神學問題、輔導個案、講章架構適合用；回答比較慢。',disc:'🔍 分享給小智辨別',discH:'🔍 請小智辨別',discHint:'把 LINE、臉書收到的轉傳文章、養生說法或教導貼在這裡，小智幫你看是真是假、合不合乎聖經。',discPh:'把內容貼在這裡…',discPaste:'📋 貼上剛剛複製的內容',discGo:'請小智辨別',discQ:'🔍 請幫我辨別這段轉傳的內容：是真的嗎？合乎聖經嗎？\n請依序回答：①結論（可信／部分可信／不可信／無法確定）②理由 ③聖經怎麼說 ④如果要回覆轉傳的人，可以怎麼溫柔地說。\n\n「{0}」',discPasteFail:'無法自動貼上，請長按輸入框選「貼上」',kid:'兒童模式',kidOn:'👦 兒童模式',kidHint:'大字、自動朗讀、只回答適合孩子的問題；離開時要家長回答一題算術。',kidStart:'開始兒童模式',kidBar:'👦 兒童模式',kidExit:'🔒 離開',kidGate:'請家長回答：{0} = ?',kidGateH:'🔒 離開兒童模式',kidWrong:'答案不對喔，請家長再試一次',kidOk:'確定',kidHello:'嗨！我是小智 👋 有什麼想問我的嗎？',kidQs:'神住在哪裡？|為什麼要禱告？|耶穌小時候是什麼樣子？|挪亞方舟有多大？|我害怕的時候怎麼辦？|天堂是什麼樣子？',kidAsk:'點一個問題，或按麥克風用說的',roleNav:'聖經人物對話',roleH:'🎭 和聖經人物對話',roleHint:'小智用第一人稱扮演聖經人物回答，內容只根據聖經記載並附出處；這是想像對話，不是那位人物真的在說話。',roleCustom:'其他聖經人物（輸入名字）',roleGo:'開始',roleBar:'🎭 想像對話：{0}（根據聖經記載）',roleEnd:'結束',roleNo:'為了敬畏，小智不扮演耶穌、天父或聖靈，請選一位聖經人物。',roleHi:'平安！我是{0}。想聽我說說神在我生命中做的事嗎？',roleQs:'你人生中最難忘的一天是哪一天？|那時候你心裡在想什麼？|神怎樣改變了你？|你會給今天的我什麼勸勉？'},
@@ -1937,11 +2216,12 @@ function c3MsgHTML(){
  for(var k=0;k<C3_RW.length;k++) h+='<button class="chip" data-act="ctrwgo" data-v="'+C3_RW[k]+'">'+esc(C3('rw_'+C3_RW[k]))+'</button>';
  h+='</div>'+(m.orig?'<button class="ctbtn" data-act="ctrwundo" data-i="'+i+'">↺ '+esc(C3('rwUndo'))+'</button>':'')+'</div>';
  h+='<div class="sec"><button class="wide" data-act="ctquiz"><span>'+esc(C3('qzH'))+'</span><span>›</span></button><button class="wide" data-act="ctgrp"><span>'+esc(C3('grp'))+'</span><span>›</span></button></div>';
+ h+=c5MsgExtra(i);
  return h;
 }
 /* ---------- 拍照提問 ---------- */
 function c3PlusHTML(){
- return '<div class="sheethead"><h2>'+esc(C3('plusH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><div class="sec"><button class="wide" data-act="ctcam"><span>'+esc(C3('cam'))+'</span><span>›</span></button><button class="wide" data-act="ctpic"><span>'+esc(C3('pic'))+'</span><span>›</span></button><button class="wide" data-act="bank"><span>'+esc(C3('bank'))+'</span><span>›</span></button>'+c4PlusExtra()+'</div>';
+ return '<div class="sheethead"><h2>'+esc(C3('plusH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><div class="sec"><button class="wide" data-act="ctcam"><span>'+esc(C3('cam'))+'</span><span>›</span></button><button class="wide" data-act="ctpic"><span>'+esc(C3('pic'))+'</span><span>›</span></button><button class="wide" data-act="bank"><span>'+esc(C3('bank'))+'</span><span>›</span></button>'+c4PlusExtra()+'<button class="wide" data-act="cttools"><span>'+esc(C5('tbH'))+'</span><span>›</span></button></div>';
 }
 function c3PickImg(cam){
  var inp=$('c3file'); if(!inp){ inp=document.createElement('input'); inp.type='file'; inp.id='c3file'; inp.accept='image/*'; inp.style.display='none'; document.body.appendChild(inp);
@@ -2299,7 +2579,7 @@ function ctStopHTML(){ return '<button class="ctstop" data-act="ctstop">'+IC.sto
 function ctFbBtns(m,i){ return ab('ctup',i,CTI.tu,CT('fbUp'),m.fb==='up'?' faved ctfb':'')+ab('ctdn',i,CTI.td,CT('fbDown'),m.fb==='dn'?' faved ctfb':''); }
 function ctNavExtra(){ return '<button class="navb" data-act="ctmenu">'+CTI.dots+'<span>'+esc(CT('convMenu'))+'</span></button>'; }
 function ctIncogBar(){ return '<div class="ctincbar">'+esc(CT('incogBar'))+'<button class="ctbtn" data-act="ctincogx">'+esc(CT('incogEnd'))+'</button></div>'; }
-function ctHelloExtra(){ return S.incog?'':'<div class="ctinc"><button class="ctbtn" data-act="ctcall">'+C2I.call+'<span>'+esc(C2('callNav'))+'<small>'+esc(C2('callTapGo'))+'</small></span></button><button class="ctbtn" data-act="ctincog">'+CTI.incog+'<span>'+esc(CT('incogStart'))+'<small>'+esc(CT('incogHint'))+'</small></span></button></div>'; }
+function ctHelloExtra(){ return S.incog?'':'<div class="ctinc"><button class="ctbtn" data-act="cttools">'+C5I.tb+'<span>'+esc(C5('tbNav'))+'<small>'+esc(C5('tbShort'))+'</small></span></button><button class="ctbtn" data-act="ctcall">'+C2I.call+'<span>'+esc(C2('callNav'))+'<small>'+esc(C2('callTapGo'))+'</small></span></button><button class="ctbtn" data-act="ctincog">'+CTI.incog+'<span>'+esc(CT('incogStart'))+'<small>'+esc(CT('incogHint'))+'</small></span></button></div>'; }
 function ctSortPins(list){ var a=[],b=[]; for(var i=0;i<list.length;i++) (list[i].pin?a:b).push(list[i]); a.sort(function(x,y){ return (y.pin||0)-(x.pin||0); }); return a.concat(b); }
 function ctConv(){ return S.ctId?convById(S.ctId):null; }
 function ctMsgs(){ var c=ctConv(); var arr=c?c.msgs:(S.ctId?[]:S.chat); return arr.filter(function(m){ return m&&m.t&&!m.pending&&!m.err; }); }
@@ -2394,6 +2674,7 @@ function ctFbText(kind,i,reasons,note,attach){
 }
 function ctSheetHTML(){
  var k=S.sheet,h='';
+ var x5=ct5Sheet(k); if(x5!=null) return x5;
  var x4=ct4Sheet(k); if(x4!=null) return x4;
  var x3=ct3Sheet(k); if(x3!=null) return x3;
  var x2=ct2Sheet(k); if(x2!=null) return x2;
@@ -2422,7 +2703,7 @@ function ctSheetHTML(){
  h+='<div class="sec"><h3>'+esc(CT('shareH'))+'</h3>';
  var SH=[['ctshtxt','💬',CT('shTxt')],['ctshlink','🔗',CT('shLink')],['ctshimg','🖼',CT('shImg')],['ctshgrp','🏡',CT('shGrp')]];
  for(var s=0;s<SH.length;s++) h+='<button class="wide" data-act="'+SH[s][0]+'"><span>'+SH[s][1]+' '+esc(SH[s][2])+'</span><span>›</span></button>';
- h+='</div><div class="sec"><h3>'+esc(CT('expH'))+'</h3><button class="wide" data-act="ctextxt"><span>📄 '+esc(CT('expTxt'))+'</span><span>›</span></button><button class="wide" data-act="ctexpdf"><span>🖨 '+esc(CT('expPdf'))+'</span><span>›</span></button><p class="hint">'+esc(CT('pdfHint'))+'</p></div>';
+ h+='</div><div class="sec"><h3>'+esc(CT('expH'))+'</h3><button class="wide" data-act="ctextxt"><span>📄 '+esc(CT('expTxt'))+'</span><span>›</span></button><button class="wide" data-act="ctdocxconv"><span>'+esc(C5('docx'))+'</span><span>›</span></button><button class="wide" data-act="ctexpdf"><span>🖨 '+esc(CT('expPdf'))+'</span><span>›</span></button><p class="hint">'+esc(CT('pdfHint'))+'</p></div>';
  if(c) h+='<div class="sec"><button class="danger" data-act="ctdel">'+esc(S.ctArm?CT('delSure'):CT('delConv'))+'</button></div>';
  return h;
 }
@@ -2431,6 +2712,7 @@ function ctSheetAfter(x){ ct2After();
  var at=$('ctfbatt'); if(at) at.onchange=function(){ if(S.ctFb) S.ctFb.att=at.checked; };
 }
 function ctAct(a,b,i,fid,v){
+ if(ct5Act(a,b,i,fid,v)) return;
  if(ct4Act(a,b,i,fid,v)) return;
  if(ct3Act(a,b,i,fid,v)) return;
  if(ct2Act(a,b,i,fid,v)) return;
@@ -2575,7 +2857,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1113.1900',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1113.2000',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
