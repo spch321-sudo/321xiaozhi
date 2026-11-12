@@ -6,21 +6,21 @@
 <title>小智问答</title>
 <meta name="description" content="小智问答：圣经・信仰・生活・智慧问答，国度321空中团契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.1800">
-<link rel="icon" href="favicon.ico?v=v2026.1113.1800" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.1800">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.1800">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.1800">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.1800">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.1800">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.1900">
+<link rel="icon" href="favicon.ico?v=v2026.1113.1900" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.1900">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.1900">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.1900">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.1900">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.1900">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智问答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1113.1800"></script>
-<script src="xzplus.js?v=v2026.1113.1800" defer></script>
+<script src="k321gate.js?v=v2026.1113.1900"></script>
+<script src="xzplus.js?v=v2026.1113.1900" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='zs';</script>
@@ -352,6 +352,45 @@ html #xz2pf input[style*="width:120px"]{width:7.5em!important}
 .qtr{display:block;color:var(--muted);font-size:.86em;margin-top:2px}
 @media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}.micbtn.on,.micwave i{animation:none}}
 @media (max-width:420px){.audgrid{grid-template-columns:1fr 1fr}}
+/* ct4-1113 陪伴助手 */
+.c4think{margin:0 0 10px;border:1px dashed var(--line);border-radius:12px;padding:6px 12px;font-size:.88em;color:var(--muted)}
+.c4think summary{cursor:pointer;font-weight:600;color:var(--accent)}.c4think[open] summary{margin-bottom:4px}
+.c4who{display:inline-block;font-size:.8em;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:999px;padding:2px 10px;margin:0 0 6px}
+.c4kbar,.c4rbar{display:flex;align-items:center;justify-content:space-between;gap:10px;border-radius:14px;padding:8px 12px;margin:0 0 10px;font-weight:700}
+.c4kbar{background:linear-gradient(90deg,#FFE9A8,#FFD3DA);color:#5A3A00}.c4rbar{background:var(--gold-soft);font-size:.88em}
+.c4kbar .ctbtn,.c4rbar .ctbtn{padding:4px 12px;font-size:.88em;font-weight:400}
+.c4hello .c4av{font-size:64px;line-height:1}
+.c4kidh .xzbot{width:150px;height:150px}
+.c4kq{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:6px 0 10px}
+.c4kq button{display:flex;flex-direction:column;align-items:center;gap:6px;border:0;border-radius:20px;padding:14px 10px;font-size:1.05em;font-weight:700;line-height:1.35;color:#3B2A00;background:#FFF1C9;box-shadow:0 3px 0 #F2CF6B}
+.c4kq button:nth-child(2n){background:#E3F0FF;box-shadow:0 3px 0 #A9C8F2;color:#14305E}.c4kq button:nth-child(3n){background:#E6F7E8;box-shadow:0 3px 0 #A6DDAE;color:#1D4D23}
+.c4kq span{font-size:1.8em}
+body.kid #menuBtn,body.kid #modeBtn,body.kid #newBtn,body.kid #bankBtn,body.kid #lenBtn,body.kid .uacts,body.kid [data-act=ctmsgmore],body.kid .xzp-grp,body.kid [data-act=lenmenu],body.kid .ctinc,body.kid .navrow [data-act=ctmenu],body.kid .ctcallbtn{display:none!important}
+body.kid #flow{font-size:1.16em}body.kid .msg.ai .body{line-height:1.8}
+.c4roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin-top:10px}
+.c4roles button{display:flex;flex-direction:column;align-items:center;gap:4px;border:1px solid var(--line);background:var(--page);color:var(--ink);border-radius:14px;padding:10px 6px;font-size:.88em;line-height:1.3}
+.c4roles span{font-size:1.6em}
+.c4kidpre{display:flex;justify-content:center;padding:6px 0}.c4kidpre .xzbot{width:130px;height:130px}
+.c4gq{font-size:1.3em;font-weight:800;text-align:center;margin:14px 0}
+.xzbot{display:block;overflow:visible}
+.xzbot .eyes{transform-box:fill-box;transform-origin:center;animation:xzBlink 4.2s infinite}
+.xzbot .talk{opacity:0;transform-box:fill-box;transform-origin:center}
+.xzbot .dots{opacity:0}
+.xzbot .body{transform-box:view-box;transform-origin:60px 108px}
+.xzbot.wave .body{animation:xzHop 1.6s ease-in-out infinite}
+@keyframes xzBlink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.12)}}
+@keyframes xzHop{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(-5px) rotate(-4deg)}60%{transform:translateY(0) rotate(4deg)}}
+@keyframes xzTalk{from{transform:scaleY(.25)}to{transform:scaleY(1.15)}}
+@keyframes xzNod{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg) translateY(2px)}}
+@keyframes xzDots{0%,100%{opacity:.25}50%{opacity:1}}
+#ctcall .ctcorb .core.c4core{background:transparent;box-shadow:none;inset:6px}
+#ctcall .core.c4core .xzbot{width:100%;height:100%}
+#ctcall[data-st=speak] .xzbot .talk{opacity:1;animation:xzTalk .22s ease-in-out infinite alternate}#ctcall[data-st=speak] .xzbot .smile{opacity:0}
+#ctcall[data-st=listen] .xzbot .body{animation:xzNod 1.8s ease-in-out infinite}
+#ctcall[data-st=think] .xzbot .dots{animation:xzDots 1.2s ease-in-out infinite}#ctcall[data-st=think] .xzbot .eyes{transform:translate(2px,-3px)}
+#ctcall[data-st] .ctcorb .core.c4core{animation:none!important;opacity:1;filter:none}
+#ctcall[data-st=pause] .xzbot{filter:grayscale(.5);opacity:.8}
+@media (prefers-reduced-motion:reduce){.xzbot *{animation:none!important}}
 /* ct3-1113 教材助手 */
 .c3rw{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:.8em;color:var(--muted);margin:6px 0 2px}.c3rw .ctbtn{padding:3px 11px;font-size:1em}
 .c3seg{grid-template-columns:1fr 1fr!important;margin:4px 0 12px}
@@ -1000,8 +1039,9 @@ function BI(){ var v=lsGet('bi_'+LANG,''); return (v&&v!==LANG&&LANGS.indexOf(v)
 function biSys(){ var b=BI(); if(!b) return '';
  return '\n\nBILINGUAL MODE (parallel reading): The reader is reading two languages side by side. Write the whole answer in '+LNAME[LANG]+' exactly as the rules above say, but right after EVERY heading, every paragraph line, every list item and every quote line, add ONE new line that starts with "%% " followed by a faithful, natural '+LNAME[b]+' translation of that line. Put the "%% " line directly under the line it translates (for list items, indent it two spaces under the item). Keep markdown markers (#, -, 1., >, **) on the original line only; the "%% " line is plain text (bold inside it is allowed). In tables, write each cell as "original / translation". When the translation quotes Scripture, use the wording of '+LBIBLE[b]+'. Do not add any other extra text. Make the answer a little shorter than usual so both languages fit.';
 }
-function sysPrompt(){ return T('sysBase')+X.sysExtra()+T('sysGeneral')+biSys()+ctSys2(); }
-function maxTok(){ return BI()?Math.min(8000,Math.round(X.maxTokens()*1.8)):X.maxTokens(); }
+function sysPrompt(){ return T('sysBase')+X.sysExtra()+T('sysGeneral')+biSys()+ctSys2()+c4Sys(); }
+function maxTok(){ return Math.round((c4On()?1.4:1)*maxTok0()); }
+function maxTok0(){ return BI()?Math.min(8000,Math.round(X.maxTokens()*1.8)):X.maxTokens(); }
 function noTr(s){ return String(s||'').split('\n').filter(function(l){ return !/^\s*(>\s*)?%%/.test(l); }).join('\n'); }
 
 function $(id){return document.getElementById(id);}
@@ -1044,20 +1084,20 @@ function loadChat(){
  }
  var cid=lsGet('cur_all',null); if(cid===null) cid=lsGet('cur_'+LANG,'');
  var c=convById(cid);
- CUR=c?c.id:null; S.chat=c?c.msgs:[]; S.fid=(c&&c.fid)?c.fid:"";
+ CUR=c?c.id:null; S.chat=c?c.msgs:[]; S.fid=(c&&c.fid)?c.fid:""; S.persona=(c&&c.persona)||null;
  for(var z=0;z<S.chat.length;z++){ S.chat[z].fuBusy=false; if(S.chat[z].pending){S.chat[z].pending=false; if(!S.chat[z].t){S.chat[z].t=T('unfinished');S.chat[z].err=true;}} }
 }
 function save(){
  if(S.incog) return;
  var c=convById(CUR);
  if(!S.chat.length){ if(c){ CONVS.splice(CONVS.indexOf(c),1); CUR=null; persistConvs(); } return; }
- if(!c){ c={id:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),ts:Date.now(),msgs:S.chat,lang:LANG}; if(S.fid) c.fid=S.fid; CONVS.unshift(c); CUR=c.id; }
+ if(!c){ c={id:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),ts:Date.now(),msgs:S.chat,lang:LANG}; if(S.fid) c.fid=S.fid; if(S.persona) c.persona=S.persona; CONVS.unshift(c); CUR=c.id; }
  if(S.chat.length>80){ S.chat.splice(0,S.chat.length-80); }
  c.msgs=S.chat; c.title=c.ctitle||titleOf(S.chat); c.ts=Date.now();
  persistConvs();
 }
-function newChat(){ S.incog=false; S.ctEdit=-1; S.fid=''; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=null; S.chat=[]; lsSet('cur_all',''); }
-function openConv(id){ var c=convById(id); if(!c) return; S.incog=false; S.ctEdit=-1; S.fid=(c.fid&&c2Folder(c.fid))?c.fid:''; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=id; S.chat=c.msgs; lsSet('cur_all',id); }
+function newChat(){ S.incog=false; S.ctEdit=-1; S.fid=''; S.persona=null; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=null; S.chat=[]; lsSet('cur_all',''); }
+function openConv(id){ var c=convById(id); if(!c) return; S.incog=false; S.ctEdit=-1; S.fid=(c.fid&&c2Folder(c.fid))?c.fid:''; S.persona=c.persona||null; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=id; S.chat=c.msgs; lsSet('cur_all',id); }
 function delConv(id){ var c=convById(id); if(!c) return; CONVS.splice(CONVS.indexOf(c),1); CDEL.push(id); if(CDEL.length>800) CDEL=CDEL.slice(-800); lsSet('convdel',CDEL); if(CUR===id){ CUR=null; S.chat=[]; } persistConvs(); }
 loadChat(); mergeIDB();
 function saveFav(){ lsSet('fav',FAV.slice(0,300)); }
@@ -1207,7 +1247,7 @@ function send(text){
  S.chat.push(c3UserMsg({role:'user',t:text,ts:Date.now()}));
  if(X.crisisHit(text)) S.chat.push({role:'ai',t:X.crisisCard(),crisis:true,ts:Date.now()});
  var voice=!!S.voiceNext; S.voiceNext=false;
- var m={role:'ai',t:'',pending:true,ts:Date.now(),meta:modeText()}; if(voice) m.voice=true; S.chat.push(m);
+ var m={role:'ai',t:'',pending:true,ts:Date.now(),meta:modeText()+c4Meta()}; if(S.persona) m.persona=S.persona.name; if(voice) m.voice=true; S.chat.push(m);
  var idx=S.chat.length-1, msgs=c3Inject(history());
  S.busy=true; S.ctl=window.AbortController?new AbortController():null;
  $('q').value=''; autosize(); render(); scrollTo(idx-1);
@@ -1219,7 +1259,7 @@ function send(text){
  }
  var sig=S.ctl?S.ctl.signal:undefined;
  c3Ready().then(getSample).then(function(sm){ return (sm&&!S.c3Sent)?viaSample(sm,msgs,onPart,sig):viaProxy(msgs,onPart,sig); }).then(function(t){
-  m.t=String(t||'').trim()||T('noAnswer'); m.ok=true;
+  m.t=String(t||'').trim()||T('noAnswer'); m.ok=true; c4Split(m);
  },function(e){
   if(e&&(e.name==='AbortError'||e.code==='aborted')){ m.t=(m.t?m.t+'\n\n':'')+T('stopped'); m.ok=m.t.length>12; return; }
   if(m.t&&m.t.length>40){ m.t+='\n\n'+T('cutOff'); m.ok=true; return; }
@@ -1233,7 +1273,7 @@ function send(text){
   m.pending=false; m.cont=false; S.busy=false; S.ctl=null;
   foldOld(idx); save(); render();
   if(m.ok&&!m.err){ genFU(idx); ctMemLearn(idx); }
-  if(voice&&m.ok&&!m.err&&m.t.length>12) speak(idx);
+  if((voice||c4Kid())&&m.ok&&!m.err&&m.t.length>12) speak(idx);
  });
 }
 function reAnswerLast(msg){
@@ -1402,7 +1442,7 @@ function langBtns(cls){ var N={zh:'繁',zs:'简',en:'EN',ko:'한',ja:'日',id:'I
 function ab(act,i,icon,label,extra){ return '<button class="ib'+(extra||'')+'" data-act="'+act+'" data-i="'+i+'" title="'+esc(label)+'" aria-label="'+esc(label)+'">'+icon+'</button>'; }
 function msgHTML(m,i,lastOk){
  if(m.role==='user') return ctUserHTML(m,i);
- var h='<div class="msg ai'+(m.err?' err':'')+(m.crisis?' crisis':'')+(m.fold?' fold':'')+'" id="m'+i+'"><div class="body">';
+ var h='<div class="msg ai'+(m.err?' err':'')+(m.crisis?' crisis':'')+(m.fold?' fold':'')+'" id="m'+i+'">'+c4Head(m)+'<div class="body">';
  h+=m.t?(m.err?'<p>'+esc(m.t)+'</p>':md(m.t)):'<span class="typing"><span></span><span></span><span></span></span>';
  h+='</div>';
  if(m.pending){ h+='<div class="contnote"'+(m.cont?'':' hidden')+'>'+T('contNote')+'</div>'+ctStopHTML(); return h+'</div>'; }
@@ -1441,7 +1481,7 @@ function paintHead(){
  $('newBtn').innerHTML=IC.edit; $('newBtn').setAttribute('aria-label',T('newChat')); $('newBtn').title=T('newChat');
  var au=X.aud(); $('modeTxt').textContent=X.AUD_ICON[au]+' '+X.audName(au)+T('dot')+X.lenName(X.alen())+(BI()?T('dot')+LCODE[LANG]+'/'+LCODE[BI()]:''); $('modeChev').innerHTML=IC.chev;
  $('bankBtn').innerHTML=IC.plus; $('bankBtn').title=T('bankTitle'); $('bankBtn').setAttribute('aria-label',T('bankTitle'));
- $('lenBtn').innerHTML=IC.gauge+'<span>'+esc(X.lenName(X.alen()))+'</span>'; $('lenBtn').title=T('lenH');
+ $('lenBtn').innerHTML=IC.gauge+'<span>'+esc(X.lenName(X.alen()))+(c4On()?' 🤔':'')+'</span>'; $('lenBtn').title=T('lenH');
  var q=$('q'); q.placeholder=T('placeholder'); q.setAttribute('aria-label',T('placeholder'));
  $('note').textContent=T('note');
  var sb=$('send'); sb.innerHTML=S.busy?IC.stop:IC.up; sb.className=S.busy?'stop':''; sb.setAttribute('aria-label',S.busy?T('stop'):T('send'));
@@ -1451,14 +1491,16 @@ function render(){
  var f=$('flow'),h='';
  document.documentElement.className='fs'+S.fs;
  paintHead();
- if(!S.chat.length){
+ if(!S.chat.length&&(c4Kid()||S.persona)){
+  h+=c4Hello();
+ } else if(!S.chat.length){
   h+=(NAV.length?'<div class="navrow top1"><button class="navb" data-act="back">'+IC.back+'<span>'+T('navBack')+'</span></button></div>':'')+'<section class="hello"><div class="hlamp">'+LAMP+'</div><h1>'+T('helloH')+'</h1><p>'+T('helloP')+'</p><p class="hnote">'+T('note')+'</p></section>'+suggestHTML()+ctHelloExtra();
  } else {
   var lastOk=-1; for(var j=S.chat.length-1;j>=0;j--){ if(S.chat[j].role==='ai'&&!S.chat[j].crisis){ if(S.chat[j].ok&&!S.chat[j].err) lastOk=j; break; } }
   for(var i=0;i<S.chat.length;i++) h+=msgHTML(S.chat[i],i,lastOk);
   if(!S.busy) h+=navRowHTML();
  }
- f.innerHTML=(S.incog?ctIncogBar():ctFolderBar())+h; document.body.classList.toggle('incog',!!S.incog);
+ document.body.classList.toggle('kid',c4Kid()); f.innerHTML=(c4Bar()||(S.incog?ctIncogBar():ctFolderBar()))+h; document.body.classList.toggle('incog',!!S.incog);
  if(S.sheet) renderSheet();
  if(S.drawer) renderDrawer();
 }
@@ -1560,7 +1602,7 @@ function renderDrawer(){
  var d=$('drawer'),first=!d;
  if(first){ d=document.createElement('div'); d.id='drawer'; document.body.appendChild(d); }
  var keep=first?(S.drawerTop||0):0,old=d.querySelector('.dscroll'); if(old) keep=old.scrollTop;
- var nav=[['newchat',IC.edit,T('newChat')],['ctincog',CTI.incog,CT('incogStart')],['ctcall',C2I.call,C2('callNav')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['ctmemopen',C2I.mem,C2('memNav')],['ctciopen',C2I.ci,C2('ciNav')],['settings',IC.gear,T('settings')]];
+ var nav=[['newchat',IC.edit,T('newChat')],['ctincog',CTI.incog,CT('incogStart')],['ctcall',C2I.call,C2('callNav')],['ctrole',C4I.role,C4('roleNav')],['ctkid',C4I.kid,C4('kid')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['ctmemopen',C2I.mem,C2('memNav')],['ctciopen',C2I.ci,C2('ciNav')],['settings',IC.gear,T('settings')]];
  var h='<div class="dmask" data-act="drawerclose"></div><nav class="dpanel" aria-label="'+esc(T('menu'))+'"><div class="dhead"><span class="dlamp">'+LAMP+'</span><b>'+T('name')+'</b>'+langBtns('dlang')+'</div>';
  h+='<div class="dsearch">'+IC.search+'<input id="convsearch" type="search" placeholder="'+esc(T('convSearch'))+'" value="'+esc(S.convQ)+'"></div><div class="dscroll"><div class="dnav">';
  for(var i=0;i<nav.length;i++) h+='<button class="ditem" data-act="'+nav[i][0]+'"><span class="di">'+nav[i][1]+'</span><span>'+esc(nav[i][2])+'</span></button>';
@@ -1698,6 +1740,121 @@ function setLang(v){
 }
 
 /* ---------- 事件 ---------- */
+/* ---------- 陪伴助手（ct4-1113）：深思模式、分享辨別、兒童模式、會動的小智、聖經人物對話 ---------- */
+var CT4X={
+ zh:{think:'🤔 深思模式',thinkOn:'已開啟深思模式：小智會想得更仔細（回答比較慢）',thinkOff:'已關閉深思模式',thinkSteps:'🤔 小智的思考步驟',thinkHint:'難的神學問題、輔導個案、講章架構適合用；回答比較慢。',disc:'🔍 分享給小智辨別',discH:'🔍 請小智辨別',discHint:'把 LINE、臉書收到的轉傳文章、養生說法或教導貼在這裡，小智幫你看是真是假、合不合乎聖經。',discPh:'把內容貼在這裡…',discPaste:'📋 貼上剛剛複製的內容',discGo:'請小智辨別',discQ:'🔍 請幫我辨別這段轉傳的內容：是真的嗎？合乎聖經嗎？\n請依序回答：①結論（可信／部分可信／不可信／無法確定）②理由 ③聖經怎麼說 ④如果要回覆轉傳的人，可以怎麼溫柔地說。\n\n「{0}」',discPasteFail:'無法自動貼上，請長按輸入框選「貼上」',kid:'兒童模式',kidOn:'👦 兒童模式',kidHint:'大字、自動朗讀、只回答適合孩子的問題；離開時要家長回答一題算術。',kidStart:'開始兒童模式',kidBar:'👦 兒童模式',kidExit:'🔒 離開',kidGate:'請家長回答：{0} = ?',kidGateH:'🔒 離開兒童模式',kidWrong:'答案不對喔，請家長再試一次',kidOk:'確定',kidHello:'嗨！我是小智 👋 有什麼想問我的嗎？',kidQs:'神住在哪裡？|為什麼要禱告？|耶穌小時候是什麼樣子？|挪亞方舟有多大？|我害怕的時候怎麼辦？|天堂是什麼樣子？',kidAsk:'點一個問題，或按麥克風用說的',roleNav:'聖經人物對話',roleH:'🎭 和聖經人物對話',roleHint:'小智用第一人稱扮演聖經人物回答，內容只根據聖經記載並附出處；這是想像對話，不是那位人物真的在說話。',roleCustom:'其他聖經人物（輸入名字）',roleGo:'開始',roleBar:'🎭 想像對話：{0}（根據聖經記載）',roleEnd:'結束',roleNo:'為了敬畏，小智不扮演耶穌、天父或聖靈，請選一位聖經人物。',roleHi:'平安！我是{0}。想聽我說說神在我生命中做的事嗎？',roleQs:'你人生中最難忘的一天是哪一天？|那時候你心裡在想什麼？|神怎樣改變了你？|你會給今天的我什麼勸勉？'},
+ zs:{think:'🤔 深思模式',thinkOn:'已开启深思模式：小智会想得更仔细（回答比较慢）',thinkOff:'已关闭深思模式',thinkSteps:'🤔 小智的思考步骤',thinkHint:'难的神学问题、辅导个案、讲章架构适合用；回答比较慢。',disc:'🔍 分享给小智辨别',discH:'🔍 请小智辨别',discHint:'把微信、LINE 收到的转发文章、养生说法或教导贴在这里，小智帮你看是真是假、合不合乎圣经。',discPh:'把内容粘贴在这里…',discPaste:'📋 粘贴刚刚复制的内容',discGo:'请小智辨别',discQ:'🔍 请帮我辨别这段转发的内容：是真的吗？合乎圣经吗？\n请依序回答：①结论（可信／部分可信／不可信／无法确定）②理由 ③圣经怎么说 ④如果要回复转发的人，可以怎么温柔地说。\n\n“{0}”',discPasteFail:'无法自动粘贴，请长按输入框选“粘贴”',kid:'儿童模式',kidOn:'👦 儿童模式',kidHint:'大字、自动朗读、只回答适合孩子的问题；离开时要家长回答一题算术。',kidStart:'开始儿童模式',kidBar:'👦 儿童模式',kidExit:'🔒 离开',kidGate:'请家长回答：{0} = ?',kidGateH:'🔒 离开儿童模式',kidWrong:'答案不对哦，请家长再试一次',kidOk:'确定',kidHello:'嗨！我是小智 👋 有什么想问我的吗？',kidQs:'神住在哪里？|为什么要祷告？|耶稣小时候是什么样子？|挪亚方舟有多大？|我害怕的时候怎么办？|天堂是什么样子？',kidAsk:'点一个问题，或按麦克风用说的',roleNav:'圣经人物对话',roleH:'🎭 和圣经人物对话',roleHint:'小智用第一人称扮演圣经人物回答，内容只根据圣经记载并附出处；这是想象对话，不是那位人物真的在说话。',roleCustom:'其他圣经人物（输入名字）',roleGo:'开始',roleBar:'🎭 想象对话：{0}（根据圣经记载）',roleEnd:'结束',roleNo:'为了敬畏，小智不扮演耶稣、天父或圣灵，请选一位圣经人物。',roleHi:'平安！我是{0}。想听我说说神在我生命中做的事吗？',roleQs:'你人生中最难忘的一天是哪一天？|那时候你心里在想什么？|神怎样改变了你？|你会给今天的我什么劝勉？'},
+ en:{think:'🤔 Deep thinking',thinkOn:'Deep thinking on: Xiaozhi will think more carefully (slower)',thinkOff:'Deep thinking off',thinkSteps:'🤔 How Xiaozhi thought it through',thinkHint:'Good for hard theology, counseling cases and sermon outlines; answers are slower.',disc:'🔍 Ask Xiaozhi to check',discH:'🔍 Ask Xiaozhi to check this',discHint:'Paste a forwarded article, health claim or teaching from LINE or Facebook, and Xiaozhi will help you see whether it’s true and biblical.',discPh:'Paste the content here…',discPaste:'📋 Paste what you just copied',discGo:'Check it',discQ:'🔍 Please help me check this forwarded message: is it true? Is it biblical?\nAnswer in order: ① verdict (trustworthy / partly / not trustworthy / can’t tell) ② reasons ③ what the Bible says ④ how I could gently reply to the person who sent it.\n\n“{0}”',discPasteFail:'Couldn’t paste automatically — long-press the box and choose Paste',kid:'Kids mode',kidOn:'👦 Kids mode',kidHint:'Big text, read aloud, child-safe answers only; a parent answers a sum to leave.',kidStart:'Start kids mode',kidBar:'👦 Kids mode',kidExit:'🔒 Exit',kidGate:'Parent, please answer: {0} = ?',kidGateH:'🔒 Leave kids mode',kidWrong:'Not quite — parent, please try again',kidOk:'OK',kidHello:'Hi! I’m Xiaozhi 👋 What would you like to ask me?',kidQs:'Where does God live?|Why do we pray?|What was Jesus like as a boy?|How big was Noah’s ark?|What can I do when I’m scared?|What is heaven like?',kidAsk:'Tap a question, or tap the mic and talk',roleNav:'Talk with Bible people',roleH:'🎭 Talk with a Bible character',roleHint:'Xiaozhi answers in the first person as a Bible character, using only what the Bible records, with references. It’s an imagined conversation — not the real person speaking.',roleCustom:'Another Bible character (type a name)',roleGo:'Start',roleBar:'🎭 Imagined conversation: {0} (based on the Bible)',roleEnd:'End',roleNo:'Out of reverence, Xiaozhi won’t play Jesus, the Father or the Holy Spirit — please choose a Bible character.',roleHi:'Peace to you! I’m {0}. Would you like to hear what God did in my life?',roleQs:'What was the most unforgettable day of your life?|What were you thinking then?|How did God change you?|What encouragement would you give me today?'},
+ ko:{think:'🤔 깊이 생각하기',thinkOn:'깊이 생각하기 켜짐: 더 신중하게 답해요(조금 느려요)',thinkOff:'깊이 생각하기 꺼짐',thinkSteps:'🤔 샤오즈의 생각 과정',thinkHint:'어려운 신학 질문, 상담 사례, 설교 개요에 좋아요. 답이 조금 느려요.',disc:'🔍 샤오즈에게 확인하기',discH:'🔍 샤오즈에게 확인 요청',discHint:'카카오톡·페이스북으로 받은 글, 건강 정보, 가르침을 붙여넣으면 사실인지, 성경적인지 함께 살펴봐요.',discPh:'여기에 내용을 붙여넣으세요…',discPaste:'📋 방금 복사한 내용 붙여넣기',discGo:'확인해 줘',discQ:'🔍 받은 글을 분별하도록 도와주세요: 사실인가요? 성경적인가요?\n순서대로: ① 결론(믿을 만함/일부/믿기 어려움/판단 불가) ② 이유 ③ 성경 말씀 ④ 보낸 분에게 부드럽게 답하는 법\n\n“{0}”',discPasteFail:'자동으로 붙여넣지 못했어요. 입력칸을 길게 눌러 붙여넣으세요',kid:'어린이 모드',kidOn:'👦 어린이 모드',kidHint:'큰 글씨, 자동 읽기, 아이에게 맞는 답만; 나갈 때는 부모님이 계산 문제를 풀어요.',kidStart:'어린이 모드 시작',kidBar:'👦 어린이 모드',kidExit:'🔒 나가기',kidGate:'부모님, 답해 주세요: {0} = ?',kidGateH:'🔒 어린이 모드 나가기',kidWrong:'틀렸어요. 부모님, 다시 해 주세요',kidOk:'확인',kidHello:'안녕! 나는 샤오즈야 👋 뭐가 궁금하니?',kidQs:'하나님은 어디에 사세요?|왜 기도해요?|예수님은 어릴 때 어땠어요?|노아의 방주는 얼마나 컸어요?|무서울 때는 어떻게 해요?|천국은 어떤 곳이에요?',kidAsk:'질문을 누르거나 마이크를 눌러 말해 보세요',roleNav:'성경 인물과 대화',roleH:'🎭 성경 인물과 대화',roleHint:'샤오즈가 성경 인물이 되어 1인칭으로 답해요. 성경 기록만 근거로 하고 출처를 붙여요. 상상 대화이며 실제 그 인물의 말은 아니에요.',roleCustom:'다른 성경 인물(이름 입력)',roleGo:'시작',roleBar:'🎭 상상 대화: {0}(성경 기록에 근거)',roleEnd:'끝내기',roleNo:'경외하는 마음으로 예수님, 성부, 성령님은 연기하지 않아요. 성경 인물을 골라 주세요.',roleHi:'평안하세요! 나는 {0}입니다. 하나님이 내 삶에 하신 일을 들려줄까요?',roleQs:'인생에서 가장 잊지 못할 날은?|그때 무슨 생각을 했나요?|하나님은 당신을 어떻게 바꾸셨나요?|오늘의 나에게 어떤 권면을 주시겠어요?'},
+ ja:{think:'🤔 じっくり考えるモード',thinkOn:'じっくり考えるモード：より丁寧に考えます（少し遅くなります）',thinkOff:'じっくり考えるモードをオフにしました',thinkSteps:'🤔 シャオジーの考えたこと',thinkHint:'難しい神学の質問、カウンセリング、説教の構成に。回答は少し遅くなります。',disc:'🔍 シャオジーに確かめてもらう',discH:'🔍 シャオジーに確かめてもらう',discHint:'LINE やフェイスブックで回ってきた記事、健康情報、教えを貼り付けると、本当か、聖書的かを一緒に確かめます。',discPh:'ここに内容を貼り付け…',discPaste:'📋 コピーした内容を貼り付け',discGo:'確かめる',discQ:'🔍 回ってきたこの内容を見分けるのを手伝ってください：本当ですか？聖書的ですか？\n順に答えてください：①結論（信頼できる／一部／信頼できない／判断できない）②理由 ③聖書は何と言っているか ④送ってくれた人へのやさしい返し方\n\n「{0}」',discPasteFail:'自動で貼り付けできません。入力欄を長押しして「ペースト」を選んでください',kid:'こどもモード',kidOn:'👦 こどもモード',kidHint:'大きな文字、自動読み上げ、こども向けの回答だけ。終了には保護者が計算問題に答えます。',kidStart:'こどもモードを始める',kidBar:'👦 こどもモード',kidExit:'🔒 おわる',kidGate:'保護者の方へ：{0} = ?',kidGateH:'🔒 こどもモードを終える',kidWrong:'ちがいます。保護者の方、もう一度どうぞ',kidOk:'OK',kidHello:'こんにちは！シャオジーだよ 👋 なにを聞きたい？',kidQs:'神さまはどこにいるの？|どうしておいのりするの？|イエスさまはこどものころどんなだった？|ノアの箱舟はどれくらい大きい？|こわいときはどうしたらいい？|天国ってどんなところ？',kidAsk:'しつもんをタップするか、マイクで話してね',roleNav:'聖書の人物と話す',roleH:'🎭 聖書の人物と話す',roleHint:'シャオジーが聖書の人物として一人称で答えます。聖書の記録だけに基づき、出典を示します。想像の対話で、本人が話しているのではありません。',roleCustom:'ほかの聖書の人物（名前を入力）',roleGo:'はじめる',roleBar:'🎭 想像の対話：{0}（聖書の記録に基づく）',roleEnd:'終わる',roleNo:'畏れをもって、イエスさま・父なる神・聖霊は演じません。聖書の人物を選んでください。',roleHi:'平安がありますように！わたしは{0}です。神さまがわたしの人生でなさったことを聞きたいですか？',roleQs:'人生でいちばん忘れられない日は？|そのとき何を考えていましたか？|神さまはあなたをどう変えましたか？|今日のわたしにどんな励ましをくれますか？'},
+ id:{think:'🤔 Mode berpikir dalam',thinkOn:'Mode berpikir dalam aktif: Xiaozhi berpikir lebih teliti (lebih lambat)',thinkOff:'Mode berpikir dalam nonaktif',thinkSteps:'🤔 Cara Xiaozhi memikirkannya',thinkHint:'Cocok untuk teologi yang sulit, kasus konseling, dan kerangka khotbah; jawaban lebih lambat.',disc:'🔍 Minta Xiaozhi memeriksa',discH:'🔍 Minta Xiaozhi memeriksa',discHint:'Tempel artikel terusan, klaim kesehatan, atau ajaran dari WhatsApp/Facebook; Xiaozhi membantu melihat apakah benar dan alkitabiah.',discPh:'Tempel isinya di sini…',discPaste:'📋 Tempel yang baru disalin',discGo:'Periksa',discQ:'🔍 Tolong bantu saya memeriksa pesan terusan ini: benarkah? Alkitabiahkah?\nJawab berurutan: ① kesimpulan (dapat dipercaya / sebagian / tidak / tidak bisa dipastikan) ② alasan ③ kata Alkitab ④ cara membalas pengirimnya dengan lembut.\n\n“{0}”',discPasteFail:'Tidak bisa menempel otomatis — tekan lama kotak lalu pilih Tempel',kid:'Mode anak',kidOn:'👦 Mode anak',kidHint:'Huruf besar, dibacakan otomatis, hanya jawaban ramah anak; untuk keluar orang tua menjawab soal hitungan.',kidStart:'Mulai mode anak',kidBar:'👦 Mode anak',kidExit:'🔒 Keluar',kidGate:'Orang tua, jawablah: {0} = ?',kidGateH:'🔒 Keluar dari mode anak',kidWrong:'Belum tepat — orang tua, coba lagi',kidOk:'OK',kidHello:'Hai! Aku Xiaozhi 👋 Mau tanya apa?',kidQs:'Tuhan tinggal di mana?|Mengapa kita berdoa?|Seperti apa Yesus waktu kecil?|Seberapa besar bahtera Nuh?|Apa yang kulakukan kalau aku takut?|Seperti apa surga itu?',kidAsk:'Ketuk pertanyaan, atau ketuk mikrofon lalu bicara',roleNav:'Bicara dengan tokoh Alkitab',roleH:'🎭 Bicara dengan tokoh Alkitab',roleHint:'Xiaozhi menjawab sebagai tokoh Alkitab (orang pertama), hanya berdasarkan catatan Alkitab dengan rujukan. Ini percakapan imajinatif — bukan tokoh itu yang sungguh berbicara.',roleCustom:'Tokoh Alkitab lain (ketik nama)',roleGo:'Mulai',roleBar:'🎭 Percakapan imajinatif: {0} (berdasarkan Alkitab)',roleEnd:'Selesai',roleNo:'Demi hormat, Xiaozhi tidak memerankan Yesus, Bapa, atau Roh Kudus — pilih tokoh Alkitab.',roleHi:'Damai sejahtera! Aku {0}. Mau dengar apa yang Tuhan lakukan dalam hidupku?',roleQs:'Hari apa yang paling tak terlupakan dalam hidupmu?|Apa yang kau pikirkan saat itu?|Bagaimana Tuhan mengubahmu?|Nasihat apa untukku hari ini?'},
+ ceb:{think:'🤔 Lalom nga paghunahuna',thinkOn:'Naka-on ang lalom nga paghunahuna: mas mabinantayon si Xiaozhi (mas hinay)',thinkOff:'Napalong ang lalom nga paghunahuna',thinkSteps:'🤔 Giunsa paghunahuna ni Xiaozhi',thinkHint:'Maayo sa lisod nga teolohiya, konseling ug outline sa wali; mas hinay ang tubag.',disc:'🔍 Ipasusi kang Xiaozhi',discH:'🔍 Ipasusi kang Xiaozhi',discHint:'I-paste ang gipasa nga artikulo, health claim o pagtulon-an gikan sa Messenger o Facebook; tabangan ka ni Xiaozhi nga makita kon tinuod ug biblikal ba.',discPh:'I-paste ang sulod dinhi…',discPaste:'📋 I-paste ang bag-ong gikopya',discGo:'Susiha',discQ:'🔍 Palihug tabangi ko sa pagsusi niini nga gipasa nga mensahe: tinuod ba? Biblikal ba?\nTubaga sunod-sunod: ① konklusyon (kasaligan / bahin ra / dili kasaligan / dili matino) ② mga rason ③ unsay giingon sa Biblia ④ unsaon pagtubag sa nagpasa sa malumo nga paagi.\n\n“{0}”',discPasteFail:'Dili ma-paste awtomatik — dugay nga pindota ang kahon ug pilia ang Paste',kid:'Mode sa bata',kidOn:'👦 Mode sa bata',kidHint:'Dagkong letra, awtomatik basahon, tubag nga haom sa bata ra; aron mogawas, motubag ang ginikanan og usa ka math.',kidStart:'Sugdi ang mode sa bata',kidBar:'👦 Mode sa bata',kidExit:'🔒 Gawas',kidGate:'Ginikanan, tubaga: {0} = ?',kidGateH:'🔒 Mogawas sa mode sa bata',kidWrong:'Dili sakto — ginikanan, sulayi pag-usab',kidOk:'OK',kidHello:'Hi! Ako si Xiaozhi 👋 Unsay gusto nimong pangutan-on?',kidQs:'Asa nagpuyo ang Dios?|Nganong mag-ampo man ta?|Unsa man si Jesus sa bata pa siya?|Unsa kadako ang arka ni Noe?|Unsay buhaton nako kon mahadlok ko?|Unsa ang langit?',kidAsk:'Pindota ang pangutana, o ang mikropono ug sulti',roleNav:'Pakigsulti sa tawo sa Biblia',roleH:'🎭 Pakigsulti sa tawo sa Biblia',roleHint:'Motubag si Xiaozhi isip usa ka tawo sa Biblia (first person), base ra sa gisulat sa Biblia nga adunay reperensya. Hinanduraw kini nga panag-istorya — dili tinuod nga siya ang nagsulti.',roleCustom:'Laing tawo sa Biblia (isulat ang ngalan)',roleGo:'Sugdi',roleBar:'🎭 Hinanduraw nga panag-istorya: {0} (base sa Biblia)',roleEnd:'Tapuson',roleNo:'Tungod sa pagtahod, dili magpakaaron-ingnon si Xiaozhi nga si Jesus, ang Amahan o ang Espiritu Santo — pilia ang usa ka tawo sa Biblia.',roleHi:'Kalinaw kanimo! Ako si {0}. Gusto ka bang madungog ang gibuhat sa Dios sa akong kinabuhi?',roleQs:'Unsang adlawa ang dili nimo malimtan?|Unsay imong gihunahuna niadto?|Giunsa ka pag-usab sa Dios?|Unsay imong tambag kanako karon?'}
+};
+function C4(k,a){ var d=CT4X[LANG]||CT4X.en,s=d[k]; if(s==null) s=(FOREIGN()?CT4X.en:CT4X.zh)[k]; if(s==null) s=CT4X.zh[k]||k; return a!=null?String(s).replace('{0}',a):s; }
+var C4P=[['peter','🎣','彼得','彼得','Peter','베드로','ペテロ','Petrus','Pedro'],['paul','✉️','保羅','保罗','Paul','바울','パウロ','Paulus','Pablo'],['moses','🪨','摩西','摩西','Moses','모세','モーセ','Musa','Moises'],['david','🎵','大衛','大卫','David','다윗','ダビデ','Daud','David'],['abraham','⭐','亞伯拉罕','亚伯拉罕','Abraham','아브라함','アブラハム','Abraham','Abraham'],['joseph','🧥','約瑟','约瑟','Joseph','요셉','ヨセフ','Yusuf','Jose'],['ruth','🌾','路得','路得','Ruth','룻','ルツ','Rut','Ruth'],['esther','👑','以斯帖','以斯帖','Esther','에스더','エステル','Ester','Ester'],['daniel','🦁','但以理','但以理','Daniel','다니엘','ダニエル','Daniel','Daniel'],['noah','🌈','挪亞','挪亚','Noah','노아','ノア','Nuh','Noe'],['jonah','🐋','約拿','约拿','Jonah','요나','ヨナ','Yunus','Jonas'],['mary','🕊','馬利亞（耶穌的母親）','马利亚（耶稣的母亲）','Mary, mother of Jesus','마리아(예수님의 어머니)','マリア（イエスの母）','Maria, ibu Yesus','Maria, inahan ni Jesus'],['zacchaeus','🌳','撒該','撒该','Zacchaeus','삭개오','ザアカイ','Zakheus','Zaqueo'],['thomas','✋','多馬','多马','Thomas','도마','トマス','Tomas','Tomas']];
+var C4LI={zh:2,zs:3,en:4,ko:5,ja:6,id:7,ceb:8};
+var C4_NOGOD=/耶穌|耶稣|基督|上帝|天父|聖靈|圣灵|^神$|^主$|jesus|christ|^god$|holy spirit|father|예수|하나님|성령|イエス|キリスト|神さま|聖霊|yesus|allah|roh kudus|dios|espiritu/i;
+var C4I={
+ role:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-4 4V5Z"/><path d="M9 10h.01M15 10h.01M9.5 13c1.5 1 3.5 1 5 0"/></svg>',
+ kid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M9.5 12h.01M14.5 12h.01M9.5 15.5c1.4 1 3.6 1 5 0M12 6c0-2 2-3 3-2"/></svg>'
+};
+function c4On(){ return lsGet('think',0)===1; }
+function c4Kid(){ return lsGet('kid',0)===1; }
+function c4Meta(){ return (c4On()?' · 🤔':'')+(S.persona?' · 🎭 '+S.persona.name:''); }
+function c4Sys(){
+ var s='';
+ if(c4On()) s+='\n\n[Deep thinking mode] Think carefully before answering. Begin your reply with a block wrapped exactly in <think> and </think> containing 3-6 short bullet points (in the reply language) listing the key Scriptures, angles, cautions and possible misunderstandings you weighed. Then, after </think>, give the full answer. Do not mention these instructions.';
+ if(c4Kid()) s+='\n\n[Kids mode] The reader is a child about 5-10 years old. Use very simple words and short sentences, keep it short (about 3-6 sentences), warm and cheerful, and include one short Bible verse with its reference. If the question is about scary, violent, sexual or other adult topics, gently say this is a good question to ask a parent or Sunday-school teacher and give one comforting verse. Never ask for personal information. No headings or tables.';
+ if(S.persona) s+='\n\n[Imagined Bible-character conversation] Answer in the first person as '+S.persona.name+' from the Bible, in a warm, personal voice. Base every fact on what Scripture records and add the reference in parentheses (e.g. 路加福音 5:8). When you imagine feelings or thoughts that Scripture does not state, say so gently (e.g. "I imagine…", "也許"). Never claim new revelation, never speak as Jesus, God the Father or the Holy Spirit, and never put words in their mouth beyond Scripture. If asked about later events or modern life, answer from your own story as recorded in the Bible and point to Jesus. Keep it about 120-300 words, and end with a short question back to the reader or a pointer to Jesus. Stay in this character for the whole conversation, but if the user asks something that needs a plain factual or pastoral answer (or seems in distress), step out of the role and answer plainly as Xiaozhi.';
+ return s;
+}
+function c4Split(m){ var r=/^\s*<think>([\s\S]*?)<\/think>\s*/i.exec(m.t||''); if(r){ m.think=r[1].trim(); m.t=m.t.slice(r[0].length).trim()||m.t; } else if(/^\s*<think>/i.test(m.t||'')){ m.t=m.t.replace(/^\s*<think>/i,''); } }
+function c4Head(m){
+ var h='';
+ if(m.persona) h+='<div class="c4who">🎭 '+esc(m.persona)+'</div>';
+ if(m.think) h+='<details class="c4think"><summary>'+esc(C4('thinkSteps'))+'</summary><div>'+md(m.think)+'</div></details>';
+ return h;
+}
+function c4Bar(){
+ if(c4Kid()) return '<div class="c4kbar"><span>'+esc(C4('kidBar'))+'</span><button class="ctbtn" data-act="ctkidexit">'+esc(C4('kidExit'))+'</button></div>';
+ if(S.persona) return '<div class="c4rbar"><span>'+esc(C4('roleBar',S.persona.name))+'</span><button class="ctbtn" data-act="ctroleend">'+esc(C4('roleEnd'))+'</button></div>';
+ return '';
+}
+function c4Bot(cls){
+ return '<svg class="xzbot'+(cls?' '+cls:'')+'" viewBox="0 0 120 120" aria-hidden="true"><defs><radialGradient id="xzbg" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#FFF4D2"/><stop offset=".55" stop-color="#FFD873"/><stop offset="1" stop-color="#E9A531"/></radialGradient><radialGradient id="xzgl" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#FFE7A0" stop-opacity=".55"/><stop offset="1" stop-color="#FFE7A0" stop-opacity="0"/></radialGradient></defs>'+
+  '<circle class="glow" cx="60" cy="66" r="58" fill="url(#xzgl)"/>'+
+  '<g class="body"><circle cx="60" cy="68" r="40" fill="url(#xzbg)" stroke="#D89A2B" stroke-width="2"/>'+
+  '<g class="book"><path d="M60 34 C52 28 42 27 34 29 L34 41 C42 39 52 40 60 45 Z" fill="#FFFFFF" stroke="#1E3F8F" stroke-width="2.2" stroke-linejoin="round"/><path d="M60 34 C68 28 78 27 86 29 L86 41 C78 39 68 40 60 45 Z" fill="#FFFFFF" stroke="#1E3F8F" stroke-width="2.2" stroke-linejoin="round"/><path d="M60 34 V45" stroke="#1E3F8F" stroke-width="2"/></g>'+
+  '<g class="eyes"><ellipse cx="46" cy="66" rx="5.2" ry="7" fill="#1E2A55"/><ellipse cx="74" cy="66" rx="5.2" ry="7" fill="#1E2A55"/><circle cx="47.8" cy="63.4" r="1.9" fill="#fff"/><circle cx="75.8" cy="63.4" r="1.9" fill="#fff"/></g>'+
+  '<ellipse cx="37" cy="78" rx="6.5" ry="3.8" fill="#FF8E9A" opacity=".55"/><ellipse cx="83" cy="78" rx="6.5" ry="3.8" fill="#FF8E9A" opacity=".55"/>'+
+  '<path class="smile" d="M51 82 Q60 91 69 82" fill="none" stroke="#1E2A55" stroke-width="3" stroke-linecap="round"/>'+
+  '<ellipse class="talk" cx="60" cy="85" rx="7" ry="5" fill="#8A2F3A"/></g>'+
+  '<g class="dots"><circle cx="92" cy="30" r="3" fill="#fff"/><circle cx="100" cy="22" r="4" fill="#fff"/><circle cx="110" cy="12" r="5" fill="#fff"/></g></svg>';
+}
+function c4Hello(){
+ if(S.persona){ var q=C4('roleQs').split('|'),h='<section class="hello c4hello"><div class="c4av">'+(S.persona.icon||'🎭')+'</div><h1>'+esc(C4('roleHi',S.persona.name))+'</h1><p class="hnote">'+esc(C4('roleHint'))+'</p></section><div class="sugg">';
+  for(var i=0;i<q.length;i++) h+='<button class="srow" data-act="ask" data-q="'+esc(q[i])+'"><i>💬</i><span>'+esc(q[i])+'</span></button>';
+  return h+'</div>'; }
+ var k=C4('kidQs').split('|'),g='<section class="hello c4hello c4kidh">'+c4Bot('wave')+'<h1>'+esc(C4('kidHello'))+'</h1><p>'+esc(C4('kidAsk'))+'</p></section><div class="c4kq">',ic=['🏠','🙏','👦','🚢','🤗','☁️'];
+ for(var j=0;j<k.length;j++) g+='<button data-act="ask" data-q="'+esc(k[j])+'"><span>'+ic[j%ic.length]+'</span>'+esc(k[j])+'</button>';
+ return g+'</div>';
+}
+function c4PlusExtra(){ return '<button class="wide" data-act="ctthink"><span>'+esc(C4('think'))+'<br><small class="hint">'+esc(C4('thinkHint'))+'</small></span><span class="ctsw'+(c4On()?' on':'')+'" style="border:0;padding:0"><i></i></span></button><button class="wide" data-act="ctdisc"><span>'+esc(C4('disc'))+'</span><span>›</span></button><button class="wide" data-act="ctrole"><span>'+esc(C4('roleH'))+'</span><span>›</span></button>'; }
+function ct4Sheet(k){
+ var h='';
+ if(k==='c4disc'||k==='ctdisc'){
+  h+='<div class="sheethead"><h2>'+esc(C4('discH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C4('discHint'))+'</p>';
+  h+=(navigator.clipboard&&navigator.clipboard.readText?'<button class="ctbtn" data-act="ctdiscpaste" style="margin:10px 0">'+esc(C4('discPaste'))+'</button>':'')+'<textarea id="c4dt" class="ctta" rows="8" placeholder="'+esc(C4('discPh'))+'">'+esc(S.c4Disc||'')+'</textarea><button class="ctgo" data-act="ctdiscgo">'+esc(C4('discGo'))+'</button>';
+  return h;
+ }
+ if(k==='ctrole'){
+  h+='<div class="sheethead"><h2>'+esc(C4('roleH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C4('roleHint'))+'</p><div class="c4roles">';
+  var li=C4LI[LANG]||4; for(var i=0;i<C4P.length;i++) h+='<button data-act="ctrolego" data-v="'+C4P[i][0]+'"><span>'+C4P[i][1]+'</span>'+esc(C4P[i][li])+'</button>';
+  return h+'</div><div class="ctrow" style="margin-top:12px"><input id="c4rn" class="ctin" maxlength="20" placeholder="'+esc(C4('roleCustom'))+'"><button class="ctbtn pri" data-act="ctrolego" data-v="">'+esc(C4('roleGo'))+'</button></div>';
+ }
+ if(k==='ctkid'){
+  return '<div class="sheethead"><h2>'+esc(C4('kidOn'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><div class="c4kidpre">'+c4Bot('wave')+'</div><p class="hint" style="text-align:center">'+esc(C4('kidHint'))+'</p><button class="ctgo" data-act="ctkidgo">'+esc(C4('kidStart'))+'</button>';
+ }
+ if(k==='ctkidgate'){
+  if(!S.c4G){ var a=6+Math.floor(Math.random()*7),b=4+Math.floor(Math.random()*6); S.c4G={q:a+' × '+b,a:a*b}; }
+  return '<div class="sheethead"><h2>'+esc(C4('kidGateH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="c4gq">'+esc(C4('kidGate',S.c4G.q))+'</p><input id="c4ga" class="ctin" inputmode="numeric" pattern="[0-9]*" maxlength="3" style="text-align:center;font-size:1.4em"><button class="ctgo" data-act="ctkidok">'+esc(C4('kidOk'))+'</button>';
+ }
+ return null;
+}
+function c4StartRole(key){
+ var name='',icon='🎭';
+ if(key){ for(var i=0;i<C4P.length;i++) if(C4P[i][0]===key){ name=C4P[i][C4LI[LANG]||4]; icon=C4P[i][1]; } }
+ else { name=(($('c4rn')||{}).value||'').trim().slice(0,20); if(!name) return; }
+ if(C4_NOGOD.test(name)){ toast(C4('roleNo')); return; }
+ closeSheet(); closeDrawer(); goView('home'); S.persona={k:key||'',name:name,icon:icon}; render();
+}
+function ct4Act(a,b,i,fid,v){
+ if(a==='ctthink'){ var on=!c4On(); lsSet('think',on?1:0); paintHead(); if(S.sheet==='ctplus') renderSheet(); toast(on?C4('thinkOn'):C4('thinkOff')); }
+ else if(a==='ctdisc'){ closeDrawer(); S.c4Disc=''; openSheet('ctdisc'); }
+ else if(a==='ctdiscpaste'){ try{ navigator.clipboard.readText().then(function(t){ var ta=$('c4dt'); if(ta&&t){ ta.value=t; S.c4Disc=t; } else toast(C4('discPasteFail')); },function(){ toast(C4('discPasteFail')); }); }catch(e){ toast(C4('discPasteFail')); } }
+ else if(a==='ctdiscgo'){ var t=(($('c4dt')||{}).value||'').trim(); if(!t){ var ta=$('c4dt'); if(ta) ta.focus(); return true; } closeSheet(); S.c4Disc=''; send(C4('discQ',t.slice(0,3000))); }
+ else if(a==='ctrole'){ closeDrawer(); openSheet('ctrole'); }
+ else if(a==='ctrolego') c4StartRole(v);
+ else if(a==='ctroleend'){ S.persona=null; goView('home'); }
+ else if(a==='ctkid'){ closeDrawer(); openSheet('ctkid'); }
+ else if(a==='ctkidgo'){ lsSet('kidprev',{a:X.aud(),l:X.alen()}); try{ X.setAud('kid'); X.setLen('s'); }catch(e){} lsSet('kid',1); closeSheet(); goView('home'); render(); }
+ else if(a==='ctkidexit'){ S.c4G=null; stopSpeak(); openSheet('ctkidgate'); setTimeout(function(){ var g=$('c4ga'); if(g) g.focus(); },80); }
+ else if(a==='ctkidok'){ var ans=parseInt((($('c4ga')||{}).value||'').trim(),10); if(!S.c4G||ans!==S.c4G.a){ toast(C4('kidWrong')); S.c4G=null; renderSheet(); return true; }
+  S.c4G=null; lsSet('kid',0); var p=lsGet('kidprev',null); try{ if(p&&p.a) X.setAud(p.a); if(p&&p.l) X.setLen(p.l); }catch(e){} closeSheet(); goView('home'); render(); }
+ else return false;
+ return true;
+}
+/* 從手機「分享」進來（Android 已安裝的 App）：?share=1&text=…，直接打開辨別面板 */
+function c4Init(){
+ try{
+  var sp=new URLSearchParams(location.search); if(!sp.get('share')) return;
+  var want=lsGet('lang',''); if(want&&want!==LANG&&LANGS.indexOf(want)>=0&&!sp.get('lg')){ var pg={zh:'./',zs:'sc.html',en:'en.html',ko:'ko.html',ja:'ja.html',id:'id.html',ceb:'ceb.html'}[want]; sp.set('lg','1'); location.replace(location.pathname.replace(/[^\/]*$/,'')+(pg==='./'?'':pg)+'?'+sp.toString()); return; }
+  var t=[sp.get('title'),sp.get('text'),sp.get('url')].filter(function(x){ return x; }).join('\n');
+  window.history.replaceState(window.history.state,'',location.pathname+location.hash);
+  if(t){ if(c4Kid()) return; S.c4Disc=t; openSheet('ctdisc'); }
+ }catch(e){}
+}
+setTimeout(c4Init,350);
 /* ---------- 教材助手（ct3-1113）：一鍵改寫、測驗與字卡、拍照提問、資料夾參考資料 ---------- */
 var CT3X={
  zh:{more:'更多',mH:'這個回答',rw:'一鍵改寫',rwH:'把這個回答改寫成…',rw_short:'更短',rw_long:'更詳細',rw_simple:'更簡單',rw_kid:'講給小孩聽',rw_elder:'講給長輩聽',rw_pulpit:'改成講台講稿',rw_text:'改成簡訊口吻',rw_formal:'更正式',rwDone:'✨ 已改寫成「{0}」',rwUndo:'還原原本的回答',rwFail:'改寫沒有成功，請再試一次',qz:'測驗與字卡',qzH:'🎯 測驗與字卡',qzMaking:'小智正在出題…',qzFail:'出題沒有成功，請再試一次',qzQuiz:'測驗',qzCards:'字卡',qzRight:'答對了！',qzWrong:'再想想，正確答案是：',qzScore:'{0} 題答對 {1} 題',qzAgain:'再做一次',qzNew:'換一組題目',qzFlip:'點卡片翻面',qzPrev:'上一張',qzNext:'下一張',qzNextQ:'下一題',qzShare:'分享題目',qzAns:'答案',grp:'🏡 做成小家討論題',plusH:'加入相片或找範例問題',cam:'📷 拍照提問',pic:'🖼 選一張相片提問',bank:'💡 範例問題',imgAsk:'請幫我看看這張相片，整理重點。',imgRm:'移除相片',imgFail:'小智服務目前收不到相片。請先用文字描述，或請管理者更新 xiaozhi-proxy 讓它接受相片。',imgBad:'相片讀取失敗，請換一張',imgReady:'相片已附上，輸入問題後送出（不輸入也可以）',src:'參考資料',srcH:'📚 參考資料',srcHint:'加入講義、講稿、課程內容；在這個資料夾提問時，小智會先根據這些資料回答，並註明出處。資料只存在這支手機。',srcFile:'＋ 加入檔案（PDF、Word、文字檔）',srcPaste:'＋ 貼上文字',srcName:'資料名稱',srcText:'把內容貼在這裡',srcAdd:'加入',srcNone:'還沒有參考資料',srcReading:'正在讀取「{0}」…',srcAdded:'已加入「{0}」（{1} 字）',srcBad:'這個檔案讀不出文字（掃描的圖片 PDF 或加密檔無法讀取）',srcDel:'刪除',srcChars:'{0} 字',srcTag:'・📚 {0}'},
@@ -1785,7 +1942,7 @@ function c3MsgHTML(){
 }
 /* ---------- 拍照提問 ---------- */
 function c3PlusHTML(){
- return '<div class="sheethead"><h2>'+esc(C3('plusH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><div class="sec"><button class="wide" data-act="ctcam"><span>'+esc(C3('cam'))+'</span><span>›</span></button><button class="wide" data-act="ctpic"><span>'+esc(C3('pic'))+'</span><span>›</span></button><button class="wide" data-act="bank"><span>'+esc(C3('bank'))+'</span><span>›</span></button></div>';
+ return '<div class="sheethead"><h2>'+esc(C3('plusH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><div class="sec"><button class="wide" data-act="ctcam"><span>'+esc(C3('cam'))+'</span><span>›</span></button><button class="wide" data-act="ctpic"><span>'+esc(C3('pic'))+'</span><span>›</span></button><button class="wide" data-act="bank"><span>'+esc(C3('bank'))+'</span><span>›</span></button>'+c4PlusExtra()+'</div>';
 }
 function c3PickImg(cam){
  var inp=$('c3file'); if(!inp){ inp=document.createElement('input'); inp.type='file'; inp.id='c3file'; inp.accept='image/*'; inp.style.display='none'; document.body.appendChild(inp);
@@ -2095,7 +2252,7 @@ function ctCallStart(){
  if(!SRC&&!MIC.dict){ toast(C2('callNoMic')); return; }
  closeSheet(); closeDrawer(); CALL.on=true; CALL.pause=false; CALL.silent=0; CALL.idle=0;
  var o=document.createElement('div'); o.id='ctcall'; o.setAttribute('role','dialog'); o.setAttribute('aria-modal','true');
- o.innerHTML='<div class="ctch">'+esc(C2('callH'))+'</div><div class="ctcmid"><div class="ctcst" id="ctcst"></div><div class="ctcsaid" id="ctcsaid"></div><button class="ctcorb" data-act="ctcallorb" aria-label="'+esc(C2('callTapGo'))+'"><span class="r1"></span><span class="r2"></span><span class="core">'+LAMP+'</span></button><div class="ctctap" id="ctctap"></div><div class="ctcans" id="ctcans"></div></div><div class="ctcfoot"><button class="ctcend" data-act="ctcallend">'+esc(C2('callEnd'))+'</button><p>'+esc(C2('callHint'))+'</p></div>';
+ o.innerHTML='<div class="ctch">'+esc(C2('callH'))+'</div><div class="ctcmid"><div class="ctcst" id="ctcst"></div><div class="ctcsaid" id="ctcsaid"></div><button class="ctcorb" data-act="ctcallorb" aria-label="'+esc(C2('callTapGo'))+'"><span class="r1"></span><span class="r2"></span><span class="core c4core">'+c4Bot()+'</span></button><div class="ctctap" id="ctctap"></div><div class="ctcans" id="ctcans"></div></div><div class="ctcfoot"><button class="ctcend" data-act="ctcallend">'+esc(C2('callEnd'))+'</button><p>'+esc(C2('callHint'))+'</p></div>';
  document.body.appendChild(o);
  try{ if(navigator.wakeLock) navigator.wakeLock.request('screen').then(function(w){ CALL.wl=w; }).catch(function(){}); }catch(e){}
  CALL.tmr=setInterval(ctCallTick,350);
@@ -2238,6 +2395,7 @@ function ctFbText(kind,i,reasons,note,attach){
 }
 function ctSheetHTML(){
  var k=S.sheet,h='';
+ var x4=ct4Sheet(k); if(x4!=null) return x4;
  var x3=ct3Sheet(k); if(x3!=null) return x3;
  var x2=ct2Sheet(k); if(x2!=null) return x2;
  if(k==='ctfb'){
@@ -2274,6 +2432,7 @@ function ctSheetAfter(x){ ct2After();
  var at=$('ctfbatt'); if(at) at.onchange=function(){ if(S.ctFb) S.ctFb.att=at.checked; };
 }
 function ctAct(a,b,i,fid,v){
+ if(ct4Act(a,b,i,fid,v)) return;
  if(ct3Act(a,b,i,fid,v)) return;
  if(ct2Act(a,b,i,fid,v)) return;
  if(a==='ctedit'){ if(S.busy) return; stopSpeak(); S.ctEdit=i; render(); var ta=$('ctEditQ'); if(ta){ ta.focus(); try{ ta.setSelectionRange(ta.value.length,ta.value.length); }catch(e){} ta.scrollIntoView({block:'center'}); } }
@@ -2417,7 +2576,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1113.1800',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1113.1900',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
