@@ -349,5 +349,10 @@
     try { new MutationObserver(later).observe(document.body, { childList: true, subtree: true, characterData: true }); } catch (e) { setInterval(scan, 1500); }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-  window.XZPLUS = { scan: scan, linkify: linkify, RE: RE, toGroup: function (text) { openGroup(null, String(text || '')); } };
+  function parseRef(s) {
+    s = String(s || ''); RE.lastIndex = 0; var m = RE.exec(s); if (!m) { var mm = /^\s*(\S+?)\s*(\d{1,3})\s*$/.exec(s); if (mm && NAME[mm[1]] && +mm[2] <= NAME[mm[1]][1]) return { b: NAME[mm[1]][0], c: +mm[2], v: 0, v2: 0 }; return null; }
+    var b = NAME[m[1]]; if (!b) return null; var ch = +m[2], v = +(m[3] || m[5] || 0), v2 = +(m[4] || m[6] || 0);
+    if (!(ch >= 1 && ch <= b[1])) return null; return { b: b[0], c: ch, v: v, v2: v2 > v ? v2 : v };
+  }
+  window.XZPLUS = { scan: scan, linkify: linkify, RE: RE, toGroup: function (text) { openGroup(null, String(text || '')); }, parse: parseRef, chapter: chapter };
 })();
