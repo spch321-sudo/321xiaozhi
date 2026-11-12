@@ -6,21 +6,21 @@
 <title>Pangutana kang Xiaozhi</title>
 <meta name="description" content="Pangutana kang Xiaozhi: Bibliya, pagtuo ug kinabuhi · Kingdom 321 Air Fellowship">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.1600">
-<link rel="icon" href="favicon.ico?v=v2026.1113.1600" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.1600">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.1600">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.1600">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.1600">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.1600">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.1700">
+<link rel="icon" href="favicon.ico?v=v2026.1113.1700" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.1700">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.1700">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.1700">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.1700">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.1700">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1113.1600"></script>
-<script src="xzplus.js?v=v2026.1113.1600" defer></script>
+<script src="k321gate.js?v=v2026.1113.1700"></script>
+<script src="xzplus.js?v=v2026.1113.1700" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ceb';</script>
@@ -352,6 +352,45 @@ html #xz2pf input[style*="width:120px"]{width:7.5em!important}
 .qtr{display:block;color:var(--muted);font-size:.86em;margin-top:2px}
 @media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}.micbtn.on,.micwave i{animation:none}}
 @media (max-width:420px){.audgrid{grid-template-columns:1fr 1fr}}
+/* ct2-1113 牧養助手 */
+.ctmemnote{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;border:1px dashed var(--line);background:transparent;color:var(--muted);border-radius:12px;padding:6px 10px;margin:6px 0 2px;font-size:.8em;text-align:left}
+.ctmemnote span{color:var(--accent);white-space:nowrap}
+.ctfbar{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--gold-soft);border-radius:14px;padding:8px 12px;margin:0 0 10px;font-size:.9em;font-weight:600}
+.ctfbar .ctbtn{padding:4px 12px;font-size:.88em;font-weight:400}
+.ctflist{display:flex;flex-direction:column}.ctfi{margin-right:6px}.ctfrow small{color:var(--faint);margin-left:4px}
+.ctfsub{margin-left:18px;border-left:2px solid var(--line);padding-left:6px}
+.ctfnew{border:0;background:transparent;color:var(--accent);text-align:left;padding:8px 8px;font-size:.92em}
+.ctsw{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:var(--page);color:var(--ink);border-radius:14px;padding:11px 14px;font-size:.98em;text-align:left}
+.ctsw i{width:44px;height:26px;border-radius:13px;background:var(--line);position:relative;flex:none;transition:background .2s}
+.ctsw i:after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s}
+.ctsw.on i{background:var(--accent)}.ctsw.on i:after{left:21px}.ctsw[disabled]{opacity:.5}
+.ctmemrow{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding:6px 0}.ctmemrow span{flex:1;min-width:0;overflow-wrap:anywhere}.ctmemrow small{display:block;color:var(--faint);font-size:.75em}
+.wide.cton{border-color:var(--accent)}
+.ctcallbtn svg{width:21px;height:21px}
+@media (max-width:419px){.ctcallbtn{display:none!important}}
+.ctinc{flex-wrap:wrap;gap:10px}
+#ctcall{position:fixed;inset:0;z-index:2147481000;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;color:#fff;background:radial-gradient(120% 80% at 50% 20%,#2B4FA8 0%,#12285C 55%,#0A1633 100%);padding:calc(18px + env(safe-area-inset-top,0px)) 20px calc(22px + env(safe-area-inset-bottom,0px))}
+#ctcall .ctch{font-size:1.15em;font-weight:700;opacity:.92}
+#ctcall .ctcmid{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;width:100%;max-width:560px}
+#ctcall .ctcst{font-size:1.6em;font-weight:800;letter-spacing:.02em}
+#ctcall .ctcsaid{min-height:1.6em;font-size:1.15em;opacity:.95;max-height:6.5em;overflow:hidden}
+#ctcall .ctcans{font-size:1.02em;opacity:.8;line-height:1.6;max-height:8em;overflow:hidden}
+#ctcall .ctctap{min-height:1.4em;font-size:1em;color:#F3D9A0}
+.ctcorb{position:relative;width:190px;height:190px;border:0;border-radius:50%;background:transparent;margin:10px 0}
+.ctcorb .core{position:absolute;inset:30px;border-radius:50%;background:linear-gradient(145deg,#F3D9A0,#B8862E);display:grid;place-items:center;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.ctcorb .core svg{width:62px;height:62px}
+.ctcorb .r1,.ctcorb .r2{position:absolute;inset:0;border-radius:50%;border:3px solid rgba(243,217,160,.55);opacity:0}
+#ctcall[data-st=listen] .r1{animation:ctcR 1.6s ease-out infinite}#ctcall[data-st=listen] .r2{animation:ctcR 1.6s ease-out .8s infinite}
+#ctcall[data-st=speak] .core{animation:ctcB .9s ease-in-out infinite alternate}
+#ctcall[data-st=think] .core{animation:ctcT 1.4s linear infinite;opacity:.85}
+#ctcall[data-st=pause] .core{filter:grayscale(.6);opacity:.7}
+@keyframes ctcR{from{transform:scale(.72);opacity:.9}to{transform:scale(1.12);opacity:0}}
+@keyframes ctcB{from{transform:scale(.96)}to{transform:scale(1.05)}}
+@keyframes ctcT{50%{transform:scale(.92)}}
+.ctcfoot{display:flex;flex-direction:column;align-items:center;gap:8px}
+.ctcend{border:0;border-radius:999px;background:#D9443B;color:#fff;font-size:1.15em;font-weight:800;padding:15px 44px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.ctcfoot p{margin:0;font-size:.8em;opacity:.65;max-width:30em}
+@media (prefers-reduced-motion:reduce){#ctcall *{animation:none!important}}
 /* ct1113 對話工具 */
 .uacts{display:flex;gap:0;justify-content:flex-end;margin-right:-6px;opacity:.75}
 .uacts .ib{width:32px;height:32px}.uacts .ib svg{width:16px;height:16px}
@@ -397,6 +436,7 @@ html #xz2pf input[style*="width:120px"]{width:7.5em!important}
       <button class="cb" data-act="bank" id="bankBtn"></button>
       <textarea id="q" rows="1"></textarea>
       <button class="lenbtn" data-act="lenmenu" id="lenBtn"></button>
+      <button class="micbtn ctcallbtn" id="ctCallBtn" data-act="ctcall" type="button" aria-label="📞"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></button>
       <button class="micbtn" id="micBtn" type="button"></button>
       <button id="send" data-act="send"></button>
     </div>
@@ -940,7 +980,7 @@ function BI(){ var v=lsGet('bi_'+LANG,''); return (v&&v!==LANG&&LANGS.indexOf(v)
 function biSys(){ var b=BI(); if(!b) return '';
  return '\n\nBILINGUAL MODE (parallel reading): The reader is reading two languages side by side. Write the whole answer in '+LNAME[LANG]+' exactly as the rules above say, but right after EVERY heading, every paragraph line, every list item and every quote line, add ONE new line that starts with "%% " followed by a faithful, natural '+LNAME[b]+' translation of that line. Put the "%% " line directly under the line it translates (for list items, indent it two spaces under the item). Keep markdown markers (#, -, 1., >, **) on the original line only; the "%% " line is plain text (bold inside it is allowed). In tables, write each cell as "original / translation". When the translation quotes Scripture, use the wording of '+LBIBLE[b]+'. Do not add any other extra text. Make the answer a little shorter than usual so both languages fit.';
 }
-function sysPrompt(){ return T('sysBase')+X.sysExtra()+T('sysGeneral')+biSys(); }
+function sysPrompt(){ return T('sysBase')+X.sysExtra()+T('sysGeneral')+biSys()+ctSys2(); }
 function maxTok(){ return BI()?Math.min(8000,Math.round(X.maxTokens()*1.8)):X.maxTokens(); }
 function noTr(s){ return String(s||'').split('\n').filter(function(l){ return !/^\s*(>\s*)?%%/.test(l); }).join('\n'); }
 
@@ -991,13 +1031,13 @@ function save(){
  if(S.incog) return;
  var c=convById(CUR);
  if(!S.chat.length){ if(c){ CONVS.splice(CONVS.indexOf(c),1); CUR=null; persistConvs(); } return; }
- if(!c){ c={id:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),ts:Date.now(),msgs:S.chat,lang:LANG}; CONVS.unshift(c); CUR=c.id; }
+ if(!c){ c={id:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),ts:Date.now(),msgs:S.chat,lang:LANG}; if(S.fid) c.fid=S.fid; CONVS.unshift(c); CUR=c.id; }
  if(S.chat.length>80){ S.chat.splice(0,S.chat.length-80); }
  c.msgs=S.chat; c.title=c.ctitle||titleOf(S.chat); c.ts=Date.now();
  persistConvs();
 }
-function newChat(){ S.incog=false; S.ctEdit=-1; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=null; S.chat=[]; lsSet('cur_all',''); }
-function openConv(id){ var c=convById(id); if(!c) return; S.incog=false; S.ctEdit=-1; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=id; S.chat=c.msgs; lsSet('cur_all',id); }
+function newChat(){ S.incog=false; S.ctEdit=-1; S.fid=''; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=null; S.chat=[]; lsSet('cur_all',''); }
+function openConv(id){ var c=convById(id); if(!c) return; S.incog=false; S.ctEdit=-1; S.fid=(c.fid&&c2Folder(c.fid))?c.fid:''; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=id; S.chat=c.msgs; lsSet('cur_all',id); }
 function delConv(id){ var c=convById(id); if(!c) return; CONVS.splice(CONVS.indexOf(c),1); CDEL.push(id); if(CDEL.length>800) CDEL=CDEL.slice(-800); lsSet('convdel',CDEL); if(CUR===id){ CUR=null; S.chat=[]; } persistConvs(); }
 loadChat(); mergeIDB();
 function saveFav(){ lsSet('fav',FAV.slice(0,300)); }
@@ -1171,7 +1211,7 @@ function send(text){
  }).then(function(){
   m.pending=false; m.cont=false; S.busy=false; S.ctl=null;
   foldOld(idx); save(); render();
-  if(m.ok&&!m.err) genFU(idx);
+  if(m.ok&&!m.err){ genFU(idx); ctMemLearn(idx); }
   if(voice&&m.ok&&!m.err&&m.t.length>12) speak(idx);
  });
 }
@@ -1359,6 +1399,7 @@ function msgHTML(m,i,lastOk){
   if(i===lastOk&&!S.busy) h+=ab('lenmenu',i,IC.retry,T('reW'));
  }
  h+=ab('del',i,IC.trash,T('delW'))+(m.meta?'<span class="meta">'+esc(m.meta)+'</span>':'')+'</div>';
+ h+=ctMemNote(m);
  if(i===lastOk&&!S.busy) h+='<div class="fu" id="fu'+i+'">'+fuHTML(m)+'</div>';
  return h+'</div>';
 }
@@ -1396,7 +1437,7 @@ function render(){
   for(var i=0;i<S.chat.length;i++) h+=msgHTML(S.chat[i],i,lastOk);
   if(!S.busy) h+=navRowHTML();
  }
- f.innerHTML=(S.incog?ctIncogBar():'')+h; document.body.classList.toggle('incog',!!S.incog);
+ f.innerHTML=(S.incog?ctIncogBar():ctFolderBar())+h; document.body.classList.toggle('incog',!!S.incog);
  if(S.sheet) renderSheet();
  if(S.drawer) renderDrawer();
 }
@@ -1487,7 +1528,7 @@ function openDrawer(){ S.drawer=true; S.delArm=''; renderDrawer(); }
 function closeDrawer(){ var dp=document.querySelector('#drawer .dscroll'); if(dp) S.drawerTop=dp.scrollTop; S.drawer=false; var d=$('drawer'); if(d){ d.classList.remove('open'); setTimeout(function(){ if(!S.drawer&&d.parentNode) d.parentNode.removeChild(d); },220); } }
 function convListHTML(){
  var q=S.convQ.trim().toLowerCase(),h='',list=CONVS.filter(function(c){ return !q||(c.title+' '+c.msgs.map(function(m){return m.t;}).join(' ')).toLowerCase().indexOf(q)>=0; });
- list=ctSortPins(list);
+ list=ctSortPins(ctFilterFolder(list,q));
  if(!list.length) return '<p class="dempty">'+(CONVS.length?T('convNoHit'):T('convEmpty'))+'</p>';
  var DG={zh:['今天','昨天','過去 7 天','過去 30 天'],zs:['今天','昨天','过去 7 天','过去 30 天'],en:['Today','Yesterday','Previous 7 days','Previous 30 days'],ko:['오늘','어제','지난 7일','지난 30일'],ja:['今日','昨日','過去7日間','過去30日間'],id:['Hari ini','Kemarin','7 hari terakhir','30 hari terakhir'],ceb:['Karon','Gahapon','Miaging 7 ka adlaw','Miaging 30 ka adlaw']}[LANG],t0=new Date(); t0.setHours(0,0,0,0); t0=t0.getTime(); var D=86400000,lastG='';
  function grpOf(ts){ if(ts>=t0) return DG[0]; if(ts>=t0-D) return DG[1]; if(ts>=t0-7*D) return DG[2]; if(ts>=t0-30*D) return DG[3]; var d=new Date(ts); return LANG==='en'||LANG==='id'||LANG==='ceb'?d.toLocaleDateString(LANG==='ceb'?'en':LANG,{year:'numeric',month:'long'}):d.getFullYear()+(LANG==='ko'?'년 ':'年')+(d.getMonth()+1)+(LANG==='ko'?'월':'月'); }
@@ -1498,11 +1539,11 @@ function renderDrawer(){
  var d=$('drawer'),first=!d;
  if(first){ d=document.createElement('div'); d.id='drawer'; document.body.appendChild(d); }
  var keep=first?(S.drawerTop||0):0,old=d.querySelector('.dscroll'); if(old) keep=old.scrollTop;
- var nav=[['newchat',IC.edit,T('newChat')],['ctincog',CTI.incog,CT('incogStart')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['settings',IC.gear,T('settings')]];
+ var nav=[['newchat',IC.edit,T('newChat')],['ctincog',CTI.incog,CT('incogStart')],['ctcall',C2I.call,C2('callNav')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['ctmemopen',C2I.mem,C2('memNav')],['ctciopen',C2I.ci,C2('ciNav')],['settings',IC.gear,T('settings')]];
  var h='<div class="dmask" data-act="drawerclose"></div><nav class="dpanel" aria-label="'+esc(T('menu'))+'"><div class="dhead"><span class="dlamp">'+LAMP+'</span><b>'+T('name')+'</b>'+langBtns('dlang')+'</div>';
  h+='<div class="dsearch">'+IC.search+'<input id="convsearch" type="search" placeholder="'+esc(T('convSearch'))+'" value="'+esc(S.convQ)+'"></div><div class="dscroll"><div class="dnav">';
  for(var i=0;i<nav.length;i++) h+='<button class="ditem" data-act="'+nav[i][0]+'"><span class="di">'+nav[i][1]+'</span><span>'+esc(nav[i][2])+'</span></button>';
- h+='</div><div class="dsec">'+T('appsH')+'</div>'+appsMini()+'<div class="dsec">'+T('recent')+(CONVS.length?' · '+CONVS.length:'')+'</div><div class="clist" id="clist">'+convListHTML()+'</div></div><button class="dfab" data-act="newchat">'+IC.edit+'<span>'+esc(T('newChat'))+'</span></button></nav>';
+ h+='</div><div class="dsec">'+T('appsH')+'</div>'+appsMini()+ctFolderSec()+'<div class="dsec">'+T('recent')+(CONVS.length?' · '+CONVS.length:'')+'</div><div class="clist" id="clist">'+convListHTML()+'</div></div><button class="dfab" data-act="newchat">'+IC.edit+'<span>'+esc(T('newChat'))+'</span></button></nav>';
  d.innerHTML=h;
  var p=d.querySelector('.dscroll'); if(p&&keep) p.scrollTop=keep;
  if(first){ d.offsetWidth; } d.classList.add('open');
@@ -1537,6 +1578,7 @@ function renderSheet(){
   if(X.aud()==='seeker') h+='<div class="sec"><h3>'+T('bgH')+'</h3>'+bgRow()+'<p class="hint">'+T('bgHint')+'</p></div>';
   h+='<div class="sec"><h3>'+T('biH')+'</h3>'+biRow()+'<p class="hint">'+T('biHint')+'</p></div>';
   h+='<div class="sec"><h3>'+T('lenH5')+'</h3>'+lenSeg()+'<p class="hint">'+T('lenHint')+'</p></div>';
+  h+=ctSetSecs();
   h+='<div class="sec"><h3>'+T('myProfile')+'</h3><button class="wide" data-act="profile"><span>👤 '+esc(X.nick()||T('fillProfile'))+'<br><small class="hint">'+T('profileHint')+'</small></span><span>›</span></button></div>';
   var FS=T('fsNames').split('|');
   h+='<div class="sec"><h3>'+T('fsH')+'</h3><div class="seg4">';
@@ -1635,6 +1677,190 @@ function setLang(v){
 }
 
 /* ---------- 事件 ---------- */
+/* ---------- 牧養助手（ct2-1113）：記憶、自訂指示、資料夾、語音對談 ---------- */
+var CT2X={
+ zh:{memH:'🧠 小智的記憶',memNav:'記憶',memHint:'小智會記住你在對話中說過、對以後回答有幫助的事（例如服事、家人、代禱事項），並在相關時自然帶進回答。只存在這支手機，隨時可以刪除。',memOn:'使用記憶',memAuto:'自動記住新的事',memAddPh:'自己加一則，例如：我在帶青少年小組',memAdd:'加入',memEmpty:'還沒有記住任何事。',memClear:'全部清除',memClearSure:'確定全部清除？',memLearned:'📝 小智記住了：',memManage:'管理記憶',memDel:'刪除',memCount:'{0} 則',memOffNote:'記憶已關閉',ciH:'📝 自訂指示',ciNav:'自訂指示',ciHint:'每一次回答都會照這些指示（不會違背聖經與安全原則）。資料夾還可以有自己的指示。',ciPre:'常用指示（點選開啟）',ciText:'其他想要的回答方式',ciPh:'例如：多用生活的比喻；稱呼我「主耀弟兄」；回答控制在三段內',ciSaved:'已儲存，接下來的回答會照著做',ciOnN:'已開啟 {0} 項',p_verse:'回答附經文全文',p_l321:'用321理念角度回答',p_pastor:'語氣像牧師',p_prayer:'結尾附一段禱告',p_points:'先給重點摘要',p_action:'給一個本週實踐步驟',fH:'📁 資料夾',fNew:'＋ 新資料夾',fName:'資料夾名稱',fNamePh:'例如：羅馬書查經、婚姻輔導',fIns:'這個資料夾的指示',fInsPh:'例如：這是羅馬書查經，回答要對照上下文，並附討論題',fSave:'儲存',fChats:'這個資料夾的對話',fNone:'還沒有對話',fStart:'＋ 在這個資料夾開新對話',fDel:'刪除資料夾（對話會保留）',fDelSure:'確定刪除資料夾？',fMove:'📁 移到資料夾',fMoveH:'移到哪個資料夾？',fNoFolder:'不放在資料夾',fMoved:'已移到「{0}」',fOut:'已移出資料夾',fCreated:'已建立資料夾',fBar:'📁 {0}',fSet:'設定',callNav:'語音對談',callH:'📞 小智語音對談',callListen:'我在聽，請說…',callThink:'小智正在想…',callSpeak:'小智正在回答…',callPause:'已暫停，點中間的圓圈繼續',callTapStop:'點一下打斷，換你說',callTapSend:'說完了？點一下送出',callTapGo:'點一下開始說',callEnd:'結束對談',callNoMic:'這裡不能直接用麥克風，請用手機的 Safari 或 Chrome 打開小智再試。',callHint:'適合長輩與開車時使用；開車請先停好車或使用免持。'},
+ zs:{memH:'🧠 小智的记忆',memNav:'记忆',memHint:'小智会记住你在对话中说过、对以后回答有帮助的事（例如服事、家人、代祷事项），并在相关时自然带进回答。只存在这台手机，随时可以删除。',memOn:'使用记忆',memAuto:'自动记住新的事',memAddPh:'自己加一则，例如：我在带青少年小组',memAdd:'加入',memEmpty:'还没有记住任何事。',memClear:'全部清除',memClearSure:'确定全部清除？',memLearned:'📝 小智记住了：',memManage:'管理记忆',memDel:'删除',memCount:'{0} 则',memOffNote:'记忆已关闭',ciH:'📝 自定义指示',ciNav:'自定义指示',ciHint:'每一次回答都会照这些指示（不会违背圣经与安全原则）。文件夹还可以有自己的指示。',ciPre:'常用指示（点选开启）',ciText:'其他想要的回答方式',ciPh:'例如：多用生活的比喻；称呼我“主耀弟兄”；回答控制在三段内',ciSaved:'已保存，接下来的回答会照着做',ciOnN:'已开启 {0} 项',p_verse:'回答附经文全文',p_l321:'用321理念角度回答',p_pastor:'语气像牧师',p_prayer:'结尾附一段祷告',p_points:'先给重点摘要',p_action:'给一个本周实践步骤',fH:'📁 文件夹',fNew:'＋ 新文件夹',fName:'文件夹名称',fNamePh:'例如：罗马书查经、婚姻辅导',fIns:'这个文件夹的指示',fInsPh:'例如：这是罗马书查经，回答要对照上下文，并附讨论题',fSave:'保存',fChats:'这个文件夹的对话',fNone:'还没有对话',fStart:'＋ 在这个文件夹开新对话',fDel:'删除文件夹（对话会保留）',fDelSure:'确定删除文件夹？',fMove:'📁 移到文件夹',fMoveH:'移到哪个文件夹？',fNoFolder:'不放在文件夹',fMoved:'已移到“{0}”',fOut:'已移出文件夹',fCreated:'已建立文件夹',fBar:'📁 {0}',fSet:'设置',callNav:'语音对谈',callH:'📞 小智语音对谈',callListen:'我在听，请说…',callThink:'小智正在想…',callSpeak:'小智正在回答…',callPause:'已暂停，点中间的圆圈继续',callTapStop:'点一下打断，换你说',callTapSend:'说完了？点一下送出',callTapGo:'点一下开始说',callEnd:'结束对谈',callNoMic:'这里不能直接用麦克风，请用手机的 Safari 或 Chrome 打开小智再试。',callHint:'适合长辈与开车时使用；开车请先停好车或使用免提。'},
+ en:{memH:'🧠 Xiaozhi’s memory',memNav:'Memory',memHint:'Xiaozhi remembers things you have said that help future answers (your ministry, family, prayer needs) and brings them in naturally when relevant. Stored only on this phone; delete any time.',memOn:'Use memory',memAuto:'Remember new things automatically',memAddPh:'Add one yourself, e.g. I lead a youth group',memAdd:'Add',memEmpty:'Nothing remembered yet.',memClear:'Clear all',memClearSure:'Clear everything?',memLearned:'📝 Xiaozhi will remember: ',memManage:'Manage memory',memDel:'Delete',memCount:'{0} items',memOffNote:'Memory is off',ciH:'📝 Custom instructions',ciNav:'Custom instructions',ciHint:'Every answer follows these (never against Scripture or safety). Folders can add their own instructions.',ciPre:'Common instructions (tap to turn on)',ciText:'Anything else about how to answer',ciPh:'e.g. Use everyday illustrations; call me “Brother John”; keep it to three paragraphs',ciSaved:'Saved — the next answers will follow it',ciOnN:'{0} on',p_verse:'Quote full Bible verses',p_l321:'Answer from the 321 vision',p_pastor:'Sound like a pastor',p_prayer:'End with a prayer',p_points:'Start with key points',p_action:'Give one step for this week',fH:'📁 Folders',fNew:'+ New folder',fName:'Folder name',fNamePh:'e.g. Romans study, Marriage counseling',fIns:'Instructions for this folder',fInsPh:'e.g. This is a Romans study — read verses in context and add discussion questions',fSave:'Save',fChats:'Chats in this folder',fNone:'No chats yet',fStart:'+ New chat in this folder',fDel:'Delete folder (chats are kept)',fDelSure:'Delete the folder?',fMove:'📁 Move to folder',fMoveH:'Move to which folder?',fNoFolder:'No folder',fMoved:'Moved to “{0}”',fOut:'Removed from folder',fCreated:'Folder created',fBar:'📁 {0}',fSet:'Settings',callNav:'Voice call',callH:'📞 Talk with Xiaozhi',callListen:'I’m listening…',callThink:'Xiaozhi is thinking…',callSpeak:'Xiaozhi is answering…',callPause:'Paused — tap the circle to continue',callTapStop:'Tap to interrupt and speak',callTapSend:'Done? Tap to send',callTapGo:'Tap to start talking',callEnd:'End call',callNoMic:'The microphone can’t be used here. Open Xiaozhi in Safari or Chrome and try again.',callHint:'Great for elders and for driving — please pull over or use hands-free.'},
+ ko:{memH:'🧠 샤오즈의 기억',memNav:'기억',memHint:'대화 중에 말한 것 중 이후 답변에 도움이 되는 일(사역, 가족, 기도 제목)을 기억했다가 관련 있을 때 자연스럽게 반영해요. 이 휴대폰에만 저장되며 언제든 지울 수 있어요.',memOn:'기억 사용',memAuto:'새로운 일 자동으로 기억',memAddPh:'직접 추가, 예: 청소년 소그룹을 인도해요',memAdd:'추가',memEmpty:'아직 기억한 것이 없어요.',memClear:'모두 지우기',memClearSure:'모두 지울까요?',memLearned:'📝 기억했어요: ',memManage:'기억 관리',memDel:'삭제',memCount:'{0}개',memOffNote:'기억이 꺼져 있어요',ciH:'📝 맞춤 지시',ciNav:'맞춤 지시',ciHint:'모든 답변이 이 지시를 따라요(성경과 안전 원칙은 넘지 않아요). 폴더마다 지시를 더할 수 있어요.',ciPre:'자주 쓰는 지시(눌러서 켜기)',ciText:'그 밖에 원하는 답변 방식',ciPh:'예: 생활 속 비유를 많이; “요한 형제”라고 불러 주세요; 세 문단 이내로',ciSaved:'저장했어요. 다음 답변부터 반영돼요',ciOnN:'{0}개 켜짐',p_verse:'성경 구절 전체 인용',p_l321:'321 비전 관점으로',p_pastor:'목사님 같은 말투',p_prayer:'끝에 기도문',p_points:'먼저 요점 정리',p_action:'이번 주 실천 한 가지',fH:'📁 폴더',fNew:'＋ 새 폴더',fName:'폴더 이름',fNamePh:'예: 로마서 성경공부, 부부 상담',fIns:'이 폴더의 지시',fInsPh:'예: 로마서 공부예요. 문맥을 살피고 나눔 질문을 붙여 주세요',fSave:'저장',fChats:'이 폴더의 대화',fNone:'아직 대화가 없어요',fStart:'＋ 이 폴더에서 새 대화',fDel:'폴더 삭제(대화는 남아요)',fDelSure:'폴더를 삭제할까요?',fMove:'📁 폴더로 옮기기',fMoveH:'어느 폴더로 옮길까요?',fNoFolder:'폴더 없음',fMoved:'「{0}」로 옮겼어요',fOut:'폴더에서 뺐어요',fCreated:'폴더를 만들었어요',fBar:'📁 {0}',fSet:'설정',callNav:'음성 대화',callH:'📞 샤오즈와 음성 대화',callListen:'듣고 있어요…',callThink:'샤오즈가 생각 중…',callSpeak:'샤오즈가 답하는 중…',callPause:'일시정지 — 가운데 원을 누르면 계속해요',callTapStop:'눌러서 끊고 말하기',callTapSend:'다 말했나요? 눌러서 보내기',callTapGo:'눌러서 말하기 시작',callEnd:'대화 끝내기',callNoMic:'여기서는 마이크를 쓸 수 없어요. Safari나 Chrome에서 샤오즈를 열어 주세요.',callHint:'어르신과 운전 중에 좋아요. 운전 중에는 차를 세우거나 핸즈프리를 쓰세요.'},
+ ja:{memH:'🧠 シャオジーの記憶',memNav:'記憶',memHint:'会話の中で話した、今後の回答に役立つこと（奉仕、家族、祈りの課題など）を覚えて、関係するときに自然に生かします。このスマホだけに保存され、いつでも削除できます。',memOn:'記憶を使う',memAuto:'新しいことを自動で覚える',memAddPh:'自分で追加：例）青年会の小グループを導いています',memAdd:'追加',memEmpty:'まだ何も覚えていません。',memClear:'すべて削除',memClearSure:'すべて削除しますか？',memLearned:'📝 覚えました：',memManage:'記憶を管理',memDel:'削除',memCount:'{0} 件',memOffNote:'記憶はオフです',ciH:'📝 カスタム指示',ciNav:'カスタム指示',ciHint:'毎回の回答がこの指示に従います（聖書と安全の原則は超えません）。フォルダごとにも指示を追加できます。',ciPre:'よく使う指示（タップでオン）',ciText:'そのほかの希望',ciPh:'例：身近なたとえを多く；「ヨハネ兄弟」と呼んで；三段落以内で',ciSaved:'保存しました。次の回答から反映されます',ciOnN:'{0} 件オン',p_verse:'聖句を全文引用',p_l321:'321 ビジョンの視点で',p_pastor:'牧師のような口調',p_prayer:'最後に祈りを',p_points:'まず要点をまとめる',p_action:'今週の実践を一つ',fH:'📁 フォルダ',fNew:'＋ 新しいフォルダ',fName:'フォルダ名',fNamePh:'例：ローマ書の学び、夫婦カウンセリング',fIns:'このフォルダの指示',fInsPh:'例：ローマ書の学びです。文脈を確かめ、分かち合いの質問を付けて',fSave:'保存',fChats:'このフォルダの会話',fNone:'まだ会話がありません',fStart:'＋ このフォルダで新しい会話',fDel:'フォルダを削除（会話は残ります）',fDelSure:'フォルダを削除しますか？',fMove:'📁 フォルダに移動',fMoveH:'どのフォルダに移しますか？',fNoFolder:'フォルダなし',fMoved:'「{0}」に移しました',fOut:'フォルダから外しました',fCreated:'フォルダを作成しました',fBar:'📁 {0}',fSet:'設定',callNav:'音声で対話',callH:'📞 シャオジーと音声で対話',callListen:'聞いています…',callThink:'シャオジーが考えています…',callSpeak:'シャオジーが答えています…',callPause:'一時停止中 — 真ん中の円をタップで再開',callTapStop:'タップでさえぎって話す',callTapSend:'話し終えたらタップで送信',callTapGo:'タップで話し始める',callEnd:'対話を終える',callNoMic:'ここではマイクを使えません。Safari か Chrome でシャオジーを開いてお試しください。',callHint:'高齢の方や運転中に便利です。運転中は停車するかハンズフリーで。'},
+ id:{memH:'🧠 Ingatan Xiaozhi',memNav:'Ingatan',memHint:'Xiaozhi mengingat hal yang pernah Anda katakan dan berguna untuk jawaban berikutnya (pelayanan, keluarga, pokok doa) lalu memakainya secara wajar bila relevan. Hanya tersimpan di ponsel ini; bisa dihapus kapan saja.',memOn:'Pakai ingatan',memAuto:'Ingat hal baru otomatis',memAddPh:'Tambah sendiri, mis. Saya memimpin kelompok remaja',memAdd:'Tambah',memEmpty:'Belum ada yang diingat.',memClear:'Hapus semua',memClearSure:'Hapus semuanya?',memLearned:'📝 Xiaozhi mengingat: ',memManage:'Kelola ingatan',memDel:'Hapus',memCount:'{0} butir',memOffNote:'Ingatan nonaktif',ciH:'📝 Instruksi khusus',ciNav:'Instruksi khusus',ciHint:'Setiap jawaban mengikuti instruksi ini (tidak melawan Alkitab dan keamanan). Folder bisa punya instruksi sendiri.',ciPre:'Instruksi umum (ketuk untuk aktif)',ciText:'Cara menjawab lain yang Anda inginkan',ciPh:'mis. Pakai ilustrasi sehari-hari; panggil saya “Saudara Yohanes”; maksimal tiga paragraf',ciSaved:'Tersimpan — jawaban berikutnya akan mengikutinya',ciOnN:'{0} aktif',p_verse:'Kutip ayat Alkitab lengkap',p_l321:'Dari sudut visi 321',p_pastor:'Nada seperti gembala',p_prayer:'Akhiri dengan doa',p_points:'Mulai dengan poin utama',p_action:'Satu langkah minggu ini',fH:'📁 Folder',fNew:'+ Folder baru',fName:'Nama folder',fNamePh:'mis. Pemahaman Roma, Konseling pernikahan',fIns:'Instruksi folder ini',fInsPh:'mis. Ini pemahaman kitab Roma — baca ayat dalam konteks dan beri pertanyaan diskusi',fSave:'Simpan',fChats:'Percakapan di folder ini',fNone:'Belum ada percakapan',fStart:'+ Percakapan baru di folder ini',fDel:'Hapus folder (percakapan tetap ada)',fDelSure:'Hapus folder?',fMove:'📁 Pindah ke folder',fMoveH:'Pindah ke folder mana?',fNoFolder:'Tanpa folder',fMoved:'Dipindah ke “{0}”',fOut:'Dikeluarkan dari folder',fCreated:'Folder dibuat',fBar:'📁 {0}',fSet:'Pengaturan',callNav:'Panggilan suara',callH:'📞 Bicara dengan Xiaozhi',callListen:'Saya mendengarkan…',callThink:'Xiaozhi sedang berpikir…',callSpeak:'Xiaozhi sedang menjawab…',callPause:'Dijeda — ketuk lingkaran untuk lanjut',callTapStop:'Ketuk untuk memotong dan bicara',callTapSend:'Sudah? Ketuk untuk kirim',callTapGo:'Ketuk untuk mulai bicara',callEnd:'Akhiri panggilan',callNoMic:'Mikrofon tidak bisa dipakai di sini. Buka Xiaozhi di Safari atau Chrome lalu coba lagi.',callHint:'Cocok untuk lansia dan saat menyetir — menepi atau pakai hands-free.'},
+ ceb:{memH:'🧠 Panumduman ni Xiaozhi',memNav:'Panumduman',memHint:'Hinumdoman ni Xiaozhi ang imong gisulti nga makatabang sa sunod nga tubag (ministeryo, pamilya, pangamuyo) ug gamiton kini kon haom. Sa kini nga cellphone ra gitipigan; mapapas bisan kanus-a.',memOn:'Gamita ang panumduman',memAuto:'Awtomatik nga hinumdoman ang bag-o',memAddPh:'Pagdugang, pananglitan: Nagdumala ko og grupo sa kabatan-onan',memAdd:'Idugang',memEmpty:'Wala pay nahinumduman.',memClear:'Papasa tanan',memClearSure:'Papason tanan?',memLearned:'📝 Nahinumduman: ',memManage:'Dumalaha ang panumduman',memDel:'Papasa',memCount:'{0} ka butang',memOffNote:'Gipalong ang panumduman',ciH:'📝 Kaugalingong instruksyon',ciNav:'Kaugalingong instruksyon',ciHint:'Matag tubag mosunod niini (dili supak sa Biblia ug kaluwasan). Ang folder mahimong adunay kaugalingong instruksyon.',ciPre:'Kasagarang instruksyon (pindota aron ma-on)',ciText:'Uban pa nga gusto nimo sa pagtubag',ciPh:'pananglitan: gamita ang adlaw-adlaw nga pananglitan; tawga ko og “Brother Juan”; tulo ra ka parapo',ciSaved:'Na-save — sundon kini sa sunod nga tubag',ciOnN:'{0} ang naka-on',p_verse:'Kutloa ang tibuok bersikulo',p_l321:'Gikan sa panan-awon sa 321',p_pastor:'Tono sama sa pastor',p_prayer:'Tapusa og pag-ampo',p_points:'Sugdi sa mga punto',p_action:'Usa ka lakang karong semanaha',fH:'📁 Mga folder',fNew:'+ Bag-ong folder',fName:'Ngalan sa folder',fNamePh:'pananglitan: Pagtuon sa Roma, Konseling sa kaminyoon',fIns:'Instruksyon sa kini nga folder',fInsPh:'pananglitan: Pagtuon sa Roma kini — basaha sa konteksto ug idugang ang pangutana sa panaghisgot',fSave:'I-save',fChats:'Mga panag-istorya niini nga folder',fNone:'Wala pay panag-istorya',fStart:'+ Bag-ong panag-istorya dinhi',fDel:'Papasa ang folder (magpabilin ang panag-istorya)',fDelSure:'Papason ang folder?',fMove:'📁 Ibalhin sa folder',fMoveH:'Ibalhin sa asa nga folder?',fNoFolder:'Walay folder',fMoved:'Gibalhin sa “{0}”',fOut:'Gikuha sa folder',fCreated:'Nahimo ang folder',fBar:'📁 {0}',fSet:'Settings',callNav:'Tawag sa tingog',callH:'📞 Pakigsulti kang Xiaozhi',callListen:'Naminaw ko…',callThink:'Naghunahuna si Xiaozhi…',callSpeak:'Nagtubag si Xiaozhi…',callPause:'Gi-pause — pindota ang lingin aron magpadayon',callTapStop:'Pindota aron mosulti',callTapSend:'Human na? Pindota aron ipadala',callTapGo:'Pindota aron magsugod sa pagsulti',callEnd:'Tapusa ang tawag',callNoMic:'Dili magamit ang mikropono dinhi. Ablihi si Xiaozhi sa Safari o Chrome ug sulayi pag-usab.',callHint:'Maayo alang sa tigulang ug sa nagmaneho — paghunong una o gamita ang hands-free.'}
+};
+function C2(k,a){ var d=CT2X[LANG]||CT2X.en,s=d[k]; if(s==null) s=(FOREIGN()?CT2X.en:CT2X.zh)[k]; if(s==null) s=CT2X.zh[k]||k; return a!=null?String(s).replace('{0}',a):s; }
+var C2I={call:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',mem:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a7 7 0 0 0-4 12.7V19h8v-3.3A7 7 0 0 0 12 3Z"/><path d="M10 22h4M12 8v4l2 1"/></svg>',ci:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>'};
+var C2_VER={zh:'the Chinese Union Version (和合本)',zs:'the Chinese Union Version (和合本)',en:'the World English Bible',ko:'개역한글',ja:'口語訳',id:'Terjemahan Baru / AYT',ceb:'Ang Pulong sa Dios'};
+var C2_PRE=['verse','l321','pastor','prayer','points','action'];
+function c2PreIns(k){ return {
+ verse:'Always quote at least one relevant Bible verse in full (word for word) from '+(C2_VER[LANG]||C2_VER.en)+', with its reference.',
+ l321:'Answer from the 321 vision of Kingdom 321 Fellowship: three foundations (Jesus is my model, the Bible is my standard, the Holy Spirit is my guide), two cores (let Jesus be King; let Jesus receive all the glory), one purpose (build God\'s kingdom system); the selfless life in Christ, humility overcoming pride, change of mindset changing life.',
+ pastor:'Speak warmly and gently like a caring pastor shepherding this person.',
+ prayer:'End with a short prayer the reader can pray.',
+ points:'Begin with a 2–3 point summary of the key points, then explain.',
+ action:'Include one concrete step to practise this week.'}[k]||''; }
+function c2CI(){ var c=lsGet('ci',null); if(!c||typeof c!=='object') c={p:[],t:''}; if(!c.p||typeof c.p.length!=='number') c.p=[]; c.t=String(c.t||''); return c; }
+function c2Mem(){ var m=lsGet('mem',[]); return (m&&typeof m.length==='number')?m:[]; }
+function c2MemOn(){ return lsGet('memon',1)!==0; }
+function c2MemAuto(){ return lsGet('memauto',1)!==0; }
+function c2Folders(){ var f=lsGet('folders',[]); return (f&&typeof f.length==='number')?f:[]; }
+function c2Folder(id){ var f=c2Folders(); for(var i=0;i<f.length;i++) if(f[i].id===id) return f[i]; return null; }
+function c2SaveFolders(f){ lsSet('folders',f); }
+function ctSys2(){
+ var s='',ci=c2CI(),lines=[];
+ for(var i=0;i<ci.p.length;i++){ var t=c2PreIns(ci.p[i]); if(t) lines.push('- '+t); }
+ if(ci.t.trim()) lines.push('- '+ci.t.trim().slice(0,1000));
+ if(lines.length) s+='\n\n[The user\'s custom instructions — follow them, but never against Scripture, honesty or the safety rules above]\n'+lines.join('\n');
+ var fd=S.fid?c2Folder(S.fid):null;
+ if(fd) s+='\n\n[This chat belongs to the user\'s folder "'+fd.name+'"]'+(fd.ins?'\nFolder instructions: '+String(fd.ins).slice(0,1000):'');
+ if(c2MemOn()&&!S.incog){ var M=c2Mem(); if(M.length) s+='\n\n[Things the user has told Xiaozhi before — use them naturally only when relevant; do not list or repeat them, and do not mention that you remember unless asked]\n'+M.slice(0,40).map(function(x){ return '- '+x.t; }).join('\n'); }
+ return s;
+}
+var C2_SELF=/(^|[^a-z])(i|i'm|im|my|me|we|our)([^a-z]|$)|我|咱|俺|저는|제가|나는|내가|저의|우리|私|僕|わたし|うち|saya|aku|kami|ako|akong|ko\b|namo/i;
+function ctMemLearn(idx){
+ if(!c2MemOn()||!c2MemAuto()||S.incog) return;
+ var q='',j; for(j=idx-1;j>=0;j--) if(S.chat[j].role==='user'){ q=S.chat[j].t; break; }
+ if(!q||q.length<6||!C2_SELF.test(q)) return;
+ var M=c2Mem(),known=M.map(function(x){ return '- '+x.t; }).join('\n')||'(none)';
+ var LNM={zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English';
+ var ask='From the USER MESSAGE below, extract durable facts about the user that would help a Christian pastoral assistant in FUTURE conversations: their ministry or roles, family members and situations, ongoing prayer concerns, life circumstances, or how they want to be addressed. Only facts the user clearly stated about themselves or their family. Skip the question itself, temporary details, opinions about the topic, and anything already in KNOWN. Never include ID numbers, account numbers, addresses or phone numbers. Return ONLY a JSON array of 0-3 short notes in '+LNM+', each under 40 characters, written as neutral notes (e.g. "帶青少年小組", "母親生病中"). Return [] if there is nothing.\nKNOWN:\n'+known+'\nUSER MESSAGE:\n'+q.slice(0,1200);
+ quickAsk(ask,300).then(function(t){
+  var arr=parseArr(t).filter(function(x){ return typeof x==='string'&&x.trim().length>=2&&x.length<=80; }).slice(0,3),M2=c2Mem(),add=[];
+  for(var k=0;k<arr.length;k++){ var v=arr[k].trim(),dup=false; for(var n=0;n<M2.length;n++) if(M2[n].t===v){ dup=true; break; } if(!dup){ M2.unshift({id:'m'+Date.now().toString(36)+k,t:v,ts:Date.now()}); add.push(v); } }
+  if(!add.length) return; if(M2.length>60) M2=M2.slice(0,60); lsSet('mem',M2);
+  var m=S.chat[idx]; if(m){ m.memNote=add; save(); var el=$('m'+idx); if(el&&!el.querySelector('.ctmemnote')){ var d=document.createElement('div'); d.innerHTML=ctMemNote(m); var fu=el.querySelector('.fu'); if(d.firstChild) el.insertBefore(d.firstChild,fu||null); } }
+ }).catch(function(){});
+}
+function ctMemNote(m){ return m.memNote&&m.memNote.length?'<button class="ctmemnote" data-act="ctmemopen">'+esc(C2('memLearned')+m.memNote.join('、'))+'<span>'+esc(C2('memManage'))+' ›</span></button>':''; }
+function ctFolderBar(){ var fd=S.fid?c2Folder(S.fid):null; return fd?'<div class="ctfbar"><span>'+esc(C2('fBar',fd.name))+'</span><button class="ctbtn" data-act="ctfopen" data-id="'+fd.id+'">'+esc(C2('fSet'))+'</button></div>':''; }
+function ctConvRow(c){ return '<div class="cvrow'+(c.id===CUR?' on':'')+'"><button class="cbtn" data-act="conv" data-id="'+c.id+'">'+(c.pin?'<span class="cpin">📌</span>':'')+esc(c.title||'…')+'</button><button class="cmore" data-act="ctmenu" data-id="'+c.id+'" aria-label="'+esc(CT('convMenu'))+'">'+CTI.dots+'</button></div>'; }
+function ctFolderSec(){
+ var F=c2Folders(),h='<div class="dsec">'+esc(C2('fH'))+'</div><div class="ctflist">';
+ S.fOpen=S.fOpen||{};
+ for(var i=0;i<F.length;i++){ var f=F[i],cs=CONVS.filter(function(c){ return c.fid===f.id; }),open=!!S.fOpen[f.id]||f.id===S.fid;
+  h+='<div class="cvrow ctfrow"><button class="cbtn" data-act="ctftoggle" data-id="'+f.id+'"><span class="ctfi">'+(open?'📂':'📁')+'</span>'+esc(f.name)+' <small>'+cs.length+'</small></button><button class="cmore" data-act="ctfopen" data-id="'+f.id+'">'+CTI.dots+'</button></div>';
+  if(open){ h+='<div class="ctfsub">'; for(var j=0;j<cs.length;j++) h+=ctConvRow(cs[j]); h+='<button class="ctfnew" data-act="ctfstart" data-id="'+f.id+'">'+esc(C2('fStart'))+'</button></div>'; }
+ }
+ return h+'<button class="ctfnew" data-act="ctfcreate">'+esc(C2('fNew'))+'</button></div>';
+}
+function ctFilterFolder(list,q){ if(q) return list; return list.filter(function(c){ return !c.fid||!c2Folder(c.fid); }); }
+function ctSetSecs(){ var ci=c2CI(),n=ci.p.length+(ci.t.trim()?1:0);
+ return '<div class="sec"><h3>'+esc(C2('memNav'))+'・'+esc(C2('ciNav'))+'</h3><button class="wide" data-act="ctmemopen"><span>'+esc(C2('memH'))+'<br><small class="hint">'+esc(c2MemOn()?C2('memCount',c2Mem().length):C2('memOffNote'))+'</small></span><span>›</span></button><button class="wide" data-act="ctciopen"><span>'+esc(C2('ciH'))+(n?'<br><small class="hint">'+esc(C2('ciOnN',n))+'</small>':'')+'</span><span>›</span></button></div>'; }
+function ct2Sheet(k){
+ var h='';
+ if(k==='ctmem'){
+  var M=c2Mem(),on=c2MemOn(),au=c2MemAuto();
+  h+='<div class="sheethead"><h2>'+esc(C2('memH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C2('memHint'))+'</p>';
+  h+='<div class="sec"><button class="ctsw'+(on?' on':'')+'" data-act="ctmemtog"><span>'+esc(C2('memOn'))+'</span><i></i></button><button class="ctsw'+(au?' on':'')+'" data-act="ctmemauto"'+(on?'':' disabled')+'><span>'+esc(C2('memAuto'))+'</span><i></i></button></div>';
+  h+='<div class="sec"><div class="ctrow"><input id="ctmemin" class="ctin" maxlength="80" placeholder="'+esc(C2('memAddPh'))+'"><button class="ctbtn pri" data-act="ctmemadd">'+esc(C2('memAdd'))+'</button></div>';
+  if(!M.length) h+='<p class="hint">'+esc(C2('memEmpty'))+'</p>';
+  for(var i=0;i<M.length;i++) h+='<div class="ctmemrow"><span>'+esc(M[i].t)+'<small>'+esc(fmtDate(M[i].ts||0).slice(0,10))+'</small></span><button class="cdel" data-act="ctmemdel" data-id="'+M[i].id+'" aria-label="'+esc(C2('memDel'))+'">'+IC.x+'</button></div>';
+  h+='</div>'+(M.length?'<div class="sec"><button class="danger" data-act="ctmemclr">'+esc(S.ctArm?C2('memClearSure'):C2('memClear'))+'</button></div>':'');
+  return h;
+ }
+ if(k==='ctci'){
+  var ci=c2CI();
+  h+='<div class="sheethead"><h2>'+esc(C2('ciH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C2('ciHint'))+'</p><div class="sec"><h3>'+esc(C2('ciPre'))+'</h3><div class="ctchips">';
+  for(var p=0;p<C2_PRE.length;p++) h+='<button class="chip'+(ci.p.indexOf(C2_PRE[p])>=0?' on':'')+'" data-act="ctcipre" data-v="'+C2_PRE[p]+'">'+esc(C2('p_'+C2_PRE[p]))+'</button>';
+  h+='</div></div><div class="sec"><h3>'+esc(C2('ciText'))+'</h3><textarea id="ctcitext" class="ctta" rows="5" maxlength="1000" placeholder="'+esc(C2('ciPh'))+'">'+esc(ci.t)+'</textarea><button class="ctgo" data-act="ctcisave">'+esc(C2('fSave'))+'</button></div>';
+  return h;
+ }
+ if(k==='ctfolder'){
+  var isNew=S.ctFid==='new',fd=isNew?{name:'',ins:''}:c2Folder(S.ctFid); if(!fd) return '<div class="sheethead"><h2></h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+  h+='<div class="sheethead"><h2>'+esc(isNew?C2('fNew'):'📁 '+fd.name)+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+  h+='<div class="sec"><h3>'+esc(C2('fName'))+'</h3><input id="ctfname" class="ctin" maxlength="30" placeholder="'+esc(C2('fNamePh'))+'" value="'+esc(fd.name)+'"><h3>'+esc(C2('fIns'))+'</h3><textarea id="ctfins" class="ctta" rows="4" maxlength="1000" placeholder="'+esc(C2('fInsPh'))+'">'+esc(fd.ins||'')+'</textarea><button class="ctgo" data-act="ctfsave">'+esc(C2('fSave'))+'</button></div>';
+  if(!isNew){
+   var cs=CONVS.filter(function(c){ return c.fid===fd.id; });
+   h+='<div class="sec"><h3>'+esc(C2('fChats'))+'</h3>'+(cs.length?'':'<p class="hint">'+esc(C2('fNone'))+'</p>');
+   for(var j=0;j<cs.length;j++) h+='<button class="wide" data-act="ctfgo" data-id="'+cs[j].id+'"><span>'+esc(cs[j].title||'…')+'</span><span>›</span></button>';
+   h+='<button class="ctgo" data-act="ctfstart" data-id="'+fd.id+'">'+esc(C2('fStart'))+'</button></div><div class="sec"><button class="danger" data-act="ctfdel">'+esc(S.ctArm?C2('fDelSure'):C2('fDel'))+'</button></div>';
+  }
+  return h;
+ }
+ if(k==='ctmove'){
+  var c=ctConv(),F=c2Folders();
+  h+='<div class="sheethead"><h2>'+esc(C2('fMoveH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><div class="sec">';
+  h+='<button class="wide'+(c&&!c.fid?' cton':'')+'" data-act="ctmoveto" data-id=""><span>🗂 '+esc(C2('fNoFolder'))+'</span><span>'+(c&&!c.fid?'✓':'')+'</span></button>';
+  for(var f=0;f<F.length;f++) h+='<button class="wide'+(c&&c.fid===F[f].id?' cton':'')+'" data-act="ctmoveto" data-id="'+F[f].id+'"><span>📁 '+esc(F[f].name)+'</span><span>'+(c&&c.fid===F[f].id?'✓':'')+'</span></button>';
+  return h+'<button class="ctfnew" data-act="ctfcreate">'+esc(C2('fNew'))+'</button></div>';
+ }
+ return null;
+}
+function ct2After(){
+ var mi=$('ctmemin'); if(mi) mi.onkeydown=function(e){ if(e.key==='Enter'){ e.preventDefault(); ct2Act('ctmemadd'); } };
+}
+function ct2Act(a,b,i,fid,v){
+ if(a==='ctmemopen'){ closeDrawer(); S.ctArm=false; openSheet('ctmem'); }
+ else if(a==='ctmemtog'){ lsSet('memon',c2MemOn()?0:1); renderSheet(); }
+ else if(a==='ctmemauto'){ lsSet('memauto',c2MemAuto()?0:1); renderSheet(); }
+ else if(a==='ctmemadd'){ var inp=$('ctmemin'),t=inp?inp.value.trim():''; if(!t) return true; var M=c2Mem(); M.unshift({id:'m'+Date.now().toString(36),t:t.slice(0,80),ts:Date.now()}); lsSet('mem',M.slice(0,60)); renderSheet(); var ni=$('ctmemin'); if(ni) ni.focus(); }
+ else if(a==='ctmemdel'){ lsSet('mem',c2Mem().filter(function(x){ return x.id!==fid; })); renderSheet(); }
+ else if(a==='ctmemclr'){ if(!S.ctArm){ S.ctArm=true; renderSheet(); return true; } S.ctArm=false; lsSet('mem',[]); renderSheet(); }
+ else if(a==='ctciopen'){ closeDrawer(); openSheet('ctci'); }
+ else if(a==='ctcipre'){ var ci=c2CI(),p=ci.p.indexOf(v); if(p>=0) ci.p.splice(p,1); else ci.p.push(v); var ta=$('ctcitext'); if(ta) ci.t=ta.value; lsSet('ci',ci); b.classList.toggle('on',p<0); }
+ else if(a==='ctcisave'){ var ci2=c2CI(),ta2=$('ctcitext'); ci2.t=ta2?ta2.value.slice(0,1000):ci2.t; lsSet('ci',ci2); closeSheet(); render(); toast(C2('ciSaved')); }
+ else if(a==='ctftoggle'){ S.fOpen=S.fOpen||{}; S.fOpen[fid]=!S.fOpen[fid]; renderDrawer(); }
+ else if(a==='ctfcreate'){ S.ctFidFor=(S.sheet==='ctmove')?S.ctId:''; S.ctFid='new'; closeDrawer(); openSheet('ctfolder'); setTimeout(function(){ var n=$('ctfname'); if(n) n.focus(); },60); }
+ else if(a==='ctfopen'){ S.ctFid=fid; S.ctArm=false; closeDrawer(); openSheet('ctfolder'); }
+ else if(a==='ctfsave'){ var nm=($('ctfname')||{}).value,ins=($('ctfins')||{}).value||''; nm=String(nm||'').trim().slice(0,30); if(!nm){ var ne=$('ctfname'); if(ne) ne.focus(); return true; } var F=c2Folders();
+  if(S.ctFid==='new'){ var f={id:'f'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),name:nm,ins:ins.slice(0,1000),ts:Date.now()}; F.push(f); c2SaveFolders(F); S.ctFid=f.id; if(S.ctFidFor){ var cc=convById(S.ctFidFor); if(cc){ cc.fid=f.id; if(cc.id===CUR) S.fid=f.id; persistConvs(); } S.ctFidFor=''; } toast(C2('fCreated')); }
+  else { for(var k=0;k<F.length;k++) if(F[k].id===S.ctFid){ F[k].name=nm; F[k].ins=ins.slice(0,1000); } c2SaveFolders(F); toast(CT('saved')); }
+  renderSheet(); render(); }
+ else if(a==='ctfdel'){ if(!S.ctArm){ S.ctArm=true; renderSheet(); return true; } S.ctArm=false; var id=S.ctFid; c2SaveFolders(c2Folders().filter(function(x){ return x.id!==id; })); for(var c2=0;c2<CONVS.length;c2++) if(CONVS[c2].fid===id) delete CONVS[c2].fid; persistConvs(); if(S.fid===id) S.fid=''; closeSheet(); render(); toast(T('convDeleted')); }
+ else if(a==='ctfstart'){ closeSheet(); closeDrawer(); goView('home'); S.fid=fid; render(); setTimeout(function(){ try{$('q').focus();}catch(e){} },50); }
+ else if(a==='ctfgo'){ closeSheet(); goView(fid); }
+ else if(a==='ctmove'){ if(!ctConv()) return true; openSheet('ctmove'); }
+ else if(a==='ctmoveto'){ var c=ctConv(); if(!c) return true; if(fid) c.fid=fid; else delete c.fid; if(c.id===CUR) S.fid=fid||''; persistConvs(); closeSheet(); render(); toast(fid?C2('fMoved',(c2Folder(fid)||{}).name||''):C2('fOut')); }
+ else if(a==='ctcall') ctCallStart();
+ else if(a==='ctcallend') ctCallEnd();
+ else if(a==='ctcallorb') ctCallOrb();
+ else return false;
+ return true;
+}
+/* ---------- 語音對談：像打電話，小智聽完直接用聲音回答，再接著聽 ---------- */
+var CALL={on:false,tmr:null,idle:0,silent:0,pause:false,wl:null,tries:0};
+function ctCallState(){ if(CALL.pause) return 'pause'; if(MIC.on) return 'listen'; if(S.busy) return 'think'; if(S.speaking>=0) return 'speak'; return 'idle'; }
+function ctCallPaint(){
+ var o=$('ctcall'); if(!o) return; var st=ctCallState(),last=null;
+ for(var i=S.chat.length-1;i>=0;i--) if(S.chat[i].role==='ai'&&S.chat[i].t){ last=S.chat[i]; break; }
+ o.setAttribute('data-st',st);
+ $('ctcst').textContent=st==='listen'?C2('callListen'):st==='think'?C2('callThink'):st==='speak'?C2('callSpeak'):st==='pause'?C2('callPause'):C2('callListen');
+ var said=qEl.value.trim(); $('ctcsaid').textContent=st==='listen'?said:'';
+ $('ctcans').textContent=(st==='speak'||st==='think')&&last&&!last.pending?plain(last.t).slice(0,180)+(plain(last.t).length>180?'…':''):(st==='think'?'':'');
+ $('ctctap').textContent=st==='speak'?C2('callTapStop'):st==='listen'?(said?C2('callTapSend'):''):st==='pause'||st==='idle'?C2('callTapGo'):'';
+}
+function ctCallTick(){
+ if(!CALL.on) return;
+ var st=ctCallState();
+ if(st==='think'||st==='speak'){ CALL.tries=0; CALL.silent=0; }
+ if(st==='idle'){ if(!CALL.idle) CALL.idle=Date.now(); else if(Date.now()-CALL.idle>1400){ CALL.idle=0; if(++CALL.tries>3){ CALL.tries=0; CALL.pause=true; } else { MIC.loop=true; micStart(); } } } else CALL.idle=0;
+ ctCallPaint();
+}
+function ctCallSilent(){ if(!CALL.on) return; CALL.silent++; if(CALL.silent>=3){ CALL.pause=true; CALL.silent=0; } }
+function ctCallStart(){
+ if(!SRC&&!MIC.dict){ toast(C2('callNoMic')); return; }
+ closeSheet(); closeDrawer(); CALL.on=true; CALL.pause=false; CALL.silent=0; CALL.idle=0;
+ var o=document.createElement('div'); o.id='ctcall'; o.setAttribute('role','dialog'); o.setAttribute('aria-modal','true');
+ o.innerHTML='<div class="ctch">'+esc(C2('callH'))+'</div><div class="ctcmid"><div class="ctcst" id="ctcst"></div><div class="ctcsaid" id="ctcsaid"></div><button class="ctcorb" data-act="ctcallorb" aria-label="'+esc(C2('callTapGo'))+'"><span class="r1"></span><span class="r2"></span><span class="core">'+LAMP+'</span></button><div class="ctctap" id="ctctap"></div><div class="ctcans" id="ctcans"></div></div><div class="ctcfoot"><button class="ctcend" data-act="ctcallend">'+esc(C2('callEnd'))+'</button><p>'+esc(C2('callHint'))+'</p></div>';
+ document.body.appendChild(o);
+ try{ if(navigator.wakeLock) navigator.wakeLock.request('screen').then(function(w){ CALL.wl=w; }).catch(function(){}); }catch(e){}
+ CALL.tmr=setInterval(ctCallTick,350);
+ if(!MIC.on&&!S.busy){ stopSpeak(); micStart(); }
+ ctCallPaint();
+}
+function ctCallEnd(){
+ CALL.on=false; clearInterval(CALL.tmr); CALL.tmr=null; CALL.pause=false;
+ try{ if(MIC.on) micStop(true); }catch(e){} try{ stopSpeak(); }catch(e){}
+ try{ if(CALL.wl) CALL.wl.release(); }catch(e){} CALL.wl=null;
+ var o=$('ctcall'); if(o) o.parentNode.removeChild(o); render();
+}
+function ctCallOrb(){
+ var st=ctCallState(); CALL.idle=0;
+ if(st==='speak'){ stopSpeak(); MIC.loop=true; micStart(); }
+ else if(st==='listen'){ micStop(); }
+ else if(st==='think'){ }
+ else { CALL.pause=false; CALL.silent=0; CALL.tries=0; spUnlock(); micStart(); }
+ setTimeout(ctCallPaint,60);
+}
 /* ---------- 對話工具（ct1113）：改問題重問、停止回答、👍👎 回饋、對話改名與置頂、無痕對話、分享整段對話、匯出 ---------- */
 var CTX={
  zh:{appName:'小智問答',xz:'小智',editQ:'修改問題',editSend:'重新問',cancel:'取消',editNote:'改好後，小智會從這一題重新回答（這一題後面的對話會換成新的回答）',stop:'停止回答',fbUp:'有幫助',fbDown:'不夠好',fbThanks:'謝謝你的回饋！',fbH:'這個回答哪裡不夠好？',fbR:'不正確|不合聖經|沒回答到問題|太長|太短|看不懂|語氣不合適|其他',fbNote:'想補充的話（可以不填）',fbAttach:'附上這一題的問題和回答片段，幫助團隊改進小智（不含你的名字）',fbIncog:'無痕對話只送出你選的項目，不附上任何內容。',fbSend:'送出回饋',fbFail:'回饋沒有送出，請稍後再試',convMenu:'這段對話',rename:'重新命名',renamePh:'對話名稱',save:'儲存',pin:'置頂',unpin:'取消置頂',pinned:'📌 置頂',pinDone:'已置頂',unpinDone:'已取消置頂',renamed:'已重新命名',shareH:'分享整段對話',shTxt:'分享文字（LINE、訊息…）',shLink:'分享連結',shImg:'做成長圖',shGrp:'送進小家',expH:'匯出',expTxt:'存成文字檔',expPdf:'存成 PDF（列印）',pdfHint:'在列印畫面選「儲存為 PDF」（iPhone：分享 → 列印，兩指放大預覽再分享）。',delConv:'刪除這段對話',delSure:'確定刪除？',incogStart:'無痕對話',incogBar:'🕶 無痕對話：這段對話不會保存，開新對話或離開就消失。',incogOn:'已開始無痕對話',incogEnd:'結束無痕',incogHint:'問私密的問題，不留紀錄',linkLong:'這段對話太長，連結可能打不開；建議改用長圖或文字。',linkDone:'已複製連結，可以貼到 LINE 或小家',imgMaking:'正在製作長圖…',imgHint:'可以按「分享」傳到 LINE，或長按圖片儲存。',imgShare:'分享',imgSave:'儲存',imgPart:'第 {0} 張',saved:'已存好',noConv:'這段對話還沒有內容',emptyRes:'（沒有內容）',grpNA:'找不到小家功能，請重新整理後再試',you:'我',sharedAt:'分享於'},
@@ -1662,7 +1888,7 @@ function ctStopHTML(){ return '<button class="ctstop" data-act="ctstop">'+IC.sto
 function ctFbBtns(m,i){ return ab('ctup',i,CTI.tu,CT('fbUp'),m.fb==='up'?' faved ctfb':'')+ab('ctdn',i,CTI.td,CT('fbDown'),m.fb==='dn'?' faved ctfb':''); }
 function ctNavExtra(){ return '<button class="navb" data-act="ctmenu">'+CTI.dots+'<span>'+esc(CT('convMenu'))+'</span></button>'; }
 function ctIncogBar(){ return '<div class="ctincbar">'+esc(CT('incogBar'))+'<button class="ctbtn" data-act="ctincogx">'+esc(CT('incogEnd'))+'</button></div>'; }
-function ctHelloExtra(){ return S.incog?'':'<div class="ctinc"><button class="ctbtn" data-act="ctincog">'+CTI.incog+'<span>'+esc(CT('incogStart'))+'<small>'+esc(CT('incogHint'))+'</small></span></button></div>'; }
+function ctHelloExtra(){ return S.incog?'':'<div class="ctinc"><button class="ctbtn" data-act="ctcall">'+C2I.call+'<span>'+esc(C2('callNav'))+'<small>'+esc(C2('callTapGo'))+'</small></span></button><button class="ctbtn" data-act="ctincog">'+CTI.incog+'<span>'+esc(CT('incogStart'))+'<small>'+esc(CT('incogHint'))+'</small></span></button></div>'; }
 function ctSortPins(list){ var a=[],b=[]; for(var i=0;i<list.length;i++) (list[i].pin?a:b).push(list[i]); a.sort(function(x,y){ return (y.pin||0)-(x.pin||0); }); return a.concat(b); }
 function ctConv(){ return S.ctId?convById(S.ctId):null; }
 function ctMsgs(){ var c=ctConv(); var arr=c?c.msgs:(S.ctId?[]:S.chat); return arr.filter(function(m){ return m&&m.t&&!m.pending&&!m.err; }); }
@@ -1757,6 +1983,7 @@ function ctFbText(kind,i,reasons,note,attach){
 }
 function ctSheetHTML(){
  var k=S.sheet,h='';
+ var x2=ct2Sheet(k); if(x2!=null) return x2;
  if(k==='ctfb'){
   var F=S.ctFb||{r:[],note:'',att:true},R=CT('fbR').split('|');
   h+='<div class="sheethead"><h2>'+esc(CT('fbH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><div class="ctchips">';
@@ -1777,7 +2004,7 @@ function ctSheetHTML(){
  h+='<div class="sheethead"><h2>'+(S.incog&&!S.ctId?'🕶 ':'')+esc(title||CT('convMenu'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
  if(c){
   h+='<div class="sec"><h3>'+esc(CT('rename'))+'</h3><div class="ctrow"><input id="ctname" class="ctin" maxlength="40" placeholder="'+esc(CT('renamePh'))+'" value="'+esc(c.ctitle||c.title||'')+'"><button class="ctbtn pri" data-act="ctrename">'+esc(CT('save'))+'</button></div>';
-  h+='<button class="wide" data-act="ctpin"><span>📌 '+esc(c.pin?CT('unpin'):CT('pin'))+'</span><span>›</span></button></div>';
+  h+='<button class="wide" data-act="ctpin"><span>📌 '+esc(c.pin?CT('unpin'):CT('pin'))+'</span><span>›</span></button><button class="wide" data-act="ctmove"><span>'+esc(C2('fMove'))+((c.fid&&c2Folder(c.fid))?'（'+esc(c2Folder(c.fid).name)+'）':'')+'</span><span>›</span></button></div>';
  }
  h+='<div class="sec"><h3>'+esc(CT('shareH'))+'</h3>';
  var SH=[['ctshtxt','💬',CT('shTxt')],['ctshlink','🔗',CT('shLink')],['ctshimg','🖼',CT('shImg')],['ctshgrp','🏡',CT('shGrp')]];
@@ -1786,11 +2013,12 @@ function ctSheetHTML(){
  if(c) h+='<div class="sec"><button class="danger" data-act="ctdel">'+esc(S.ctArm?CT('delSure'):CT('delConv'))+'</button></div>';
  return h;
 }
-function ctSheetAfter(x){
+function ctSheetAfter(x){ ct2After();
  var nt=$('ctfbnote'); if(nt) nt.oninput=function(){ if(S.ctFb) S.ctFb.note=nt.value; };
  var at=$('ctfbatt'); if(at) at.onchange=function(){ if(S.ctFb) S.ctFb.att=at.checked; };
 }
 function ctAct(a,b,i,fid,v){
+ if(ct2Act(a,b,i,fid,v)) return;
  if(a==='ctedit'){ if(S.busy) return; stopSpeak(); S.ctEdit=i; render(); var ta=$('ctEditQ'); if(ta){ ta.focus(); try{ ta.setSelectionRange(ta.value.length,ta.value.length); }catch(e){} ta.scrollIntoView({block:'center'}); } }
  else if(a==='cteditx'){ S.ctEdit=-1; render(); }
  else if(a==='cteditgo'){ var t=($('ctEditQ')||{}).value; t=String(t||'').trim(); if(!t||S.busy) return; S.ctEdit=-1; stopSpeak(); S.chat.splice(i); send(t); }
@@ -1885,10 +2113,11 @@ function micBtn(){
  b.classList.toggle('on',MIC.on);
  b.hidden=!MIC.on&&!!qEl.value.trim();
  b.setAttribute('aria-label',MIC.on?MT(1):MT(0)); b.title=MIC.on?MT(1):MT(0);
+ var cb=$('ctCallBtn'); if(cb){ cb.hidden=MIC.on||!!qEl.value.trim(); cb.setAttribute('aria-label',C2('callNav')); cb.title=C2('callNav'); }
  b.innerHTML=MIC.on?'<span class="micwave"><i></i><i></i><i></i></span>':IC.mic;
 }
 function micEnd(quiet){ var was=MIC.on,got=MIC.got; MIC.on=false; MIC.got=false; clearTimeout(MIC.tmr); MIC.rec=null; qEl.placeholder=T('placeholder'); autosize(); micBtn();
- if(was&&got&&!quiet&&qEl.value.trim()&&!S.busy){ setTimeout(function(){ if(!MIC.on&&qEl.value.trim()){ S.voiceNext=true; send(qEl.value); } },250); } }
+ if(was&&got&&!quiet&&qEl.value.trim()&&!S.busy){ setTimeout(function(){ if(!MIC.on&&qEl.value.trim()){ S.voiceNext=true; send(qEl.value); } },250); } else if(was&&!quiet&&CALL.on) ctCallSilent(); }
 function micStop(quiet){ clearTimeout(MIC.tmr); var r=MIC.rec; MIC.rec=null; if(MIC.dict&&MIC.on){ try{ MIC.dict.stop(); }catch(e){} } if(r){ try{ r.stop(); }catch(e){} } micEnd(quiet); }
 function micStart(){
  if(MIC.on){ micStop(); return; }
@@ -1931,7 +2160,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1113.1600',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1113.1700',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
