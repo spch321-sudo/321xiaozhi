@@ -6,20 +6,20 @@
 <title>Tanya Xiaozhi</title>
 <meta name="description" content="Tanya Xiaozhi: pertanyaan Alkitab, iman dan kehidupan · Persekutuan Udara Kerajaan 321">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.0105">
-<link rel="icon" href="favicon.ico?v=v2026.1113.0105" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.0105">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.0105">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.0105">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.0105">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.0105">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.0111">
+<link rel="icon" href="favicon.ico?v=v2026.1113.0111" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.0111">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.0111">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.0111">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.0111">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.0111">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tanya Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1113.0105"></script>
+<script src="k321gate.js?v=v2026.1113.0111"></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='id';</script>
@@ -1641,21 +1641,21 @@ document.addEventListener('click',function(e){
 });
 var qEl=$('q');
 /* ---------- 語音輸入 ---------- */
-var MIC={on:false,rec:null,dict:null,base:'',tmr:null,lock:false};
+var MIC={got:false,on:false,rec:null,dict:null,base:'',tmr:null,lock:false};
 var SRC=window.SpeechRecognition||window.webkitSpeechRecognition;
 var MICLANG={zh:'zh-TW',zs:'zh-CN',en:'en-US',ko:'ko-KR',ja:'ja-JP',id:'id-ID',ceb:'fil-PH'};
 var MICS={
- zh:['語音輸入','停止語音輸入','正在聽…請說出你的問題','沒有麥克風權限，請到手機「設定」允許這個 App 使用麥克風','這裡無法直接語音輸入，請點手機鍵盤上的麥克風 🎤 用說的','沒有聽到聲音，請再試一次'],
- zs:['语音输入','停止语音输入','正在听…请说出你的问题','没有麦克风权限，请到手机「设置」允许这个 App 使用麦克风','这里无法直接语音输入，请点手机键盘上的麦克风 🎤 用说的','没有听到声音，请再试一次'],
- en:['Voice input','Stop voice input','Listening… ask your question','Microphone access is blocked. Please allow it in your phone settings.','Voice input is not available here. Tap the microphone 🎤 on your keyboard to dictate.','No speech heard. Please try again.'],
- ko:['음성 입력','음성 입력 중지','듣고 있어요… 질문을 말씀하세요','마이크 권한이 없습니다. 휴대폰 설정에서 허용해 주세요.','여기서는 음성 입력을 바로 쓸 수 없습니다. 키보드의 마이크 🎤를 눌러 말씀하세요.','소리가 들리지 않았어요. 다시 시도해 주세요.'],
- ja:['音声入力','音声入力を停止','聞いています…質問をどうぞ','マイクが許可されていません。端末の設定で許可してください。','ここでは音声入力を直接使えません。キーボードのマイク 🎤 を押して話してください。','声が聞き取れませんでした。もう一度どうぞ。'],
- id:['Input suara','Hentikan input suara','Mendengarkan… ucapkan pertanyaan Anda','Akses mikrofon diblokir. Izinkan di pengaturan ponsel.','Input suara tidak tersedia di sini. Ketuk mikrofon 🎤 di keyboard untuk mendikte.','Tidak terdengar suara. Silakan coba lagi.'],
- ceb:['Pagsulti aron mosulat','Hunongon ang pagsulti','Naminaw… isulti ang imong pangutana','Gibabagan ang mikropono. Palihog tugoti kini sa settings sa telepono.','Dili magamit dinhi ang voice input. Pindota ang mikropono 🎤 sa keyboard aron magsulti.','Walay nadungog. Palihog sulayi pag-usab.']};
+ zh:['語音輸入','停止語音輸入','正在聽…說完會自動送出','沒有麥克風權限，請到手機「設定」允許這個 App 使用麥克風','這裡無法直接語音輸入，請點手機鍵盤上的麥克風 🎤 用說的','沒有聽到聲音，請再試一次'],
+ zs:['语音输入','停止语音输入','正在听…说完会自动送出','没有麦克风权限，请到手机「设置」允许这个 App 使用麦克风','这里无法直接语音输入，请点手机键盘上的麦克风 🎤 用说的','没有听到声音，请再试一次'],
+ en:['Voice input','Stop voice input','Listening… it sends when you finish','Microphone access is blocked. Please allow it in your phone settings.','Voice input is not available here. Tap the microphone 🎤 on your keyboard to dictate.','No speech heard. Please try again.'],
+ ko:['음성 입력','음성 입력 중지','듣고 있어요… 말씀이 끝나면 자동으로 보내요','마이크 권한이 없습니다. 휴대폰 설정에서 허용해 주세요.','여기서는 음성 입력을 바로 쓸 수 없습니다. 키보드의 마이크 🎤를 눌러 말씀하세요.','소리가 들리지 않았어요. 다시 시도해 주세요.'],
+ ja:['音声入力','音声入力を停止','聞いています…話し終えると自動で送信します','マイクが許可されていません。端末の設定で許可してください。','ここでは音声入力を直接使えません。キーボードのマイク 🎤 を押して話してください。','声が聞き取れませんでした。もう一度どうぞ。'],
+ id:['Input suara','Hentikan input suara','Mendengarkan… terkirim otomatis setelah selesai','Akses mikrofon diblokir. Izinkan di pengaturan ponsel.','Input suara tidak tersedia di sini. Ketuk mikrofon 🎤 di keyboard untuk mendikte.','Tidak terdengar suara. Silakan coba lagi.'],
+ ceb:['Pagsulti aron mosulat','Hunongon ang pagsulti','Naminaw… awtomatik ipadala human ka mosulti','Gibabagan ang mikropono. Palihog tugoti kini sa settings sa telepono.','Dili magamit dinhi ang voice input. Pindota ang mikropono 🎤 sa keyboard aron magsulti.','Walay nadungog. Palihog sulayi pag-usab.']};
 function MT(i){ return (MICS[LANG]||MICS.en)[i]; }
 try{ if(window.claude&&claude.use) claude.use('dictation').then(function(d){ if(d){ MIC.dict=d;
- d.onPartial(function(o){ if(MIC.on){ qEl.value=MIC.base+(o.text||''); autosize(); } });
- d.onFinal(function(o){ if(MIC.on){ MIC.base+=(o.text||''); qEl.value=MIC.base; autosize(); } });
+ d.onPartial(function(o){ if(MIC.on){ if(o.text) MIC.got=true; qEl.value=MIC.base+(o.text||''); autosize(); } });
+ d.onFinal(function(o){ if(MIC.on){ if(o.text) MIC.got=true; MIC.base+=(o.text||''); qEl.value=MIC.base; autosize(); } });
  d.onState(function(o){ if(o.state==='idle'&&MIC.on) micEnd(); });
 } }).catch(function(){}); }catch(e){}
 function micBtn(){
@@ -1665,8 +1665,9 @@ function micBtn(){
  b.setAttribute('aria-label',MIC.on?MT(1):MT(0)); b.title=MIC.on?MT(1):MT(0);
  b.innerHTML=MIC.on?'<span class="micwave"><i></i><i></i><i></i></span>':IC.mic;
 }
-function micEnd(){ MIC.on=false; clearTimeout(MIC.tmr); MIC.rec=null; qEl.placeholder=T('placeholder'); autosize(); micBtn(); }
-function micStop(quiet){ clearTimeout(MIC.tmr); if(MIC.dict&&MIC.on){ try{ MIC.dict.stop(); }catch(e){} } if(MIC.rec){ try{ MIC.rec.stop(); }catch(e){} } micEnd(); }
+function micEnd(quiet){ var was=MIC.on,got=MIC.got; MIC.on=false; MIC.got=false; clearTimeout(MIC.tmr); MIC.rec=null; qEl.placeholder=T('placeholder'); autosize(); micBtn();
+ if(was&&got&&!quiet&&qEl.value.trim()&&!S.busy){ setTimeout(function(){ if(!MIC.on&&qEl.value.trim()) send(qEl.value); },250); } }
+function micStop(quiet){ clearTimeout(MIC.tmr); var r=MIC.rec; MIC.rec=null; if(MIC.dict&&MIC.on){ try{ MIC.dict.stop(); }catch(e){} } if(r){ try{ r.stop(); }catch(e){} } micEnd(quiet); }
 function micStart(){
  if(MIC.on){ micStop(); return; }
  try{ stopSpeak(); }catch(e){}
@@ -1674,7 +1675,7 @@ function micStart(){
  if(MIC.dict){
   MIC.on=true; qEl.placeholder=MT(2); micBtn();
   var pr; try{ pr=MIC.dict.start(); }catch(e){ pr=Promise.reject(e); }
-  Promise.resolve(pr).catch(function(e){ micEnd(); if(e&&e.code==='not_granted'){ MIC.dict=null; } toast(e&&e.code==='not_granted'?MT(3):MT(4)); });
+  Promise.resolve(pr).catch(function(e){ micEnd(true); if(e&&e.code==='not_granted'){ MIC.dict=null; } toast(e&&e.code==='not_granted'?MT(3):MT(4)); });
   return;
  }
  if(!SRC){ toast(MT(4)); try{ qEl.focus(); }catch(e){} return; }
@@ -1682,8 +1683,8 @@ function micStart(){
  MIC.rec=r; r.lang=MICLANG[LANG]||'en-US'; r.interimResults=true; r.continuous=true; r.maxAlternatives=1;
  var heard=false;
  function idle(){ clearTimeout(MIC.tmr); MIC.tmr=setTimeout(function(){ if(MIC.on) micStop(); },heard?2200:7000); }
- r.onresult=function(ev){ heard=true; var fin='',tmp=''; for(var i=0;i<ev.results.length;i++){ var t=ev.results[i][0].transcript; if(ev.results[i].isFinal) fin+=t; else tmp+=t; } qEl.value=MIC.base+fin+tmp; autosize(); idle(); };
- r.onerror=function(ev){ var c=ev&&ev.error; if(c==='not-allowed'||c==='service-not-allowed'){ toast(c==='not-allowed'?MT(3):MT(4)); if(c==='service-not-allowed') SRC=null; } else if(c==='no-speech'){ toast(MT(5)); } else if(c!=='aborted'){ toast(MT(4)); } };
+ r.onresult=function(ev){ heard=true; MIC.got=true; var fin='',tmp=''; for(var i=0;i<ev.results.length;i++){ var t=ev.results[i][0].transcript; if(ev.results[i].isFinal) fin+=t; else tmp+=t; } qEl.value=MIC.base+fin+tmp; autosize(); idle(); };
+ r.onerror=function(ev){ var c=ev&&ev.error; if(c!=='no-speech'&&c!=='aborted') MIC.got=false; if(c==='not-allowed'||c==='service-not-allowed'){ toast(c==='not-allowed'?MT(3):MT(4)); if(c==='service-not-allowed') SRC=null; } else if(c==='no-speech'){ toast(MT(5)); } else if(c!=='aborted'){ toast(MT(4)); } };
  r.onend=function(){ if(MIC.rec===r) micEnd(); };
  try{ r.start(); MIC.on=true; qEl.placeholder=MT(2); micBtn(); idle(); }catch(e){ MIC.rec=null; toast(MT(4)); }
 }
@@ -1706,7 +1707,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1113.0105',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1113.0111',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
