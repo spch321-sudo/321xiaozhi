@@ -6,21 +6,21 @@
 <title>Pangutana kang Xiaozhi</title>
 <meta name="description" content="Pangutana kang Xiaozhi: Bibliya, pagtuo ug kinabuhi · Kingdom 321 Air Fellowship">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.2000">
-<link rel="icon" href="favicon.ico?v=v2026.1113.2000" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.2000">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.2000">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.2000">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.2000">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.2000">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.2100">
+<link rel="icon" href="favicon.ico?v=v2026.1113.2100" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.2100">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.2100">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.2100">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.2100">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.2100">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1113.2000"></script>
-<script src="xzplus.js?v=v2026.1113.2000" defer></script>
+<script src="k321gate.js?v=v2026.1113.2100"></script>
+<script src="xzplus.js?v=v2026.1113.2100" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ceb';</script>
@@ -352,6 +352,13 @@ html #xz2pf input[style*="width:120px"]{width:7.5em!important}
 .qtr{display:block;color:var(--muted);font-size:.86em;margin-top:2px}
 @media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}.micbtn.on,.micwave i{animation:none}}
 @media (max-width:420px){.audgrid{grid-template-columns:1fr 1fr}}
+/* ct6-1113 同工助手 */
+.c6bar{height:8px;border-radius:4px;background:var(--soft);overflow:hidden;margin:6px 0 12px}.c6bar i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.c6ph{flex:1;min-width:0;text-align:left;border:0;background:transparent;color:var(--ink);font-size:.95em;padding:8px 2px;line-height:1.45}
+.c6as{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding:8px 0}.c6as b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.c6as .ctbtn{padding:6px 10px}
+.c6ai{font-size:1.5em;line-height:1}
+.c6ic{display:flex;flex-wrap:wrap;gap:6px}.c6ic button{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--page);font-size:1.3em}.c6ic button.on{border-color:var(--accent);background:var(--soft)}
+.c6list{margin:6px 0 12px;padding-left:1.2em;font-size:.92em;line-height:1.55}
 /* ct5-1113 牧者工具 */
 .c5tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
 .c5tools button{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;border:1px solid var(--line);background:var(--page);color:var(--ink);border-radius:16px;padding:12px}
@@ -1050,7 +1057,7 @@ function BI(){ var v=lsGet('bi_'+LANG,''); return (v&&v!==LANG&&LANGS.indexOf(v)
 function biSys(){ var b=BI(); if(!b) return '';
  return '\n\nBILINGUAL MODE (parallel reading): The reader is reading two languages side by side. Write the whole answer in '+LNAME[LANG]+' exactly as the rules above say, but right after EVERY heading, every paragraph line, every list item and every quote line, add ONE new line that starts with "%% " followed by a faithful, natural '+LNAME[b]+' translation of that line. Put the "%% " line directly under the line it translates (for list items, indent it two spaces under the item). Keep markdown markers (#, -, 1., >, **) on the original line only; the "%% " line is plain text (bold inside it is allowed). In tables, write each cell as "original / translation". When the translation quotes Scripture, use the wording of '+LBIBLE[b]+'. Do not add any other extra text. Make the answer a little shorter than usual so both languages fit.';
 }
-function sysPrompt(){ return T('sysBase')+X.sysExtra()+T('sysGeneral')+biSys()+ctSys2()+c4Sys()+c5Sys(); }
+function sysPrompt(){ return T('sysBase')+X.sysExtra()+T('sysGeneral')+biSys()+ctSys2()+c4Sys()+c5Sys()+c6Sys(); }
 function maxTok(){ return Math.round((c4On()?1.4:1)*maxTok0()); }
 function maxTok0(){ return BI()?Math.min(8000,Math.round(X.maxTokens()*1.8)):X.maxTokens(); }
 function noTr(s){ return String(s||'').split('\n').filter(function(l){ return !/^\s*(>\s*)?%%/.test(l); }).join('\n'); }
@@ -1095,20 +1102,20 @@ function loadChat(){
  }
  var cid=lsGet('cur_all',null); if(cid===null) cid=lsGet('cur_'+LANG,'');
  var c=convById(cid);
- CUR=c?c.id:null; S.chat=c?c.msgs:[]; S.fid=(c&&c.fid)?c.fid:""; S.persona=(c&&c.persona)||null;
+ CUR=c?c.id:null; S.chat=c?c.msgs:[]; S.fid=(c&&c.fid)?c.fid:""; S.persona=(c&&c.persona)||null; S.asst=(c&&c.asst)||null;
  for(var z=0;z<S.chat.length;z++){ S.chat[z].fuBusy=false; if(S.chat[z].pending){S.chat[z].pending=false; if(!S.chat[z].t){S.chat[z].t=T('unfinished');S.chat[z].err=true;}} }
 }
 function save(){
  if(S.incog) return;
  var c=convById(CUR);
  if(!S.chat.length){ if(c){ CONVS.splice(CONVS.indexOf(c),1); CUR=null; persistConvs(); } return; }
- if(!c){ c={id:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),ts:Date.now(),msgs:S.chat,lang:LANG}; if(S.fid) c.fid=S.fid; if(S.persona) c.persona=S.persona; CONVS.unshift(c); CUR=c.id; }
+ if(!c){ c={id:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),ts:Date.now(),msgs:S.chat,lang:LANG}; if(S.fid) c.fid=S.fid; if(S.persona) c.persona=S.persona; if(S.asst) c.asst=S.asst; CONVS.unshift(c); CUR=c.id; }
  if(S.chat.length>80){ S.chat.splice(0,S.chat.length-80); }
  c.msgs=S.chat; c.title=c.ctitle||titleOf(S.chat); c.ts=Date.now();
  persistConvs();
 }
-function newChat(){ S.incog=false; S.ctEdit=-1; S.fid=''; S.persona=null; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=null; S.chat=[]; lsSet('cur_all',''); }
-function openConv(id){ var c=convById(id); if(!c) return; S.incog=false; S.ctEdit=-1; S.fid=(c.fid&&c2Folder(c.fid))?c.fid:''; S.persona=c.persona||null; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=id; S.chat=c.msgs; lsSet('cur_all',id); }
+function newChat(){ S.incog=false; S.ctEdit=-1; S.fid=''; S.persona=null; S.asst=null; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=null; S.chat=[]; lsSet('cur_all',''); }
+function openConv(id){ var c=convById(id); if(!c) return; S.incog=false; S.ctEdit=-1; S.fid=(c.fid&&c2Folder(c.fid))?c.fid:''; S.persona=c.persona||null; S.asst=c.asst||null; if(S.ctl) S.ctl.abort(); stopSpeak(); CUR=id; S.chat=c.msgs; lsSet('cur_all',id); }
 function delConv(id){ var c=convById(id); if(!c) return; CONVS.splice(CONVS.indexOf(c),1); CDEL.push(id); if(CDEL.length>800) CDEL=CDEL.slice(-800); lsSet('convdel',CDEL); if(CUR===id){ CUR=null; S.chat=[]; } persistConvs(); }
 loadChat(); mergeIDB();
 function saveFav(){ lsSet('fav',FAV.slice(0,300)); }
@@ -1247,7 +1254,7 @@ function quickAsk(ask,maxT){
 function parseArr(t){ var m=String(t||'').match(/\[[\s\S]*\]/); try{ return JSON.parse(m?m[0]:'[]')||[]; }catch(e){ return []; } }
 function history(){
  var h=[],src=S.chat.slice(0,-1).filter(function(m){return !m.err&&!m.crisis&&m.t;}).slice(-12);
- for(var i=0;i<src.length;i++) h.push({role:src[i].role==='ai'?'assistant':'user',content:src[i].t});
+ for(var i=0;i<src.length;i++) h.push({role:src[i].role==='ai'?'assistant':'user',content:src[i].t+(src[i].ctx?'\n\n'+src[i].ctx:'')});
  while(h.length&&h[0].role!=='user') h.shift();
  return h;
 }
@@ -1256,7 +1263,7 @@ function send(text){
  text=String(text||'').trim(); if(!text&&S.c3Img&&!S.busy) text=C3('imgAsk'); if(!text||S.busy) return;
  if(!S.chat.length&&NAV[NAV.length-1]!=='home') NAV.push('home');
  stopSpeak(); closeSheet();
- S.chat.push(c5UserMsg(c3UserMsg({role:'user',t:text,ts:Date.now()})));
+ S.chat.push(c6UserMsg(c5UserMsg(c3UserMsg({role:'user',t:text,ts:Date.now()}))));
  if(X.crisisHit(text)) S.chat.push({role:'ai',t:X.crisisCard(),crisis:true,ts:Date.now()});
  var voice=!!S.voiceNext; S.voiceNext=false;
  var m={role:'ai',t:'',pending:true,ts:Date.now(),meta:modeText()+c4Meta()}; if(S.persona) m.persona=S.persona.name; if(voice) m.voice=true; S.chat.push(m);
@@ -1503,7 +1510,9 @@ function render(){
  var f=$('flow'),h='';
  document.documentElement.className='fs'+S.fs;
  paintHead();
- if(!S.chat.length&&(c4Kid()||S.persona)){
+ if(!S.chat.length&&S.asst&&!c4Kid()){
+  h+=c6Hello();
+ } else if(!S.chat.length&&(c4Kid()||S.persona)){
   h+=c4Hello();
  } else if(!S.chat.length){
   h+=(NAV.length?'<div class="navrow top1"><button class="navb" data-act="back">'+IC.back+'<span>'+T('navBack')+'</span></button></div>':'')+'<section class="hello"><div class="hlamp">'+LAMP+'</div><h1>'+T('helloH')+'</h1><p>'+T('helloP')+'</p><p class="hnote">'+T('note')+'</p></section>'+suggestHTML()+ctHelloExtra();
@@ -1512,7 +1521,7 @@ function render(){
   for(var i=0;i<S.chat.length;i++) h+=msgHTML(S.chat[i],i,lastOk);
   if(!S.busy) h+=navRowHTML();
  }
- document.body.classList.toggle('kid',c4Kid()); f.innerHTML=(c4Bar()||(S.incog?ctIncogBar():ctFolderBar()))+h; document.body.classList.toggle('incog',!!S.incog);
+ document.body.classList.toggle('kid',c4Kid()); f.innerHTML=(c4Bar()||c6Bar()||(S.incog?ctIncogBar():ctFolderBar()))+h; document.body.classList.toggle('incog',!!S.incog);
  if(S.sheet) renderSheet();
  if(S.drawer) renderDrawer();
 }
@@ -1614,7 +1623,7 @@ function renderDrawer(){
  var d=$('drawer'),first=!d;
  if(first){ d=document.createElement('div'); d.id='drawer'; document.body.appendChild(d); }
  var keep=first?(S.drawerTop||0):0,old=d.querySelector('.dscroll'); if(old) keep=old.scrollTop;
- var nav=[['newchat',IC.edit,T('newChat')],['ctincog',CTI.incog,CT('incogStart')],['ctcall',C2I.call,C2('callNav')],['cttools',C5I.tb,C5('tbNav')],['ctstyle',C5I.st,C5('stNav')],['ctrole',C4I.role,C4('roleNav')],['ctkid',C4I.kid,C4('kid')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['ctmemopen',C2I.mem,C2('memNav')],['ctciopen',C2I.ci,C2('ciNav')],['settings',IC.gear,T('settings')]];
+ var nav=[['newchat',IC.edit,T('newChat')],['ctincog',CTI.incog,CT('incogStart')],['ctcall',C2I.call,C2('callNav')],['cttools',C5I.tb,C5('tbNav')],['ctas',C6I.as,C6('asNav')],['ctstyle',C5I.st,C5('stNav')],['ctrole',C4I.role,C4('roleNav')],['ctkid',C4I.kid,C4('kid')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['ctmemopen',C2I.mem,C2('memNav')],['ctciopen',C2I.ci,C2('ciNav')],['settings',IC.gear,T('settings')]];
  var h='<div class="dmask" data-act="drawerclose"></div><nav class="dpanel" aria-label="'+esc(T('menu'))+'"><div class="dhead"><span class="dlamp">'+LAMP+'</span><b>'+T('name')+'</b>'+langBtns('dlang')+'</div>';
  h+='<div class="dsearch">'+IC.search+'<input id="convsearch" type="search" placeholder="'+esc(T('convSearch'))+'" value="'+esc(S.convQ)+'"></div><div class="dscroll"><div class="dnav">';
  for(var i=0;i<nav.length;i++) h+='<button class="ditem" data-act="'+nav[i][0]+'"><span class="di">'+nav[i][1]+'</span><span>'+esc(nav[i][2])+'</span></button>';
@@ -1752,6 +1761,276 @@ function setLang(v){
 }
 
 /* ---------- 事件 ---------- */
+/* ---------- 同工助手（ct6-1113）：常用語、自建助手與分享、長篇講章逐字稿、讀網址、整本書閱讀 ---------- */
+var C6S={
+ phNav:'常用語|常用语|Quick prompts|자주 쓰는 말|よく使う言葉|Perintah cepat|Kanunay nga gamiton',
+ phH:'⚡ 常用語|⚡ 常用语|⚡ Quick prompts|⚡ 자주 쓰는 말|⚡ よく使う言葉|⚡ Perintah cepat|⚡ Kanunay nga gamiton',
+ phHint:'點一下就放進輸入框；可以自己新增，也可以分享給同工。|点一下就放进输入框；可以自己新增，也可以分享给同工。|Tap to put it in the input box. Add your own and share them with co-workers.|누르면 입력칸에 들어가요. 직접 추가하고 동역자와 나눌 수 있어요.|タップすると入力欄に入ります。追加も同労者との共有もできます。|Ketuk untuk memasukkan ke kotak. Tambah sendiri dan bagikan ke rekan.|Pindota aron mosulod sa kahon. Pagdugang ug ipaambit sa kaubanan.',
+ phDef:'請用三個化（觀念化、生命化、生活化）整理重點;;請列出三個小組討論題;;請改成給長輩看的短句，一句一行;;請用一個生活中的比喻來說明;;請整理成一個「讓耶穌作王」的具體行動;;請翻成英文|请用三个化（观念化、生命化、生活化）整理重点;;请列出三个小组讨论题;;请改成给长辈看的短句，一句一行;;请用一个生活中的比喻来说明;;请整理成一个“让耶稣作王”的具体行动;;请翻成英文|Summarize it in three steps: mindset, life, daily living;;List three small-group discussion questions;;Rewrite it in short lines for seniors;;Explain it with an everyday illustration;;Turn it into one concrete step of letting Jesus be King;;Translate it into Chinese|세 가지로 정리해 주세요: 관념, 생명, 생활;;소그룹 나눔 질문 세 개를 만들어 주세요;;어르신이 읽기 쉽게 짧은 문장으로 바꿔 주세요;;생활 속 비유로 설명해 주세요;;“예수님을 왕으로”의 구체적인 실천 하나로 정리해 주세요;;영어로 번역해 주세요|三つの視点（考え方・いのち・生活）で整理してください;;小グループの分かち合いの質問を三つ;;高齢の方向けに短い文で書き直してください;;身近なたとえで説明してください;;「イエスを王とする」具体的な一歩にまとめてください;;英語に訳してください|Rangkum dalam tiga langkah: pola pikir, hidup, keseharian;;Buat tiga pertanyaan diskusi kelompok;;Tulis ulang dalam kalimat pendek untuk lansia;;Jelaskan dengan ilustrasi sehari-hari;;Jadikan satu langkah nyata menjadikan Yesus Raja;;Terjemahkan ke bahasa Inggris|I-summarize sa tulo: panghunahuna, kinabuhi, adlaw-adlaw;;Paghimo og tulo ka pangutana sa grupo;;Usba sa mubo nga mga linya para sa tigulang;;Ipasabot gamit ang adlaw-adlaw nga pananglitan;;Himoa nga usa ka konkreto nga lakang sa paghari ni Jesus;;Hubara sa English',
+ phAddPh:'新增一句常用語|新增一句常用语|Add a prompt|자주 쓰는 말 추가|よく使う言葉を追加|Tambah perintah|Pagdugang',
+ add:'加入|加入|Add|추가|追加|Tambah|Idugang',
+ share:'分享給同工|分享给同工|Share with co-workers|동역자와 공유|同労者に共有|Bagikan ke rekan|Ipaambit sa kaubanan',
+ shared:'已複製分享連結，貼到 LINE 給同工|已复制分享链接，发给同工|Link copied — send it to your co-workers|공유 링크를 복사했어요|共有リンクをコピーしました|Tautan disalin — kirim ke rekan|Nakopya ang link — ipadala sa kaubanan',
+ asNav:'助手廣場|助手广场|Assistants|도우미 광장|アシスタント|Asisten|Mga katabang',
+ asH:'🤖 助手廣場|🤖 助手广场|🤖 Assistants|🤖 도우미 광장|🤖 アシスタント|🤖 Asisten|🤖 Mga katabang',
+ asHint:'建立你自己的專門助手（名字、圖示、指示、開場問題），可以分享連結給同工，大家用同一個助手。|建立你自己的专门助手（名字、图示、指示、开场问题），可以分享链接给同工，大家用同一个助手。|Create your own specialist assistant (name, icon, instructions, starter questions) and share a link so co-workers use the same one.|나만의 도우미(이름, 아이콘, 지시, 시작 질문)를 만들고 링크로 동역자와 나눠요.|自分専用のアシスタント（名前・アイコン・指示・最初の質問）を作り、リンクで同労者と共有できます。|Buat asisten khusus (nama, ikon, instruksi, pertanyaan awal) dan bagikan tautannya ke rekan.|Paghimo og kaugalingong katabang (ngalan, icon, instruksyon, sugod nga pangutana) ug ipaambit ang link.',
+ asMine:'我的助手|我的助手|My assistants|내 도우미|わたしのアシスタント|Asisten saya|Akong mga katabang',
+ asTpl:'範本（點一下加入）|范本（点一下加入）|Templates (tap to add)|템플릿(눌러서 추가)|テンプレート（タップで追加）|Templat (ketuk untuk menambah)|Mga template (pindota aron idugang)',
+ asNew:'＋ 建立新助手|＋ 建立新助手|+ New assistant|＋ 새 도우미|＋ 新しいアシスタント|+ Asisten baru|+ Bag-ong katabang',
+ asName:'助手名稱|助手名称|Assistant name|도우미 이름|名前|Nama asisten|Ngalan',
+ asIns:'給這個助手的指示（它的工作、口吻、要注意的事）|给这个助手的指示（它的工作、口吻、要注意的事）|Instructions (its job, tone, cautions)|지시(하는 일, 말투, 주의할 점)|指示（仕事・口調・注意点）|Instruksi (tugas, nada, hal yang diperhatikan)|Instruksyon (trabaho, tono, pag-amping)',
+ asStart:'開場問題（一行一題，可不填）|开场问题（一行一题，可不填）|Starter questions (one per line, optional)|시작 질문(한 줄에 하나, 선택)|最初の質問（1行に1つ、任意）|Pertanyaan awal (satu per baris, opsional)|Sugod nga pangutana (usa matag linya)',
+ asIcon:'圖示|图示|Icon|아이콘|アイコン|Ikon|Icon',
+ asSave:'儲存|保存|Save|저장|保存|Simpan|I-save',
+ asUse:'開始對話|开始对话|Start chat|대화 시작|会話を始める|Mulai|Sugdi',
+ asEdit:'修改|修改|Edit|수정|編集|Ubah|Usba',
+ asDel:'刪除這個助手|删除这个助手|Delete this assistant|이 도우미 삭제|このアシスタントを削除|Hapus asisten ini|Papasa kini',
+ asBar:'🤖 {0}|🤖 {0}|🤖 {0}|🤖 {0}|🤖 {0}|🤖 {0}|🤖 {0}',
+ asEnd:'結束|结束|End|끝내기|終わる|Selesai|Tapuson',
+ asHi:'你好！我是「{0}」，有什麼需要我幫忙的？|你好！我是“{0}”，有什么需要我帮忙的？|Hi! I’m “{0}”. How can I help?|안녕하세요! 「{0}」예요. 무엇을 도와드릴까요?|こんにちは！「{0}」です。何をお手伝いしましょう？|Halo! Saya “{0}”. Ada yang bisa dibantu?|Hi! Ako si “{0}”. Unsay akong matabang?',
+ asAdded:'已加入「{0}」|已加入“{0}”|Added “{0}”|「{0}」 추가됨|「{0}」を追加しました|“{0}” ditambahkan|Nadugang ang “{0}”',
+ impH:'📥 同工分享給你|📥 同工分享给你|📥 Shared with you|📥 동역자가 공유했어요|📥 共有されました|📥 Dibagikan kepada Anda|📥 Gipaambit kanimo',
+ impPh:'{0} 句常用語|{0} 句常用语|{0} quick prompts|자주 쓰는 말 {0}개|よく使う言葉 {0} 件|{0} perintah cepat|{0} ka kanunay nga gamiton',
+ impGo:'加入我的小智|加入我的小智|Add to my Xiaozhi|내 샤오즈에 추가|わたしのシャオジーに追加|Tambahkan ke Xiaozhi saya|Idugang sa akong Xiaozhi',
+ impBad:'分享連結不完整，請對方重新分享|分享链接不完整，请对方重新分享|The shared link is incomplete — ask for it again|공유 링크가 불완전해요|共有リンクが不完全です|Tautan tidak lengkap|Dili kompleto ang link',
+ lgNav:'長篇講章逐字稿|长篇讲章逐字稿|Full sermon manuscript|설교 원고 전체|説教原稿（全文）|Naskah khotbah lengkap|Kompleto nga manuskrito sa wali',
+ lgH:'📜 長篇講章逐字稿|📜 长篇讲章逐字稿|📜 Full sermon manuscript|📜 설교 원고 전체|📜 説教原稿（全文）|📜 Naskah khotbah lengkap|📜 Kompleto nga manuskrito',
+ lgHint:'先產出大綱讓你修改確認，再一段一段寫成完整逐字稿，最後可存成 Word。|先产出大纲让你修改确认，再一段一段写成完整逐字稿，最后可存成 Word。|First an outline you can edit, then the full manuscript section by section; save it as Word at the end.|먼저 개요를 확인·수정한 뒤, 한 단락씩 전체 원고를 써요. 마지막에 Word로 저장할 수 있어요.|まずアウトラインを確認・修正し、段落ごとに全文を書きます。最後に Word で保存できます。|Pertama kerangka yang bisa diubah, lalu naskah lengkap per bagian; simpan sebagai Word.|Una ang outline nga mausab, dayon ang tibuok manuskrito matag bahin; i-save isip Word.',
+ lgP:'經文（例如：約翰福音 15:1-8）|经文（例如：约翰福音 15:1-8）|Passage (e.g. John 15:1-8)|본문(예: 요한복음 15:1-8)|聖書箇所（例：ヨハネ 15:1-8）|Nas (mis. Yohanes 15:1-8)|Teksto (pananglitan: Juan 15:1-8)',
+ lgT:'主題、場合與會眾（可不填）|主题、场合与会众（可不填）|Theme, occasion and audience (optional)|주제, 상황, 청중(선택)|主題・場面・会衆（任意）|Tema, acara, jemaat (opsional)|Tema, okasyon ug mamiminaw (dili kinahanglan)',
+ lgM:'講道長度|讲道长度|Length|설교 길이|長さ|Durasi|Gidugayon',
+ lgMin:'{0} 分鐘|{0} 分钟|{0} min|{0}분|{0}分|{0} menit|{0} minutos',
+ lgOutline:'先產出大綱|先产出大纲|Make the outline|개요 만들기|アウトラインを作る|Buat kerangka|Himoa ang outline',
+ lgOutlining:'小智正在擬大綱…|小智正在拟大纲…|Drafting the outline…|개요를 만드는 중…|アウトラインを作成中…|Menyusun kerangka…|Gihimo ang outline…',
+ lgEditHint:'可以直接修改大綱（每個「## 」是一段）|可以直接修改大纲（每个“## ”是一段）|Edit the outline freely (each “## ” is a section)|개요를 자유롭게 고치세요(“## ”마다 한 단락)|自由に修正できます（「## 」ごとに1段落）|Ubah kerangka (setiap “## ” satu bagian)|Usba ang outline (matag “## ” usa ka bahin)',
+ lgWrite:'照這個大綱寫全文|照这个大纲写全文|Write the full manuscript|이 개요로 전체 쓰기|このアウトラインで全文を書く|Tulis naskah lengkap|Isulat ang tibuok',
+ lgWriting:'正在寫第 {0} 段…|正在写第 {0} 段…|Writing section {0}…|{0}단락 쓰는 중…|第{0}段落を執筆中…|Menulis bagian {0}…|Gisulat ang bahin {0}…',
+ lgStop:'停止|停止|Stop|중지|停止|Berhenti|Hunong',
+ lgDone:'逐字稿完成，已放進對話（{0} 字）|逐字稿完成，已放进对话（{0} 字）|Manuscript done and added to the chat ({0} characters)|원고 완성, 대화에 넣었어요({0}자)|原稿が完成し、会話に追加しました（{0}字）|Naskah selesai dan dimasukkan ke obrolan ({0} karakter)|Human na ug gibutang sa chat ({0} ka karakter)',
+ lgFail:'這一段沒寫成功，請再試一次|这一段没写成功，请再试一次|That section failed — please try again|이 단락을 쓰지 못했어요|この段落を書けませんでした|Bagian ini gagal — coba lagi|Napakyas kini nga bahin — sulayi pag-usab',
+ urlNav:'讀網址|读网址|Read a web page|웹페이지 읽기|ウェブページを読む|Baca halaman web|Basaha ang web page',
+ urlH:'🔗 讀網址|🔗 读网址|🔗 Read a web page|🔗 웹페이지 읽기|🔗 ウェブページを読む|🔗 Baca halaman web|🔗 Basaha ang web page',
+ urlHint:'貼上一篇文章或講道網頁的連結，小智讀完後依你的要求回應。網頁會先經過 r.jina.ai 這個公開的網頁讀取服務轉成文字；需要登入的網頁讀不到。|粘贴一篇文章或讲道网页的链接，小智读完后依你的要求回应。网页会先经过 r.jina.ai 这个公开的网页读取服务转成文字；需要登录的网页读不到。|Paste a link to an article or sermon page; Xiaozhi reads it and responds. The page is converted to text by the public reader service r.jina.ai; pages behind a login can’t be read.|글이나 설교 페이지 링크를 붙여넣으면 샤오즈가 읽고 답해요. 공개 읽기 서비스 r.jina.ai를 거쳐 글자로 바꿔요. 로그인이 필요한 페이지는 읽을 수 없어요.|記事や説教ページのリンクを貼ると、シャオジーが読んで応答します。公開の読み取りサービス r.jina.ai で文字に変換します。ログインが必要なページは読めません。|Tempel tautan artikel atau khotbah; Xiaozhi membacanya. Halaman diubah jadi teks lewat layanan publik r.jina.ai; halaman yang perlu login tidak bisa dibaca.|I-paste ang link; basahon kini ni Xiaozhi. Gamiton ang publiko nga serbisyo r.jina.ai; dili mabasa ang naay login.',
+ urlQ:'想請小智做什麼？（可不填：摘要並從聖經角度回應）|想请小智做什么？（可不填：摘要并从圣经角度回应）|What should Xiaozhi do? (optional: summarize and respond biblically)|무엇을 할까요?(선택: 요약하고 성경적으로 답하기)|何をしますか？（任意：要約して聖書的に応答）|Apa yang harus dilakukan? (opsional: rangkum dan tanggapi secara alkitabiah)|Unsay buhaton? (dili kinahanglan: i-summarize ug tubaga sa Biblia)',
+ urlDefQ:'請摘要這篇內容的重點，並從聖經的角度回應：哪些合乎聖經、哪些要小心，以及可以怎麼應用。|请摘要这篇内容的重点，并从圣经的角度回应：哪些合乎圣经、哪些要小心，以及可以怎么应用。|Summarize the key points and respond from a biblical perspective: what is biblical, what needs caution, and how to apply it.|요점을 요약하고 성경적으로 답해 주세요: 성경적인 점, 조심할 점, 적용.|要点をまとめ、聖書の観点から応答してください：聖書的な点、注意点、適用。|Rangkum poin pentingnya dan tanggapi secara alkitabiah: yang alkitabiah, yang perlu diwaspadai, dan penerapannya.|I-summarize ug tubaga sa panan-aw sa Biblia: unsay biblikal, unsay bantayan, ug unsaon pag-apply.',
+ urlGo:'讀取並回應|读取并回应|Read and respond|읽고 답하기|読んで応答する|Baca dan tanggapi|Basaha ug tubaga',
+ urlReading:'正在讀取網頁…|正在读取网页…|Reading the page…|페이지를 읽는 중…|ページを読み込み中…|Membaca halaman…|Gibasa ang page…',
+ urlBad:'這個網址讀不到內容（可能需要登入或被擋），可以改成把文字複製貼上。|这个网址读不到内容（可能需要登录或被挡），可以改成把文字复制粘贴。|Couldn’t read that page (login or blocked). Copy and paste the text instead.|이 페이지를 읽을 수 없어요. 글을 복사해 붙여넣어 주세요.|このページは読めませんでした。文章をコピーして貼り付けてください。|Halaman tidak bisa dibaca. Salin dan tempel teksnya.|Dili mabasa. I-copy ug i-paste na lang ang teksto.',
+ bkNav:'整本書閱讀|整本书阅读|Read a whole book|책 전체 읽기|一冊まるごと読む|Baca seluruh buku|Basaha ang tibuok libro',
+ bkH:'📚 整本書閱讀|📚 整本书阅读|📚 Read a whole book|📚 책 전체 읽기|📚 一冊まるごと読む|📚 Baca seluruh buku|📚 Basaha ang tibuok libro',
+ bkHint:'上傳一整本書或一整卷講義（PDF、Word、文字檔），小智逐段讀完，再整理成你要的內容；之後在這段對話可以繼續發問。|上传一整本书或一整卷讲义（PDF、Word、文本），小智逐段读完，再整理成你要的内容；之后在这段对话可以继续发问。|Upload a whole book or handout (PDF, Word, text). Xiaozhi reads it part by part and prepares what you choose; then keep asking in this chat.|책이나 강의안 전체(PDF, Word, 텍스트)를 올리면 샤오즈가 부분별로 읽고 원하는 내용을 정리해요. 이 대화에서 계속 질문할 수 있어요.|本や講義資料（PDF、Word、テキスト）を丸ごとアップロードすると、部分ごとに読み、選んだ内容をまとめます。この会話で続けて質問できます。|Unggah buku atau bahan ajar lengkap (PDF, Word, teks). Xiaozhi membaca per bagian lalu menyiapkan yang Anda pilih.|I-upload ang tibuok libro o handout (PDF, Word, text). Basahon ni Xiaozhi matag bahin ug andamon ang imong gipili.',
+ bkFile:'＋ 選擇檔案|＋ 选择文件|+ Choose a file|＋ 파일 선택|＋ ファイルを選ぶ|+ Pilih file|+ Pilia ang file',
+ bkOut:'要整理出什麼？|要整理出什么？|What should it prepare?|무엇을 정리할까요?|何をまとめますか？|Apa yang disiapkan?|Unsay andamon?',
+ bkO1:'全書重點|全书重点|Key points of the book|책 전체 요점|全体の要点|Poin utama buku|Mga punto sa libro',
+ bkO2:'逐章／逐段摘要|逐章／逐段摘要|Part-by-part summary|부분별 요약|部分ごとの要約|Ringkasan per bagian|Summary matag bahin',
+ bkO3:'讀書報告|读书报告|Book report|독후감|読書レポート|Laporan buku|Report sa libro',
+ bkO4:'小組討論題|小组讨论题|Discussion questions|나눔 질문|分かち合いの質問|Pertanyaan diskusi|Pangutana sa panaghisgot',
+ bkGo:'開始閱讀|开始阅读|Start reading|읽기 시작|読み始める|Mulai membaca|Sugdi ang pagbasa',
+ bkReading:'正在讀第 {0} 部分…|正在读第 {0} 部分…|Reading part {0}…|{0}부분 읽는 중…|第{0}部分を読んでいます…|Membaca bagian {0}…|Gibasa ang bahin {0}…',
+ bkFinal:'正在整理全書…|正在整理全书…|Putting it all together…|전체를 정리하는 중…|全体をまとめています…|Menyusun semuanya…|Gihiusa ang tanan…',
+ bkDone:'讀完了，已放進對話，可以繼續發問|读完了，已放进对话，可以继续发问|Done — added to the chat; keep asking|다 읽었어요. 대화에서 계속 질문하세요|読み終えました。会話で続けて質問できます|Selesai — lanjutkan bertanya di obrolan|Human na — padayon sa pagpangutana',
+ bkBig:'檔案很大（約 {0} 字），會花幾分鐘，請不要關閉小智|文件很大（约 {0} 字），会花几分钟，请不要关闭小智|Large file (about {0} characters) — this takes a few minutes; keep Xiaozhi open|파일이 커요(약 {0}자). 몇 분 걸려요|大きなファイル（約{0}字）。数分かかります|File besar (sekitar {0} karakter) — beberapa menit|Dako ang file (mga {0}) — pipila ka minuto',
+ progress:'{0} / {1}|{0} / {1}|{0} / {1}|{0} / {1}|{0} / {1}|{0} / {1}|{0} / {1}'
+};
+function C6(k,a,b){ var s=C5L(C6S[k]||k); if(a!=null) s=s.replace('{0}',a); if(b!=null) s=s.replace('{1}',b); return s; }
+var C6I={as:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16h5"/></svg>',ph:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>'};
+var C6ICONS=['🤖','📰','💒','✍️','🌏','🎤','📣','🎨','🧑‍🏫','🙏','📅','💡'];
+var C6TPL=[
+ {ic:'📰',n:'週報小編|周报小编|Bulletin editor|주보 편집|週報エディター|Editor warta|Editor sa bulletin',ins:'You are the church bulletin editor. Turn the announcements the user gives into a warm, well-organized weekly bulletin: a short opening devotional line with one Bible verse, then sections (worship, meetings, prayer requests, thanks, upcoming events) with dates and times clearly listed. Keep each item short. Never invent facts — if a detail is missing, leave a placeholder like 【時間】.',st:'把這週的報告事項整理成週報;;幫我寫一段週報開頭的勉勵|把这周的报告事项整理成周报;;帮我写一段周报开头的勉励|Turn this week’s announcements into a bulletin;;Write an opening encouragement for the bulletin|이번 주 광고를 주보로 정리해 줘;;주보 첫머리 권면을 써 줘|今週のお知らせを週報にまとめて;;週報の冒頭の励ましを書いて|Susun pengumuman minggu ini jadi warta;;Tulis renungan pembuka warta|Himoa nga bulletin ang mga anunsyo;;Isulat ang pasiuna nga pagdasig'},
+ {ic:'💒',n:'成長營文案|成长营文案|Camp copywriter|수련회 홍보 문구|キャンプの案内文|Penulis promosi retret|Tigsulat sa kampo',ins:'You write promotional copy for church camps and retreats such as the 321 couples camp. Write inviting, sincere, non-pushy copy: a catchy title, who it is for, what people will gain, schedule highlights, practical details (date, place, fee, sign-up) and a short closing invitation with one Bible verse. Offer versions for LINE messages, posters and social media when asked. Never invent facts — use placeholders for missing details.',st:'幫我寫夫妻成長營的招生文案;;改成適合 LINE 傳的短版|帮我写夫妻成长营的招生文案;;改成适合 LINE 传的短版|Write sign-up copy for a couples camp;;Make a short version for LINE|부부 수련회 홍보 문구를 써 줘;;LINE용 짧은 버전으로|夫婦キャンプの募集文を書いて;;LINE 用の短い版に|Tulis promosi retret pasutri;;Versi pendek untuk WhatsApp|Isulat ang promo sa kampo sa magtiayon;;Mubo nga bersyon para sa Messenger'},
+ {ic:'✍️',n:'見證整理員|见证整理员|Testimony editor|간증 정리|証しの編集者|Penyunting kesaksian|Tig-edit sa pagpamatuod',ins:'You help turn spoken or rough testimonies into a clear written testimony while keeping the person\'s own voice and facts. Structure: life before, how they met Jesus or what God did, life after, and a closing verse. Do not add events or exaggerate; mark unclear parts with 【?】 for the person to check. Keep sensitive details discreet.',st:'把這段口述見證整理成文章;;縮成三分鐘可以分享的版本|把这段口述见证整理成文章;;缩成三分钟可以分享的版本|Turn this spoken testimony into an article;;Shorten it to a 3-minute version|이 간증을 글로 정리해 줘;;3분 분량으로 줄여 줘|この証しを文章にまとめて;;3分で話せる版に|Ubah kesaksian lisan ini jadi tulisan;;Persingkat jadi versi 3 menit|Himoa nga artikulo kini nga pagpamatuod;;Himoa nga 3 minutos'},
+ {ic:'🌏',n:'宣教翻譯|宣教翻译|Mission translator|선교 번역|宣教の翻訳|Penerjemah misi|Tighubad sa misyon',ins:'You are a careful translator for cross-cultural ministry. Translate faithfully and naturally between Chinese, English, Indonesian, Korean, Japanese and Cebuano. Quote Bible verses from the standard translation of the target language (Chinese Union Version, World English Bible, Terjemahan Baru, 개역한글, 口語訳, Ang Pulong sa Dios) rather than translating them yourself. When useful, show the original and the translation side by side, and note cultural sensitivities briefly.',st:'把這段翻成英文和印尼文對照;;幫我翻成韓文並說明文化上要注意的地方|把这段翻成英文和印尼文对照;;帮我翻成韩文并说明文化上要注意的地方|Translate this into Chinese and Indonesian side by side;;Translate into Korean with cultural notes|이 글을 영어와 인도네시아어로 대조 번역해 줘;;일본어로 번역하고 문화적 주의점을 알려 줘|これを英語とインドネシア語で対訳して;;韓国語に訳して文化的な注意点も|Terjemahkan ke Inggris dan Mandarin berdampingan;;Terjemahkan ke Korea dengan catatan budaya|Hubara sa English ug Indonesian;;Hubara sa Korean uban ang kultura nga nota'}
+];
+function c6Asst(){ var a=lsGet('assts',[]); return (a&&typeof a.length==='number')?a:[]; }
+function c6Find(id){ var A=c6Asst(); for(var i=0;i<A.length;i++) if(A[i].id===id) return A[i]; return null; }
+function c6Phr(){ var a=lsGet('phr',null); if(!a||typeof a.length!=='number') a=C5L(C6S.phDef).split(';;'); return a; }
+function c6Sys(){ return S.asst?'\n\n[Custom assistant "'+S.asst.name+'" — the user created this specialist role; follow these instructions within Scripture, honesty and the safety rules above]\n'+String(S.asst.ins||'').slice(0,2500):''; }
+function c6Bar(){ return S.asst?'<div class="c4rbar"><span>'+esc((S.asst.ic||'🤖')+' '+S.asst.name)+'</span><button class="ctbtn" data-act="ctasend">'+esc(C6('asEnd'))+'</button></div>':''; }
+function c6Hello(){ var a=S.asst,st=String(a.st||'').split(/\n|;;/).filter(function(x){ return x.trim(); }).slice(0,6),h='<section class="hello c4hello"><div class="c4av">'+(a.ic||'🤖')+'</div><h1>'+esc(C6('asHi',a.name))+'</h1></section><div class="sugg">';
+ for(var i=0;i<st.length;i++) h+='<button class="srow" data-act="ask" data-q="'+esc(st[i].trim())+'"><i>💬</i><span>'+esc(st[i].trim())+'</span></button>';
+ return h+'</div>'; }
+/* ---------- 分享連結：?imp=壓縮的 JSON ---------- */
+function c6Pack(obj,cb){
+ var raw=new TextEncoder().encode(JSON.stringify(obj)),base=location.href.replace(/[?#].*$/,'').replace(/[^\/]*$/,'');
+ if(window.CompressionStream){ try{ new Response(new Blob([raw]).stream().pipeThrough(new CompressionStream('deflate-raw'))).arrayBuffer().then(function(b){ cb(base+'?impz='+ctB64u(new Uint8Array(b))); },function(){ cb(base+'?imp='+ctB64u(raw)); }); return; }catch(e){} }
+ cb(base+'?imp='+ctB64u(raw));
+}
+function c6ShareLink(obj,title){ c6Pack(obj,function(url){ if(navigator.share){ navigator.share({title:title,text:title,url:url}).catch(function(e){ if(!e||e.name!=='AbortError') copyText(url,C6('shared')); }); } else copyText(url,C6('shared')); }); }
+function c6Unb64(s){ s=s.replace(/-/g,'+').replace(/_/g,'/'); while(s.length%4) s+='='; var bin=atob(s),u=new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) u[i]=bin.charCodeAt(i); return u; }
+function c6Init(){
+ try{ var sp=new URLSearchParams(location.search),z=sp.get('impz'),r=sp.get('imp'); if(!z&&!r) return;
+  window.history.replaceState(window.history.state,'',location.pathname+location.hash);
+  var p=z?new Response(new Blob([c6Unb64(z)]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text():Promise.resolve(new TextDecoder().decode(c6Unb64(r)));
+  p.then(function(t){ var d=JSON.parse(t); if(!d||(d.k!=='ph'&&d.k!=='as')) throw 0; S.c6Imp=d; openSheet('ctimp'); }).catch(function(){ toast(C6('impBad')); });
+ }catch(e){ toast(C6('impBad')); }
+}
+setTimeout(c6Init,400);
+/* ---------- 直接呼叫小智（純文字） ---------- */
+function c6Ask(sys,user,maxT,sig){ return postRetry({model:MODEL,max_tokens:maxT||2000,system:sys,messages:[{role:'user',content:user}]},sig).then(extractReply).then(function(t){ return String(t||'').trim(); }); }
+function c6LNM(){ return {zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English'; }
+function c6Push(userT,aiT,ctx,meta){
+ var u={role:'user',t:userT,ts:Date.now()}; if(ctx) u.ctx=ctx; S.chat.push(u);
+ S.chat.push({role:'ai',t:aiT,ok:true,ts:Date.now(),meta:meta||modeText()}); foldOld(S.chat.length-1); save(); render(); scrollTo(S.chat.length-2);
+}
+/* ---------- 長篇講章逐字稿 ---------- */
+function c6LongHTML(){
+ var L=S.c6L||{},h='<div class="sheethead"><h2>'+esc(C6('lgH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+ if(L.stage==='outline') return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C6('lgOutlining'))+'</p>';
+ if(L.stage==='edit') return h+'<p class="hint">'+esc(C6('lgEditHint'))+'</p><textarea id="c6ol" class="ctta" rows="16">'+esc(L.outline||'')+'</textarea><button class="ctgo" data-act="ctlgwrite">'+esc(C6('lgWrite'))+'</button>';
+ if(L.stage==='write') return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C6('lgWriting',L.k+1))+' ('+esc(C6('progress',L.k+1,L.n))+')</p><div class="c6bar"><i style="width:'+Math.round(100*L.k/Math.max(1,L.n))+'%"></i></div><button class="ctbtn" data-act="ctlgstop">'+esc(C6('lgStop'))+'</button>';
+ h+='<p class="hint">'+esc(C6('lgHint'))+'</p><div class="sec"><h3>'+esc(C6('lgP'))+'</h3><input id="c6lp" class="ctin" value="'+esc(L.p||'')+'"><h3>'+esc(C6('lgT'))+'</h3><input id="c6lt" class="ctin" value="'+esc(L.t||'')+'"><h3>'+esc(C6('lgM'))+'</h3><div class="ctchips">';
+ [20,30,40].forEach(function(n){ h+='<button class="chip'+((L.m||30)===n?' on':'')+'" data-act="ctlgmin" data-i="'+n+'">'+esc(C6('lgMin',n))+'</button>'; });
+ var st=c5Active(); if(st) h+='</div><p class="hint">✍️ '+esc(C5('tbUseStyle',st.name))+'</p><div>';
+ return h+'</div><button class="ctgo" data-act="ctlgout">'+esc(C6('lgOutline'))+'</button></div>';
+}
+function c6Chars(m){ return (LANG==='zh'||LANG==='zs'||LANG==='ja')?m*270:(LANG==='ko'?m*230:m*130); }
+function c6LongOutline(){
+ var L=S.c6L=S.c6L||{}; L.p=(($('c6lp')||{}).value||'').trim(); L.t=(($('c6lt')||{}).value||'').trim(); L.m=L.m||30;
+ if(!L.p){ toast(C5('tbNeed')); return; }
+ L.stage='outline'; renderSheet();
+ var unit=(LANG==='zh'||LANG==='zs'||LANG==='ja'||LANG==='ko')?'characters':'words';
+ var ask='Write a sermon OUTLINE in '+c6LNM()+' for a '+L.m+'-minute sermon (about '+c6Chars(L.m)+' '+unit+' when written out). Passage: '+L.p+(L.t?'. Theme/occasion/audience: '+L.t:'')+'. Format: first line "# " + title; then 5-7 sections, each starting with "## " + section title and the target minutes in brackets, followed by 2-4 bullet points of what the section covers (scripture to quote, illustration idea, application). Include an introduction, the main points, a 321 life application, and a conclusion with a response and closing prayer. Output only the outline.';
+ c6Ask(sysPrompt(),ask,1800).then(function(t){ if(!t||t.indexOf('##')<0) throw 0; L.outline=t; L.stage='edit'; }).catch(function(){ L.stage=''; toast(C6('lgFail')); }).then(function(){ if(S.sheet==='ctlong') renderSheet(); });
+}
+function c6LongWrite(){
+ var L=S.c6L; if(!L) return; L.outline=(($('c6ol')||{}).value||L.outline||'').trim();
+ var title=(L.outline.match(/^#\s+(.+)$/m)||[])[1]||L.p,secs=L.outline.split(/\n(?=##\s)/).filter(function(x){ return /^##\s/.test(x.trim()); });
+ if(!secs.length){ toast(C6('lgFail')); return; }
+ L.stage='write'; L.k=0; L.n=secs.length; L.out=[]; L.stop=false; renderSheet();
+ var per=Math.round(c6Chars(L.m)/secs.length),unit=(LANG==='zh'||LANG==='zs'||LANG==='ja'||LANG==='ko')?'characters':'words';
+ function next(){
+  if(L.stop){ finish(); return; } if(L.k>=secs.length){ finish(); return; }
+  var prev=L.out.length?L.out[L.out.length-1].slice(-700):'';
+  var ask='You are writing a full sermon MANUSCRIPT (word for word, to be spoken aloud) in '+c6LNM()+', section by section.\nFULL OUTLINE:\n'+L.outline+'\n\nNow write ONLY this section, about '+per+' '+unit+':\n'+secs[L.k]+'\n\nStart with the section heading line exactly as given ("## …"). Speak naturally to the congregation, quote Bible verses in full with references, use a story or illustration where planned, and make smooth transitions. '+(prev?'The previous section ended with:\n"…'+prev+'"\nContinue seamlessly; do not repeat it.':'This is the first section.')+' Do not write other sections.';
+  c6Ask(sysPrompt(),ask,Math.min(8000,Math.round(per*2.2)+600)).then(function(t){ if(!t) throw 0; L.out.push(t.trim()); L.k++; if(S.sheet==='ctlong') renderSheet(); next(); }).catch(function(){ toast(C6('lgFail')); L.stop=true; finish(); });
+ }
+ function finish(){ if(!L.out.length){ L.stage='edit'; if(S.sheet==='ctlong') renderSheet(); return; }
+  var full='# '+title+'\n\n'+L.out.join('\n\n'); closeSheet(); S.c6L=null;
+  c6Push('📜 '+C6('lgNav')+'：'+title+'\n'+L.p+(L.t?'｜'+L.t:'')+'｜'+C6('lgMin',L.m),full,'',modeText()+' · 📜');
+  toast(C6('lgDone',full.length)); }
+ next();
+}
+/* ---------- 讀網址 ---------- */
+function c6UrlHTML(){ var h='<div class="sheethead"><h2>'+esc(C6('urlH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C6('urlHint'))+'</p>';
+ if(S.c6U) return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C6('urlReading'))+'</p>';
+ return h+'<input id="c6u" class="ctin" type="url" inputmode="url" placeholder="https://…" style="margin-top:10px"><textarea id="c6uq" class="ctta" rows="3" placeholder="'+esc(C6('urlQ'))+'" style="margin-top:8px"></textarea><button class="ctgo" data-act="ctugo">'+esc(C6('urlGo'))+'</button>'; }
+function c6Fetch(url){
+ var same=url.indexOf(location.origin)===0;
+ function direct(){ return fetch(url).then(function(r){ if(!r.ok) throw 0; return r.text(); }).then(function(t){ return /<html|<body/i.test(t)?c3Html(t):t; }); }
+ if(same) return direct();
+ return fetch('https://r.jina.ai/'+url,{headers:{'Accept':'text/plain'}}).then(function(r){ if(!r.ok) throw 0; return r.text(); }).catch(direct);
+}
+function c6UrlGo(){
+ var url=(($('c6u')||{}).value||'').trim(),q=(($('c6uq')||{}).value||'').trim()||C6('urlDefQ');
+ if(!/^https?:\/\/\S+\.\S+/.test(url)){ var u=$('c6u'); if(u) u.focus(); return; }
+ S.c6U=true; renderSheet();
+ c6Fetch(url).then(function(t){ t=String(t||'').replace(/\n{3,}/g,'\n\n').trim(); if(t.length<80) throw 0;
+  var ti=(t.match(/^Title:\s*(.+)$/m)||[])[1]||'';
+  S.c6U=false; closeSheet(); S.c6Ctx='[Web page content — '+url+']\n'+t.slice(0,24000); send('🔗 '+(ti?ti+'\n':'')+url+'\n\n'+q);
+ }).catch(function(){ S.c6U=false; if(S.sheet==='ctlurl') renderSheet(); toast(C6('urlBad')); });
+}
+function c6UserMsg(u){ if(S.c6Ctx){ u.ctx=S.c6Ctx; S.c6Ctx=null; } if(S.asst) u.asst=1; return u; }
+/* ---------- 整本書閱讀 ---------- */
+function c6BookHTML(){
+ var B=S.c6B||{o:{a:1,b:1}},h='<div class="sheethead"><h2>'+esc(C6('bkH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+ if(B.run) return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(B.k>=B.n?C6('bkFinal'):C6('bkReading',B.k+1))+'</p><div class="c6bar"><i style="width:'+Math.round(100*B.k/Math.max(1,B.n))+'%"></i></div><p class="hint">'+esc(C6('progress',Math.min(B.k,B.n),B.n))+'</p><button class="ctbtn" data-act="ctbkstop">'+esc(C6('lgStop'))+'</button>';
+ h+='<p class="hint">'+esc(C6('bkHint'))+'</p><button class="wide" data-act="ctbkfile" style="margin:10px 0"><span>'+(B.name?'📄 '+esc(B.name)+' · '+esc(C3('srcChars',B.text.length)):esc(C6('bkFile')))+'</span><span>›</span></button>';
+ h+='<div class="sec"><h3>'+esc(C6('bkOut'))+'</h3><div class="ctchips">';
+ [['a','bkO1'],['b','bkO2'],['c','bkO3'],['d','bkO4']].forEach(function(x){ h+='<button class="chip'+(B.o[x[0]]?' on':'')+'" data-act="ctbko" data-v="'+x[0]+'">'+esc(C6(x[1]))+'</button>'; });
+ h+='</div>'+(B.text&&B.text.length>60000?'<p class="hint">⏳ '+esc(C6('bkBig',B.text.length))+'</p>':'')+'<button class="ctgo" data-act="ctbkgo"'+(B.text?'':' disabled')+'>'+esc(C6('bkGo'))+'</button></div>';
+ return h;
+}
+function c6BookGo(){
+ var B=S.c6B; if(!B||!B.text) return;
+ var parts=[],t=B.text,size=7000; for(var i=0;i<t.length;i+=size){ var cut=Math.min(t.length,i+size); if(cut<t.length){ var p=t.lastIndexOf('\n',cut); if(p>i+size*0.6) cut=p; } parts.push(t.slice(i,cut)); i=cut-size; }
+ parts=parts.filter(function(x){ return x.trim().length>20; }).slice(0,80);
+ B.run=true; B.k=0; B.n=parts.length; B.sum=[]; B.stop=false; renderSheet();
+ var sys='You are a careful reader helping a pastor study a book. Be faithful to the text; do not invent.',lnm=c6LNM();
+ function one(k){ return c6Ask(sys,'This is part '+(k+1)+' of '+parts.length+' of "'+B.name+'". Summarize it in '+lnm+': a short heading for this part, then 4-8 bullet key points, key Bible verses mentioned (references), and at most one short memorable quote. Under 450 characters/250 words.\n\nTEXT:\n'+parts[k],900).then(function(s){ B.sum[k]=s; },function(){ B.sum[k]='('+(k+1)+') —'; }).then(function(){ B.k++; if(S.sheet==='ctbook') renderSheet(); }); }
+ var idx=0; function worker(){ if(B.stop||idx>=parts.length) return Promise.resolve(); var k=idx++; return one(k).then(worker); }
+ Promise.all([worker(),worker(),worker()]).then(function(){
+  if(!B.sum.length){ B.run=false; renderSheet(); return; }
+  var all=B.sum.map(function(s,k){ return '【'+(k+1)+'】\n'+(s||''); }).join('\n\n'),want=[];
+  if(B.o.a) want.push('"## " key points of the whole book (8-12 bullets) and its main message');
+  if(B.o.c) want.push('"## " a book report (about 800 characters/500 words: summary, insights, evaluation from a biblical perspective, application)');
+  if(B.o.d) want.push('"## " small-group discussion questions (8-10, grouped by section)');
+  B.k=B.n; if(S.sheet==='ctbook') renderSheet();
+  var fin=want.length?c6Ask(sysPrompt(),'Below are part-by-part summaries of the book "'+B.name+'". Write in '+lnm+':\n- '+want.join('\n- ')+'\nUse headings starting with "## ". Be faithful to the summaries.\n\nSUMMARIES:\n'+all.slice(0,30000),5000):Promise.resolve('');
+  return fin.then(function(f){ var body='# 📚 '+B.name+'\n\n'+(f||'')+(B.o.b?'\n\n## '+C6('bkO2')+'\n\n'+all:'');
+   var ctx='[Book "'+B.name+'" — part summaries prepared by Xiaozhi]\n'+all.slice(0,20000); closeSheet(); S.c6B=null;
+   c6Push('📚 '+C6('bkNav')+'：'+B.name,body,ctx,modeText()+' · 📚'); toast(C6('bkDone')); });
+ }).catch(function(){ B.run=false; if(S.sheet==='ctbook') renderSheet(); toast(C6('lgFail')); });
+}
+/* ---------- 面板 ---------- */
+function c6PhrHTML(){ var P=c6Phr(),h='<div class="sheethead"><h2>'+esc(C6('phH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C6('phHint'))+'</p><div class="sec">';
+ for(var i=0;i<P.length;i++) h+='<div class="ctmemrow"><button class="c6ph" data-act="ctphuse" data-i="'+i+'">'+esc(P[i])+'</button><button class="cdel" data-act="ctphdel" data-i="'+i+'">'+IC.x+'</button></div>';
+ return h+'<div class="ctrow" style="margin-top:10px"><input id="c6pin" class="ctin" maxlength="200" placeholder="'+esc(C6('phAddPh'))+'"><button class="ctbtn pri" data-act="ctphadd">'+esc(C6('add'))+'</button></div><button class="wide" data-act="ctphshare" style="margin-top:10px"><span>'+IC.share+' '+esc(C6('share'))+'</span><span>›</span></button></div>'; }
+function c6AsHTML(){
+ var h='<div class="sheethead"><h2>'+esc(C6('asH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C6('asHint'))+'</p>';
+ var E=S.c6E;
+ if(E){ h+='<div class="sec"><h3>'+esc(C6('asIcon'))+'</h3><div class="c6ic">';
+  C6ICONS.forEach(function(ic){ h+='<button class="'+(E.ic===ic?'on':'')+'" data-act="ctasic" data-v="'+ic+'">'+ic+'</button>'; });
+  h+='</div><h3>'+esc(C6('asName'))+'</h3><input id="c6an" class="ctin" maxlength="24" value="'+esc(E.name||'')+'"><h3>'+esc(C6('asIns'))+'</h3><textarea id="c6ai" class="ctta" rows="7">'+esc(E.ins||'')+'</textarea><h3>'+esc(C6('asStart'))+'</h3><textarea id="c6as" class="ctta" rows="3">'+esc(String(E.st||'').split(';;').join('\n'))+'</textarea><button class="ctgo" data-act="ctassave">'+esc(C6('asSave'))+'</button>'+(E.id?'<button class="danger" data-act="ctasdel" style="margin-top:10px">'+esc(S.ctArm?CT('delSure'):C6('asDel'))+'</button>':'')+'</div>';
+  return h; }
+ var A=c6Asst(); h+='<div class="sec"><h3>'+esc(C6('asMine'))+'</h3>';
+ for(var i=0;i<A.length;i++) h+='<div class="c6as"><span class="c6ai">'+(A[i].ic||'🤖')+'</span><b>'+esc(A[i].name)+'</b><button class="ctbtn pri" data-act="ctasgo" data-id="'+A[i].id+'">'+esc(C6('asUse'))+'</button><button class="ctbtn" data-act="ctasedit" data-id="'+A[i].id+'">✎</button><button class="ctbtn" data-act="ctasshare" data-id="'+A[i].id+'" aria-label="'+esc(C6('share'))+'">'+IC.share+'</button></div>';
+ h+='<button class="ctgo" data-act="ctasnew">'+esc(C6('asNew'))+'</button></div><div class="sec"><h3>'+esc(C6('asTpl'))+'</h3><div class="c4roles">';
+ for(var j=0;j<C6TPL.length;j++) h+='<button data-act="ctastpl" data-i="'+j+'"><span>'+C6TPL[j].ic+'</span>'+esc(C5L(C6TPL[j].n))+'</button>';
+ return h+'</div></div>';
+}
+function c6ImpHTML(){ var d=S.c6Imp,h='<div class="sheethead"><h2>'+esc(C6('impH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+ if(!d) return h;
+ if(d.k==='ph') h+='<p><b>'+esc(C6('impPh',d.d.length))+'</b></p><ul class="c6list">'+d.d.slice(0,30).map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>';
+ else h+='<div class="c6as"><span class="c6ai">'+esc(d.d.ic||'🤖')+'</span><b>'+esc(d.d.name)+'</b></div><p class="hint" style="white-space:pre-wrap">'+esc(String(d.d.ins||'').slice(0,600))+'</p>';
+ return h+'<button class="ctgo" data-act="ctimpgo">'+esc(C6('impGo'))+'</button>'; }
+function c6PlusExtra(){ return '<button class="wide" data-act="ctph"><span>'+esc(C6('phH'))+'</span><span>›</span></button><button class="wide" data-act="ctlurl"><span>'+esc(C6('urlH'))+'</span><span>›</span></button><button class="wide" data-act="ctbook"><span>'+esc(C6('bkH'))+'</span><span>›</span></button><button class="wide" data-act="ctas"><span>'+esc(C6('asH'))+'</span><span>›</span></button>'; }
+function ct6Sheet(k){
+ if(k==='ctph') return c6PhrHTML();
+ if(k==='ctas') return c6AsHTML();
+ if(k==='ctimp') return c6ImpHTML();
+ if(k==='ctlong') return c6LongHTML();
+ if(k==='ctlurl') return c6UrlHTML();
+ if(k==='ctbook') return c6BookHTML();
+ return null;
+}
+function c6StartAsst(a){ closeSheet(); closeDrawer(); goView('home'); S.asst={id:a.id,name:a.name,ic:a.ic,ins:a.ins,st:a.st}; render(); }
+function ct6Act(a,b,i,fid,v){
+ if(a==='ctph'){ closeDrawer(); openSheet('ctph'); }
+ else if(a==='ctphuse'){ var P=c6Phr(),q=$('q'); if(!q||!P[i]) return true; q.value=(q.value.trim()?q.value.replace(/\s+$/,'')+'\n':'')+P[i]; closeSheet(); autosize(); q.focus(); }
+ else if(a==='ctphadd'){ var t=(($('c6pin')||{}).value||'').trim(); if(!t) return true; var P2=c6Phr(); P2.push(t.slice(0,200)); lsSet('phr',P2); renderSheet(); }
+ else if(a==='ctphdel'){ var P3=c6Phr(); P3.splice(i,1); lsSet('phr',P3); renderSheet(); }
+ else if(a==='ctphshare') c6ShareLink({k:'ph',d:c6Phr()},C6('phH'));
+ else if(a==='ctas'){ closeDrawer(); S.c6E=null; S.ctArm=false; openSheet('ctas'); }
+ else if(a==='ctasnew'){ S.c6E={ic:'🤖',name:'',ins:'',st:''}; renderSheet(); }
+ else if(a==='ctastpl'){ var tp=C6TPL[i]; if(!tp) return true; var A=c6Asst(),na={id:'a'+Date.now().toString(36),ic:tp.ic,name:C5L(tp.n),ins:tp.ins,st:C5L(tp.st)}; A.push(na); lsSet('assts',A); toast(C6('asAdded',na.name)); renderSheet(); }
+ else if(a==='ctasic'){ if(S.c6E){ S.c6E.name=(($('c6an')||{}).value||S.c6E.name); S.c6E.ins=(($('c6ai')||{}).value||S.c6E.ins); S.c6E.st=(($('c6as')||{}).value||'').split('\n').join(';;'); S.c6E.ic=v; renderSheet(); } }
+ else if(a==='ctasedit'){ var x=c6Find(fid); if(x){ S.c6E={id:x.id,ic:x.ic,name:x.name,ins:x.ins,st:x.st}; S.ctArm=false; renderSheet(); } }
+ else if(a==='ctassave'){ var E=S.c6E; if(!E) return true; var nm=(($('c6an')||{}).value||'').trim(); if(!nm){ var ne=$('c6an'); if(ne) ne.focus(); return true; }
+  var rec={id:E.id||'a'+Date.now().toString(36),ic:E.ic||'🤖',name:nm.slice(0,24),ins:(($('c6ai')||{}).value||'').slice(0,3000),st:(($('c6as')||{}).value||'').split('\n').map(function(s){ return s.trim(); }).filter(Boolean).slice(0,6).join(';;')};
+  var A2=c6Asst(),f=false; for(var k=0;k<A2.length;k++) if(A2[k].id===rec.id){ A2[k]=rec; f=true; } if(!f) A2.push(rec); lsSet('assts',A2); S.c6E=null; renderSheet(); toast(C5('stSaved')); }
+ else if(a==='ctasdel'){ if(!S.ctArm){ S.ctArm=true; renderSheet(); return true; } S.ctArm=false; var id=S.c6E&&S.c6E.id; lsSet('assts',c6Asst().filter(function(x){ return x.id!==id; })); S.c6E=null; renderSheet(); }
+ else if(a==='ctasgo'){ var y=c6Find(fid); if(y) c6StartAsst(y); }
+ else if(a==='ctasshare'){ var z=c6Find(fid); if(z) c6ShareLink({k:'as',d:{ic:z.ic,name:z.name,ins:z.ins,st:z.st}},'🤖 '+z.name); }
+ else if(a==='ctasend'){ S.asst=null; goView('home'); }
+ else if(a==='ctimpgo'){ var d=S.c6Imp; if(!d) return true;
+  if(d.k==='ph'){ var cur=c6Phr(); d.d.forEach(function(s){ s=String(s).slice(0,200); if(s&&cur.indexOf(s)<0) cur.push(s); }); lsSet('phr',cur); S.c6Imp=null; closeSheet(); toast(C6('asAdded',C6('phNav'))); }
+  else { var A3=c6Asst(),r={id:'a'+Date.now().toString(36),ic:String(d.d.ic||'🤖').slice(0,4),name:String(d.d.name||'').slice(0,24),ins:String(d.d.ins||'').slice(0,3000),st:String(d.d.st||'').slice(0,600)}; A3.push(r); lsSet('assts',A3); S.c6Imp=null; toast(C6('asAdded',r.name)); c6StartAsst(r); } }
+ else if(a==='ctlong'){ closeDrawer(); S.c6L={m:30}; openSheet('ctlong'); }
+ else if(a==='ctlgmin'){ var L=S.c6L=S.c6L||{}; L.p=(($('c6lp')||{}).value||'').trim(); L.t=(($('c6lt')||{}).value||'').trim(); L.m=i; renderSheet(); }
+ else if(a==='ctlgout') c6LongOutline();
+ else if(a==='ctlgwrite') c6LongWrite();
+ else if(a==='ctlgstop'){ if(S.c6L) S.c6L.stop=true; }
+ else if(a==='ctlurl'){ closeDrawer(); S.c6U=false; openSheet('ctlurl'); setTimeout(function(){ var u=$('c6u'); if(u) u.focus(); },60); }
+ else if(a==='ctugo') c6UrlGo();
+ else if(a==='ctbook'){ closeDrawer(); S.c6B={o:{a:1,b:1}}; openSheet('ctbook'); }
+ else if(a==='ctbko'){ var B=S.c6B; if(B){ B.o[v]=B.o[v]?0:1; renderSheet(); } }
+ else if(a==='ctbkfile'){ var inp=$('c6bf'); if(!inp){ inp=document.createElement('input'); inp.type='file'; inp.id='c6bf'; inp.accept='.pdf,.docx,.txt,.md,.html,.htm'; inp.style.display='none'; document.body.appendChild(inp); }
+  inp.onchange=function(){ var f=inp.files&&inp.files[0]; inp.value=''; if(!f) return; toast(C3('srcReading',f.name)); c3ReadFile(f).then(function(t){ t=String(t||'').replace(/\u0000/g,'').trim(); if(t.length<200) throw 0; S.c6B=S.c6B||{o:{a:1,b:1}}; S.c6B.name=f.name.replace(/\.[^.]+$/,''); S.c6B.text=t; if(S.sheet==='ctbook') renderSheet(); }).catch(function(){ toast(C3('srcBad')); }); }; inp.click(); }
+ else if(a==='ctbkgo') c6BookGo();
+ else if(a==='ctbkstop'){ if(S.c6B) S.c6B.stop=true; }
+ else return false;
+ return true;
+}
 /* ---------- 牧者工具（ct5-1113）：牧養工具箱、寫作風格、存成 Word／講道投影片、圖表與關係圖 ---------- */
 function C5L(s){ var a=String(s).split('|'),i={zh:0,zs:1,en:2,ko:3,ja:4,id:5,ceb:6}[LANG]; if(i==null) i=2; return a[i]!=null&&a[i]!==''?a[i]:(a[2]||a[0]); }
 var C5S={
@@ -1866,6 +2145,7 @@ function c5MakeStyle(){
 function c5ToolsHTML(){
  var h='<div class="sheethead"><h2>'+esc(C5('tbH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C5('tbHint'))+'</p><div class="c5tools">';
  for(var i=0;i<C5T.length;i++) h+='<button data-act="cttool" data-v="'+C5T[i].k+'"><span>'+C5T[i].ic+'</span><b>'+esc(C5L(C5T[i].n))+'</b><small>'+esc(C5L(C5T[i].d))+'</small></button>';
+ h+='<button data-act="ctlong"><span>📜</span><b>'+esc(C6('lgNav'))+'</b><small>'+esc(C6('lgMin','20–40'))+'</small></button>';
  h+='</div><div class="sec"><button class="wide" data-act="ctstyle"><span>'+esc(C5('stH'))+(c5Active()?'<br><small class="hint">'+esc(C5('stOn'))+'：'+esc(c5Active().name)+'</small>':'')+'</span><span>›</span></button></div>';
  return h;
 }
@@ -2222,7 +2502,7 @@ function c3MsgHTML(){
 }
 /* ---------- 拍照提問 ---------- */
 function c3PlusHTML(){
- return '<div class="sheethead"><h2>'+esc(C3('plusH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><div class="sec"><button class="wide" data-act="ctcam"><span>'+esc(C3('cam'))+'</span><span>›</span></button><button class="wide" data-act="ctpic"><span>'+esc(C3('pic'))+'</span><span>›</span></button><button class="wide" data-act="bank"><span>'+esc(C3('bank'))+'</span><span>›</span></button>'+c4PlusExtra()+'<button class="wide" data-act="cttools"><span>'+esc(C5('tbH'))+'</span><span>›</span></button></div>';
+ return '<div class="sheethead"><h2>'+esc(C3('plusH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><div class="sec"><button class="wide" data-act="ctcam"><span>'+esc(C3('cam'))+'</span><span>›</span></button><button class="wide" data-act="ctpic"><span>'+esc(C3('pic'))+'</span><span>›</span></button><button class="wide" data-act="bank"><span>'+esc(C3('bank'))+'</span><span>›</span></button>'+c6PlusExtra()+c4PlusExtra()+'<button class="wide" data-act="cttools"><span>'+esc(C5('tbH'))+'</span><span>›</span></button></div>';
 }
 function c3PickImg(cam){
  var inp=$('c3file'); if(!inp){ inp=document.createElement('input'); inp.type='file'; inp.id='c3file'; inp.accept='image/*'; inp.style.display='none'; document.body.appendChild(inp);
@@ -2675,6 +2955,7 @@ function ctFbText(kind,i,reasons,note,attach){
 }
 function ctSheetHTML(){
  var k=S.sheet,h='';
+ var x6=ct6Sheet(k); if(x6!=null) return x6;
  var x5=ct5Sheet(k); if(x5!=null) return x5;
  var x4=ct4Sheet(k); if(x4!=null) return x4;
  var x3=ct3Sheet(k); if(x3!=null) return x3;
@@ -2713,6 +2994,7 @@ function ctSheetAfter(x){ ct2After();
  var at=$('ctfbatt'); if(at) at.onchange=function(){ if(S.ctFb) S.ctFb.att=at.checked; };
 }
 function ctAct(a,b,i,fid,v){
+ if(ct6Act(a,b,i,fid,v)) return;
  if(ct5Act(a,b,i,fid,v)) return;
  if(ct4Act(a,b,i,fid,v)) return;
  if(ct3Act(a,b,i,fid,v)) return;
@@ -2858,7 +3140,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1113.2000',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1113.2100',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
