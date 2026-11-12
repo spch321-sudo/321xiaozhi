@@ -6,21 +6,21 @@
 <title>샤오즈 Q&A</title>
 <meta name="description" content="샤오즈 Q&A: 성경, 신앙, 생활 질문 · 킹덤 321 공중 펠로십">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.1700">
-<link rel="icon" href="favicon.ico?v=v2026.1113.1700" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.1700">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.1700">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.1700">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.1700">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.1700">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.1800">
+<link rel="icon" href="favicon.ico?v=v2026.1113.1800" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.1800">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.1800">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.1800">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.1800">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.1800">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="샤오즈 Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1113.1700"></script>
-<script src="xzplus.js?v=v2026.1113.1700" defer></script>
+<script src="k321gate.js?v=v2026.1113.1800"></script>
+<script src="xzplus.js?v=v2026.1113.1800" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ko';</script>
@@ -352,6 +352,26 @@ html #xz2pf input[style*="width:120px"]{width:7.5em!important}
 .qtr{display:block;color:var(--muted);font-size:.86em;margin-top:2px}
 @media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}.micbtn.on,.micwave i{animation:none}}
 @media (max-width:420px){.audgrid{grid-template-columns:1fr 1fr}}
+/* ct3-1113 教材助手 */
+.c3rw{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:.8em;color:var(--muted);margin:6px 0 2px}.c3rw .ctbtn{padding:3px 11px;font-size:1em}
+.c3seg{grid-template-columns:1fr 1fr!important;margin:4px 0 12px}
+.c3prog{text-align:center;color:var(--muted);font-size:.85em;margin:4px 0}
+.c3q{font-size:1.12em;font-weight:700;line-height:1.5;margin:6px 0 12px}
+.c3opts{display:flex;flex-direction:column;gap:8px}
+.c3opt{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1.5px solid var(--line);background:var(--page);color:var(--ink);border-radius:14px;padding:11px 13px;font-size:1em;line-height:1.45}
+.c3opt b{flex:none;width:24px;height:24px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:.8em}
+.c3opt.ok{border-color:#2F7D32;background:rgba(47,125,50,.08)}.c3opt.ok b{background:#2F7D32;color:#fff}
+.c3opt.bad{border-color:var(--danger);background:rgba(194,69,61,.07)}.c3opt.bad b{background:var(--danger);color:#fff}.c3opt.dim{opacity:.55}
+.c3why{margin:12px 0 4px;padding:10px 12px;border-radius:12px;font-weight:700}.c3why.ok{background:rgba(47,125,50,.1);color:#2F7D32}.c3why.bad{background:rgba(194,69,61,.08);color:var(--danger)}.c3why small{font-weight:400;color:var(--ink)}
+.c3score{text-align:center;padding:24px 0 14px}.c3score b{font-size:1.4em}.c3score div{font-size:2.4em;margin-top:6px}
+.c3card{position:relative;display:block;width:100%;min-height:200px;border:0;background:transparent;perspective:1000px;margin:8px 0;padding:0}
+.c3card span{position:absolute;inset:0;display:grid;place-items:center;padding:18px;border-radius:18px;font-size:1.15em;line-height:1.5;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .45s}
+.c3card .c3f{background:var(--accent);color:var(--on-accent);font-weight:700}.c3card .c3b{background:var(--gold-soft);color:var(--ink);transform:rotateY(180deg);border:1.5px solid var(--gold)}
+.c3card.flip .c3f{transform:rotateY(180deg)}.c3card.flip .c3b{transform:rotateY(360deg)}
+.c3wait{display:flex;align-items:center;gap:8px;padding:20px 0}
+#c3prev{display:flex;align-items:center;gap:8px;padding:0 6px 8px}#c3prev img{height:64px;max-width:120px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+#c3prev button{border:0;background:var(--soft);color:var(--muted);width:30px;height:30px;border-radius:50%;display:grid;place-items:center}#c3prev button svg{width:15px;height:15px}
+.ctuimg{display:block;max-width:60%;max-height:220px;border-radius:16px;margin:0 0 6px auto;border:1px solid var(--line)}
 /* ct2-1113 牧養助手 */
 .ctmemnote{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;border:1px dashed var(--line);background:transparent;color:var(--muted);border-radius:12px;padding:6px 10px;margin:6px 0 2px;font-size:.8em;text-align:left}
 .ctmemnote span{color:var(--accent);white-space:nowrap}
@@ -433,7 +453,7 @@ html #xz2pf input[style*="width:120px"]{width:7.5em!important}
 
   <footer class="composer"><div class="wrap">
     <div class="cbox">
-      <button class="cb" data-act="bank" id="bankBtn"></button>
+      <button class="cb" data-act="ctplus" id="bankBtn"></button>
       <textarea id="q" rows="1"></textarea>
       <button class="lenbtn" data-act="lenmenu" id="lenBtn"></button>
       <button class="micbtn ctcallbtn" id="ctCallBtn" data-act="ctcall" type="button" aria-label="📞"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></button>
@@ -1024,7 +1044,7 @@ function loadChat(){
  }
  var cid=lsGet('cur_all',null); if(cid===null) cid=lsGet('cur_'+LANG,'');
  var c=convById(cid);
- CUR=c?c.id:null; S.chat=c?c.msgs:[];
+ CUR=c?c.id:null; S.chat=c?c.msgs:[]; S.fid=(c&&c.fid)?c.fid:"";
  for(var z=0;z<S.chat.length;z++){ S.chat[z].fuBusy=false; if(S.chat[z].pending){S.chat[z].pending=false; if(!S.chat[z].t){S.chat[z].t=T('unfinished');S.chat[z].err=true;}} }
 }
 function save(){
@@ -1181,14 +1201,14 @@ function history(){
 }
 function send(text){
  if(MIC.on) micStop(true);
- text=String(text||'').trim(); if(!text||S.busy) return;
+ text=String(text||'').trim(); if(!text&&S.c3Img&&!S.busy) text=C3('imgAsk'); if(!text||S.busy) return;
  if(!S.chat.length&&NAV[NAV.length-1]!=='home') NAV.push('home');
  stopSpeak(); closeSheet();
- S.chat.push({role:'user',t:text,ts:Date.now()});
+ S.chat.push(c3UserMsg({role:'user',t:text,ts:Date.now()}));
  if(X.crisisHit(text)) S.chat.push({role:'ai',t:X.crisisCard(),crisis:true,ts:Date.now()});
  var voice=!!S.voiceNext; S.voiceNext=false;
  var m={role:'ai',t:'',pending:true,ts:Date.now(),meta:modeText()}; if(voice) m.voice=true; S.chat.push(m);
- var idx=S.chat.length-1, msgs=history();
+ var idx=S.chat.length-1, msgs=c3Inject(history());
  S.busy=true; S.ctl=window.AbortController?new AbortController():null;
  $('q').value=''; autosize(); render(); scrollTo(idx-1);
  function onPart(t,cont){
@@ -1198,7 +1218,7 @@ function send(text){
   var n=el.querySelector('.contnote'); if(n) n.hidden=!cont;
  }
  var sig=S.ctl?S.ctl.signal:undefined;
- getSample().then(function(sm){ return sm?viaSample(sm,msgs,onPart,sig):viaProxy(msgs,onPart,sig); }).then(function(t){
+ c3Ready().then(getSample).then(function(sm){ return (sm&&!S.c3Sent)?viaSample(sm,msgs,onPart,sig):viaProxy(msgs,onPart,sig); }).then(function(t){
   m.t=String(t||'').trim()||T('noAnswer'); m.ok=true;
  },function(e){
   if(e&&(e.name==='AbortError'||e.code==='aborted')){ m.t=(m.t?m.t+'\n\n':'')+T('stopped'); m.ok=m.t.length>12; return; }
@@ -1207,6 +1227,7 @@ function send(text){
   if(e&&e.code==='not_granted') m.t=T('errGrant');
   else if(e&&e.code==='rate_limited') m.t=T('errRate');
   else if(navigator.onLine===false) m.t=T('errOffline');
+  else if(S.c3Sent&&e&&e.http&&e.http>=400&&e.http<500) m.t=C3('imgFail');
   else m.t=T('errConn',(e&&e.http?' (http '+e.http+')':''));
  }).then(function(){
   m.pending=false; m.cont=false; S.busy=false; S.ctl=null;
@@ -1395,11 +1416,11 @@ function msgHTML(m,i,lastOk){
   h+=ab('fav',i,on?IC.starF:IC.star,on?T('favOnW'):T('favOffW'),on?' faved':'');
   h+=ab('speak',i,S.speaking===i?IC.pause:IC.speak,S.speaking===i?T('speakStopW'):T('speakW'),S.speaking===i?' faved':'');
   h+=ab('share',i,IC.share,T('shareW'));
-  h+=ctFbBtns(m,i);
+  h+=ctFbBtns(m,i)+ab('ctmsgmore',i,CTI.dots,C3('more'));
   if(i===lastOk&&!S.busy) h+=ab('lenmenu',i,IC.retry,T('reW'));
  }
  h+=ab('del',i,IC.trash,T('delW'))+(m.meta?'<span class="meta">'+esc(m.meta)+'</span>':'')+'</div>';
- h+=ctMemNote(m);
+ h+=ctMemNote(m)+c3RwNote(m,i);
  if(i===lastOk&&!S.busy) h+='<div class="fu" id="fu'+i+'">'+fuHTML(m)+'</div>';
  return h+'</div>';
 }
@@ -1677,6 +1698,238 @@ function setLang(v){
 }
 
 /* ---------- 事件 ---------- */
+/* ---------- 教材助手（ct3-1113）：一鍵改寫、測驗與字卡、拍照提問、資料夾參考資料 ---------- */
+var CT3X={
+ zh:{more:'更多',mH:'這個回答',rw:'一鍵改寫',rwH:'把這個回答改寫成…',rw_short:'更短',rw_long:'更詳細',rw_simple:'更簡單',rw_kid:'講給小孩聽',rw_elder:'講給長輩聽',rw_pulpit:'改成講台講稿',rw_text:'改成簡訊口吻',rw_formal:'更正式',rwDone:'✨ 已改寫成「{0}」',rwUndo:'還原原本的回答',rwFail:'改寫沒有成功，請再試一次',qz:'測驗與字卡',qzH:'🎯 測驗與字卡',qzMaking:'小智正在出題…',qzFail:'出題沒有成功，請再試一次',qzQuiz:'測驗',qzCards:'字卡',qzRight:'答對了！',qzWrong:'再想想，正確答案是：',qzScore:'{0} 題答對 {1} 題',qzAgain:'再做一次',qzNew:'換一組題目',qzFlip:'點卡片翻面',qzPrev:'上一張',qzNext:'下一張',qzNextQ:'下一題',qzShare:'分享題目',qzAns:'答案',grp:'🏡 做成小家討論題',plusH:'加入相片或找範例問題',cam:'📷 拍照提問',pic:'🖼 選一張相片提問',bank:'💡 範例問題',imgAsk:'請幫我看看這張相片，整理重點。',imgRm:'移除相片',imgFail:'小智服務目前收不到相片。請先用文字描述，或請管理者更新 xiaozhi-proxy 讓它接受相片。',imgBad:'相片讀取失敗，請換一張',imgReady:'相片已附上，輸入問題後送出（不輸入也可以）',src:'參考資料',srcH:'📚 參考資料',srcHint:'加入講義、講稿、課程內容；在這個資料夾提問時，小智會先根據這些資料回答，並註明出處。資料只存在這支手機。',srcFile:'＋ 加入檔案（PDF、Word、文字檔）',srcPaste:'＋ 貼上文字',srcName:'資料名稱',srcText:'把內容貼在這裡',srcAdd:'加入',srcNone:'還沒有參考資料',srcReading:'正在讀取「{0}」…',srcAdded:'已加入「{0}」（{1} 字）',srcBad:'這個檔案讀不出文字（掃描的圖片 PDF 或加密檔無法讀取）',srcDel:'刪除',srcChars:'{0} 字',srcTag:'・📚 {0}'},
+ zs:{more:'更多',mH:'这个回答',rw:'一键改写',rwH:'把这个回答改写成…',rw_short:'更短',rw_long:'更详细',rw_simple:'更简单',rw_kid:'讲给小孩听',rw_elder:'讲给长辈听',rw_pulpit:'改成讲台讲稿',rw_text:'改成短信口吻',rw_formal:'更正式',rwDone:'✨ 已改写成“{0}”',rwUndo:'还原原本的回答',rwFail:'改写没有成功，请再试一次',qz:'测验与字卡',qzH:'🎯 测验与字卡',qzMaking:'小智正在出题…',qzFail:'出题没有成功，请再试一次',qzQuiz:'测验',qzCards:'字卡',qzRight:'答对了！',qzWrong:'再想想，正确答案是：',qzScore:'{0} 题答对 {1} 题',qzAgain:'再做一次',qzNew:'换一组题目',qzFlip:'点卡片翻面',qzPrev:'上一张',qzNext:'下一张',qzNextQ:'下一题',qzShare:'分享题目',qzAns:'答案',grp:'🏡 做成小家讨论题',plusH:'加入相片或找范例问题',cam:'📷 拍照提问',pic:'🖼 选一张相片提问',bank:'💡 范例问题',imgAsk:'请帮我看看这张相片，整理重点。',imgRm:'移除相片',imgFail:'小智服务目前收不到相片。请先用文字描述，或请管理者更新 xiaozhi-proxy 让它接受相片。',imgBad:'相片读取失败，请换一张',imgReady:'相片已附上，输入问题后送出（不输入也可以）',src:'参考资料',srcH:'📚 参考资料',srcHint:'加入讲义、讲稿、课程内容；在这个文件夹提问时，小智会先根据这些资料回答，并注明出处。资料只存在这台手机。',srcFile:'＋ 加入文件（PDF、Word、文本文件）',srcPaste:'＋ 粘贴文字',srcName:'资料名称',srcText:'把内容粘贴在这里',srcAdd:'加入',srcNone:'还没有参考资料',srcReading:'正在读取“{0}”…',srcAdded:'已加入“{0}”（{1} 字）',srcBad:'这个文件读不出文字（扫描的图片 PDF 或加密文件无法读取）',srcDel:'删除',srcChars:'{0} 字',srcTag:'・📚 {0}'},
+ en:{more:'More',mH:'This answer',rw:'Rewrite',rwH:'Rewrite this answer to be…',rw_short:'Shorter',rw_long:'More detailed',rw_simple:'Simpler',rw_kid:'For children',rw_elder:'For seniors',rw_pulpit:'A pulpit script',rw_text:'A text message',rw_formal:'More formal',rwDone:'✨ Rewritten: {0}',rwUndo:'Restore the original',rwFail:'Couldn’t rewrite — please try again',qz:'Quiz & flashcards',qzH:'🎯 Quiz & flashcards',qzMaking:'Xiaozhi is writing questions…',qzFail:'Couldn’t make questions — please try again',qzQuiz:'Quiz',qzCards:'Cards',qzRight:'Correct!',qzWrong:'Not quite — the answer is: ',qzScore:'{1} of {0} correct',qzAgain:'Try again',qzNew:'New questions',qzFlip:'Tap the card to flip',qzPrev:'Previous',qzNext:'Next',qzNextQ:'Next question',qzShare:'Share questions',qzAns:'Answer',grp:'🏡 Small-group questions',plusH:'Add a photo or find a sample question',cam:'📷 Take a photo to ask',pic:'🖼 Choose a photo to ask',bank:'💡 Sample questions',imgAsk:'Please look at this photo and summarize the key points.',imgRm:'Remove photo',imgFail:'The Xiaozhi service can’t receive photos yet. Please describe it in words, or ask the admin to update xiaozhi-proxy.',imgBad:'Couldn’t read the photo — try another',imgReady:'Photo attached — type a question and send (or just send)',src:'Sources',srcH:'📚 Sources',srcHint:'Add handouts, sermon scripts or course material. In this folder Xiaozhi answers from these first and names the source. Stored only on this phone.',srcFile:'+ Add a file (PDF, Word, text)',srcPaste:'+ Paste text',srcName:'Source name',srcText:'Paste the content here',srcAdd:'Add',srcNone:'No sources yet',srcReading:'Reading “{0}”…',srcAdded:'Added “{0}” ({1} characters)',srcBad:'No text could be read from this file (scanned or encrypted files can’t be read)',srcDel:'Delete',srcChars:'{0} characters',srcTag:' · 📚 {0}'},
+ ko:{more:'더 보기',mH:'이 답변',rw:'다시 쓰기',rwH:'이 답변을 이렇게 바꾸기…',rw_short:'더 짧게',rw_long:'더 자세히',rw_simple:'더 쉽게',rw_kid:'어린이에게',rw_elder:'어르신에게',rw_pulpit:'설교 원고로',rw_text:'문자 메시지 말투로',rw_formal:'더 격식 있게',rwDone:'✨ 「{0}」로 바꿨어요',rwUndo:'원래 답변으로',rwFail:'바꾸지 못했어요. 다시 시도해 주세요',qz:'퀴즈와 카드',qzH:'🎯 퀴즈와 카드',qzMaking:'샤오즈가 문제를 내는 중…',qzFail:'문제를 만들지 못했어요. 다시 시도해 주세요',qzQuiz:'퀴즈',qzCards:'카드',qzRight:'정답이에요!',qzWrong:'다시 생각해 봐요. 정답: ',qzScore:'{0}문제 중 {1}문제 정답',qzAgain:'다시 풀기',qzNew:'새 문제',qzFlip:'카드를 눌러 뒤집기',qzPrev:'이전',qzNext:'다음',qzNextQ:'다음 문제',qzShare:'문제 공유',qzAns:'답',grp:'🏡 소그룹 나눔 질문',plusH:'사진 추가 또는 예시 질문',cam:'📷 사진 찍어 묻기',pic:'🖼 사진 골라 묻기',bank:'💡 예시 질문',imgAsk:'이 사진을 보고 요점을 정리해 주세요.',imgRm:'사진 빼기',imgFail:'샤오즈 서비스가 아직 사진을 받을 수 없어요. 글로 설명하거나 관리자에게 xiaozhi-proxy 업데이트를 요청해 주세요.',imgBad:'사진을 읽지 못했어요. 다른 사진을 골라 주세요',imgReady:'사진을 붙였어요. 질문을 쓰고 보내세요(안 써도 돼요)',src:'참고 자료',srcH:'📚 참고 자료',srcHint:'강의안, 설교 원고, 과정 내용을 넣으면 이 폴더에서 질문할 때 이 자료를 먼저 근거로 답하고 출처를 밝혀요. 이 휴대폰에만 저장돼요.',srcFile:'＋ 파일 추가(PDF, Word, 텍스트)',srcPaste:'＋ 텍스트 붙여넣기',srcName:'자료 이름',srcText:'여기에 내용을 붙여넣으세요',srcAdd:'추가',srcNone:'아직 참고 자료가 없어요',srcReading:'「{0}」 읽는 중…',srcAdded:'「{0}」 추가({1}자)',srcBad:'이 파일에서 글자를 읽을 수 없어요(스캔·암호 파일은 불가)',srcDel:'삭제',srcChars:'{0}자',srcTag:' · 📚 {0}'},
+ ja:{more:'その他',mH:'この回答',rw:'書き直す',rwH:'この回答を書き直す…',rw_short:'短く',rw_long:'詳しく',rw_simple:'やさしく',rw_kid:'子ども向けに',rw_elder:'高齢の方向けに',rw_pulpit:'説教原稿に',rw_text:'メッセージ風に',rw_formal:'丁寧に',rwDone:'✨「{0}」に書き直しました',rwUndo:'元の回答に戻す',rwFail:'書き直せませんでした。もう一度お試しください',qz:'クイズと単語カード',qzH:'🎯 クイズと単語カード',qzMaking:'シャオジーが問題を作っています…',qzFail:'問題を作れませんでした。もう一度お試しください',qzQuiz:'クイズ',qzCards:'カード',qzRight:'正解！',qzWrong:'おしい！正解は：',qzScore:'{0} 問中 {1} 問正解',qzAgain:'もう一度',qzNew:'別の問題',qzFlip:'カードをタップして裏返す',qzPrev:'前へ',qzNext:'次へ',qzNextQ:'次の問題',qzShare:'問題を共有',qzAns:'答え',grp:'🏡 小グループの質問',plusH:'写真を追加／質問の例',cam:'📷 写真を撮って聞く',pic:'🖼 写真を選んで聞く',bank:'💡 質問の例',imgAsk:'この写真を見て、要点をまとめてください。',imgRm:'写真を外す',imgFail:'シャオジーのサービスはまだ写真を受け取れません。文章で説明するか、管理者に xiaozhi-proxy の更新を依頼してください。',imgBad:'写真を読み込めませんでした。別の写真をお試しください',imgReady:'写真を添付しました。質問を書いて送信（書かなくても可）',src:'参考資料',srcH:'📚 参考資料',srcHint:'講義資料・説教原稿・講座の内容を入れると、このフォルダでの質問にはまずこれらの資料に基づいて答え、出典を示します。このスマホだけに保存。',srcFile:'＋ ファイルを追加（PDF、Word、テキスト）',srcPaste:'＋ テキストを貼り付け',srcName:'資料名',srcText:'ここに内容を貼り付け',srcAdd:'追加',srcNone:'まだ参考資料がありません',srcReading:'「{0}」を読み込み中…',srcAdded:'「{0}」を追加（{1} 字）',srcBad:'このファイルから文字を読み取れません（スキャン画像や暗号化ファイルは不可）',srcDel:'削除',srcChars:'{0} 字',srcTag:'・📚 {0}'},
+ id:{more:'Lainnya',mH:'Jawaban ini',rw:'Tulis ulang',rwH:'Tulis ulang jawaban ini menjadi…',rw_short:'Lebih singkat',rw_long:'Lebih rinci',rw_simple:'Lebih sederhana',rw_kid:'Untuk anak-anak',rw_elder:'Untuk lansia',rw_pulpit:'Naskah khotbah',rw_text:'Gaya pesan singkat',rw_formal:'Lebih formal',rwDone:'✨ Ditulis ulang: {0}',rwUndo:'Kembalikan jawaban asli',rwFail:'Gagal menulis ulang — coba lagi',qz:'Kuis & kartu',qzH:'🎯 Kuis & kartu',qzMaking:'Xiaozhi sedang membuat soal…',qzFail:'Gagal membuat soal — coba lagi',qzQuiz:'Kuis',qzCards:'Kartu',qzRight:'Benar!',qzWrong:'Belum tepat — jawabannya: ',qzScore:'{1} dari {0} benar',qzAgain:'Ulangi',qzNew:'Soal baru',qzFlip:'Ketuk kartu untuk membalik',qzPrev:'Sebelumnya',qzNext:'Berikutnya',qzNextQ:'Soal berikutnya',qzShare:'Bagikan soal',qzAns:'Jawaban',grp:'🏡 Pertanyaan kelompok kecil',plusH:'Tambah foto atau contoh pertanyaan',cam:'📷 Foto lalu bertanya',pic:'🖼 Pilih foto lalu bertanya',bank:'💡 Contoh pertanyaan',imgAsk:'Tolong lihat foto ini dan rangkum poin pentingnya.',imgRm:'Hapus foto',imgFail:'Layanan Xiaozhi belum bisa menerima foto. Jelaskan dengan kata-kata, atau minta admin memperbarui xiaozhi-proxy.',imgBad:'Foto gagal dibaca — coba foto lain',imgReady:'Foto terlampir — ketik pertanyaan lalu kirim (boleh langsung kirim)',src:'Sumber',srcH:'📚 Sumber',srcHint:'Tambahkan bahan ajar, naskah khotbah, atau materi kursus. Di folder ini Xiaozhi menjawab terutama dari sumber ini dan menyebut sumbernya. Hanya tersimpan di ponsel ini.',srcFile:'+ Tambah file (PDF, Word, teks)',srcPaste:'+ Tempel teks',srcName:'Nama sumber',srcText:'Tempel isinya di sini',srcAdd:'Tambah',srcNone:'Belum ada sumber',srcReading:'Membaca “{0}”…',srcAdded:'“{0}” ditambahkan ({1} karakter)',srcBad:'Tidak ada teks yang bisa dibaca dari file ini (file pindaian/terenkripsi tidak bisa)',srcDel:'Hapus',srcChars:'{0} karakter',srcTag:' · 📚 {0}'},
+ ceb:{more:'Uban pa',mH:'Kini nga tubag',rw:'Isulat pag-usab',rwH:'Isulat pag-usab kini nga tubag nga…',rw_short:'Mas mubo',rw_long:'Mas detalyado',rw_simple:'Mas sayon',rw_kid:'Para sa mga bata',rw_elder:'Para sa mga tigulang',rw_pulpit:'Script sa wali',rw_text:'Sama sa text message',rw_formal:'Mas pormal',rwDone:'✨ Gisulat pag-usab: {0}',rwUndo:'Ibalik ang orihinal',rwFail:'Wala malampusi — sulayi pag-usab',qz:'Quiz ug flashcards',qzH:'🎯 Quiz ug flashcards',qzMaking:'Naghimo si Xiaozhi og pangutana…',qzFail:'Wala makahimo og pangutana — sulayi pag-usab',qzQuiz:'Quiz',qzCards:'Cards',qzRight:'Sakto!',qzWrong:'Dili pa — ang tubag: ',qzScore:'{1} sa {0} ang sakto',qzAgain:'Usba',qzNew:'Bag-ong pangutana',qzFlip:'Pindota ang card aron mabali',qzPrev:'Miagi',qzNext:'Sunod',qzNextQ:'Sunod nga pangutana',qzShare:'Ipaambit ang pangutana',qzAns:'Tubag',grp:'🏡 Pangutana sa gamay nga grupo',plusH:'Idugang ang litrato o pananglitan nga pangutana',cam:'📷 Kuhaa og litrato ug pangutana',pic:'🖼 Pilia ang litrato ug pangutana',bank:'💡 Pananglitan nga pangutana',imgAsk:'Palihug tan-awa kini nga litrato ug i-summarize ang mga punto.',imgRm:'Tangtanga ang litrato',imgFail:'Dili pa makadawat og litrato ang serbisyo ni Xiaozhi. Isulti pinaagi sa pulong, o hangyoa ang admin nga i-update ang xiaozhi-proxy.',imgBad:'Wala mabasa ang litrato — sulayi ang lain',imgReady:'Naka-attach ang litrato — isulat ang pangutana ug ipadala (o ipadala dayon)',src:'Mga tinubdan',srcH:'📚 Mga tinubdan',srcHint:'Idugang ang handout, script sa wali o kurso. Niini nga folder motubag si Xiaozhi gikan niini una ug isulti ang tinubdan. Sa kini nga cellphone ra gitipigan.',srcFile:'+ Idugang ang file (PDF, Word, text)',srcPaste:'+ I-paste ang teksto',srcName:'Ngalan sa tinubdan',srcText:'I-paste ang sulod dinhi',srcAdd:'Idugang',srcNone:'Wala pay tinubdan',srcReading:'Gibasa ang “{0}”…',srcAdded:'Nadugang ang “{0}” ({1} ka karakter)',srcBad:'Walay teksto nga mabasa niini nga file (dili mabasa ang scanned o encrypted)',srcDel:'Papasa',srcChars:'{0} ka karakter',srcTag:' · 📚 {0}'}
+};
+function C3(k,a,b){ var d=CT3X[LANG]||CT3X.en,s=d[k]; if(s==null) s=(FOREIGN()?CT3X.en:CT3X.zh)[k]; if(s==null) s=CT3X.zh[k]||k; s=String(s); if(a!=null) s=s.replace('{0}',a); if(b!=null) s=s.replace('{1}',b); return s; }
+var C3_RW=['short','long','simple','kid','elder','pulpit','text','formal'];
+var C3_RWI={short:'Make it much shorter — keep only the most important points.',long:'Make it more detailed and thorough, with more explanation and examples.',simple:'Use simpler words and shorter sentences so anyone can understand.',kid:'Rewrite it for children about 8–10 years old: simple words, a small story or picture, warm and short.',elder:'Rewrite it for elderly readers: clear, slow-paced, short paragraphs, warm and respectful, no jargon.',pulpit:'Rewrite it as a short pulpit script to be spoken aloud: an opening, 2–3 clear points with Scripture, an illustration, and an application/closing.',text:'Rewrite it as a short, warm text message that can be sent to someone on LINE (a few lines, no headings).',formal:'Make the tone more formal and polished.'};
+
+S.c3Img=null; S.c3Sent=false;
+/* ---------- 一鍵改寫 ---------- */
+function c3Rewrite(i,key){
+ var m=S.chat[i]; if(!m||S.busy||m.pending) return;
+ var q=qOf(i),old=m.t,label=C3('rw_'+key);
+ var msgs=[{role:'user',content:q||'(question)'},{role:'assistant',content:old},{role:'user',content:'Please rewrite your answer above. '+C3_RWI[key]+' Keep it faithful to Scripture and accurate, keep any Bible quotations word for word, and reply only with the rewritten answer in the same language.'}];
+ stopSpeak(); m.pending=true; m.t=''; S.busy=true; S.ctl=window.AbortController?new AbortController():null; render(); scrollTo(i);
+ var sig=S.ctl?S.ctl.signal:undefined;
+ viaProxy(msgs,function(t,cont){ var el=$('m'+i); if(el){ var bb=el.querySelector('.body'); if(bb) bb.innerHTML=md(t); } },sig).then(function(t){
+  t=String(t||'').trim(); if(!t) throw new Error('empty');
+  if(!m.orig) m.orig=old; m.t=t; m.rw=key; m.fu=null; m.memNote=null; m.qz=null;
+ },function(){ m.t=old; toast(C3('rwFail')); }).then(function(){ m.pending=false; S.busy=false; S.ctl=null; save(); render(); scrollTo(i); });
+}
+function c3RwNote(m,i){ return m.rw&&m.orig?'<div class="c3rw"><span>'+esc(C3('rwDone',C3('rw_'+m.rw)))+'</span><button class="ctbtn" data-act="ctrwundo" data-i="'+i+'">'+esc(C3('rwUndo'))+'</button></div>':''; }
+/* ---------- 測驗與字卡 ---------- */
+var QZ=null;
+function c3Quiz(i,fresh){
+ var m=S.chat[i]; if(!m) return;
+ if(m.qz&&!fresh){ QZ={i:i,d:m.qz,mode:'quiz',k:0,pick:[],card:0,flip:false}; openSheet('ctquiz'); return; }
+ QZ={i:i,d:null,mode:'quiz',k:0,pick:[],card:0,flip:false,busy:true}; openSheet('ctquiz');
+ var LNM={zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English';
+ var ask='Make a short Bible-study quiz and flashcards from the ANSWER below, in '+LNM+'. Return ONLY JSON: {"quiz":[{"q":"question","o":["option A","option B","option C","option D"],"a":0,"why":"one-sentence explanation"}],"cards":[{"f":"front (a term, verse reference or question)","b":"back (short answer)"}]}. 5 quiz questions (each with exactly 4 options, "a" is the index of the correct one; vary the position of the correct answer) and 6 cards. Questions must be answerable from the answer and faithful to Scripture; quote verses exactly as in the answer.\nQUESTION:\n'+String(qOf(i)).slice(0,400)+'\nANSWER:\n'+plain(m.t).slice(0,3500);
+ quickAsk(ask,1800).then(function(t){
+  var s=String(t||''),a=s.indexOf('{'),b=s.lastIndexOf('}'),d=null; try{ d=JSON.parse(s.slice(a,b+1)); }catch(e){}
+  var qz=(d&&d.quiz||[]).filter(function(x){ return x&&x.q&&x.o&&x.o.length>=2&&x.a>=0&&x.a<x.o.length; }).slice(0,8);
+  var cards=(d&&d.cards||[]).filter(function(x){ return x&&x.f&&x.b; }).slice(0,12);
+  if(!qz.length&&!cards.length) throw new Error('bad');
+  m.qz={quiz:qz,cards:cards}; save();
+  if(QZ&&QZ.i===i){ QZ.d=m.qz; QZ.busy=false; QZ.mode=qz.length?'quiz':'cards'; if(S.sheet==='ctquiz') renderSheet(); }
+ }).catch(function(){ if(QZ&&QZ.i===i){ QZ.busy=false; QZ.fail=true; if(S.sheet==='ctquiz') renderSheet(); } });
+}
+function c3QuizHTML(){
+ var h='<div class="sheethead"><h2>'+esc(C3('qzH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+ if(!QZ) return h;
+ if(QZ.busy) return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C3('qzMaking'))+'</p>';
+ if(QZ.fail||!QZ.d) return h+'<p class="hint">'+esc(C3('qzFail'))+'</p><button class="ctgo" data-act="ctqznew">'+esc(C3('qzNew'))+'</button>';
+ var d=QZ.d;
+ h+='<div class="seg4 c3seg"><button class="'+(QZ.mode==='quiz'?'on':'')+'" data-act="ctqzmode" data-v="quiz">🎯 '+esc(C3('qzQuiz'))+'</button><button class="'+(QZ.mode==='cards'?'on':'')+'" data-act="ctqzmode" data-v="cards">🗂 '+esc(C3('qzCards'))+'</button></div>';
+ if(QZ.mode==='quiz'){
+  var n=d.quiz.length,right=0; for(var r=0;r<QZ.pick.length;r++) if(QZ.pick[r]===d.quiz[r].a) right++;
+  if(QZ.k>=n){ h+='<div class="c3score"><b>'+esc(C3('qzScore',n,right))+'</b><div>'+(right===n?'🎉🎉🎉':right>=n/2?'👏':'💪')+'</div></div><div class="ctrow2"><button class="ctbtn" data-act="ctqzagain">'+esc(C3('qzAgain'))+'</button><button class="ctbtn pri" data-act="ctqznew">'+esc(C3('qzNew'))+'</button></div>'; }
+  else { var Q=d.quiz[QZ.k],pk=QZ.pick[QZ.k];
+   h+='<div class="c3prog">'+(QZ.k+1)+' / '+n+'</div><div class="c3q">'+esc(Q.q)+'</div><div class="c3opts">';
+   for(var o=0;o<Q.o.length;o++){ var cls=pk==null?'':(o===Q.a?' ok':(o===pk?' bad':' dim')); h+='<button class="c3opt'+cls+'" data-act="ctqzpick" data-i="'+o+'"'+(pk==null?'':' disabled')+'><b>'+'ABCDEF'.charAt(o)+'</b><span>'+esc(Q.o[o])+'</span></button>'; }
+   h+='</div>';
+   if(pk!=null) h+='<div class="c3why '+(pk===Q.a?'ok':'bad')+'">'+esc(pk===Q.a?C3('qzRight'):C3('qzWrong')+Q.o[Q.a])+(Q.why?'<br><small>'+esc(Q.why)+'</small>':'')+'</div><button class="ctgo" data-act="ctqznext">'+esc(C3('qzNextQ'))+' ›</button>';
+  }
+ } else {
+  var C=d.cards; if(!C.length) return h+'<p class="hint">—</p>';
+  var c=C[QZ.card%C.length];
+  h+='<div class="c3prog">'+((QZ.card%C.length)+1)+' / '+C.length+'</div><button class="c3card'+(QZ.flip?' flip':'')+'" data-act="ctqzflip"><span class="c3f">'+esc(c.f)+'</span><span class="c3b">'+esc(c.b)+'</span></button><p class="hint" style="text-align:center">'+esc(C3('qzFlip'))+'</p><div class="ctrow2"><button class="ctbtn" data-act="ctqzcard" data-i="-1">‹ '+esc(C3('qzPrev'))+'</button><button class="ctbtn pri" data-act="ctqzcard" data-i="1">'+esc(C3('qzNext'))+' ›</button></div>';
+ }
+ return h+'<div class="sec" style="border:0"><button class="wide" data-act="ctqzshare"><span>'+IC.share+' '+esc(C3('qzShare'))+'</span><span>›</span></button></div>';
+}
+function c3QuizText(){
+ var d=QZ&&QZ.d; if(!d) return ''; var L=['🎯 '+C3('qz')+'｜'+String(qOf(QZ.i)).slice(0,40)];
+ d.quiz.forEach(function(q,k){ L.push((k+1)+'. '+q.q+'\n'+q.o.map(function(o,j){ return '   '+'ABCDEF'.charAt(j)+'. '+o; }).join('\n')); });
+ L.push(C3('qzAns')+'：'+d.quiz.map(function(q,k){ return (k+1)+''+'ABCDEF'.charAt(q.a); }).join('  '));
+ if(d.cards.length) L.push('🗂 '+C3('qzCards')+'\n'+d.cards.map(function(c){ return '・'+c.f+' — '+c.b; }).join('\n'));
+ L.push('— '+T('shareSign')); return L.join('\n\n');
+}
+/* ---------- 回答的「更多」選單 ---------- */
+function c3MsgHTML(){
+ var i=S.c3I,m=S.chat[i],h='<div class="sheethead"><h2>'+esc(C3('mH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+ if(!m) return h;
+ h+='<div class="sec"><h3>✨ '+esc(C3('rwH'))+'</h3><div class="ctchips">';
+ for(var k=0;k<C3_RW.length;k++) h+='<button class="chip" data-act="ctrwgo" data-v="'+C3_RW[k]+'">'+esc(C3('rw_'+C3_RW[k]))+'</button>';
+ h+='</div>'+(m.orig?'<button class="ctbtn" data-act="ctrwundo" data-i="'+i+'">↺ '+esc(C3('rwUndo'))+'</button>':'')+'</div>';
+ h+='<div class="sec"><button class="wide" data-act="ctquiz"><span>'+esc(C3('qzH'))+'</span><span>›</span></button><button class="wide" data-act="ctgrp"><span>'+esc(C3('grp'))+'</span><span>›</span></button></div>';
+ return h;
+}
+/* ---------- 拍照提問 ---------- */
+function c3PlusHTML(){
+ return '<div class="sheethead"><h2>'+esc(C3('plusH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><div class="sec"><button class="wide" data-act="ctcam"><span>'+esc(C3('cam'))+'</span><span>›</span></button><button class="wide" data-act="ctpic"><span>'+esc(C3('pic'))+'</span><span>›</span></button><button class="wide" data-act="bank"><span>'+esc(C3('bank'))+'</span><span>›</span></button></div>';
+}
+function c3PickImg(cam){
+ var inp=$('c3file'); if(!inp){ inp=document.createElement('input'); inp.type='file'; inp.id='c3file'; inp.accept='image/*'; inp.style.display='none'; document.body.appendChild(inp);
+  inp.onchange=function(){ var f=inp.files&&inp.files[0]; inp.value=''; if(f) c3LoadImg(f); }; }
+ if(cam) inp.setAttribute('capture','environment'); else inp.removeAttribute('capture');
+ closeSheet(); inp.click();
+}
+function c3Shrink(img,max,q){ var w=img.naturalWidth||img.width,h=img.naturalHeight||img.height,s=Math.min(1,max/Math.max(w,h)),cv=document.createElement('canvas'); cv.width=Math.max(1,Math.round(w*s)); cv.height=Math.max(1,Math.round(h*s)); var cx=cv.getContext('2d'); cx.fillStyle='#fff'; cx.fillRect(0,0,cv.width,cv.height); cx.drawImage(img,0,0,cv.width,cv.height); return cv.toDataURL('image/jpeg',q); }
+function c3LoadImg(f){
+ var u=URL.createObjectURL(f),img=new Image();
+ img.onload=function(){ try{ S.c3Img={full:c3Shrink(img,1400,.82),thumb:c3Shrink(img,360,.7)}; }catch(e){ S.c3Img=null; toast(C3('imgBad')); } URL.revokeObjectURL(u); c3Prev(); if(S.c3Img){ toast(C3('imgReady')); try{ $('q').focus(); }catch(e){} } };
+ img.onerror=function(){ URL.revokeObjectURL(u); toast(C3('imgBad')); };
+ img.src=u;
+}
+function c3Prev(){
+ var p=$('c3prev'),box=document.querySelector('.composer .cbox');
+ if(!S.c3Img){ if(p) p.parentNode.removeChild(p); return; }
+ if(!p){ p=document.createElement('div'); p.id='c3prev'; box.parentNode.insertBefore(p,box); }
+ p.innerHTML='<img src="'+S.c3Img.thumb+'" alt=""><button data-act="ctimgrm" aria-label="'+esc(C3('imgRm'))+'">'+IC.x+'</button>';
+}
+function c3UserMsg(u){ if(S.c3Img){ u.img=S.c3Img.thumb; } return u; }
+function c3Inject(msgs){
+ S.c3Sent=false;
+ if(S.c3Img&&msgs.length){ var last=msgs[msgs.length-1]; if(last.role==='user'){ last.content=[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:S.c3Img.full.split(',')[1]}},{type:'text',text:String(last.content)}]; S.c3Sent=true; } }
+ S.c3Img=null; c3Prev(); return msgs;
+}
+/* ---------- 資料夾參考資料 ---------- */
+var C3S={};
+function c3SrcMeta(fd){ return (fd&&fd.src&&typeof fd.src.length==='number')?fd.src:[]; }
+function c3SrcTag(fd){ var n=c3SrcMeta(fd).length; return n?C3('srcTag',n):''; }
+function c3Load(fid){ if(!fid) return Promise.resolve(null); if(C3S[fid]) return Promise.resolve(C3S[fid]); return idbGet('fsrc_'+fid).then(function(v){ C3S[fid]=(v&&v.length)?v:[]; return C3S[fid]; },function(){ C3S[fid]=[]; return C3S[fid]; }); }
+function c3Ready(){ var fd=S.fid?c2Folder(S.fid):null; if(!fd||!c3SrcMeta(fd).length) return Promise.resolve(); return c3Load(fd.id); }
+function c3Chunk(text){ var out=[],cur='',ps=String(text).replace(/\r/g,'').split(/\n\s*\n|\n(?=\s*(?:#|第.{1,4}[章節課]|\d+[\.、]))/);
+ for(var i=0;i<ps.length;i++){ var p=ps[i].replace(/[ \t]+/g,' ').trim(); if(!p) continue;
+  while(p.length>900){ var cut=p.lastIndexOf('。',850); if(cut<400) cut=p.lastIndexOf('. ',850); if(cut<400) cut=850; if(cur){ out.push(cur); cur=''; } out.push(p.slice(0,cut+1)); p=p.slice(cut+1).trim(); }
+  if(cur.length+p.length>760){ if(cur) out.push(cur); cur=p; } else cur=cur?cur+'\n'+p:p; }
+ if(cur) out.push(cur); return out; }
+function c3Toks(s){ s=String(s).toLowerCase(); var t=[],m=s.match(/[a-z0-9À-ɏ]{3,}/g)||[]; t=t.concat(m); var cj=s.replace(/[^぀-ヿ㐀-鿿가-힯]+/g,' ').split(' '); for(var i=0;i<cj.length;i++){ var w=cj[i]; for(var j=0;j+1<w.length;j++) t.push(w.substr(j,2)); } return t; }
+function c3Retrieve(srcs,q){
+ var all=[]; srcs.forEach(function(s){ s.ch.forEach(function(c,k){ all.push({n:s.name,k:k,t:c}); }); });
+ var total=all.reduce(function(a,x){ return a+x.t.length; },0);
+ if(total<=9000) return all;
+ var qt=c3Toks(q),uq={}; qt.forEach(function(x){ uq[x]=1; }); var keys=Object.keys(uq); if(!keys.length) return all.slice(0,6);
+ var df={}; all.forEach(function(x){ x.tk=c3Toks(x.t); var seen={}; x.tk.forEach(function(w){ if(uq[w]&&!seen[w]){ seen[w]=1; df[w]=(df[w]||0)+1; } }); });
+ all.forEach(function(x){ var tf={},sc=0; x.tk.forEach(function(w){ if(uq[w]) tf[w]=(tf[w]||0)+1; }); for(var w in tf){ sc+=(1+Math.log(tf[w]))*Math.log(1+all.length/(df[w]||1)); } x.sc=sc/Math.sqrt(1+x.t.length/500); });
+ var top=all.slice().sort(function(a,b){ return b.sc-a.sc; }),pick=[],len=0;
+ for(var i=0;i<top.length&&pick.length<8;i++){ if(top[i].sc<=0&&pick.length) break; if(len+top[i].t.length>8000) continue; pick.push(top[i]); len+=top[i].t.length; }
+ pick.sort(function(a,b){ return a.n===b.n?a.k-b.k:(a.n<b.n?-1:1); }); return pick;
+}
+function c3SrcSys(fd){
+ if(!fd||!c3SrcMeta(fd).length) return ''; var srcs=C3S[fd.id]; if(!srcs||!srcs.length) return '';
+ var q=''; for(var i=S.chat.length-1;i>=0;i--) if(S.chat[i].role==='user'){ q=S.chat[i].t; if(i>=2){ for(var j=i-1;j>=0;j--) if(S.chat[j].role==='user'){ q+=' '+S.chat[j].t; break; } } break; }
+ var pick=c3Retrieve(srcs,q); if(!pick.length) return '';
+ return '\n\n[Reference sources the user added to this folder. Answer primarily from these excerpts and cite the source name in brackets like 〔'+pick[0].n+'〕. If the excerpts do not cover the question, say so briefly, then answer from Scripture and general knowledge.]\n'+pick.map(function(x){ return '〔'+x.n+'〕\n'+x.t; }).join('\n---\n');
+}
+function c3SrcSec(fd){
+ var M=c3SrcMeta(fd),h='<div class="sec"><h3>'+esc(C3('srcH'))+'</h3><p class="hint">'+esc(C3('srcHint'))+'</p>';
+ if(!M.length) h+='<p class="hint">'+esc(C3('srcNone'))+'</p>';
+ for(var i=0;i<M.length;i++) h+='<div class="ctmemrow"><span>📄 '+esc(M[i].name)+'<small>'+esc(C3('srcChars',M[i].chars))+'</small></span><button class="cdel" data-act="ctsrcdel" data-id="'+M[i].id+'" aria-label="'+esc(C3('srcDel'))+'">'+IC.x+'</button></div>';
+ h+='<button class="wide" data-act="ctsrcfile"><span>'+esc(C3('srcFile'))+'</span><span>›</span></button>';
+ h+=S.c3Paste?'<input id="c3pname" class="ctin" maxlength="40" placeholder="'+esc(C3('srcName'))+'"><textarea id="c3ptext" class="ctta" rows="6" placeholder="'+esc(C3('srcText'))+'"></textarea><button class="ctgo" data-act="ctsrcpasteok">'+esc(C3('srcAdd'))+'</button>':'<button class="wide" data-act="ctsrcpaste"><span>'+esc(C3('srcPaste'))+'</span><span>›</span></button>';
+ return h+'</div>';
+}
+function c3AddSrc(fid,name,text){
+ text=String(text||'').replace(/\u0000/g,'').trim(); if(text.length<10){ toast(C3('srcBad')); return Promise.resolve(false); }
+ var F=c2Folders(),fd=null; for(var i=0;i<F.length;i++) if(F[i].id===fid) fd=F[i]; if(!fd) return Promise.resolve(false);
+ var id='s'+Date.now().toString(36),ch=c3Chunk(text);
+ return c3Load(fid).then(function(arr){ arr=arr||[]; arr.push({id:id,name:String(name).slice(0,60),ch:ch}); C3S[fid]=arr; return idbPut('fsrc_'+fid,arr); }).then(function(){
+  fd.src=c3SrcMeta(fd).concat([{id:id,name:String(name).slice(0,60),chars:text.length,ts:Date.now()}]); c2SaveFolders(F);
+  toast(C3('srcAdded',name,text.length)); if(S.sheet==='ctfolder') renderSheet(); render(); return true; });
+}
+function c3DelSrc(fid,sid){
+ var F=c2Folders(); for(var i=0;i<F.length;i++) if(F[i].id===fid) F[i].src=c3SrcMeta(F[i]).filter(function(x){ return x.id!==sid; }); c2SaveFolders(F);
+ c3Load(fid).then(function(arr){ arr=(arr||[]).filter(function(x){ return x.id!==sid; }); C3S[fid]=arr; idbPut('fsrc_'+fid,arr); });
+ renderSheet(); render();
+}
+function c3PickSrc(fid){
+ var inp=$('c3src'); if(!inp){ inp=document.createElement('input'); inp.type='file'; inp.id='c3src'; inp.accept='.pdf,.docx,.txt,.md,.csv,.html,.htm,application/pdf,text/plain,application/vnd.openxmlformats-officedocument.wordprocessingml.document'; inp.style.display='none'; document.body.appendChild(inp); }
+ inp.onchange=function(){ var f=inp.files&&inp.files[0]; inp.value=''; if(!f) return; var nm=f.name.replace(/\.[^.]+$/,''); toast(C3('srcReading',nm));
+  c3ReadFile(f).then(function(t){ return c3AddSrc(fid,nm,t); }).catch(function(){ toast(C3('srcBad')); }); };
+ inp.click();
+}
+function c3ReadFile(f){
+ var n=f.name.toLowerCase();
+ if(/\.pdf$/.test(n)||f.type==='application/pdf') return c3Pdf(f);
+ if(/\.docx$/.test(n)) return f.arrayBuffer().then(c3Docx);
+ return f.text().then(function(t){ return /\.html?$/.test(n)?c3Html(t):t; });
+}
+function c3Html(t){ var d=document.createElement('div'); d.innerHTML=String(t).replace(/<(script|style)[\s\S]*?<\/\1>/gi,''); return (d.innerText||d.textContent||''); }
+function c3Inflate(u8){ return new Response(new Blob([u8]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer().then(function(b){ return new Uint8Array(b); }); }
+function c3Docx(buf){
+ var u=new Uint8Array(buf),dv=new DataView(buf),e=-1;
+ for(var i=u.length-22;i>=Math.max(0,u.length-70000);i--) if(dv.getUint32(i,true)===0x06054b50){ e=i; break; }
+ if(e<0) return Promise.reject(new Error('zip'));
+ var cnt=dv.getUint16(e+10,true),off=dv.getUint32(e+16,true),dec=new TextDecoder();
+ for(var k=0;k<cnt;k++){ if(dv.getUint32(off,true)!==0x02014b50) break; var meth=dv.getUint16(off+10,true),csz=dv.getUint32(off+20,true),nl=dv.getUint16(off+28,true),xl=dv.getUint16(off+30,true),cl=dv.getUint16(off+32,true),lo=dv.getUint32(off+42,true),name=dec.decode(u.subarray(off+46,off+46+nl));
+  if(name==='word/document.xml'){ var ds=lo+30+dv.getUint16(lo+26,true)+dv.getUint16(lo+28,true),data=u.subarray(ds,ds+csz);
+   return (meth===8?c3Inflate(data):Promise.resolve(data)).then(function(x){ var xml=dec.decode(x); return xml.replace(/<w:tab\/>/g,'\t').replace(/<w:br[^>]*\/>/g,'\n').replace(/<\/w:p>/g,'\n').replace(/<[^>]+>/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&apos;/g,"'").replace(/&amp;/g,'&'); }); }
+  off+=46+nl+xl+cl; }
+ return Promise.reject(new Error('nodoc'));
+}
+var C3PDF='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+function c3Pdf(f){
+ function lib(){ if(window.pdfjsLib) return Promise.resolve(window.pdfjsLib); return new Promise(function(res,rej){ var s=document.createElement('script'); s.src=C3PDF+'pdf.min.js'; s.onload=function(){ try{ window.pdfjsLib.GlobalWorkerOptions.workerSrc=C3PDF+'pdf.worker.min.js'; }catch(e){} res(window.pdfjsLib); }; s.onerror=rej; document.head.appendChild(s); }); }
+ return Promise.all([lib(),f.arrayBuffer()]).then(function(r){ return r[0].getDocument({data:new Uint8Array(r[1])}).promise; }).then(function(pdf){
+  var out=[],p=Promise.resolve();
+  for(var i=1;i<=Math.min(pdf.numPages,400);i++)(function(n){ p=p.then(function(){ return pdf.getPage(n).then(function(pg){ return pg.getTextContent(); }).then(function(tc){ var line='',lastY=null; tc.items.forEach(function(it){ var y=it.transform?it.transform[5]:0; if(lastY!==null&&Math.abs(y-lastY)>2) line+='\n'; line+=it.str; lastY=y; }); out.push(line); }); }); })(i);
+  return p.then(function(){ return out.join('\n\n'); });
+ });
+}
+/* ---------- 事件與面板 ---------- */
+function ct3Sheet(k){
+ if(k==='ctquiz') return c3QuizHTML();
+ if(k==='ctmsg') return c3MsgHTML();
+ if(k==='ctplus') return c3PlusHTML();
+ return null;
+}
+function ct3Act(a,b,i,fid,v){
+ if(a==='ctfopen'||a==='ctfcreate') S.c3Paste=false;
+ if(/^ctqz/.test(a)&&!QZ) return true;
+ if(a==='ctplus'){ closeDrawer(); openSheet('ctplus'); }
+ else if(a==='ctcam') c3PickImg(true);
+ else if(a==='ctpic') c3PickImg(false);
+ else if(a==='ctimgrm'){ S.c3Img=null; c3Prev(); }
+ else if(a==='ctmsgmore'){ S.c3I=i; openSheet('ctmsg'); }
+ else if(a==='ctrwgo'){ var ii=S.c3I; closeSheet(); c3Rewrite(ii,v); }
+ else if(a==='ctrwundo'){ var m=S.chat[i]; if(!m||!m.orig||S.busy) return true; m.t=m.orig; m.orig=null; m.rw=''; m.fu=null; closeSheet(); stopSpeak(); save(); render(); }
+ else if(a==='ctquiz'){ c3Quiz(S.c3I,false); }
+ else if(a==='ctgrp'){ var el=$('m'+S.c3I),g=el&&el.querySelector('.xzp-grp'); closeSheet(); if(g) g.click(); else toast(CT('grpNA')); }
+ else if(a==='ctqzmode'){ QZ.mode=v; renderSheet(); }
+ else if(a==='ctqzpick'){ if(QZ.pick[QZ.k]==null){ QZ.pick[QZ.k]=i; renderSheet(); } }
+ else if(a==='ctqznext'){ QZ.k++; renderSheet(); }
+ else if(a==='ctqzagain'){ QZ.k=0; QZ.pick=[]; renderSheet(); }
+ else if(a==='ctqznew'){ c3Quiz(QZ?QZ.i:S.c3I,true); }
+ else if(a==='ctqzflip'){ QZ.flip=!QZ.flip; b.classList.toggle('flip',QZ.flip); }
+ else if(a==='ctqzcard'){ var L=QZ.d.cards.length; QZ.card=(QZ.card+i+L)%L; QZ.flip=false; renderSheet(); }
+ else if(a==='ctqzshare') shareOut(c3QuizText());
+ else if(a==='ctsrcfile'){ if(S.ctFid&&S.ctFid!=='new') c3PickSrc(S.ctFid); }
+ else if(a==='ctsrcpaste'){ S.c3Paste=true; renderSheet(); var pn=$('c3pname'); if(pn) pn.focus(); }
+ else if(a==='ctsrcpasteok'){ var nm=(($('c3pname')||{}).value||'').trim()||C3('src'),tx=($('c3ptext')||{}).value||''; S.c3Paste=false; c3AddSrc(S.ctFid,nm,tx).then(function(ok){ if(!ok) renderSheet(); }); }
+ else if(a==='ctsrcdel') c3DelSrc(S.ctFid,fid);
+ else return false;
+ return true;
+}
 /* ---------- 牧養助手（ct2-1113）：記憶、自訂指示、資料夾、語音對談 ---------- */
 var CT2X={
  zh:{memH:'🧠 小智的記憶',memNav:'記憶',memHint:'小智會記住你在對話中說過、對以後回答有幫助的事（例如服事、家人、代禱事項），並在相關時自然帶進回答。只存在這支手機，隨時可以刪除。',memOn:'使用記憶',memAuto:'自動記住新的事',memAddPh:'自己加一則，例如：我在帶青少年小組',memAdd:'加入',memEmpty:'還沒有記住任何事。',memClear:'全部清除',memClearSure:'確定全部清除？',memLearned:'📝 小智記住了：',memManage:'管理記憶',memDel:'刪除',memCount:'{0} 則',memOffNote:'記憶已關閉',ciH:'📝 自訂指示',ciNav:'自訂指示',ciHint:'每一次回答都會照這些指示（不會違背聖經與安全原則）。資料夾還可以有自己的指示。',ciPre:'常用指示（點選開啟）',ciText:'其他想要的回答方式',ciPh:'例如：多用生活的比喻；稱呼我「主耀弟兄」；回答控制在三段內',ciSaved:'已儲存，接下來的回答會照著做',ciOnN:'已開啟 {0} 項',p_verse:'回答附經文全文',p_l321:'用321理念角度回答',p_pastor:'語氣像牧師',p_prayer:'結尾附一段禱告',p_points:'先給重點摘要',p_action:'給一個本週實踐步驟',fH:'📁 資料夾',fNew:'＋ 新資料夾',fName:'資料夾名稱',fNamePh:'例如：羅馬書查經、婚姻輔導',fIns:'這個資料夾的指示',fInsPh:'例如：這是羅馬書查經，回答要對照上下文，並附討論題',fSave:'儲存',fChats:'這個資料夾的對話',fNone:'還沒有對話',fStart:'＋ 在這個資料夾開新對話',fDel:'刪除資料夾（對話會保留）',fDelSure:'確定刪除資料夾？',fMove:'📁 移到資料夾',fMoveH:'移到哪個資料夾？',fNoFolder:'不放在資料夾',fMoved:'已移到「{0}」',fOut:'已移出資料夾',fCreated:'已建立資料夾',fBar:'📁 {0}',fSet:'設定',callNav:'語音對談',callH:'📞 小智語音對談',callListen:'我在聽，請說…',callThink:'小智正在想…',callSpeak:'小智正在回答…',callPause:'已暫停，點中間的圓圈繼續',callTapStop:'點一下打斷，換你說',callTapSend:'說完了？點一下送出',callTapGo:'點一下開始說',callEnd:'結束對談',callNoMic:'這裡不能直接用麥克風，請用手機的 Safari 或 Chrome 打開小智再試。',callHint:'適合長輩與開車時使用；開車請先停好車或使用免持。'},
@@ -1712,6 +1965,7 @@ function ctSys2(){
  if(lines.length) s+='\n\n[The user\'s custom instructions — follow them, but never against Scripture, honesty or the safety rules above]\n'+lines.join('\n');
  var fd=S.fid?c2Folder(S.fid):null;
  if(fd) s+='\n\n[This chat belongs to the user\'s folder "'+fd.name+'"]'+(fd.ins?'\nFolder instructions: '+String(fd.ins).slice(0,1000):'');
+ s+=c3SrcSys(fd);
  if(c2MemOn()&&!S.incog){ var M=c2Mem(); if(M.length) s+='\n\n[Things the user has told Xiaozhi before — use them naturally only when relevant; do not list or repeat them, and do not mention that you remember unless asked]\n'+M.slice(0,40).map(function(x){ return '- '+x.t; }).join('\n'); }
  return s;
 }
@@ -1731,7 +1985,7 @@ function ctMemLearn(idx){
  }).catch(function(){});
 }
 function ctMemNote(m){ return m.memNote&&m.memNote.length?'<button class="ctmemnote" data-act="ctmemopen">'+esc(C2('memLearned')+m.memNote.join('、'))+'<span>'+esc(C2('memManage'))+' ›</span></button>':''; }
-function ctFolderBar(){ var fd=S.fid?c2Folder(S.fid):null; return fd?'<div class="ctfbar"><span>'+esc(C2('fBar',fd.name))+'</span><button class="ctbtn" data-act="ctfopen" data-id="'+fd.id+'">'+esc(C2('fSet'))+'</button></div>':''; }
+function ctFolderBar(){ var fd=S.fid?c2Folder(S.fid):null; return fd?'<div class="ctfbar"><span>'+esc(C2('fBar',fd.name)+c3SrcTag(fd))+'</span><button class="ctbtn" data-act="ctfopen" data-id="'+fd.id+'">'+esc(C2('fSet'))+'</button></div>':''; }
 function ctConvRow(c){ return '<div class="cvrow'+(c.id===CUR?' on':'')+'"><button class="cbtn" data-act="conv" data-id="'+c.id+'">'+(c.pin?'<span class="cpin">📌</span>':'')+esc(c.title||'…')+'</button><button class="cmore" data-act="ctmenu" data-id="'+c.id+'" aria-label="'+esc(CT('convMenu'))+'">'+CTI.dots+'</button></div>'; }
 function ctFolderSec(){
  var F=c2Folders(),h='<div class="dsec">'+esc(C2('fH'))+'</div><div class="ctflist">';
@@ -1768,6 +2022,7 @@ function ct2Sheet(k){
   var isNew=S.ctFid==='new',fd=isNew?{name:'',ins:''}:c2Folder(S.ctFid); if(!fd) return '<div class="sheethead"><h2></h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
   h+='<div class="sheethead"><h2>'+esc(isNew?C2('fNew'):'📁 '+fd.name)+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
   h+='<div class="sec"><h3>'+esc(C2('fName'))+'</h3><input id="ctfname" class="ctin" maxlength="30" placeholder="'+esc(C2('fNamePh'))+'" value="'+esc(fd.name)+'"><h3>'+esc(C2('fIns'))+'</h3><textarea id="ctfins" class="ctta" rows="4" maxlength="1000" placeholder="'+esc(C2('fInsPh'))+'">'+esc(fd.ins||'')+'</textarea><button class="ctgo" data-act="ctfsave">'+esc(C2('fSave'))+'</button></div>';
+  if(!isNew) h+=c3SrcSec(fd);
   if(!isNew){
    var cs=CONVS.filter(function(c){ return c.fid===fd.id; });
    h+='<div class="sec"><h3>'+esc(C2('fChats'))+'</h3>'+(cs.length?'':'<p class="hint">'+esc(C2('fNone'))+'</p>');
@@ -1882,7 +2137,7 @@ var CT_FBROOM='TMXZFB01',CT_CHAT='https://church-chat.spch321.workers.dev';
 S.ctEdit=-1; S.incog=false; S.ctId=''; S.ctI=-1; S.ctFb=null; S.ctArm=false; S.ctImgs=null;
 function ctUserHTML(m,i){
  if(S.ctEdit===i&&!S.busy) return '<div class="msg user ctedit" id="m'+i+'"><textarea id="ctEditQ" rows="3" aria-label="'+esc(CT('editQ'))+'">'+esc(m.t)+'</textarea><p class="hint ctenote">'+esc(CT('editNote'))+'</p><div class="ctebar"><button class="ctbtn" data-act="cteditx">'+esc(CT('cancel'))+'</button><button class="ctbtn pri" data-act="cteditgo" data-i="'+i+'">'+esc(CT('editSend'))+'</button></div></div>';
- return '<div class="msg user" id="m'+i+'"><div class="bub">'+esc(m.t)+'</div>'+(S.busy?'':'<div class="uacts">'+ab('ctucopy',i,IC.copy,T('copyW'))+ab('ctedit',i,IC.edit,CT('editQ'))+'</div>')+'</div>';
+ return '<div class="msg user" id="m'+i+'">'+(m.img?'<img class="ctuimg" src="'+m.img+'" alt="">':'')+'<div class="bub">'+esc(m.t)+'</div>'+(S.busy?'':'<div class="uacts">'+ab('ctucopy',i,IC.copy,T('copyW'))+ab('ctedit',i,IC.edit,CT('editQ'))+'</div>')+'</div>';
 }
 function ctStopHTML(){ return '<button class="ctstop" data-act="ctstop">'+IC.stop+'<span>'+esc(CT('stop'))+'</span></button>'; }
 function ctFbBtns(m,i){ return ab('ctup',i,CTI.tu,CT('fbUp'),m.fb==='up'?' faved ctfb':'')+ab('ctdn',i,CTI.td,CT('fbDown'),m.fb==='dn'?' faved ctfb':''); }
@@ -1983,6 +2238,7 @@ function ctFbText(kind,i,reasons,note,attach){
 }
 function ctSheetHTML(){
  var k=S.sheet,h='';
+ var x3=ct3Sheet(k); if(x3!=null) return x3;
  var x2=ct2Sheet(k); if(x2!=null) return x2;
  if(k==='ctfb'){
   var F=S.ctFb||{r:[],note:'',att:true},R=CT('fbR').split('|');
@@ -2018,6 +2274,7 @@ function ctSheetAfter(x){ ct2After();
  var at=$('ctfbatt'); if(at) at.onchange=function(){ if(S.ctFb) S.ctFb.att=at.checked; };
 }
 function ctAct(a,b,i,fid,v){
+ if(ct3Act(a,b,i,fid,v)) return;
  if(ct2Act(a,b,i,fid,v)) return;
  if(a==='ctedit'){ if(S.busy) return; stopSpeak(); S.ctEdit=i; render(); var ta=$('ctEditQ'); if(ta){ ta.focus(); try{ ta.setSelectionRange(ta.value.length,ta.value.length); }catch(e){} ta.scrollIntoView({block:'center'}); } }
  else if(a==='cteditx'){ S.ctEdit=-1; render(); }
@@ -2160,7 +2417,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1113.1700',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1113.1800',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
