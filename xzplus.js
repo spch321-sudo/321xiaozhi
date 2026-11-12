@@ -16,13 +16,13 @@
     return 'zh';
   }
   var TX = {
-    zh: { open: '在互動聖經開啟', close: '關閉', grp: '做成小家討論題', gh: '🏡 做成小家討論題', gen: '小智正在整理討論題…', genFail: '整理失敗，請再試一次', retry: '重新產生', to: '送到哪一個小家？', none: '這支手機還沒有加入空中團契的小家。先到空中團契「小家」加入或建立一個小家，再回來送出。', goFel: '打開空中團契小家', nick: '你在小家的稱呼', nickPh: '例如：主耀', send: '送出', sending: '送出中…', sent: '已送到「{0}」', openChat: '打開小家聊天室', fail: '沒有送出，請檢查網路再試一次', edit: '可以先修改再送出', head: '🏡 小家討論題', from: '（整理自小智問答）', needNick: '請先填你的稱呼' },
-    zs: { open: '在互动圣经打开', close: '关闭', grp: '做成小家讨论题', gh: '🏡 做成小家讨论题', gen: '小智正在整理讨论题…', genFail: '整理失败，请再试一次', retry: '重新产生', to: '送到哪一个小家？', none: '这支手机还没有加入空中团契的小家。先到空中团契“小家”加入或建立一个小家，再回来送出。', goFel: '打开空中团契小家', nick: '你在小家的称呼', nickPh: '例如：主耀', send: '送出', sending: '送出中…', sent: '已送到“{0}”', openChat: '打开小家聊天室', fail: '没有送出，请检查网络再试一次', edit: '可以先修改再送出', head: '🏡 小家讨论题', from: '（整理自小智问答）', needNick: '请先填你的称呼' },
-    en: { open: 'Open in Interactive Bible', close: 'Close', grp: 'Make small-group questions', gh: '🏡 Small-group discussion', gen: 'Xiaozhi is preparing the questions…', genFail: 'Couldn’t prepare them — please try again', retry: 'Regenerate', to: 'Send to which small group?', none: 'This phone hasn’t joined a small group in the Kingdom 321 fellowship app yet. Join or create one under “Small Group” there, then come back.', goFel: 'Open fellowship small groups', nick: 'Your name in the group', nickPh: 'e.g. John', send: 'Send', sending: 'Sending…', sent: 'Sent to “{0}”', openChat: 'Open the group chat', fail: 'Not sent — check your connection and try again', edit: 'You can edit before sending', head: '🏡 Small-group discussion', from: '(prepared from Xiaozhi Q&A)', needNick: 'Please enter your name first' },
-    ko: { open: '인터랙티브 성경에서 열기', close: '닫기', grp: '소그룹 나눔 질문 만들기', gh: '🏡 소그룹 나눔 질문', gen: '샤오즈가 나눔 질문을 정리하고 있어요…', genFail: '정리하지 못했어요. 다시 시도해 주세요', retry: '다시 만들기', to: '어느 소그룹으로 보낼까요?', none: '이 휴대폰은 아직 공동체 앱의 소그룹에 들어가 있지 않아요. 공동체 앱의 「소그룹」에서 가입하거나 만든 뒤 다시 와 주세요.', goFel: '공동체 소그룹 열기', nick: '소그룹에서 쓰는 이름', nickPh: '예: 요한', send: '보내기', sending: '보내는 중…', sent: '「{0}」에 보냈어요', openChat: '소그룹 채팅 열기', fail: '보내지 못했어요. 네트워크를 확인하고 다시 시도해 주세요', edit: '보내기 전에 고칠 수 있어요', head: '🏡 소그룹 나눔 질문', from: '(샤오즈 문답에서 정리)', needNick: '먼저 이름을 입력해 주세요' },
-    ja: { open: 'インタラクティブ聖書で開く', close: '閉じる', grp: '小グループの分かち合いの質問にする', gh: '🏡 小グループの分かち合い', gen: 'シャオジーが質問をまとめています…', genFail: 'まとめられませんでした。もう一度お試しください', retry: 'もう一度作る', to: 'どの小グループに送りますか？', none: 'このスマホはまだオンライン教会アプリの小グループに入っていません。アプリの「グループ」で参加または作成してから、もう一度お試しください。', goFel: '小グループを開く', nick: 'グループでの呼び名', nickPh: '例：ヨハネ', send: '送信', sending: '送信中…', sent: '「{0}」に送りました', openChat: 'グループのチャットを開く', fail: '送信できませんでした。通信状況を確認して、もう一度お試しください', edit: '送る前に修正できます', head: '🏡 小グループの分かち合い', from: '（シャオジーQ&Aから）', needNick: 'まず呼び名を入力してください' },
-    id: { open: 'Buka di Alkitab Interaktif', close: 'Tutup', grp: 'Jadikan pertanyaan diskusi kelompok', gh: '🏡 Diskusi kelompok kecil', gen: 'Xiaozhi sedang menyusun pertanyaan…', genFail: 'Gagal menyusun — silakan coba lagi', retry: 'Buat ulang', to: 'Kirim ke kelompok kecil mana?', none: 'Ponsel ini belum bergabung dengan kelompok kecil di aplikasi persekutuan. Bergabunglah atau buat kelompok di menu “Kelompok”, lalu kembali ke sini.', goFel: 'Buka kelompok kecil', nick: 'Nama Anda di kelompok', nickPh: 'mis. Yohanes', send: 'Kirim', sending: 'Mengirim…', sent: 'Terkirim ke “{0}”', openChat: 'Buka obrolan kelompok', fail: 'Gagal terkirim — periksa koneksi lalu coba lagi', edit: 'Anda bisa mengubahnya sebelum dikirim', head: '🏡 Diskusi kelompok kecil', from: '(disusun dari Tanya Jawab Xiaozhi)', needNick: 'Isi nama Anda terlebih dahulu' },
-    ceb: { open: 'Ablihi sa Interactive Bible', close: 'Isira', grp: 'Himoa nga pangutana sa gamay nga grupo', gh: '🏡 Panaghisgot sa gamay nga grupo', gen: 'Gi-andam ni Xiaozhi ang mga pangutana…', genFail: 'Wala maandam — palihug sulayi pag-usab', retry: 'Himoa pag-usab', to: 'Ipadala sa asa nga gamay nga grupo?', none: 'Kini nga cellphone wala pa moapil sa gamay nga grupo sa app sa panag-uban. Apil o paghimo og grupo didto sa “Grupo”, unya balik dinhi.', goFel: 'Ablihi ang gamay nga grupo', nick: 'Imong ngalan sa grupo', nickPh: 'pananglitan: Juan', send: 'Ipadala', sending: 'Gipadala…', sent: 'Napadala sa “{0}”', openChat: 'Ablihi ang chat sa grupo', fail: 'Wala mapadala — susiha ang koneksyon ug sulayi pag-usab', edit: 'Mahimo nimo kining usbon una ipadala', head: '🏡 Panaghisgot sa gamay nga grupo', from: '(gikan sa Pangutana ug Tubag ni Xiaozhi)', needNick: 'Isulat una ang imong ngalan' }
+    zh: { toGrp: '🏡 送進小家', tooLong: '內容太長（超過 20 則），請先刪減再送出', open: '在互動聖經開啟', close: '關閉', grp: '做成小家討論題', gh: '🏡 做成小家討論題', gen: '小智正在整理討論題…', genFail: '整理失敗，請再試一次', retry: '重新產生', to: '送到哪一個小家？', none: '這支手機還沒有加入空中團契的小家。先到空中團契「小家」加入或建立一個小家，再回來送出。', goFel: '打開空中團契小家', nick: '你在小家的稱呼', nickPh: '例如：主耀', send: '送出', sending: '送出中…', sent: '已送到「{0}」', openChat: '打開小家聊天室', fail: '沒有送出，請檢查網路再試一次', edit: '可以先修改再送出', head: '🏡 小家討論題', from: '（整理自小智問答）', needNick: '請先填你的稱呼' },
+    zs: { toGrp: '🏡 送进小家', tooLong: '内容太长（超过 20 条），请先删减再送出', open: '在互动圣经打开', close: '关闭', grp: '做成小家讨论题', gh: '🏡 做成小家讨论题', gen: '小智正在整理讨论题…', genFail: '整理失败，请再试一次', retry: '重新产生', to: '送到哪一个小家？', none: '这支手机还没有加入空中团契的小家。先到空中团契“小家”加入或建立一个小家，再回来送出。', goFel: '打开空中团契小家', nick: '你在小家的称呼', nickPh: '例如：主耀', send: '送出', sending: '送出中…', sent: '已送到“{0}”', openChat: '打开小家聊天室', fail: '没有送出，请检查网络再试一次', edit: '可以先修改再送出', head: '🏡 小家讨论题', from: '（整理自小智问答）', needNick: '请先填你的称呼' },
+    en: { toGrp: '🏡 Send to a small group', tooLong: 'Too long (over 20 messages) — please shorten it first', open: 'Open in Interactive Bible', close: 'Close', grp: 'Make small-group questions', gh: '🏡 Small-group discussion', gen: 'Xiaozhi is preparing the questions…', genFail: 'Couldn’t prepare them — please try again', retry: 'Regenerate', to: 'Send to which small group?', none: 'This phone hasn’t joined a small group in the Kingdom 321 fellowship app yet. Join or create one under “Small Group” there, then come back.', goFel: 'Open fellowship small groups', nick: 'Your name in the group', nickPh: 'e.g. John', send: 'Send', sending: 'Sending…', sent: 'Sent to “{0}”', openChat: 'Open the group chat', fail: 'Not sent — check your connection and try again', edit: 'You can edit before sending', head: '🏡 Small-group discussion', from: '(prepared from Xiaozhi Q&A)', needNick: 'Please enter your name first' },
+    ko: { toGrp: '🏡 소그룹으로 보내기', tooLong: '너무 길어요(20개 초과). 줄인 뒤 보내 주세요', open: '인터랙티브 성경에서 열기', close: '닫기', grp: '소그룹 나눔 질문 만들기', gh: '🏡 소그룹 나눔 질문', gen: '샤오즈가 나눔 질문을 정리하고 있어요…', genFail: '정리하지 못했어요. 다시 시도해 주세요', retry: '다시 만들기', to: '어느 소그룹으로 보낼까요?', none: '이 휴대폰은 아직 공동체 앱의 소그룹에 들어가 있지 않아요. 공동체 앱의 「소그룹」에서 가입하거나 만든 뒤 다시 와 주세요.', goFel: '공동체 소그룹 열기', nick: '소그룹에서 쓰는 이름', nickPh: '예: 요한', send: '보내기', sending: '보내는 중…', sent: '「{0}」에 보냈어요', openChat: '소그룹 채팅 열기', fail: '보내지 못했어요. 네트워크를 확인하고 다시 시도해 주세요', edit: '보내기 전에 고칠 수 있어요', head: '🏡 소그룹 나눔 질문', from: '(샤오즈 문답에서 정리)', needNick: '먼저 이름을 입력해 주세요' },
+    ja: { toGrp: '🏡 小グループに送る', tooLong: '長すぎます（20 件超）。短くしてから送ってください', open: 'インタラクティブ聖書で開く', close: '閉じる', grp: '小グループの分かち合いの質問にする', gh: '🏡 小グループの分かち合い', gen: 'シャオジーが質問をまとめています…', genFail: 'まとめられませんでした。もう一度お試しください', retry: 'もう一度作る', to: 'どの小グループに送りますか？', none: 'このスマホはまだオンライン教会アプリの小グループに入っていません。アプリの「グループ」で参加または作成してから、もう一度お試しください。', goFel: '小グループを開く', nick: 'グループでの呼び名', nickPh: '例：ヨハネ', send: '送信', sending: '送信中…', sent: '「{0}」に送りました', openChat: 'グループのチャットを開く', fail: '送信できませんでした。通信状況を確認して、もう一度お試しください', edit: '送る前に修正できます', head: '🏡 小グループの分かち合い', from: '（シャオジーQ&Aから）', needNick: 'まず呼び名を入力してください' },
+    id: { toGrp: '🏡 Kirim ke kelompok kecil', tooLong: 'Terlalu panjang (lebih dari 20 pesan) — persingkat dulu', open: 'Buka di Alkitab Interaktif', close: 'Tutup', grp: 'Jadikan pertanyaan diskusi kelompok', gh: '🏡 Diskusi kelompok kecil', gen: 'Xiaozhi sedang menyusun pertanyaan…', genFail: 'Gagal menyusun — silakan coba lagi', retry: 'Buat ulang', to: 'Kirim ke kelompok kecil mana?', none: 'Ponsel ini belum bergabung dengan kelompok kecil di aplikasi persekutuan. Bergabunglah atau buat kelompok di menu “Kelompok”, lalu kembali ke sini.', goFel: 'Buka kelompok kecil', nick: 'Nama Anda di kelompok', nickPh: 'mis. Yohanes', send: 'Kirim', sending: 'Mengirim…', sent: 'Terkirim ke “{0}”', openChat: 'Buka obrolan kelompok', fail: 'Gagal terkirim — periksa koneksi lalu coba lagi', edit: 'Anda bisa mengubahnya sebelum dikirim', head: '🏡 Diskusi kelompok kecil', from: '(disusun dari Tanya Jawab Xiaozhi)', needNick: 'Isi nama Anda terlebih dahulu' },
+    ceb: { toGrp: '🏡 Ipadala sa gamay nga grupo', tooLong: 'Taas kaayo (labaw 20 ka mensahe) — paubsa una', open: 'Ablihi sa Interactive Bible', close: 'Isira', grp: 'Himoa nga pangutana sa gamay nga grupo', gh: '🏡 Panaghisgot sa gamay nga grupo', gen: 'Gi-andam ni Xiaozhi ang mga pangutana…', genFail: 'Wala maandam — palihug sulayi pag-usab', retry: 'Himoa pag-usab', to: 'Ipadala sa asa nga gamay nga grupo?', none: 'Kini nga cellphone wala pa moapil sa gamay nga grupo sa app sa panag-uban. Apil o paghimo og grupo didto sa “Grupo”, unya balik dinhi.', goFel: 'Ablihi ang gamay nga grupo', nick: 'Imong ngalan sa grupo', nickPh: 'pananglitan: Juan', send: 'Ipadala', sending: 'Gipadala…', sent: 'Napadala sa “{0}”', openChat: 'Ablihi ang chat sa grupo', fail: 'Wala mapadala — susiha ang koneksyon ug sulayi pag-usab', edit: 'Mahimo nimo kining usbon una ipadala', head: '🏡 Panaghisgot sa gamay nga grupo', from: '(gikan sa Pangutana ug Tubag ni Xiaozhi)', needNick: 'Isulat una ang imong ngalan' }
   };
   function T(k, a) { var s = (TX[L()] || TX.zh)[k] || TX.zh[k] || k; return a != null ? s.replace('{0}', a) : s; }
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -180,12 +180,12 @@
     x.ontimeout = function () { cb(false); };
     x.send(JSON.stringify(body));
   }
-  function openGroup(btn) {
-    var d = msgOf(btn); if (!d || !d.a) return;
+  function openGroup(btn, preset) {
+    var d = preset ? { q: '', a: preset } : msgOf(btn); if (!d || !d.a) return;
     var gl = groups(), sel = gl.length ? lg('fl321_xjcur') : '';
     if (sel && !gl.some(function (g) { return g.code === sel; })) sel = '';
     if (!sel && gl.length) sel = gl[0].code;
-    var m = sheet('<b>' + esc(T('gh')) + '</b>', '<div class="xzp-bd"><div id="xzpTxtBox"><span class="xzp-spin"></span>' + esc(T('gen')) + '</div><div id="xzpRest"></div></div>', true);
+    var m = sheet('<b>' + esc(preset ? T('toGrp') : T('gh')) + '</b>', '<div class="xzp-bd"><div id="xzpTxtBox"><span class="xzp-spin"></span>' + esc(T('gen')) + '</div><div id="xzpRest"></div></div>', true);
     function rest() {
       var h = '';
       if (!gl.length) {
@@ -203,11 +203,11 @@
       if (g) g.addEventListener('click', function (e) { var b = e.target.closest('button[data-code]'); if (!b) return; sel = b.getAttribute('data-code'); var all = g.querySelectorAll('button'); for (var i = 0; i < all.length; i++) all[i].className = all[i] === b ? 'on' : ''; });
       var go = document.getElementById('xzpGo'); if (go) go.onclick = send;
     }
-    function fill(txt) {
+    function fill(txt, raw) {
       var box = document.getElementById('xzpTxtBox'); if (!box) return;
       if (!txt) { box.innerHTML = '<p class="xzp-msg bad">' + esc(T('genFail')) + '</p><button type="button" class="xzp-sec" id="xzpRe">' + esc(T('retry')) + '</button>'; document.getElementById('xzpRe').onclick = function () { box.innerHTML = '<span class="xzp-spin"></span>' + esc(T('gen')); genQ(d, fill); }; return; }
       box.innerHTML = '<div class="xzp-note">' + esc(T('edit')) + '</div><textarea id="xzpTxt"></textarea><button type="button" class="xzp-sec" id="xzpRe">↻ ' + esc(T('retry')) + '</button>';
-      document.getElementById('xzpTxt').value = T('head') + '\n' + txt + '\n' + T('from');
+      document.getElementById('xzpTxt').value = raw ? txt : T('head') + '\n' + txt + '\n' + T('from');
       document.getElementById('xzpRe').onclick = function () { box.innerHTML = '<span class="xzp-spin"></span>' + esc(T('gen')); genQ(d, fill); };
     }
     function send() {
@@ -216,6 +216,7 @@
       var ni = document.getElementById('xzpNick'), nk = (lg('fl321_xjnick') || '').trim();
       if (ni) { nk = ni.value.trim().slice(0, 20); if (!nk) { msg.className = 'xzp-msg bad'; msg.textContent = T('needNick'); ni.focus(); return; } ls('fl321_xjnick', nk); }
       var parts = chunks(ta.value.trim()), i = 0, dv = devId(), name = '';
+      if (parts.length > 20) { msg.className = 'xzp-msg bad'; msg.textContent = T('tooLong'); return; }
       gl.forEach(function (g) { if (g.code === sel) name = g.name || g.code; });
       go.disabled = true; go.textContent = T('sending'); msg.className = 'xzp-msg'; msg.textContent = '';
       (function next() {
@@ -227,11 +228,11 @@
         }
         post(sel, { text: parts[i], dev: dv, nick: nk, re: 0, after: 0 }, function (ok) {
           if (!ok) { go.disabled = false; go.textContent = T('send'); msg.className = 'xzp-msg bad'; msg.textContent = T('fail'); parts = parts.slice(i); i = 0; return; }
-          i++; setTimeout(next, 350);
+          i++; setTimeout(next, 1600);
         });
       })();
     }
-    rest(); genQ(d, fill);
+    rest(); if (preset) fill(preset, 1); else genQ(d, fill);
   }
 
   /* ---------- 事件 ---------- */
@@ -247,5 +248,5 @@
     try { new MutationObserver(later).observe(document.body, { childList: true, subtree: true, characterData: true }); } catch (e) { setInterval(scan, 1500); }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-  window.XZPLUS = { scan: scan, linkify: linkify, RE: RE };
+  window.XZPLUS = { scan: scan, linkify: linkify, RE: RE, toGroup: function (text) { openGroup(null, String(text || '')); } };
 })();

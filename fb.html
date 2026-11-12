@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>小智回饋後台</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.ico">
+<script src="k321gate.js"></script>
+<style>
+:root{--page:#F7F7F8;--card:#fff;--line:#E5E6EA;--ink:#1D1F24;--muted:#6B6E78;--accent:#1E3F8F;--gold:#B8862E;--good:#2F7D32;--bad:#C2453D;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#14161B;--card:#1C1F26;--line:#2E323C;--ink:#ECEDF0;--muted:#A3A7B2;--accent:#6F8FE8;--gold:#E1B866;--good:#7CC47F;--bad:#E5867F;color-scheme:dark}}
+:root[data-theme="dark"]{--page:#14161B;--card:#1C1F26;--line:#2E323C;--ink:#ECEDF0;--muted:#A3A7B2;--accent:#6F8FE8;--gold:#E1B866;--good:#7CC47F;--bad:#E5867F;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif}
+header{background:var(--accent);color:#fff;padding:calc(16px + env(safe-area-inset-top,0px)) 16px 16px}
+header h1{margin:0;font-size:1.25em}header p{margin:2px 0 0;opacity:.85;font-size:.88em}
+main{max-width:900px;margin:0 auto;padding:14px 16px 40px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.bar button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;font:inherit;font-size:.9em}
+.bar button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.card b{display:block;font-size:1.7em;line-height:1.2}.card span{color:var(--muted);font-size:.85em}
+.good b{color:var(--good)}.bad b{color:var(--bad)}
+h2{font-size:1em;margin:20px 0 8px}
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.row{display:grid;grid-template-columns:1fr 70px 70px 80px;gap:8px;padding:9px 14px;border-top:1px solid var(--line);font-size:.92em}
+.row:first-child{border-top:0;color:var(--muted);font-size:.8em}
+.row i{font-style:normal;text-align:right}
+.item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0}
+.item .top{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:.82em}
+.item .rs{margin:6px 0 2px;font-weight:700;color:var(--bad)}
+.item .nt{margin:4px 0;font-style:italic}
+.item .qa{margin:6px 0 0;font-size:.92em;white-space:pre-wrap;overflow-wrap:anywhere}
+.item .qa b{color:var(--muted);font-weight:600}
+.note{color:var(--muted);font-size:.85em}
+.err{color:var(--bad)}
+</style>
+</head>
+<body>
+<header><h1>👍👎 小智回饋後台</h1><p>弟兄姊妹在小智問答按「有幫助／不夠好」的統計（保留約 120 天）</p></header>
+<main>
+<div class="bar" id="rng"><button data-d="7">最近 7 天</button><button data-d="30" class="on">最近 30 天</button><button data-d="0">全部</button><button id="reload">↻ 重新整理</button></div>
+<div id="out"><p class="note">讀取中…</p></div>
+<p class="note">說明：👍 只記錄語言與回答對象／長度；👎 會記錄選的原因，若對方同意，才附上問題與回答片段（不含姓名）。無痕對話不附任何內容。</p>
+</main>
+<script>
+(function(){
+ var API='https://church-chat.spch321.workers.dev/c/TMXZFB01/msgs',ALL=[],DAYS=30;
+ var LN={zh:'繁體中文',zs:'简体中文',en:'English',ko:'한국어',ja:'日本語',id:'Indonesia',ceb:'Cebuano'};
+ function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function get(after){ return fetch(API+'?after='+after+'&dev=xzfbadmin').then(function(r){ return r.json(); }); }
+ function load(){
+  document.getElementById('out').innerHTML='<p class="note">讀取中…</p>'; ALL=[];
+  (function step(after){ get(after).then(function(j){ var ms=(j&&j.msgs)||[]; ms.forEach(function(m){ if(!m.del&&m.text) ALL.push(m); }); if(ms.length>=200) step(ms[ms.length-1].id); else paint(); }).catch(function(){ document.getElementById('out').innerHTML='<p class="err">讀取失敗，請檢查網路再試。</p>'; }); })(1);
+ }
+ function parse(m){ var p=String(m.text).split('｜'),o={ts:m.ts,up:p[0]==='👍',lang:p[1]||'',mode:p[2]||'',rs:(p[3]||'').split('、').filter(Boolean),note:p[4]||'',q:'',a:''};
+  for(var i=5;i<p.length;i++){ if(p[i].indexOf('Q：')===0) o.q=p[i].slice(2); else if(p[i].indexOf('A：')===0) o.a=p.slice(i).join('｜').slice(2); }
+  return o; }
+ function tally(list,key){ var t={}; list.forEach(function(o){ var ks=key(o); (ks instanceof Array?ks:[ks]).forEach(function(k){ if(!k) return; var x=t[k]||(t[k]={up:0,dn:0}); o.up?x.up++:x.dn++; }); }); return Object.keys(t).map(function(k){ return [k,t[k].up,t[k].dn]; }).sort(function(a,b){ return (b[1]+b[2])-(a[1]+a[2]); }); }
+ function table(title,rows,onlyDn){ if(!rows.length) return ''; var h='<h2>'+title+'</h2><div class="tbl"><div class="row"><span></span><i>👍</i><i>👎</i><i>不滿意率</i></div>';
+  rows.forEach(function(r){ var n=r[1]+r[2]; h+='<div class="row"><span>'+esc(r[0])+'</span><i>'+(onlyDn?'':r[1])+'</i><i>'+r[2]+'</i><i>'+(onlyDn?'':Math.round(r[2]*100/n)+'%')+'</i></div>'; });
+  return h+'</div>'; }
+ function paint(){
+  var since=DAYS?Date.now()-DAYS*864e5:0,L=ALL.filter(function(m){ return m.ts>=since; }).map(parse);
+  var up=L.filter(function(o){ return o.up; }).length,dn=L.length-up;
+  var h='<div class="cards"><div class="card"><b>'+L.length+'</b><span>回饋總數</span></div><div class="card good"><b>'+up+'</b><span>👍 有幫助</span></div><div class="card bad"><b>'+dn+'</b><span>👎 不夠好</span></div><div class="card"><b>'+(L.length?Math.round(up*100/L.length):0)+'%</b><span>滿意率</span></div></div>';
+  h+=table('👎 原因',tally(L.filter(function(o){ return !o.up; }),function(o){ return o.rs.length?o.rs:['（沒有選原因）']; }),true);
+  h+=table('依回答對象・長度',tally(L,function(o){ return o.mode; }));
+  h+=table('依語言',tally(L,function(o){ return LN[o.lang]||o.lang; }));
+  var bad=L.filter(function(o){ return !o.up; }).reverse();
+  if(bad.length){ h+='<h2>👎 最近的回饋（'+bad.length+'）</h2>'; bad.slice(0,150).forEach(function(o){ h+='<div class="item"><div class="top"><span>'+esc(new Date(o.ts).toLocaleString())+'</span><span>'+esc((LN[o.lang]||o.lang)+'・'+o.mode)+'</span></div>'+(o.rs.length?'<div class="rs">'+esc(o.rs.join('、'))+'</div>':'')+(o.note?'<div class="nt">「'+esc(o.note)+'」</div>':'')+(o.q?'<div class="qa"><b>問：</b>'+esc(o.q)+'</div>':'')+(o.a?'<div class="qa"><b>答：</b>'+esc(o.a)+'…</div>':'')+'</div>'; }); }
+  if(!L.length) h+='<p class="note">這段期間還沒有回饋。</p>';
+  document.getElementById('out').innerHTML=h;
+ }
+ document.getElementById('rng').addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; if(b.id==='reload'){ load(); return; } DAYS=+b.getAttribute('data-d'); [].forEach.call(this.querySelectorAll('button[data-d]'),function(x){ x.classList.toggle('on',x===b); }); paint(); });
+ load();
+})();
+</script>
+</body>
+</html>

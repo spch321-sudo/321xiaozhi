@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>小智問答・分享的對話</title>
+<meta name="theme-color" content="#1E3F8F">
+<link rel="icon" href="favicon.ico">
+<style>
+:root{--page:#fff;--soft:#EEF1F7;--line:#E5E6EA;--ink:#1D1F24;--muted:#6B6E78;--accent:#1E3F8F;--gold:#B8862E;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#14161B;--soft:#232733;--line:#2E323C;--ink:#ECEDF0;--muted:#A3A7B2;--accent:#6F8FE8;--gold:#E1B866;color-scheme:dark}}
+:root[data-theme="dark"]{--page:#14161B;--soft:#232733;--line:#2E323C;--ink:#ECEDF0;--muted:#A3A7B2;--accent:#6F8FE8;--gold:#E1B866;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:17px/1.7 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei","Malgun Gothic",sans-serif;-webkit-text-size-adjust:100%}
+header{background:var(--accent);color:#fff;padding:calc(18px + env(safe-area-inset-top,0px)) 16px 18px;border-bottom:4px solid var(--gold)}
+header b{display:block;font-size:1.25em}header span{opacity:.85;font-size:.92em}
+main{max-width:760px;margin:0 auto;padding:16px 16px 40px}
+.q{margin:22px 0 10px 12%;background:var(--soft);border-radius:20px;padding:10px 16px;white-space:pre-wrap;overflow-wrap:anywhere}
+.a{margin:0 0 8px;overflow-wrap:anywhere}.a .lb{color:var(--gold);font-weight:700;margin-bottom:2px}
+.a h3,.a h4{margin:14px 0 4px;font-size:1.05em}.a p{margin:6px 0}.a ul,.a ol{margin:6px 0;padding-left:1.4em}.a blockquote{margin:8px 0;padding:2px 12px;border-left:3px solid var(--gold);color:var(--muted)}
+.meta{color:var(--muted);font-size:.85em;margin:0}
+.go{display:block;text-align:center;margin:28px 0 8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:14px;padding:13px}
+.err{color:var(--muted);text-align:center;padding:40px 0}
+footer{color:var(--muted);font-size:.82em;text-align:center;padding:0 16px 30px}
+</style>
+</head>
+<body>
+<header><b id="hT">💬 小智問答</b><span id="hS"></span></header>
+<main id="main"><p class="err" id="wait">…</p></main>
+<footer id="foot"></footer>
+<script>
+(function(){
+ var L={zh:['小智問答','分享的對話','我','小智','在小智問答繼續問','這個連結不完整或已損壞，請對方重新分享。','國度321空中團契','分享於'],
+ zs:['小智问答','分享的对话','我','小智','在小智问答继续问','这个链接不完整或已损坏，请对方重新分享。','国度321空中团契','分享于'],
+ en:['Xiaozhi Q&A','A shared conversation','Me','Xiaozhi','Ask Xiaozhi yourself','This link is incomplete or damaged — please ask for it to be shared again.','Kingdom 321 Fellowship','Shared'],
+ ko:['샤오즈 문답','공유된 대화','나','샤오즈','샤오즈에게 직접 묻기','링크가 불완전하거나 손상되었어요. 다시 공유해 달라고 해 주세요.','킹덤 321 공중 펠로십','공유'],
+ ja:['シャオジーQ&A','共有された会話','わたし','シャオジー','シャオジーに聞いてみる','リンクが不完全か壊れています。もう一度共有してもらってください。','キングダム321オンライン教会','共有日'],
+ id:['Tanya Jawab Xiaozhi','Percakapan yang dibagikan','Saya','Xiaozhi','Tanya Xiaozhi sendiri','Tautan ini tidak lengkap atau rusak — minta dibagikan ulang.','Persekutuan Kingdom 321','Dibagikan'],
+ ceb:['Pangutana ug Tubag ni Xiaozhi','Gipaambit nga panag-istorya','Ako','Xiaozhi','Pangutana kang Xiaozhi','Dili kompleto o guba kini nga link — palihog paambita pag-usab.','Kingdom 321 Fellowship','Gipaambit']};
+ var PG={zh:'./',zs:'sc.html',en:'en.html',ko:'ko.html',ja:'ja.html',id:'id.html',ceb:'ceb.html'};
+ function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+ function inl(s){ return esc(s).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\*([^*\s][^*]*)\*/g,'<i>$1</i>'); }
+ function md(t){ var out='',list='',ls=String(t).replace(/\r/g,'').split('\n');
+  function close(){ if(list){ out+='</'+list+'>'; list=''; } }
+  for(var i=0;i<ls.length;i++){ var l=ls[i],m;
+   if(/^\s*%%/.test(l)) continue;
+   if(/^\s*(---+|\*\*\*+)\s*$/.test(l)){ close(); continue; }
+   if((m=l.match(/^\s*#{1,6}\s+(.*)/))){ close(); out+='<h4>'+inl(m[1])+'</h4>'; continue; }
+   if((m=l.match(/^\s*[-*•]\s+(.*)/))){ if(list!=='ul'){ close(); out+='<ul>'; list='ul'; } out+='<li>'+inl(m[1])+'</li>'; continue; }
+   if((m=l.match(/^\s*\d+[.)、]\s+(.*)/))){ if(list!=='ol'){ close(); out+='<ol>'; list='ol'; } out+='<li>'+inl(m[1])+'</li>'; continue; }
+   if((m=l.match(/^\s*>\s?(.*)/))){ close(); out+='<blockquote>'+inl(m[1])+'</blockquote>'; continue; }
+   if(/^\s*\|/.test(l)){ close(); if(/^\s*\|[\s:\-|]+\|\s*$/.test(l)) continue; out+='<p>'+inl(l.replace(/^\s*\||\|\s*$/g,'').split('|').join('　'))+'</p>'; continue; }
+   close(); if(l.trim()) out+='<p>'+inl(l)+'</p>';
+  }
+  close(); return out; }
+ function b64(s){ s=s.replace(/-/g,'+').replace(/_/g,'/'); while(s.length%4) s+='='; var bin=atob(s),u=new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) u[i]=bin.charCodeAt(i); return u; }
+ function show(d){
+  var lg=L[d.l]?d.l:'zh',S=L[lg]; document.documentElement.lang={zh:'zh-Hant',zs:'zh-Hans'}[lg]||lg;
+  document.title=S[0]+(d.t?'・'+d.t:'');
+  document.getElementById('hT').textContent='💬 '+S[0]; document.getElementById('hS').textContent=d.t||S[1];
+  var h='<p class="meta">'+esc(S[7])+' '+esc(new Date(d.ts||Date.now()).toLocaleDateString())+'</p>';
+  (d.m||[]).forEach(function(x){ h+=x[0]===0?'<div class="q">'+esc(x[1])+'</div>':'<div class="a"><div class="lb">💡 '+esc(S[3])+'</div>'+md(x[1])+'</div>'; });
+  h+='<a class="go" href="'+PG[lg]+'?lang321='+lg+'">'+esc(S[4])+' ›</a>';
+  document.getElementById('main').innerHTML=h; document.getElementById('foot').textContent='— '+S[0]+' · '+S[6];
+ }
+ function fail(){ var S=L.zh; document.getElementById('main').innerHTML='<p class="err">'+esc(S[5])+'<br>'+esc(L.en[5])+'</p><a class="go" href="./">'+esc(S[4])+' ›</a>'; }
+ var hs=location.hash.slice(1),m=hs.match(/^([zu])=(.+)$/);
+ if(!m) return fail();
+ try{
+  var bytes=b64(m[2]);
+  if(m[1]==='u'){ show(JSON.parse(new TextDecoder().decode(bytes))); return; }
+  if(!window.DecompressionStream) return fail();
+  new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text().then(function(t){ show(JSON.parse(t)); },fail);
+ }catch(e){ fail(); }
+})();
+</script>
+</body>
+</html>
