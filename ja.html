@@ -6,21 +6,21 @@
 <title>シャオジー Q&A</title>
 <meta name="description" content="シャオジー Q&A：聖書・信仰・生活の質問 · キングダム321空中フェローシップ">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1114.1200">
-<link rel="icon" href="favicon.ico?v=v2026.1114.1200" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1114.1200">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1114.1200">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1114.1200">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1114.1200">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1114.1200">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1114.2045">
+<link rel="icon" href="favicon.ico?v=v2026.1114.2045" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1114.2045">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1114.2045">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1114.2045">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1114.2045">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1114.2045">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="シャオジー Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1114.1200"></script>
-<script src="xzplus.js?v=v2026.1114.1200" defer></script>
+<script src="k321gate.js?v=v2026.1114.2045"></script>
+<script src="xzplus.js?v=v2026.1114.2045" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ja';</script>
@@ -1708,8 +1708,45 @@ var SILENT='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACAB
 var SP={el:null,gen:0,segs:[],urls:{},idx:0,unlocked:false,fallback:false};
 function spEl(){ if(!SP.el){ SP.el=new Audio(); SP.el.preload='auto'; } return SP.el; }
 function spUnlock(){ if(SP.unlocked) return; var e=spEl(); try{ e.src=SILENT; var p=e.play(); if(p&&p.catch) p.catch(function(){}); }catch(x){} SP.unlocked=true; }
+
+var BKN=[['創世記','创世记','創'],['出埃及記','出埃及记','出'],['利未記','利未记','利'],['民數記','民数记','民'],['申命記','申命记','申'],['約書亞記','约书亚记',''],['士師記','士师记','士'],['路得記','路得记','得'],['撒母耳記上','撒母耳记上','撒上'],['撒母耳記下','撒母耳记下','撒下'],['列王紀上','列王纪上','王上'],['列王紀下','列王纪下','王下'],['歷代志上','历代志上','代上'],['歷代志下','历代志下','代下'],['以斯拉記','以斯拉记','拉'],['尼希米記','尼希米记','尼'],['以斯帖記','以斯帖记','斯'],['約伯記','约伯记','伯'],['詩篇','诗篇','詩'],['箴言','箴言','箴'],['傳道書','传道书','傳'],['雅歌','雅歌','歌'],['以賽亞書','以赛亚书','賽'],['耶利米書','耶利米书','耶'],['耶利米哀歌','耶利米哀歌','哀'],['以西結書','以西结书','結'],['但以理書','但以理书','但'],['何西阿書','何西阿书','何'],['約珥書','约珥书','珥'],['阿摩司書','阿摩司书','摩'],['俄巴底亞書','俄巴底亚书','俄'],['約拿書','约拿书','拿'],['彌迦書','弥迦书','彌'],['那鴻書','那鸿书','鴻'],['哈巴谷書','哈巴谷书','哈'],['西番雅書','西番雅书','番'],['哈該書','哈该书','該'],['撒迦利亞書','撒迦利亚书','亞'],['瑪拉基書','玛拉基书','瑪'],['馬太福音','马太福音','太'],['馬可福音','马可福音','可'],['路加福音','路加福音','路'],['約翰福音','约翰福音','約'],['使徒行傳','使徒行传','徒'],['羅馬書','罗马书','羅'],['哥林多前書','哥林多前书','林前'],['哥林多後書','哥林多后书','林後'],['加拉太書','加拉太书','加'],['以弗所書','以弗所书','弗'],['腓立比書','腓立比书','腓'],['歌羅西書','歌罗西书','西'],['帖撒羅尼迦前書','帖撒罗尼迦前书','帖前'],['帖撒羅尼迦後書','帖撒罗尼迦后书','帖後'],['提摩太前書','提摩太前书','提前'],['提摩太後書','提摩太后书','提後'],['提多書','提多书','多'],['腓利門書','腓利门书','門'],['希伯來書','希伯来书','來'],['雅各書','雅各书','雅'],['彼得前書','彼得前书','彼前'],['彼得後書','彼得后书','彼後'],['約翰一書','约翰一书',''],['約翰二書','约翰二书',''],['約翰三書','约翰三书',''],['猶大書','犹大书','猶'],['啟示錄','启示录','啟']];
+var BKX=[['哥林多後書','哥林多后书'],['帖撒羅尼迦後書','帖撒罗尼迦后书'],['提摩太後書','提摩太后书'],['彼得後書','彼得后书'],['啓示錄','启示录'],['約書亞記','约书亚记']];
+var BKM=null;
+function bkInit(){ if(BKM) return; BKM={}; var full=[],ab=[];
+ BKN.forEach(function(b){ BKM[b[0]]=b; BKM[b[1]]=b; full.push(b[0]); if(b[1]!==b[0]) full.push(b[1]); if(b[2]){ BKM[b[2]]=b; ab.push(b[2]); } });
+ ['创','约','罗','启','犹','门','弥','鸿','亚','玛','林后','帖后','提后','彼后','啓'].forEach(function(a){});
+ var sa={'创':0,'启':'啟示錄','犹':'猶大書','罗':'羅馬書','约':'約翰福音','门':'腓利門書','弥':'彌迦書','鸿':'那鴻書','亚':'撒迦利亞書','玛':'瑪拉基書','林后':'哥林多後書','帖后':'帖撒羅尼迦後書','提后':'提摩太後書','彼后':'彼得後書'};
+ BKM['创']=BKM['創']; ['启','犹','罗','约','门','弥','鸿','亚','玛','林后','帖后','提后','彼后'].forEach(function(a){ BKM[a]=BKM[sa[a]]; ab.push(a); });
+ BKM['啓示錄']=BKM['啟示錄']; full.push('啓示錄');
+ full.sort(function(a,b){ return b.length-a.length; }); ab.sort(function(a,b){ return b.length-a.length; });
+ var tail='\\s*(\\d{1,3})\\s*[:：]\\s*(\\d{1,3})(?:\\s*[-–—~～至]\\s*(?:(\\d{1,3})\\s*[:：]\\s*)?(\\d{1,3}))?(?!\\d)';
+ BKM.reF=new RegExp('('+full.join('|')+')'+tail,'g');
+ BKM.reA=new RegExp('(^|[^\\u4e00-\\u9fff]|[見参參看照如詳读讀於及和與与])('+ab.join('|')+')'+tail,'g');
+}
+function refSpeak(t,zs){ bkInit();
+ function rd(bk,c,v,e1,e2){ var b=BKM[bk]; if(!b) return null; var nm=zs?b[1]:b[0],u=(b[0]==='詩篇')?'篇':'章',jj=zs?'节':'節',r=nm+c+u+v+jj;
+  if(e2){ r+= e1?('至'+e1+u+e2+jj):('至'+e2+jj); } return r; }
+ t=t.replace(BKM.reF,function(m,bk,c,v,e1,e2){ return rd(bk,c,v,e1,e2)||m; });
+ t=t.replace(BKM.reA,function(m,pre,bk,c,v,e1,e2){ var r=rd(bk,c,v,e1,e2); return r?pre+r:m; });
+ return t; }
+
+function spBoost(){
+ try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){}
+ var on=(typeof CALL!=='undefined'&&CALL.on);
+ try{ spEl().volume=1; }catch(e){}
+ if(!on&&!SP.ac) return Promise.resolve(true);
+ try{
+  if(!SP.ac){ var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return Promise.resolve(true);
+   SP.ac=new AC(); SP.gn=SP.ac.createGain(); var cp=SP.ac.createDynamicsCompressor();
+   SP.ac.createMediaElementSource(spEl()).connect(SP.gn); SP.gn.connect(cp); cp.connect(SP.ac.destination); }
+  SP.gn.gain.value=on?2.4:1;
+  var rs=SP.ac.resume?SP.ac.resume():null;
+  return Promise.race([Promise.resolve(rs).then(function(){ return SP.ac.state==='running'; }),new Promise(function(r){ setTimeout(function(){ r(SP.ac.state==='running'); },500); })]).catch(function(){ return false; });
+ }catch(e){ return Promise.resolve(false); }
+}
 function speakText(t){
  t=plain(noTr(t));
+ if(LANG==='zh'||LANG==='zs') t=refSpeak(t,LANG==='zs');
  t=t.replace(/[\uD83C-\uD83E][\uDC00-\uDFFF]|[☀-➿️‍]/g,'').replace(/[・•]/g,'').replace(/[「」『』《》〈〉]/g,'').replace(/\s*[—–]{1,2}\s*/g,'，').replace(/\|/g,'，').replace(/_{2,}/g,'，').replace(/\*/g,'').replace(/\n{2,}/g,'\n');
  if(LANG==='zh'||LANG==='zs') t=t.replace(/321/g,'三二一').replace(/920/g,'九二零').replace(/235/g,'二三五');
  return t.trim();
@@ -1762,7 +1799,8 @@ function speak(i){
    if(SP.gen!==gen) return;
    el.onended=function(){ k=me+1; play(); };
    el.onerror=function(){ if(SP.gen!==gen) return; speakFallback(i,segs,me); };
-   el.src=url; var p=el.play(); if(p&&p.catch) p.catch(function(){ if(SP.gen===gen) speakFallback(i,segs,me); });
+   spBoost().then(function(ok){ if(SP.gen!==gen) return; if(!ok){ speakFallback(i,segs,me); return; }
+    el.src=url; var p=el.play(); if(p&&p.catch) p.catch(function(){ if(SP.gen===gen) speakFallback(i,segs,me); }); });
   },function(){ if(SP.gen===gen) speakFallback(i,segs,me); });
  }
  if('mediaSession' in navigator){ try{ navigator.mediaSession.metadata=new MediaMetadata({title:T('title'),artist:T('felH')}); navigator.mediaSession.setActionHandler('pause',stopSpeak); navigator.mediaSession.setActionHandler('stop',stopSpeak); }catch(e){} }
@@ -3527,7 +3565,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1114.1200',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1114.2045',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
