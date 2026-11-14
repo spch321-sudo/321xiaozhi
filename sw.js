@@ -5,7 +5,7 @@ self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(func
 self.addEventListener('message',function(e){if(e.data==='skip')self.skipWaiting();});
 self.addEventListener('fetch',function(e){
  var r=e.request,u=new URL(r.url);
- if(r.method!=='GET'||u.origin!==location.origin) return;
+ if(r.method!=='GET'||u.origin!==location.origin||/\/cn\//.test(u.pathname)) return;
  if(/version\.json$/.test(u.pathname)){e.respondWith(fetch(r,{cache:'no-store'}).catch(function(){return new Response('{}',{headers:{'Content-Type':'application/json'}});}));return;}
  var nav=r.mode==='navigate',pg=u.pathname.replace(/^.*\//,''),key=nav?(/^(sc|en|ko|ja|id|ceb)\.html$/.test(pg)?pg:'index.html'):u.pathname.replace(/^.*\//,'')||'index.html';
  if(nav||/\.(html|js|json|css|webmanifest)$/.test(u.pathname)){
