@@ -6,21 +6,21 @@
 <title>Xiaozhi Q&A</title>
 <meta name="description" content="Xiaozhi Q&A: Bible, faith and everyday questions, Kingdom 321 Fellowship.">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1114.2045">
-<link rel="icon" href="favicon.ico?v=v2026.1114.2045" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1114.2045">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1114.2045">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1114.2045">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1114.2045">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1114.2045">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1114.2130">
+<link rel="icon" href="favicon.ico?v=v2026.1114.2130" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1114.2130">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1114.2130">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1114.2130">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1114.2130">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1114.2130">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1114.2045"></script>
-<script src="xzplus.js?v=v2026.1114.2045" defer></script>
+<script src="k321gate.js?v=v2026.1114.2130"></script>
+<script src="xzplus.js?v=v2026.1114.2130" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='en';</script>
@@ -1762,7 +1762,7 @@ function segsOf(t){
 function ttsGet(text,gen){
  if(SP.urls[text]) return SP.urls[text];
  var waits=[700,1500],p=(function go(k){
-  return fetch(TTS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({voice:c7Voice(),rate:c7Rate(),sil:140,silc:140,sile:260,text:text})}).then(function(r){
+  return fetch(TTS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({voice:(c7Voice()===C9_ID?(VOICE[LANG]||VOICE.zh):c7Voice()),rate:c7Rate(),sil:140,silc:140,sile:260,text:text})}).then(function(r){
    if(!r.ok) throw new Error('http '+r.status); return r.arrayBuffer();
   }).then(function(buf){ if(!buf||buf.byteLength<128) throw new Error('empty'); return URL.createObjectURL(new Blob([buf],{type:'audio/mpeg'})); })
   .catch(function(e){ if(k<waits.length&&SP.gen===gen) return new Promise(function(r){ setTimeout(r,waits[k]); }).then(function(){ return go(k+1); }); throw e; });
@@ -1786,6 +1786,7 @@ function spDone(i){
 }
 function speak(i){
  if(S.speaking===i){ stopSpeak(); return; }
+ if(c9On()&&!S.c9Off){ c9Speak(i); return; }
  stopSpeak(); spUnlock();
  var segs=segsOf(speakText(S.chat[i].t)); if(!segs.length) return;
  var gen=++SP.gen,el=spEl(),k=0;
@@ -1896,7 +1897,7 @@ function c7SetSec(){
  h+='</div><h3>'+esc(C7('vSpeed'))+'</h3><div class="seg4" style="grid-template-columns:1fr 1fr 1fr"><button class="'+(r===-1?'on':'')+'" data-act="ctvrate" data-i="-1">'+esc(C7('vSlow'))+'</button><button class="'+(r===0?'on':'')+'" data-act="ctvrate" data-i="0">'+esc(C7('vNorm'))+'</button><button class="'+(r===1?'on':'')+'" data-act="ctvrate" data-i="1">'+esc(C7('vFast'))+'</button></div>';
  return h+'<button class="ctbtn" data-act="ctvtry" style="align-self:flex-start">'+esc(C7('vTry'))+'</button></div>';
 }
-function c7Try(){
+function c7Try(){ if(c9On()){ c9Try(); return; }
  stopSpeak(); spUnlock(); var gen=++SP.gen,el=spEl();
  ttsGet(C7('vSample'),gen).then(function(u){ if(SP.gen!==gen) return; el.onended=null; el.src=u; var p=el.play(); if(p&&p.catch) p.catch(function(){}); },function(){ if(window.speechSynthesis){ var ut=new SpeechSynthesisUtterance(C7('vSample')); ut.rate=c7RateMul(); speechSynthesis.speak(ut); } });
 }
@@ -3446,6 +3447,54 @@ function ct8Act(a,b,i,fid,v){
 /* ---------- 5 粵語朗讀：加進「小智的聲音」 ---------- */
 C7V.zh.push(['zh-HK-WanLungNeural','粵語・男聲 雲龍'],['zh-HK-HiuMaanNeural','粵語・女聲 曉曼']);
 C7V.zs.push(['zh-HK-WanLungNeural','粤语・男声 云龙'],['zh-HK-HiuMaanNeural','粤语・女声 晓曼']);
+/* ---------- 台語朗讀（ct9-1113，試用）：小智把回答翻成台語漢字 → 意傳科技公開服務轉台羅（hokbu.ithuan.tw/tau）→ 意傳台語合成（hapsing.ithuan.tw/bangtsam）。
+   意傳的公開服務有流量限制（約每分鐘 3 次），所以一段約 120 字一起合成，邊唸邊準備下一段；忙碌時自動等一下再試。 ---------- */
+var C9_TAU='https://hokbu.ithuan.tw/tau',C9_HAP='https://hapsing.ithuan.tw/bangtsam?taibun=',C9_ID='nan-TW-ithuan';
+var C9S={
+ name:'台語・意傳（試用）|台语・意传（试用）|Taiwanese · Ithuan (beta)|대만어(시범)|台湾語（試用）|Taiwan (uji coba)|Taiwanese (beta)',
+ prep:'正在準備台語朗讀…|正在准备台语朗读…|Preparing Taiwanese reading…|대만어 읽기 준비 중…|台湾語の読み上げを準備中…|Menyiapkan…|Gi-andam…',
+ wait:'台語語音服務忙碌，排隊中…|台语语音服务忙碌，排队中…|Taiwanese voice service is busy — waiting…|서비스가 바빠요. 기다리는 중…|混み合っています。待機中…|Layanan sibuk — menunggu…|Busy — naghulat…',
+ fail:'台語語音暫時無法使用，改用原本的聲音|台语语音暂时无法使用，改用原本的声音|Taiwanese voice unavailable — using the regular voice|대만어 음성을 쓸 수 없어 기본 음성으로 읽어요|台湾語音声が使えないため通常の声で読みます|Suara Taiwan tidak tersedia — memakai suara biasa|Dili magamit — gamiton ang naandan nga tingog',
+ sample:'平安！我是小智，願主賜福你今仔日行的每一步。'
+};
+function C9(k){ return k==='sample'?C9S.sample:C5L(C9S[k]); }
+C7V.zh.push([C9_ID,C5L(C9S.name)]); C7V.zs.push([C9_ID,'台语・意传（试用）']);
+function c9On(){ return (LANG==='zh'||LANG==='zs')&&c7Voice()===C9_ID; }
+var C9KIP={};
+function c9Kip(text){
+ if(C9KIP[text]) return C9KIP[text];
+ var tries=0,p=(function go(){ return fetch(C9_TAU,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'text/plain'},body:'taibun='+encodeURIComponent(text)}).then(function(r){ if(!r.ok) throw new Error('http'+r.status); return r.json(); }).then(function(j){
+   var k=(j&&j.kiatko&&j.kiatko.length)?j.kiatko.map(function(x){ return x.KIP||''; }).join(' '):(j&&j.KIP)||''; k=String(k).replace(/\s+/g,' ').trim(); if(!k) throw new Error('empty'); return k;
+  }).catch(function(e){ if(tries++<2){ toast(C9('wait')); return new Promise(function(r){ setTimeout(r,22000); }).then(go); } throw e; }); })();
+ C9KIP[text]=p; p.catch(function(){ delete C9KIP[text]; }); return p;
+}
+function c9Tg(m){
+ if(m&&m.tg) return Promise.resolve(m.tg);
+ var src=speakText(m?m.t:'');
+ return postRetry({model:MODEL,max_tokens:2600,system:'Translate the text into natural spoken Taiwanese Hokkien (臺灣台語), written in Taiwanese Han characters following the Ministry of Education recommended characters (教育部臺灣台語推薦用字). Output ONLY the translation as plain sentences ending with 。！？ — no romanization, no markdown, no emojis, no lists. Write numbers and Bible references as words (e.g. 約翰福音第三章第十六節). Keep the meaning and the warm tone.',messages:[{role:'user',content:src.slice(0,3000)}]}).then(extractReply).then(function(t){ t=String(t||'').replace(/[*#>`_]/g,'').trim(); if(!t) throw new Error('empty'); if(m){ m.tg=t; save(); } return t; });
+}
+function c9Chunks(t){ var out=[],cur='',ss=String(t).match(/[^。！？!?\n]+[。！？!?]*|\n/g)||[t]; for(var i=0;i<ss.length;i++){ var s=ss[i].trim(); if(!s) continue; if((cur+s).length>120&&cur){ out.push(cur); cur=''; } cur+=s; } if(cur) out.push(cur); return out; }
+function c9Play(texts,gen,onDone,onFail){
+ var el=spEl(),k=0,pre=null;
+ function next(){
+  if(SP.gen!==gen) return; if(k>=texts.length){ onDone(); return; }
+  var me=k; if(me+1<texts.length) c9Kip(texts[me+1]).then(function(kp){ if(SP.gen===gen){ pre=new Audio(); pre.preload='auto'; pre.src=C9_HAP+encodeURIComponent(kp); } }).catch(function(){});
+  c9Kip(texts[me]).then(function(kp){
+   if(SP.gen!==gen) return; var tries=0;
+   function go(){ el.onended=function(){ k=me+1; next(); }; el.onerror=function(){ if(SP.gen!==gen) return; if(tries++<2){ toast(C9('wait')); setTimeout(function(){ if(SP.gen===gen){ el.src=C9_HAP+encodeURIComponent(kp)+'&r='+tries; go2(); } },22000); } else onFail(); }; el.src=C9_HAP+encodeURIComponent(kp); go2(); }
+   function go2(){ var p=el.play(); if(p&&p.catch) p.catch(function(){ if(SP.gen===gen) onFail(); }); }
+   go();
+  },function(){ if(SP.gen===gen) onFail(); });
+ }
+ next();
+}
+function c9Speak(i){
+ var m=S.chat[i]; if(!m) return; stopSpeak(); spUnlock(); var gen=++SP.gen; S.speaking=i; spPaint();
+ if(!m.tg) toast(C9('prep'));
+ function fallback(){ if(SP.gen!==gen) return; toast(C9('fail')); S.c9Off=1; S.speaking=-1; spPaint(); speak(i); S.c9Off=0; }
+ c9Tg(m).then(function(tg){ if(SP.gen!==gen) return; c9Play(c9Chunks(tg),gen,function(){ S.speaking=-1; spPaint(); spDone(i); },fallback); },fallback);
+}
+function c9Try(){ stopSpeak(); spUnlock(); var gen=++SP.gen; c9Play([C9('sample')],gen,function(){},function(){ toast(C9('fail')); }); }
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -3565,7 +3614,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1114.2045',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1114.2130',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
