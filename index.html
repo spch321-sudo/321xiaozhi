@@ -6,21 +6,21 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1113.2300">
-<link rel="icon" href="favicon.ico?v=v2026.1113.2300" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1113.2300">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1113.2300">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1113.2300">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1113.2300">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1113.2300">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1114.1200">
+<link rel="icon" href="favicon.ico?v=v2026.1114.1200" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1114.1200">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1114.1200">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1114.1200">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1114.1200">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1114.1200">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1113.2300"></script>
-<script src="xzplus.js?v=v2026.1113.2300" defer></script>
+<script src="k321gate.js?v=v2026.1114.1200"></script>
+<script src="xzplus.js?v=v2026.1114.1200" defer></script>
 </head>
 <body>
 
@@ -1646,7 +1646,7 @@ function renderDrawer(){
  var d=$('drawer'),first=!d;
  if(first){ d=document.createElement('div'); d.id='drawer'; document.body.appendChild(d); }
  var keep=first?(S.drawerTop||0):0,old=d.querySelector('.dscroll'); if(old) keep=old.scrollTop;
- var nav=[['newchat',IC.edit,T('newChat')],['ctincog',CTI.incog,CT('incogStart')],['ctcall',C2I.call,C2('callNav')],['cttools',C5I.tb,C5('tbNav')],['ctas',C6I.as,C6('asNav')],['cttr',C8I.tr,C8('trNav')],['ctwall',C7I.wall,C7('wNav')],['ctcards',C7I.card,C7('cdNav')],['ctstyle',C5I.st,C5('stNav')],['ctrole',C4I.role,C4('roleNav')],['ctkid',C4I.kid,C4('kid')],['bank',IC.bulb,T('bankTitle')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['ctmemopen',C2I.mem,C2('memNav')],['ctciopen',C2I.ci,C2('ciNav')],['settings',IC.gear,T('settings')]];
+ var nav=[['newchat',IC.edit,T('newChat')],['bank',IC.bulb,T('bankTitle')],['ctincog',CTI.incog,CT('incogStart')],['ctcall',C2I.call,C2('callNav')],['cttools',C5I.tb,C5('tbNav')],['ctas',C6I.as,C6('asNav')],['cttr',C8I.tr,C8('trNav')],['ctwall',C7I.wall,C7('wNav')],['ctcards',C7I.card,C7('cdNav')],['ctstyle',C5I.st,C5('stNav')],['ctrole',C4I.role,C4('roleNav')],['ctkid',C4I.kid,C4('kid')],['favs',IC.star,T('favTitle')+(FAV.length?' · '+FAV.length:'')],['profile',IC.user,X.nick()||T('myProfile')],['ctmemopen',C2I.mem,C2('memNav')],['ctciopen',C2I.ci,C2('ciNav')],['settings',IC.gear,T('settings')]];
  var h='<div class="dmask" data-act="drawerclose"></div><nav class="dpanel" aria-label="'+esc(T('menu'))+'"><div class="dhead"><span class="dlamp">'+LAMP+'</span><b>'+T('name')+'</b>'+langBtns('dlang')+'</div>';
  h+='<div class="dsearch">'+IC.search+'<input id="convsearch" type="search" placeholder="'+esc(T('convSearch'))+'" value="'+esc(S.convQ)+'"></div><div class="dscroll"><div class="dnav">';
  for(var i=0;i<nav.length;i++) h+='<button class="ditem" data-act="'+nav[i][0]+'"><span class="di">'+nav[i][1]+'</span><span>'+esc(nav[i][2])+'</span></button>';
@@ -3526,7 +3526,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1113.2300',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1114.1200',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
