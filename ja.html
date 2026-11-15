@@ -6,21 +6,21 @@
 <title>シャオジー Q&A</title>
 <meta name="description" content="シャオジー Q&A：聖書・信仰・生活の質問 · キングダム321空中フェローシップ">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.1330">
-<link rel="icon" href="favicon.ico?v=v2026.1115.1330" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.1330">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.1330">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.1330">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.1330">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.1330">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.1700">
+<link rel="icon" href="favicon.ico?v=v2026.1115.1700" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.1700">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.1700">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.1700">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.1700">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.1700">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="シャオジー Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.1330"></script>
-<script src="xzplus.js?v=v2026.1115.1330" defer></script>
+<script src="k321gate.js?v=v2026.1115.1700"></script>
+<script src="xzplus.js?v=v2026.1115.1700" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ja';</script>
@@ -1767,14 +1767,14 @@ function renderSheet(){
   h+='<div class="favlist" id="favlist" style="margin-top:10px">'+favListHTML()+'</div>';
  } else {
   h+='<div class="sheethead"><h2>'+T('setTitle')+'</h2><button class="xbtn" data-act="close">'+T('done')+'</button></div>';
-  h+='<div class="sec"><h3>'+T('langH')+'</h3>'+langBtns('langseg')+'</div>';
   h+=felSecHTML();
+  h+='<div class="sec"><h3>'+T('lenH5')+'</h3>'+lenSeg()+'<p class="hint">'+T('lenHint')+'</p></div>';
+  h+='<div class="sec"><h3>'+T('langH')+'</h3>'+langBtns('langseg')+'</div>';
+  h+='<div class="sec"><h3>'+T('biH')+'</h3>'+biRow()+'<p class="hint">'+T('biHint')+'</p></div>';
   h+='<div class="sec"><h3>'+T('audH')+'</h3><div class="audgrid">';
   for(var i=0;i<X.AUD_KEYS.length;i++){ var k=X.AUD_KEYS[i]; h+='<button class="audcard'+(X.aud()===k?' on':'')+'" data-act="aud" data-v="'+k+'"><span class="ic">'+X.AUD_ICON[k]+'</span><span><b>'+esc(X.audName(k))+'</b><small>'+esc(X.audHint(k))+'</small></span></button>'; }
   h+='</div></div>';
   if(X.aud()==='seeker') h+='<div class="sec"><h3>'+T('bgH')+'</h3>'+bgRow()+'<p class="hint">'+T('bgHint')+'</p></div>';
-  h+='<div class="sec"><h3>'+T('biH')+'</h3>'+biRow()+'<p class="hint">'+T('biHint')+'</p></div>';
-  h+='<div class="sec"><h3>'+T('lenH5')+'</h3>'+lenSeg()+'<p class="hint">'+T('lenHint')+'</p></div>';
   h+=ctSetSecs()+c7SetSec();
   h+='<div class="sec"><h3>'+T('myProfile')+'</h3><button class="wide" data-act="profile"><span>👤 '+esc(X.nick()||T('fillProfile'))+'<br><small class="hint">'+T('profileHint')+'</small></span><span>›</span></button></div>';
   var FS=T('fsNames').split('|');
@@ -3704,7 +3704,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.1330',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.1700',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
