@@ -6,21 +6,21 @@
 <title>Tanya Xiaozhi</title>
 <meta name="description" content="Tanya Xiaozhi: pertanyaan Alkitab, iman dan kehidupan · Persekutuan Udara Kerajaan 321">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0700">
-<link rel="icon" href="favicon.ico?v=v2026.1116.0700" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0700">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0700">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0700">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0700">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0700">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0720">
+<link rel="icon" href="favicon.ico?v=v2026.1116.0720" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0720">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0720">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0720">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0720">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0720">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tanya Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1116.0700"></script>
-<script src="xzplus.js?v=v2026.1116.0700" defer></script>
+<script src="k321gate.js?v=v2026.1116.0720"></script>
+<script src="xzplus.js?v=v2026.1116.0720" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='id';</script>
@@ -4688,6 +4688,105 @@ quickAsk=function(ask,maxT){
  });
 };
 
+/* ---------- 長內容分段生成：每次只要一小塊，不碰 1024 上限（ct18-1116） ---------- */
+function c18Call(ask,maxT,o){ o=o||{};
+ return getSample().then(function(sm){
+  if(sm) return quickAsk(ask,maxT).then(function(t){ return {t:t,cut:false}; });
+  window.__c13stop=null;
+  return c13Try({max_tokens:Math.min(maxT,1000),system:o.sys||T('jsonOnly'),tier:o.tier||'fast',messages:[{role:'user',content:ask}]},o.ms||60000,0).then(function(r){ var t=extractReply(r); return {t:t,cut:window.__c13stop==='max_tokens'}; });
+ });
+}
+function c18J(ask,maxT,check){
+ function one(k){
+  var q=k?ask+'\n\nYour previous reply was cut off or unreadable. Be much shorter. ONE valid JSON object only, no code fence, line breaks inside strings written as \\n.':ask;
+  return c18Call(q,maxT).then(function(r){ var d=c13Parse(r.t),rep=c13Parse.repaired; if(d&&!r.cut&&!rep&&(!check||check(d))) return d; throw new Error(r.cut?'cut':'bad'); });
+ }
+ return one(0).catch(function(){ return one(1); });
+}
+function c18Pool(fs,n){
+ var out=new Array(fs.length),i=0;
+ function next(){ if(i>=fs.length) return Promise.resolve(); var k=i++; return fs[k]().then(function(v){ out[k]=v; },function(){ out[k]=null; }).then(next); }
+ var w=[]; for(var j=0;j<n&&j<fs.length;j++) w.push(next());
+ return Promise.all(w).then(function(){ return out; });
+}
+function c18Slides(q,a){
+ var L=c15Lang(),ctx='\nQUESTION:\n'+q.slice(0,300)+'\nANSWER:\n'+a.slice(0,4500);
+ var o='Plan sermon/teaching slides in '+L+' from the ANSWER below. Return ONLY JSON: {"title":"short deck title","subtitle":"short subtitle","slides":["slide title 1","slide title 2"]}. 7-9 slide titles in order, covering every main section of the ANSWER (main teaching, key verses, key terms, application, practice steps for the week, a closing prayer if present). Each title under 12 Chinese characters or 6 English words. Nothing else.'+ctx;
+ return c18J(o,600,function(d){ return d&&d.slides instanceof Array&&d.slides.length>=3; }).then(function(pl){
+  var T0=pl.slides.slice(0,9).map(function(x){ return c13Str(x&&typeof x==='object'?(x.t||x.title):x).trim(); }).filter(function(x){ return x; });
+  var fs=T0.map(function(t,k){ return function(){
+   return c18J('Write ONE slide in '+L+' for a teaching deck. Deck outline in order: '+T0.join(' | ')+'. This is slide '+(k+1)+' of '+T0.length+', titled "'+t+'". Return ONLY JSON: {"p":["short point"],"v":"full Bible verse text or empty","r":"verse reference or empty"}. At most 4 points, each under 20 Chinese characters or 10 English words; a verse slide may have no points; copy any verse exactly as it is in the ANSWER and never invent one; a prayer slide gets 2-3 short lines in "p".'+ctx,500,function(d){ return d&&(d.p instanceof Array||d.v); }).then(function(d){ return {t:t,p:d.p instanceof Array?d.p:[],v:c13Str(d.v),r:c13Str(d.r)}; });
+  }; });
+  return c18Pool(fs,3).then(function(R){
+   var ok=R.filter(function(x){ return x; }); if(ok.length<Math.max(2,Math.ceil(T0.length/2))) throw new Error('cut');
+   return {title:c13Str(pl.title),subtitle:c13Str(pl.subtitle),slides:ok};
+  });
+ });
+}
+function c18Quiz(q,a){
+ var L=c15Lang(),ctx='\nQUESTION:\n'+q.slice(0,400)+'\nANSWER:\n'+a.slice(0,3500);
+ function qz(n,part){ return function(){ return c18J('Make '+n+' Bible-study quiz questions in '+L+' about '+part+'. Return ONLY JSON: {"quiz":[{"q":"question","o":["option A","option B","option C","option D"],"a":0,"why":"one short sentence"}]}. Exactly 4 options each, "a" is the index of the correct one (vary it). Answerable from the ANSWER and faithful to Scripture.'+ctx,750,function(d){ return d&&d.quiz instanceof Array&&d.quiz.length; }); }; }
+ var fs=[qz(3,'the first half of the ANSWER'),qz(2,'the second half of the ANSWER (different from the first half)'),function(){ return c18J('Make 6 flashcards in '+L+' from the ANSWER. Return ONLY JSON: {"cards":[{"f":"front (a term, verse reference or question)","b":"back (short answer, under 40 Chinese characters or 20 English words)"}]}.'+ctx,700,function(d){ return d&&d.cards instanceof Array&&d.cards.length; }); }];
+ return c18Pool(fs,3).then(function(R){
+  var quiz=[],cards=[]; if(R[0]) quiz=quiz.concat(R[0].quiz); if(R[1]) quiz=quiz.concat(R[1].quiz); if(R[2]) cards=R[2].cards;
+  if(!quiz.length&&!cards.length) throw new Error('cut'); return {quiz:quiz,cards:cards};
+ });
+}
+function c18Art(q,a){
+ var L=c15Lang(),ctx='\nQUESTION:\n'+q.slice(0,600)+'\nANSWER:\n'+a.slice(0,5000);
+ var o='Plan a short, warm article page for a church fellowship in '+L+', based on the Q&A below. Return ONLY JSON: {"title":"under 24 characters or 8 words","lead":"one-sentence summary","takeaway":"one sentence of application","heads":["subheading 1","subheading 2","subheading 3"]}. 2-4 short subheadings in order. Use only content from the ANSWER.'+ctx;
+ return c18J(o,550,function(d){ return d&&d.title&&d.heads instanceof Array&&d.heads.length; }).then(function(pl){
+  var H=pl.heads.slice(0,4).map(function(x){ return c13Str(x&&typeof x==='object'?(x.h||x.t):x).trim(); }).filter(function(x){ return x; });
+  var fs=H.map(function(h,k){ return function(){ return c18J('Write the section "'+h+'" (section '+(k+1)+' of '+H.length+': '+H.join(' | ')+') of the article in '+L+'. Return ONLY JSON: {"p":"1-2 short paragraphs separated by \\n, under 200 Chinese characters or 90 English words in total"}. Use only content from the ANSWER; add no new claims and no new verses.'+ctx,650,function(d){ return d&&c13Str(d.p); }).then(function(d){ return {h:h,p:c13Str(d.p)}; }); }; });
+  fs.push(function(){ return c18J('List up to 3 Bible verses quoted in the ANSWER below, in '+L+'. Return ONLY JSON: {"verses":[{"ref":"book chapter:verse","text":"verse text copied exactly from the ANSWER"}]}. Copy exactly; never add a verse that is not in the ANSWER. If none, return {"verses":[]}.'+ctx,650,function(d){ return d&&d.verses instanceof Array; }); });
+  return c18Pool(fs,3).then(function(R){
+   var vs=R[R.length-1],sec=R.slice(0,H.length).filter(function(x){ return x; });
+   if(!sec.length) throw new Error('cut');
+   return {title:pl.title,lead:c13Str(pl.lead),takeaway:c13Str(pl.takeaway),sections:sec,verses:vs?vs.verses:[]};
+  });
+ });
+}
+var c18_cj=c13Json;
+c13Json=function(ask,maxT,check,soft){
+ var s=String(ask),qa=s.match(/\nQUESTION:\n([\s\S]*?)\nANSWER:\n([\s\S]*)$/);
+ if(qa){
+  var fb=function(){ return c18_cj(ask,maxT,check,soft); };
+  if(/^Turn the ANSWER into sermon\/teaching slides/.test(s)) return c18Slides(qa[1],qa[2]).catch(fb);
+  if(/^Make a short Bible-study quiz/.test(s)) return c18Quiz(qa[1],qa[2]).catch(fb);
+  if(/^Rewrite the Q&A below as a short, warm article page/.test(s)) return c18Art(qa[1],qa[2]).catch(fb);
+ }
+ return c18_cj(ask,maxT,check,soft);
+};
+/* 小工具：分兩段生成（外觀與版面／程式），每段都在上限內 */
+var C18RULE='Rules: single self-contained page; NO external files, fonts, images, CDNs, fetch or links; NO localStorage, sessionStorage, cookies or IndexedDB; large easy-to-tap controls (buttons at least 48px tall, base font 18px or larger), high contrast, calm colours, works from 320px wide, supports light and dark with prefers-color-scheme; never ask for personal data or payment details; no comments.';
+var C18SYSA='You are a senior front-end developer. You are writing the FIRST HALF of a small single-file HTML tool. Output ONLY raw HTML (no explanation, no code fence) from <!DOCTYPE html> to the end of the visible page content: <meta charset="utf-8">, <meta name="viewport" content="width=device-width,initial-scale=1">, a short <title>, ONE compact <style> (under 25 lines), then <body> with all visible elements, each interactive element with a unique id. Do NOT write any <script> and do NOT close </body> or </html>; a second developer will add the script. Keep it very compact: under 40 lines in total. '+C18RULE;
+var C18SYSB='You are a senior front-end developer. You are writing the SECOND HALF of a small single-file HTML tool whose first half (markup and CSS) is given. Output ONLY one <script>...<\/script> followed by </body></html>: no explanation, no code fence, no repeated markup. Use only the element ids that exist in the given markup. Plain ES5/ES6 JavaScript, keep state in variables, validate inputs, show friendly messages in the page, and make sure any calculation is correct. Keep it compact: under 45 lines. '+C18RULE;
+function c18Txt(ask,sys,k0){
+ function one(k){
+  return c18Call(k?ask+'\n\nYour previous attempt was cut off. Make it much shorter and simpler (about half the length), and finish completely.':ask,1000,{sys:sys,tier:'deep',ms:90000}).then(function(r){ if(r.cut||!String(r.t||'').trim()) throw new Error(r.cut?'cut':'bad'); return String(r.t).replace(/^\s*```(?:html|javascript|js)?\s*/i,'').replace(/```\s*$/,'').trim(); });
+ }
+ return one(k0||0).catch(function(){ return one(1); });
+}
+function c18Tool(base,instr){
+ var lang='All visible text must be in '+c15Lang()+'.',ref='';
+ if(base) ref='\n\nCurrent tool (for reference; keep what works):\n'+String(base).replace(/<meta[^>]+http-equiv=["']?Content-Security-Policy[^>]*>/ig,'').slice(0,9000);
+ var task=(base?'Revise the tool as follows: ':'Build this tool: ')+instr+'\n'+lang+ref;
+ return c18Txt(task,C18SYSA).then(function(A){
+  var i=A.search(/<script[\s>]/i); if(i>0) A=A.slice(0,i); A=A.replace(/<\/body>[\s\S]*$/i,'').replace(/<\/html>\s*$/i,'');
+  if(!/<(body)[\s>]/i.test(A)) throw new Error('bad');
+  return c18Txt(task+'\n\nFIRST HALF (markup and CSS, already written):\n'+A,C18SYSB).then(function(B){
+   var j=B.search(/<script[\s>]/i); if(j<0){ B='<script>'+B.replace(/<\/?(body|html)>/ig,'')+'<\/script>'; } else B=B.slice(j);
+   B=B.replace(/<\/body>[\s\S]*$/i,'').replace(/<\/html>\s*$/i,'');
+   if(!/<\/script>/i.test(B)) throw new Error('cut');
+   return A+'\n'+B+'\n</body></html>';
+  });
+ });
+}
+c15Make=function(base,instr){
+ var D=c15St(); if(D.busy) return; D.busy=true; if(S.sheet==='cttool') renderSheet();
+ return c18Tool(base,instr).then(function(raw){ var doc=c15Doc(raw); if(!doc) throw new Error('bad'); D.doc=doc; D.title=c15Title(doc,base?D.title:instr); D.saved=false; D.mod=''; },function(e){ toast(((e&&e.message==='cut')?C15('cut'):C15('fail'))+' ['+c13Why(e)+']'); }).then(function(){ D.busy=false; if(S.sheet==='cttool') renderSheet(); });
+};
+
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -4809,7 +4908,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1116.0700',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1116.0720',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
