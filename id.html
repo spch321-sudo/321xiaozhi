@@ -6,21 +6,21 @@
 <title>Tanya Xiaozhi</title>
 <meta name="description" content="Tanya Xiaozhi: pertanyaan Alkitab, iman dan kehidupan · Persekutuan Udara Kerajaan 321">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2355">
-<link rel="icon" href="favicon.ico?v=v2026.1115.2355" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2355">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2355">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2355">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2355">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2355">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0020">
+<link rel="icon" href="favicon.ico?v=v2026.1116.0020" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0020">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0020">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0020">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0020">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0020">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tanya Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.2355"></script>
-<script src="xzplus.js?v=v2026.1115.2355" defer></script>
+<script src="k321gate.js?v=v2026.1116.0020"></script>
+<script src="xzplus.js?v=v2026.1116.0020" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='id';</script>
@@ -2642,7 +2642,7 @@ function c5Lib(url,name){ if(window[name]) return Promise.resolve(window[name]);
 function c5Slides(i){
  var m=S.chat[i]; if(!m) return; toast(C5('pptMaking'));
  var LNM={zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English';
- var ask='Turn the ANSWER into sermon/teaching slides in '+LNM+'. Return ONLY JSON: {"title":"","subtitle":"","slides":[{"t":"slide title","p":["short point"],"v":"full Bible verse text or empty","r":"verse reference or empty"}]}. 6-10 slides; at most 4 points per slide; each point under 20 Chinese characters or 10 English words; verse slides may have no points; keep verse quotations exactly as in the answer; last slide is a short application or prayer.\nQUESTION:\n'+String(qOf(i)).slice(0,300)+'\nANSWER:\n'+plain(m.t).slice(0,5000);
+ var ask='Turn the ANSWER into sermon/teaching slides in '+LNM+'. Return ONLY JSON: {"title":"","subtitle":"","slides":[{"t":"slide title","p":["short point"],"v":"full Bible verse text or empty","r":"verse reference or empty"}]}. 7-10 slides that cover every main section of the ANSWER in order (identity or main teaching, key verses, key terms, application, practice steps for the week, and a closing prayer if the answer has them); at most 4 points per slide; each point under 20 Chinese characters or 10 English words; verse slides may have no points; keep verse quotations exactly as in the answer; keep every field short so the whole JSON stays compact and complete; the last slide is a short application or prayer.\nQUESTION:\n'+String(qOf(i)).slice(0,300)+'\nANSWER:\n'+plain(m.t).slice(0,5000);
  Promise.all([c13Json(ask,3600,function(d){ return d&&d.slides&&d.slides.length; }),c5Lib(C5PPT,'PptxGenJS')]).then(function(r){
   var d=c13NormPpt(r[0]); if(!d||!d.slides||!d.slides.length) throw new Error('bad');
   var P=new window.PptxGenJS(); P.layout='LAYOUT_16x9'; var F={zh:'PMingLiU',zs:'SimSun',ja:'Yu Mincho',ko:'Malgun Gothic'}[LANG]||'Calibri',NAVY='1E3F8F',GOLD='B8862E';
@@ -4380,11 +4380,12 @@ function c13Close(s){
  return (inS?'"':'')+st.reverse().join('');
 }
 function c13Parse(t){
+ c13Parse.repaired=false;
  var s=String(t||'').replace(/```[a-zA-Z]*/g,''),a=s.search(/[\{\[]/); if(a<0) return null; s=s.slice(a);
  var b=Math.max(s.lastIndexOf('}'),s.lastIndexOf(']')),c=[s.slice(0,b+1),s];
  for(var k=0;k<c.length;k++){ if(!c[k]) continue;
   try{ return JSON.parse(c[k]); }catch(e){}
-  var f=c13Fix(c[k]).replace(/,(\s*[}\]])/g,'$1'); try{ return JSON.parse(f); }catch(e){}
+  c13Parse.repaired=true; var f=c13Fix(c[k]).replace(/,(\s*[}\]])/g,'$1'); try{ return JSON.parse(f); }catch(e){}
  }
  var x=c13Fix(s).replace(/,(\s*[}\]])/g,'$1'),n=0;
  while(n++<40){ var cut=x.lastIndexOf(','); if(cut<1) break; x=x.slice(0,cut); try{ return JSON.parse(x+c13Close(x)); }catch(e){} }
@@ -4392,7 +4393,7 @@ function c13Parse(t){
 }
 function c13Post(body,ms){
  var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){ try{ ctl&&ctl.abort(); }catch(e){} },ms);
- return postOnce(body,ctl?ctl.signal:undefined).then(function(r){ clearTimeout(tm); return r; },function(e){ clearTimeout(tm); throw e; });
+ return postOnce(body,ctl?ctl.signal:undefined).then(function(r){ clearTimeout(tm); try{ window.__c13stop=r&&r.stop_reason; }catch(e){} return r; },function(e){ clearTimeout(tm); throw e; });
 }
 function c13Try(body,ms,k){ return c13Post(body,ms).catch(function(e){ if(k>=2) throw e; return new Promise(function(r){ setTimeout(r,900*(k+1)); }).then(function(){ return c13Try(body,ms,k+1); }); }); }
 quickAsk=function(ask,maxT){
@@ -4405,8 +4406,12 @@ quickAsk=function(ask,maxT){
 function c13Json(ask,maxT,check,soft){
  var last=null;
  function one(k){
-  return quickAsk(k?ask+'\n\nIMPORTANT: your previous reply could not be used. Reply with ONE valid JSON object only: no commentary, no code fence, every field filled in, and write any line break inside a string as \\n.':ask,maxT).then(function(t){
-   var d=c13Parse(t); if(d&&(!soft||soft(d))) last=d; if(d&&(!check||check(d))) return d; throw new Error('bad'); });
+  var q=k?ask+'\n\nIMPORTANT: your previous reply was cut off or could not be read. Make everything SHORTER so the JSON is complete: fewer and shorter items, every field filled in. Reply with ONE valid JSON object only: no commentary, no code fence, and write any line break inside a string as \\n.':ask;
+  window.__c13stop=null;
+  return quickAsk(q,k?Math.min(6000,Math.round(maxT*1.4)):maxT).then(function(t){
+   var d=c13Parse(t),cut=!!(c13Parse.repaired||window.__c13stop==='max_tokens');
+   if(d&&(!soft||soft(d))) last=d;
+   if(d&&!cut&&(!check||check(d))) return d; throw new Error(cut?'cut':'bad'); });
  }
  return one(0).catch(function(){ return one(1); }).catch(function(e){ if(last) return last; throw e; });
 }
@@ -4417,7 +4422,7 @@ function c13NormPpt(d){
   var p=sd.p!=null?sd.p:(sd.points!=null?sd.points:sd.bullets); if(typeof p==='string') p=p.split(/\n+/); if(!(p instanceof Array)) p=[];
   p=p.map(function(x){ return c13Str(x).trim(); }).filter(function(x){ return x; });
   out.push({t:c13Str(sd.t||sd.title||sd.h),p:p,v:c13Str(sd.v||sd.verse||sd.text),r:c13Str(sd.r||sd.ref||sd.reference)}); });
- d.slides=out.filter(function(x){ return x.t||x.p.length||x.v; }); d.title=c13Str(d.title); d.subtitle=c13Str(d.subtitle); return d;
+ d.slides=out.filter(function(x){ return x.p.length||x.v||(x.t&&out.length<3); }); d.title=c13Str(d.title); d.subtitle=c13Str(d.subtitle); return d;
 }
 function c13NormQz(d){
  var R={quiz:[],cards:[]}; if(!d||typeof d!=='object') return R;
@@ -4566,7 +4571,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.2355',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1116.0020',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
