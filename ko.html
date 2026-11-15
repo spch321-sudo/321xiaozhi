@@ -6,21 +6,21 @@
 <title>샤오즈 Q&A</title>
 <meta name="description" content="샤오즈 Q&A: 성경, 신앙, 생활 질문 · 킹덤 321 공중 펠로십">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.1730">
-<link rel="icon" href="favicon.ico?v=v2026.1115.1730" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.1730">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.1730">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.1730">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.1730">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.1730">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.1810">
+<link rel="icon" href="favicon.ico?v=v2026.1115.1810" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.1810">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.1810">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.1810">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.1810">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.1810">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="샤오즈 Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.1730"></script>
-<script src="xzplus.js?v=v2026.1115.1730" defer></script>
+<script src="k321gate.js?v=v2026.1115.1810"></script>
+<script src="xzplus.js?v=v2026.1115.1810" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ko';</script>
@@ -1427,14 +1427,18 @@ function parseQs(t){
  t=String(t||'').replace(/```[a-z]*/gi,'');
  var arr=parseArr(t).filter(function(o){ return o&&typeof o.q==='string'&&o.q.length>=4&&o.q.length<=200; }).map(function(o){ return [String(o.i||'💬').slice(0,4),String(o.t||o.q).slice(0,24),o.q]; });
  if(arr.length) return arr.slice(0,5);
- var ls=t.split(/\n+/).map(function(x){ return x.replace(/^\s*(?:[-*•·]|\d+[.)、．]|[一二三四五][、.])\s*/,'').replace(/^["'“「]|["'”」,，]$/g,'').trim(); }).filter(function(x){ return x.length>=4&&x.length<=200&&/[?？]$/.test(x); });
+ var out=[],re=/\{\s*"i"\s*:\s*"((?:[^"\\]|\\.)*)"\s*,\s*"t"\s*:\s*"((?:[^"\\]|\\.)*)"\s*,\s*"q"\s*:\s*"((?:[^"\\]|\\.)*)"/g,m;
+ while((m=re.exec(t))){ var q=m[3].replace(/\\"/g,'"'); if(q.length>=4&&q.length<=200) out.push([m[1].slice(0,4)||'💬',m[2].slice(0,24),q]); }
+ if(out.length) return out.slice(0,5);
+ if(/"[iqt]"\s*:|[{}\[\]]/.test(t)) return [];
+ var ls=t.split(/\n+/).map(function(x){ return x.replace(/^\s*(?:[-*•·]|\d+[.)、．]|[一二三四五][、.])\s*/,'').replace(/^["'“「]|["'”」,，]$/g,'').trim(); }).filter(function(x){ return x.length>=4&&x.length<=120&&/[?？]$/.test(x); });
  return ls.slice(0,5).map(function(q){ return ['💬',q.slice(0,24),q]; });
 }
 function genFU(idx,force){
  var m=S.chat[idx]; if(!m||(m.fu&&!force)||m.fuBusy) return;
  var ask=T('fuAsk',qOf(idx),plain(m.t).slice(0,900),X.audName(X.aud()));
  m.fuBusy=true; if(force) m.fu=null; paintFU(idx);
- function once(){ return quickAsk(ask,700).then(parseQs); }
+ function once(){ return quickAsk(ask,1100).then(parseQs); }
  once().catch(function(){ return []; }).then(function(a){ return a.length?a:once().catch(function(){ return []; }); }).then(function(arr){
   if(arr.length) m.fu=arr;
  }).then(function(){ m.fuBusy=false; save(); paintFU(idx); });
@@ -3725,7 +3729,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.1730',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.1810',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
