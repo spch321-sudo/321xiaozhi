@@ -6,21 +6,21 @@
 <title>シャオジー Q&A</title>
 <meta name="description" content="シャオジー Q&A：聖書・信仰・生活の質問 · キングダム321空中フェローシップ">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2030">
-<link rel="icon" href="favicon.ico?v=v2026.1115.2030" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2030">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2030">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2030">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2030">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2030">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2130">
+<link rel="icon" href="favicon.ico?v=v2026.1115.2130" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2130">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2130">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2130">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2130">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2130">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="シャオジー Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.2030"></script>
-<script src="xzplus.js?v=v2026.1115.2030" defer></script>
+<script src="k321gate.js?v=v2026.1115.2130"></script>
+<script src="xzplus.js?v=v2026.1115.2130" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ja';</script>
@@ -399,6 +399,13 @@ body.kid #c10sel{display:none!important}
 .c11art{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--soft);margin:6px 0 10px}
 .c11art b{display:block;font-size:1.08em;margin-bottom:4px}.c11art p{margin:0 0 8px;color:var(--muted);font-size:.92em}
 .c11art small{display:inline-block;margin:0 6px 4px 0;padding:2px 10px;border-radius:999px;background:var(--page);border:1px solid var(--line);font-size:.78em;color:var(--muted)}
+/* ct12-1115 聽講筆記、畫布、大檔案 */
+.c12ta{min-height:140px;line-height:1.7;margin:8px 0}
+.c12live{color:#c0392b;font-weight:700;font-size:.92em;animation:c12p 1.4s infinite}
+@keyframes c12p{50%{opacity:.55}}
+.c12sum{margin:12px 0 6px;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--soft);line-height:1.8}
+.c12sum h1,.c12sum h2{font-size:1.05em;margin:10px 0 4px}
+.c12cv button:disabled,.ctrow2 button:disabled{opacity:.5}
 /* ct8-1113 敬拜家庭宣教 */
 .c8score{text-align:center;padding:10px 0}.c8score b{font-size:1.5em;color:var(--accent)}.c8score div{margin-top:4px}
 .c8ref{font-weight:700;margin:8px 0 4px}
@@ -3379,6 +3386,7 @@ function ctFbText(kind,i,reasons,note,attach){
 }
 function ctSheetHTML(){
  var k=S.sheet,h='';
+ var x12=ct12Sheet(k); if(x12!=null) return x12;
  var x11=ct11Sheet(k); if(x11!=null) return x11;
  var x8=ct8Sheet(k); if(x8!=null) return x8;
  var x7=ct7Sheet(k); if(x7!=null) return x7;
@@ -3421,6 +3429,7 @@ function ctSheetAfter(x){ ct2After(); ct7After();
  var at=$('ctfbatt'); if(at) at.onchange=function(){ if(S.ctFb) S.ctFb.att=at.checked; };
 }
 function ctAct(a,b,i,fid,v){
+ if(ct12Act(a,b,i,fid,v)) return;
  if(ct11Act(a,b,i,fid,v)) return;
  if(ct10Act(a,b,i,fid,v)) return;
  if(ct8Act(a,b,i,fid,v)) return;
@@ -4107,6 +4116,244 @@ function ct11Act(a,b,i,fid,v){
  else return false;
  return true;
 }
+/* ---------- 即時聽講筆記・畫布式改寫・大檔案智慧擷取（ct12-1115） ---------- */
+var C12S={
+ noteT:'🎙 聽講筆記|🎙 听讲笔记|🎙 Sermon notes|🎙 설교 노트|🎙 聞く礼拝ノート|🎙 Catatan khotbah|🎙 Notes sa sermon',
+ noteShort:'邊聽邊記，聚會完直接整理|边听边记，聚会完直接整理|Listen, transcribe, summarize|듣고 받아 적고 정리|聞きながら記録して要約|Dengar, catat, ringkas|Pamati, isulat, summarya',
+ noteH:'聽講筆記|听讲笔记|Sermon notes|설교 노트|聞く礼拝ノート|Catatan khotbah|Notes sa sermon',
+ noteHint:'聚會或講道時打開，手機邊聽邊轉成文字，結束後小智整理成重點、經文、行動與小組題。請保持螢幕開著、手機靠近講者；也可以直接貼上別處的逐字稿。|聚会或讲道时打开，手机边听边转成文字，结束后小智整理成重点、经文、行动与小组题。请保持屏幕开着、手机靠近讲者；也可以直接粘贴别处的逐字稿。|Open it during a meeting or sermon: your phone transcribes as it listens, then Xiaozhi turns it into key points, Scripture, action steps and group questions. Keep the screen on and the phone near the speaker; you can also paste a transcript from elsewhere.|모임이나 설교 중에 켜 두면 휴대폰이 듣고 글로 옮기고, 끝나면 샤오즈가 핵심, 성경 구절, 실천, 나눔 질문으로 정리해요. 화면을 켜 두고 휴대폰을 말하는 사람 가까이 두세요. 다른 곳의 녹취록을 붙여넣어도 돼요.|集会や説教中に開くと、スマホが聞いて文字にし、終わるとシャオジーが要点・聖句・実践・分かち合いの質問にまとめます。画面をつけたまま、話し手の近くに置いてください。ほかの文字起こしを貼り付けても使えます。|Buka saat pertemuan atau khotbah: ponsel menyalin suara jadi teks, lalu Xiaozhi merangkum poin, ayat, langkah dan pertanyaan kelompok. Biarkan layar menyala dan dekatkan ponsel ke pembicara; transkrip dari tempat lain juga bisa ditempel.|Ablihi sa miting o sermon: ang telepono mag-transcribe, unya si Xiaozhi mo-summarya sa punto, bersikulo, lakang ug pangutana sa grupo. Pabilin nga bukas ang screen ug duol sa nagsulti; pwede usab i-paste ang transcript gikan sa laing lugar.',
+ noteStart:'🎙 開始聽|🎙 开始听|🎙 Start listening|🎙 듣기 시작|🎙 聞き始める|🎙 Mulai dengar|🎙 Sugdi pagpamati',
+ noteStop:'⏹ 停止|⏹ 停止|⏹ Stop|⏹ 중지|⏹ 停止|⏹ Berhenti|⏹ Undangon',
+ noteLive:'聽寫中…|听写中…|Listening…|받아 적는 중…|聞き取り中…|Mendengarkan…|Namati…',
+ noteNoSR:'這個瀏覽器不支援語音辨識。可以用手機鍵盤上的麥克風聽寫，或直接貼上逐字稿。|这个浏览器不支持语音识别。可以用手机键盘上的麦克风听写，或直接粘贴逐字稿。|This browser does not support speech recognition. Use the microphone on your keyboard, or paste a transcript.|이 브라우저는 음성 인식을 지원하지 않아요. 키보드의 마이크를 쓰거나 녹취록을 붙여넣으세요.|このブラウザは音声認識に対応していません。キーボードのマイクを使うか、文字起こしを貼り付けてください。|Browser ini tidak mendukung pengenalan suara. Pakai mikrofon di keyboard atau tempel transkrip.|Dili suportado sa browser ang speech recognition. Gamita ang mikropono sa keyboard o i-paste ang transcript.',
+ noteDenied:'無法使用麥克風，請在瀏覽器允許麥克風權限|无法使用麦克风，请在浏览器允许麦克风权限|Cannot use the microphone — please allow microphone access|마이크를 쓸 수 없어요. 마이크 권한을 허용해 주세요|マイクを使えません。マイクの許可をオンにしてください|Mikrofon tidak bisa dipakai — izinkan akses mikrofon|Dili magamit ang mikropono — i-allow ang access',
+ notePh:'聽到的文字會出現在這裡，也可以直接貼上或修改…|听到的文字会出现在这里，也可以直接粘贴或修改…|What is heard appears here — you can also paste or edit…|들은 내용이 여기에 나타나요. 붙여넣거나 고칠 수도 있어요…|聞き取った文字がここに出ます。貼り付けや修正もできます…|Teks yang terdengar muncul di sini — bisa ditempel atau diedit…|Dinhi makita ang nadungog — pwede usab i-paste o usbon…',
+ noteMake:'✨ 整理成筆記|✨ 整理成笔记|✨ Make notes|✨ 노트로 정리|✨ ノートにまとめる|✨ Buat catatan|✨ Himoa nga notes',
+ noteMaking:'小智正在整理筆記…（約半分鐘）|小智正在整理笔记…（约半分钟）|Xiaozhi is making your notes… (about half a minute)|샤오즈가 노트를 정리하는 중…(약 30초)|シャオジーがノートにまとめています…（約30秒）|Xiaozhi menyusun catatan… (sekitar 30 detik)|Gihimo ni Xiaozhi ang notes… (mga 30 segundos)',
+ noteFail:'整理失敗，逐字稿還在，請再試一次|整理失败，逐字稿还在，请再试一次|Could not make notes — your transcript is kept, please try again|정리하지 못했어요. 글은 그대로 있으니 다시 시도하세요|まとめられませんでした。文字は残っています。もう一度お試しください|Gagal — transkrip tetap ada, coba lagi|Napakyas — naa pa ang transcript, sulayi pag-usab',
+ noteLittle:'文字太少，先多聽一會兒|文字太少，先多听一会儿|Not enough text yet — listen a little longer|글이 너무 적어요. 조금 더 들어 보세요|文字が少なすぎます。もう少し聞いてください|Teks terlalu sedikit — dengarkan lebih lama|Gamay pa ang teksto — pamati pa gamay',
+ noteClear:'🗑 清除|🗑 清除|🗑 Clear|🗑 지우기|🗑 クリア|🗑 Hapus|🗑 Papasa',
+ noteCopy:'複製筆記|复制笔记|Copy notes|노트 복사|ノートをコピー|Salin catatan|Kopyaha ang notes',
+ noteShare:'分享|分享|Share|공유|共有|Bagikan|Ipaambit',
+ noteGrp:'🏡 送進小家|🏡 送进小家|🏡 Send to group|🏡 소그룹으로|🏡 グループへ|🏡 Kirim ke kelompok|🏡 Ipadala sa grupo',
+ noteAsk:'💬 帶著筆記問小智|💬 带着笔记问小智|💬 Ask Xiaozhi about it|💬 노트로 샤오즈에게 묻기|💬 ノートでシャオジーに聞く|💬 Tanya Xiaozhi soal ini|💬 Pangutana kang Xiaozhi bahin dinhi',
+ noteAskQ:'以下是我的聽講筆記，請幫我：|以下是我的听讲笔记，请帮我：|Here are my sermon notes. Please help me: |다음은 내 설교 노트예요. 도와주세요: |以下は私の聞き書きノートです。お願いします：|Berikut catatan khotbah saya. Tolong bantu: |Mao kini ang akong sermon notes. Palihog tabangi ko: ',
+ noteRecent:'最近的筆記|最近的笔记|Recent notes|최근 노트|最近のノート|Catatan terbaru|Bag-ong notes',
+ noteDel:'刪除|删除|Delete|삭제|削除|Hapus|Papasa',
+ noteCopied:'已複製|已复制|Copied|복사했어요|コピーしました|Disalin|Na-copy',
+ noteWarn:'語音辨識可能有錯字，經文與人名請核對。|语音识别可能有错字，经文与人名请核对。|Speech recognition can make mistakes — please check verses and names.|음성 인식에는 오류가 있을 수 있어요. 성경 구절과 이름을 확인하세요.|音声認識には誤りがあります。聖句や名前をご確認ください。|Pengenalan suara bisa keliru — periksa ayat dan nama.|Mahimong sayop ang speech recognition — susiha ang bersikulo ug ngalan.',
+ cvT:'🖊 放進畫布|🖊 放进画布|🖊 Edit in canvas|🖊 캔버스에서 고치기|🖊 キャンバスで編集|🖊 Edit di kanvas|🖊 I-edit sa canvas',
+ cvH:'畫布|画布|Canvas|캔버스|キャンバス|Kanvas|Canvas',
+ cvHint:'直接修改文字；選一段再按下面的指令，只會改那一段，沒選就改全部。|直接修改文字；选一段再按下面的指令，只会改那一段，没选就改全部。|Edit the text directly. Select a part and tap an instruction to change only that part; with no selection the whole text changes.|글을 직접 고칠 수 있어요. 일부를 선택하고 아래 지시를 누르면 그 부분만, 선택이 없으면 전체가 바뀌어요.|文章を直接編集できます。一部を選んで下の指示を押すとその部分だけ、選択がなければ全体が変わります。|Edit teks langsung. Pilih sebagian lalu ketuk perintah untuk mengubah bagian itu saja; tanpa pilihan, seluruh teks berubah.|I-edit ang teksto. Pilia ang bahin ug i-tap ang instruksyon aron kini ra ang usbon; kung walay pilion, ang tibuok teksto.',
+ cvAll:'目前會改：全部|目前会改：全部|Will change: whole text|변경 대상: 전체|対象：全体|Yang diubah: seluruh teks|Usbon: tibuok teksto',
+ cvSel:'目前會改：選取的 {0} 字|目前会改：选取的 {0} 字|Will change: the selected {0} characters|변경 대상: 선택한 {0}자|対象：選択した{0}字|Yang diubah: {0} karakter terpilih|Usbon: ang napili nga {0} ka karakter',
+ cv_spoken:'更口語|更口语|More spoken|더 구어체로|もっと話し言葉に|Lebih lisan|Mas sinultihan',
+ cv_short:'更簡短|更简短|Shorter|더 짧게|もっと短く|Lebih singkat|Mas mubo',
+ cv_warm:'更溫暖|更温暖|Warmer|더 따뜻하게|もっと温かく|Lebih hangat|Mas mainit',
+ cv_elder:'長輩好讀|长辈好读|Easy to read|읽기 쉽게|読みやすく|Mudah dibaca|Dali basahon',
+ cv_verse:'加一節經文|加一节经文|Add a verse|구절 추가|聖句を足す|Tambah ayat|Dugangi og bersikulo',
+ cv_long:'擴寫|扩写|Expand|늘려 쓰기|膨らませる|Kembangkan|Dugangi',
+ cv_trans:'翻譯|翻译|Translate|번역|翻訳|Terjemahkan|Hubad',
+ cvOwn:'自己下指令，例如：改成給青少年聽的版本|自己下指令，例如：改成给青少年听的版本|Your own instruction, e.g. rewrite for teenagers|직접 지시, 예: 청소년용으로 바꿔 줘|自分の指示。例：中高生向けに|Perintah sendiri, mis. ubah untuk remaja|Imong instruksyon, pananglitan para sa tin-edyer',
+ cvGo:'執行|执行|Go|실행|実行|Jalankan|Himoa',
+ cvUndo:'↶ 上一步|↶ 上一步|↶ Undo|↶ 되돌리기|↶ 元に戻す|↶ Urungkan|↶ Ibalik',
+ cvBusy:'小智改寫中…|小智改写中…|Rewriting…|고쳐 쓰는 중…|書き直し中…|Menulis ulang…|Gisulat pag-usab…',
+ cvFail:'改寫失敗，請再試一次|改写失败，请再试一次|Rewrite failed — try again|고치지 못했어요. 다시 시도하세요|書き直せませんでした。もう一度|Gagal — coba lagi|Napakyas — sulayi pag-usab',
+ cvCopy:'複製|复制|Copy|복사|コピー|Salin|Kopyaha',
+ cvShare:'分享|分享|Share|공유|共有|Bagikan|Ipaambit',
+ cvSave:'存回這則回答|存回这则回答|Save to this answer|이 답변에 저장|この回答に保存|Simpan ke jawaban ini|I-save sa kini nga tubag',
+ cvSaved:'已存回回答（可用「上一步」以外的方式還原：點回答的「⋯」→ 還原）|已存回回答|Saved to the answer|답변에 저장했어요|回答に保存しました|Disimpan ke jawaban|Na-save sa tubag',
+ cvTooLong:'文字太長，請先選一段再改（單次最多 8000 字）|文字太长，请先选一段再改（单次最多 8000 字）|Text is too long — select a part first (max 8000 characters)|글이 너무 길어요. 일부를 선택하세요(최대 8000자)|文章が長すぎます。一部を選んでください（最大8000字）|Teks terlalu panjang — pilih sebagian (maks 8000 karakter)|Taas ra ang teksto — pili og bahin (hangtod 8000)',
+ bigReady:'已附加「{0}」（{1} 字）：長檔案，每次提問小智會挑出最相關的段落來看|已附加“{0}”（{1} 字）：长文件，每次提问小智会挑出最相关的段落来看|Attached "{0}" ({1} characters): a long file — Xiaozhi picks the most relevant parts for each question|"{0}" 첨부됨({1}자): 긴 파일이라 질문마다 관련 부분을 골라 읽어요|「{0}」を添付しました（{1}字）：長いファイルなので、質問ごとに関連する部分を選んで読みます|"{0}" dilampirkan ({1} karakter): berkas panjang — Xiaozhi memilih bagian paling relevan untuk tiap pertanyaan|Naka-attach ang "{0}" ({1} ka karakter): taas nga file — pilion ni Xiaozhi ang labing may kalambigitan matag pangutana'
+};
+function C12(k,a,b){ var s=C5L(C12S[k]||k); if(a!=null) s=s.split('{0}').join(a); if(b!=null) s=s.split('{1}').join(b); return s; }
+var C12ZH=(LANG==='zh'||LANG==='zs'||LANG==='ja');
+
+/* ===== 3. 大檔案智慧擷取 ===== */
+var C12CH={};
+c10Load=function(f){
+ if(/^image\//.test(f.type||'')||/\.(jpe?g|png|gif|webp|heic)$/i.test(f.name)){ c3LoadImg(f); return; }
+ toast(C10('fileReading',f.name));
+ c3ReadFile(f).then(function(t){
+  t=String(t||'').replace(/\u0000/g,'').replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+  if(t.length<10){ toast(C10('fileBad')); return; }
+  if(t.length<=C10_MAX){ S.c10F={name:f.name.slice(0,60),chars:t.length,text:t,cut:false}; c10Prev(); toast(C10('fileReady',f.name)); }
+  else {
+   var fid='f'+Date.now().toString(36),ch=c3Chunk(t.slice(0,600000)); C12CH[fid]=ch; idbPut('xzf_'+fid,{name:f.name,ch:ch});
+   var L=lsGet('bigf',[]); if(!(L instanceof Array)) L=[]; L.push(fid); while(L.length>8){ var o=L.shift(); delete C12CH[o]; idbPut('xzf_'+o,null); } lsSet('bigf',L);
+   S.c10F={name:f.name.slice(0,60),chars:Math.min(t.length,600000),fid:fid}; c10Prev(); toast(C12('bigReady',f.name,Math.min(t.length,600000)));
+  }
+  try{ $('q').focus(); }catch(e){}
+ }).catch(function(){ toast(C10('fileBad')); });
+};
+var c12_ctx=c10Ctx; c10Ctx=function(F){ return F.fid?'':c12_ctx(F); };
+var c12_c6=c6UserMsg; c6UserMsg=function(u){ var F=S.c10F; u=c12_c6(u); if(F&&F.fid) u.fid=F.fid; return u; };
+var c12_ra=reAnswerLast;
+reAnswerLast=function(msg){
+ if(!S.busy){ var u=null; for(var i=S.chat.length-1;i>=0;i--){ if(S.chat[i].role==='user'){ u=S.chat[i]; break; } } if(u&&u.fid) S.c10F={name:u.file,chars:u.fch||0,fid:u.fid}; }
+ var r=c12_ra(msg); if(!r&&S.c10F&&S.c10F.fid) S.c10F=null; return r;
+};
+function c12Fid(){ for(var i=S.chat.length-1;i>=0;i--){ if(S.chat[i].role==='user'&&S.chat[i].fid) return S.chat[i]; } return null; }
+var c12_rd=c3Ready;
+c3Ready=function(){ return c12_rd().then(function(){ var u=c12Fid(); if(!u||C12CH[u.fid]) return; return idbGet('xzf_'+u.fid).then(function(v){ if(v&&v.ch) C12CH[u.fid]=v.ch; },function(){}); }); };
+var C12SUMRE=/整理|重點|重点|摘要|總結|总结|概要|大綱|大纲|summar|overview|outline|key points|요약|핵심|要約|要点|ringkas|rangkum|buod/i;
+function c12Pick(ch,q,q0){
+ var out=[];
+ if(!q||C12SUMRE.test(q0||q)||(q0||q)===C10('fileAsk')){
+  var n=Math.min(ch.length,9),used=0; for(var i=0;i<n;i++){ var k=n===1?0:Math.round(i*(ch.length-1)/(n-1)); if(used+ch[k].length>8000) break; used+=ch[k].length; out.push({k:k,t:ch[k]}); }
+  return out;
+ }
+ var pk=c3Retrieve([{name:'f',ch:ch}],q); for(var j=0;j<pk.length;j++) out.push({k:pk[j].k,t:pk[j].t}); return out;
+}
+function c12Sys(){
+ var u=c12Fid(); if(!u||!C12CH[u.fid]) return '';
+ var ch=C12CH[u.fid],q='',q0=''; for(var i=S.chat.length-1;i>=0;i--) if(S.chat[i].role==='user'){ q=q0=S.chat[i].t; if(i>=2){ for(var j=i-1;j>=0;j--) if(S.chat[j].role==='user'){ q+=' '+S.chat[j].t; break; } } break; }
+ var pk=c12Pick(ch,q,q0); if(!pk.length) return '';
+ return '\n\n[The user attached a long file "'+u.file+'" ('+(u.fch||'')+' characters, '+ch.length+' parts). Below are excerpts selected for the current question; they are NOT the whole file. Answer from them, say so if they do not cover the question, and mention which part of the file you used (the part numbers are shown).]\n'+pk.map(function(x){ return '〔part '+(x.k+1)+'/'+ch.length+'〕\n'+x.t; }).join('\n---\n');
+}
+var c12_sp=sysPrompt; sysPrompt=function(){ return c12_sp()+c12Sys(); };
+
+/* ===== 1. 即時聽講筆記 ===== */
+var C12R={active:false,rec:null,base:'',t0:0,tm:0,wl:null,sv:0};
+function c12Notes(){ var l=lsGet('notes',[]); return (l instanceof Array)?l:[]; }
+function c12N(){ if(!S.c12N) S.c12N={tr:String(lsGet('notedraft','')||''),sum:'',busy:false,id:''}; return S.c12N; }
+function c12Draft(){ clearTimeout(C12R.sv); C12R.sv=setTimeout(function(){ lsSet('notedraft',c12N().tr.slice(-60000)); },600); }
+function c12Set(v){ var N=c12N(); N.tr=v; var ta=$('c12tr'); if(ta){ ta.value=v; ta.scrollTop=ta.scrollHeight; } c12Draft(); }
+function c12Tick(){ var el=$('c12tm'); if(!el) return; var s=Math.floor((Date.now()-C12R.t0)/1000); el.textContent=Math.floor(s/60)+':'+('0'+(s%60)).slice(-2); }
+function c12Begin(){
+ var r; try{ r=new SRC(); }catch(e){ C12R.active=false; toast(C12('noteNoSR')); c12Paint(); return; }
+ C12R.rec=r; r.lang=MICLANG[LANG]||'en-US'; r.interimResults=true; r.continuous=true; r.maxAlternatives=1;
+ var fin='',tmp='';
+ r.onresult=function(ev){ fin=''; tmp=''; for(var i=0;i<ev.results.length;i++){ var t=ev.results[i][0].transcript; if(ev.results[i].isFinal) fin+=t; else tmp+=t; } c12Set(C12R.base+fin+tmp); };
+ r.onerror=function(ev){ var c=ev&&ev.error; if(c==='not-allowed'||c==='service-not-allowed'){ C12R.active=false; toast(C12('noteDenied')); } };
+ r.onend=function(){
+  C12R.base+=fin+tmp; if(!C12ZH&&C12R.base&&!/\s$/.test(C12R.base)) C12R.base+=' ';
+  if(C12R.rec===r) C12R.rec=null;
+  if(C12R.active){ setTimeout(function(){ if(C12R.active&&!C12R.rec) c12Begin(); },350); } else c12Paint();
+ };
+ try{ r.start(); }catch(e){ C12R.rec=null; }
+}
+function c12Start(){
+ if(!SRC){ toast(C12('noteNoSR')); try{ $('c12tr').focus(); }catch(e){} return; }
+ try{ if(MIC.on) micStop(true); }catch(e){}
+ try{ stopSpeak(); }catch(e){}
+ var N=c12N(); C12R.base=N.tr?(N.tr.replace(/\s+$/,'')+(C12ZH?'':' ')):''; C12R.active=true; C12R.t0=Date.now(); clearInterval(C12R.tm); C12R.tm=setInterval(c12Tick,1000);
+ try{ if(navigator.wakeLock&&navigator.wakeLock.request) navigator.wakeLock.request('screen').then(function(l){ C12R.wl=l; },function(){}); }catch(e){}
+ c12Begin(); c12Paint();
+}
+function c12Stop(){
+ if(!C12R.active&&!C12R.rec) return;
+ C12R.active=false; clearInterval(C12R.tm); var r=C12R.rec; if(r){ try{ r.stop(); }catch(e){} }
+ try{ if(C12R.wl){ C12R.wl.release(); C12R.wl=null; } }catch(e){}
+ c12Paint();
+}
+function c12Paint(){ if(S.sheet==='ctnote') renderSheet(); }
+var c12_cs=closeSheet; closeSheet=function(){ if(C12R.active) c12Stop(); return c12_cs.apply(this,arguments); };
+document.addEventListener('visibilitychange',function(){ if(!document.hidden&&C12R.active){ try{ if(navigator.wakeLock&&navigator.wakeLock.request) navigator.wakeLock.request('screen').then(function(l){ C12R.wl=l; },function(){}); }catch(e){} if(!C12R.rec) c12Begin(); } });
+document.addEventListener('input',function(e){ var t=e.target; if(t&&t.id==='c12tr'){ c12N().tr=t.value; c12Draft(); } else if(t&&t.id==='c12ta'&&S.c12C){ S.c12C.text=t.value; c12CvStatus(); } });
+function c12NoteHTML(){
+ var N=c12N(),h='<div class="sheethead"><h2>'+esc(C12('noteH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+ if(!N.tr&&!N.sum&&!C12R.active) h+='<p class="hint">'+esc(C12('noteHint'))+'</p>';
+ h+='<div class="ctrow2"><button class="ctbtn '+(C12R.active?'':'pri')+'" data-act="ctnotego">'+esc(C12R.active?C12('noteStop'):C12('noteStart'))+'</button>'+(C12R.active?'<span class="c12live">● '+esc(C12('noteLive'))+' <b id="c12tm">0:00</b></span>':'')+'</div>';
+ h+='<textarea id="c12tr" class="ctta c12ta" rows="9" placeholder="'+esc(C12('notePh'))+'"'+(C12R.active?' readonly':'')+'>'+esc(N.tr)+'</textarea>';
+ if(!C12R.active) h+='<div class="ctrow2" style="margin-top:8px"><button class="ctbtn pri" data-act="ctnotemake"'+(N.busy?' disabled':'')+'>'+esc(C12('noteMake'))+'</button><button class="ctbtn" data-act="ctnoteclear">'+esc(C12('noteClear'))+'</button></div>';
+ if(N.busy) h+='<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C12('noteMaking'))+'</p>';
+ if(N.sum&&!N.busy){
+  h+='<div class="c12sum body">'+md(N.sum)+'</div><p class="hint">'+esc(C12('noteWarn'))+'</p><div class="ctrow2"><button class="ctbtn" data-act="ctnotecopy">'+esc(C12('noteCopy'))+'</button><button class="ctbtn" data-act="ctnoteshare">'+esc(C12('noteShare'))+'</button></div><div class="sec" style="margin-top:8px"><button class="wide" data-act="ctnotegrp"><span>'+esc(C12('noteGrp'))+'</span><span>›</span></button><button class="wide" data-act="ctnoteask"><span>'+esc(C12('noteAsk'))+'</span><span>›</span></button></div>';
+ }
+ var L=c12Notes();
+ if(L.length&&!C12R.active){ h+='<div class="sec"><h3>'+esc(C12('noteRecent'))+'</h3>'; for(var i=0;i<L.length&&i<12;i++) h+='<div class="ctmemrow"><span><a href="javascript:void 0" data-act="ctnoteopen" data-id="'+L[i].id+'">'+esc(L[i].title)+'</a><small>'+esc(new Date(L[i].ts).toLocaleString())+'</small></span><button class="cdel" data-act="ctnotedel" data-id="'+L[i].id+'" aria-label="'+esc(C12('noteDel'))+'">'+IC.x+'</button></div>'; h+='</div>'; }
+ return h;
+}
+function c12Sum(tr,done,fail){
+ var LN=C11LN[LANG]||'English',base='You are helping a church fellowship app. Below is a (speech-recognized, possibly error-prone) transcript';
+ function ask(prompt,maxT){ return quickAsk(prompt,maxT); }
+ function chunks(t){ var out=[],i=0; while(i<t.length){ var e=Math.min(t.length,i+7000); if(e<t.length){ var c=Math.max(t.lastIndexOf('。',e),t.lastIndexOf('. ',e),t.lastIndexOf('\n',e)); if(c>i+3000) e=c+1; } out.push(t.slice(i,e)); i=e; } return out; }
+ var final=function(src){
+  return ask(base+' of a sermon or meeting. Write well-organized notes in '+LN+' as Markdown with these sections (translate the headings into '+LN+'): a "# " title line; the main theme in one sentence; "## " key points (3-7 bullets); "## " Scripture mentioned (list only references or verses actually mentioned; if unsure of the exact verse text, give only the reference); "## " take-home actions (1-3 concrete steps); "## " small-group discussion questions (3, numbered). Fix obvious recognition errors only when you are sure; never invent content that is not in the transcript.\nTRANSCRIPT:\n'+src,2200);
+ };
+ var t=tr.slice(0,60000);
+ var p=t.length<=9000?final(t):(function(){ var cs=chunks(t).slice(0,9),notes=[],pr=Promise.resolve(); cs.forEach(function(c,k){ pr=pr.then(function(){ return ask(base+' (part '+(k+1)+' of '+cs.length+'). In under 200 words in '+LN+', list its key points, every Bible reference mentioned, and any application or question raised.\nTRANSCRIPT:\n'+c,700).then(function(x){ notes.push('['+(k+1)+'] '+x); }); }); }); return pr.then(function(){ return final('(condensed notes of the transcript, in order)\n'+notes.join('\n')); }); })();
+ p.then(function(x){ x=String(x||'').trim(); if(x.length<20) throw new Error('short'); done(x); },function(e){ fail(e); });
+}
+function c12Make(){
+ var N=c12N(); if(N.busy) return; var tr=(N.tr||'').trim();
+ if(tr.length<30){ toast(C12('noteLittle')); return; }
+ N.busy=true; N.sum=''; renderSheet();
+ c12Sum(tr,function(sum){ N.busy=false; N.sum=sum;
+  var m=sum.match(/^\s*#\s+(.+)$/m),title=(m?m[1]:tr.slice(0,24)).replace(/[#*]/g,'').trim().slice(0,40)||tr.slice(0,24);
+  var L=c12Notes(),id=N.id||('n'+Date.now().toString(36)); N.id=id; L=L.filter(function(x){ return x.id!==id; }); L.unshift({id:id,ts:Date.now(),title:title,tr:tr.slice(-40000),sum:sum}); lsSet('notes',L.slice(0,20)); lsSet('notedraft','');
+  if(S.sheet==='ctnote') renderSheet(); },function(){ N.busy=false; toast(C12('noteFail')); if(S.sheet==='ctnote') renderSheet(); });
+}
+
+/* ===== 2. 畫布式改寫 ===== */
+var C12CV=['spoken','short','warm','elder','verse','long','trans'];
+var C12INS={spoken:'Make it more conversational and natural to say aloud.',short:'Make it shorter and tighter while keeping the key points.',warm:'Make the tone warmer, gentler and more encouraging.',elder:'Rewrite it for older readers: short sentences, plain words, short paragraphs.',verse:'Add one fitting Bible verse where it fits best, quoted exactly from the standard translation of the text\'s language with its reference.',long:'Expand it with a little more explanation and one everyday example.'};
+function c12CvStatus(){ var el=$('c12st'),ta=$('c12ta'); if(!el||!ta) return; var s=ta.selectionStart,e=ta.selectionEnd; if(e>s) S.c12C.sel=[s,e]; var sel=S.c12C.sel; el.textContent=(sel&&sel[1]>sel[0]&&sel[1]<=ta.value.length)?C12('cvSel',sel[1]-sel[0]):C12('cvAll'); }
+function c12CvHTML(){
+ var C=S.c12C||{text:''},h='<div class="sheethead"><h2>'+esc(C12('cvH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C12('cvHint'))+'</p>';
+ h+='<textarea id="c12ta" class="ctta c12ta" rows="12">'+esc(C.text)+'</textarea><p class="hint" id="c12st">'+esc(C12('cvAll'))+'</p><div class="ctchips c12cv">';
+ for(var i=0;i<C12CV.length;i++) h+='<button class="chip" data-act="ctcvgo" data-v="'+C12CV[i]+'">'+esc(C12('cv_'+C12CV[i]))+'</button>';
+ h+='</div><div class="ctrow c12cv" style="margin-top:8px"><input id="c12own" class="ctin" maxlength="120" placeholder="'+esc(C12('cvOwn'))+'"><button class="ctbtn pri" data-act="ctcvgo" data-v="own">'+esc(C12('cvGo'))+'</button></div>';
+ h+='<div class="ctrow2 c12cv" style="margin-top:10px"><button class="ctbtn" data-act="ctcvundo">'+esc(C12('cvUndo'))+'</button><button class="ctbtn" data-act="ctcvcopy">'+esc(C12('cvCopy'))+'</button><button class="ctbtn" data-act="ctcvshare">'+esc(C12('cvShare'))+'</button></div><button class="ctbtn pri c12cv" data-act="ctcvsave" style="margin-top:8px;width:100%">'+esc(C12('cvSave'))+'</button>';
+ return h;
+}
+function c12CvBusy(on){ var L=document.querySelectorAll('.c12cv button'); for(var i=0;i<L.length;i++) L[i].disabled=!!on; var el=$('c12st'); if(el&&on) el.textContent=C12('cvBusy'); }
+function c12CvGo(v){
+ var C=S.c12C,ta=$('c12ta'); if(!C||!ta||C.busy) return;
+ var ins=v==='own'?String(($('c12own')||{}).value||'').trim():(v==='trans'?'Translate it into '+C10('trTo')+', keeping the meaning and tone.':C12INS[v]);
+ if(!ins){ try{ $('c12own').focus(); }catch(e){} return; }
+ var full=ta.value,s=ta.selectionStart,e=ta.selectionEnd; if(!(e>s)&&C.sel&&C.sel[1]>C.sel[0]&&C.sel[1]<=full.length){ s=C.sel[0]; e=C.sel[1]; }
+ var part=e>s,seg=part?full.slice(s,e):full;
+ if(seg.length>8000){ toast(C12('cvTooLong')); return; }
+ C.busy=true; c12CvBusy(true);
+ postRetry({max_tokens:3000,tier:'deep',system:'You are a careful editor for a Christian fellowship app. Follow the instruction and return ONLY the rewritten text — no preface, no explanation, no quotation marks around it. Keep the language of the text unless told to translate. Keep Bible quotations word for word. Do not add facts that are not in the text. Keep Markdown structure if present.',messages:[{role:'user',content:'INSTRUCTION: '+ins+'\n\nTEXT:\n'+seg}]}).then(extractReply).then(function(out){
+  out=String(out||'').trim(); if(!out) throw new Error('empty');
+  C.undo=(C.undo||[]); C.undo.push(full); if(C.undo.length>15) C.undo.shift();
+  var nv=part?full.slice(0,s)+out+full.slice(e):out; C.text=nv; C.sel=null; var t2=$('c12ta'); if(t2) t2.value=nv;
+ }).catch(function(){ toast(C12('cvFail')); }).then(function(){ C.busy=false; c12CvBusy(false); c12CvStatus(); });
+}
+var c12_mx=c5MsgExtra;
+c5MsgExtra=function(i){ var h=c12_mx(i),k=h.lastIndexOf('</div>'); if(k<0) return h; return h.slice(0,k)+'<button class="wide" data-act="ctcv" data-i="'+i+'"><span>'+esc(C12('cvT'))+'</span><span>›</span></button>'+h.slice(k); };
+
+/* ===== 入口與事件 ===== */
+var c12_ph=c3PlusHTML;
+c3PlusHTML=function(){
+ var h=c12_ph(),a='<button class="wide" data-act="ctscope">',k=h.indexOf(a); if(k<0){ a='<button class="wide" data-act="bank">'; k=h.indexOf(a); } if(k<0) return h;
+ return h.slice(0,k)+'<button class="wide" data-act="ctnote"><span>'+esc(C12('noteT'))+'<br><small class="hint">'+esc(C12('noteShort'))+'</small></span><span>›</span></button>'+h.slice(k);
+};
+var c12_he=ctHelloExtra;
+ctHelloExtra=function(){ var h=c12_he(); if(!h) return h; var k=h.lastIndexOf('</div>'); if(k<0) return h; return h.slice(0,k)+'<button class="ctbtn" data-act="ctnote"><span>'+esc(C12('noteT'))+'<small>'+esc(C12('noteShort'))+'</small></span></button>'+h.slice(k); };
+function ct12Sheet(k){
+ if(k==='ctnote') return c12NoteHTML();
+ if(k==='ctcanvas') return c12CvHTML();
+ return null;
+}
+function ct12Act(a,b,i,fid,v){
+ if(a==='ctnote'){ closeDrawer(); openSheet('ctnote'); }
+ else if(a==='ctnotego'){ if(C12R.active) c12Stop(); else c12Start(); }
+ else if(a==='ctnotemake') c12Make();
+ else if(a==='ctnoteclear'){ var N=c12N(); N.tr=''; N.sum=''; N.id=''; lsSet('notedraft',''); C12R.base=''; renderSheet(); }
+ else if(a==='ctnotecopy'){ var N2=c12N(); copyText(N2.sum||N2.tr,C12('noteCopied')); }
+ else if(a==='ctnoteshare'){ var N3=c12N(),tx=N3.sum||N3.tr; if(navigator.share) navigator.share({title:C12('noteH'),text:tx}).catch(function(e){ if(e&&e.name!=='AbortError') copyText(tx,C12('noteCopied')); }); else copyText(tx,C12('noteCopied')); }
+ else if(a==='ctnotegrp'){ var N4=c12N(); closeSheet(); try{ window.XZPLUS.toGroup(N4.sum||N4.tr); }catch(e){ copyText(N4.sum||N4.tr,C12('noteCopied')); } }
+ else if(a==='ctnoteask'){ var N5=c12N(); closeSheet(); var q=$('q'); q.value=C12('noteAskQ')+'\n\n'+String(N5.sum||N5.tr).slice(0,3500); autosize(); q.focus(); }
+ else if(a==='ctnoteopen'){ var L=c12Notes(),n=null; for(var k=0;k<L.length;k++) if(L[k].id===fid) n=L[k]; if(n){ S.c12N={tr:n.tr,sum:n.sum,busy:false,id:n.id}; C12R.base=''; renderSheet(); } }
+ else if(a==='ctnotedel'){ lsSet('notes',c12Notes().filter(function(x){ return x.id!==fid; })); if(S.c12N&&S.c12N.id===fid) S.c12N={tr:'',sum:'',busy:false,id:''}; renderSheet(); }
+ else if(a==='ctcv'){ var m=S.chat[i]; if(!m) return true; S.c12C={i:i,text:String(m.t||''),undo:[],sel:null,busy:false}; openSheet('ctcanvas'); }
+ else if(a==='ctcvgo') c12CvGo(v);
+ else if(a==='ctcvundo'){ var C=S.c12C; if(!C||C.busy||!C.undo||!C.undo.length) return true; C.text=C.undo.pop(); C.sel=null; var ta=$('c12ta'); if(ta) ta.value=C.text; c12CvStatus(); }
+ else if(a==='ctcvcopy'){ var C2=S.c12C; if(C2) copyText(C2.text,C12('noteCopied')); }
+ else if(a==='ctcvshare'){ var C3=S.c12C; if(!C3) return true; if(navigator.share) navigator.share({title:C12('cvH'),text:C3.text}).catch(function(e){ if(e&&e.name!=='AbortError') copyText(C3.text,C12('noteCopied')); }); else copyText(C3.text,C12('noteCopied')); }
+ else if(a==='ctcvsave'){ var C4=S.c12C,m2=C4&&S.chat[C4.i]; if(!m2||!C4.text.trim()) return true; if(!m2.orig) m2.orig=m2.t; m2.t=C4.text; m2.rw=''; m2.fu=null; stopSpeak(); save(); closeSheet(); render(); toast(C12('cvSaved')); }
+ else if(a==='cteditgo'){ var u=S.chat[i],ed=$('ctEditQ'); if(u&&u.fid&&!S.busy&&ed&&String(ed.value||'').trim()) S.c10F={name:u.file,chars:u.fch||0,fid:u.fid}; return false; }
+ else return false;
+ return true;
+}
+document.addEventListener('focusout',function(e){ if(e.target&&e.target.id==='c12ta'&&S.c12C){ var t=e.target; if(t.selectionEnd>t.selectionStart) S.c12C.sel=[t.selectionStart,t.selectionEnd]; } });
+document.addEventListener('keyup',function(e){ if(e.target&&e.target.id==='c12ta') c12CvStatus(); });
+document.addEventListener('mouseup',function(e){ if(e.target&&e.target.id==='c12ta') setTimeout(c12CvStatus,0); });
+document.addEventListener('touchend',function(e){ if(e.target&&e.target.id==='c12ta') setTimeout(c12CvStatus,80); },true);
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -4228,7 +4475,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.2030',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.2130',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
