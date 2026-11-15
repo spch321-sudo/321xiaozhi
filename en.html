@@ -6,21 +6,21 @@
 <title>Xiaozhi Q&A</title>
 <meta name="description" content="Xiaozhi Q&A: Bible, faith and everyday questions, Kingdom 321 Fellowship.">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2350">
-<link rel="icon" href="favicon.ico?v=v2026.1115.2350" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2350">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2350">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2350">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2350">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2350">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2355">
+<link rel="icon" href="favicon.ico?v=v2026.1115.2355" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2355">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2355">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2355">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2355">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2355">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.2350"></script>
-<script src="xzplus.js?v=v2026.1115.2350" defer></script>
+<script src="k321gate.js?v=v2026.1115.2355"></script>
+<script src="xzplus.js?v=v2026.1115.2355" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='en';</script>
@@ -1449,7 +1449,7 @@ function send(text){
   else if(e&&e.code==='rate_limited') m.t=T('errRate');
   else if(navigator.onLine===false) m.t=T('errOffline');
   else if(S.c3Sent&&e&&e.http&&e.http>=400&&e.http<500) m.t=C3('imgFail');
-  else m.t=T('errConn',(e&&e.http?' (http '+e.http+')':''));
+  else m.t=T('errConn',(e&&e.http?' (http '+e.http+')':(e&&e.message?' ('+String(e.message).slice(0,30)+')':'')));
  }).then(function(){
   m.pending=false; m.cont=false; S.busy=false; S.ctl=null;
   foldOld(idx); save(); render();
@@ -4566,7 +4566,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.2350',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.2355',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
