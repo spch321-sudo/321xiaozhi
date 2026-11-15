@@ -6,21 +6,21 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.1900">
-<link rel="icon" href="favicon.ico?v=v2026.1115.1900" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.1900">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.1900">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.1900">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.1900">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.1900">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.1940">
+<link rel="icon" href="favicon.ico?v=v2026.1115.1940" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.1940">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.1940">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.1940">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.1940">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.1940">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.1900"></script>
-<script src="xzplus.js?v=v2026.1115.1900" defer></script>
+<script src="k321gate.js?v=v2026.1115.1940"></script>
+<script src="xzplus.js?v=v2026.1115.1940" defer></script>
 </head>
 <body>
 
@@ -353,6 +353,38 @@ html #xz2pf input[style*="width:120px"]{width:7.5em!important}
 .qtr{display:block;color:var(--muted);font-size:.86em;margin-top:2px}
 @media (prefers-reduced-motion: reduce){.typing span{animation:none;opacity:.8}.dpanel,.dmask{transition:none}.micbtn.on,.micwave i{animation:none}}
 @media (max-width:420px){.audgrid{grid-template-columns:1fr 1fr}}
+/* ct10-1115 附加檔案、選取追問、即時思考、表格與程式碼 */
+#c10prev{display:flex;align-items:center;gap:8px;padding:0 6px 8px}
+#c10prev span{flex:1;min-width:0;background:var(--soft);border-radius:12px;padding:7px 12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:.92em}
+#c10prev small{color:var(--muted)}
+#c10prev button{border:0;background:var(--soft);color:var(--muted);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none}#c10prev button svg{width:15px;height:15px}
+.c10fchip{display:block;max-width:85%;margin:0 0 6px auto;background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:6px 12px;font-size:.88em;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#c10sel{position:fixed;z-index:70;display:none;gap:2px;background:var(--ink);color:var(--page);border-radius:14px;padding:4px;box-shadow:0 6px 22px rgba(0,0,0,.3);max-width:calc(100vw - 16px);-webkit-user-select:none;user-select:none}
+#c10sel.on{display:flex}
+#c10sel button{border:0;background:transparent;color:inherit;font:inherit;font-size:.9em;font-weight:600;padding:10px 12px;border-radius:10px;white-space:nowrap}
+#c10sel button:active{background:rgba(127,127,127,.35)}
+body.kid #c10sel{display:none!important}
+.c10live.run summary{animation:c10p 1.4s ease-in-out infinite}
+@keyframes c10p{0%,100%{opacity:.45}50%{opacity:1}}
+.c10live>div{max-height:14em;overflow-y:auto}
+.c10tw{margin:1em 0}.c10tw .tbl{margin:0}
+.c10tb{display:flex;justify-content:flex-end;margin-top:2px}
+.c10tb button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:.8em;padding:5px 8px;border-radius:8px}
+.c10tw tr:nth-child(even) td{background-color:color-mix(in srgb,var(--soft) 55%,transparent)}
+.c10tw td.n,.c10tw th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.c10tw td.bar{background-image:linear-gradient(90deg,color-mix(in srgb,var(--accent) 24%,transparent) var(--p),transparent var(--p));background-repeat:no-repeat}
+.c10tw td.neg{color:#C2453D}
+.c10tw tr.tot td{font-weight:700;border-top:2px solid var(--line);background-color:var(--soft);background-image:none}
+.c10code{margin:1em 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--soft)}
+.c10ch{display:flex;justify-content:space-between;align-items:center;padding:3px 6px 3px 12px;font-size:.78em;color:var(--muted);border-bottom:1px solid var(--line);min-height:30px}
+.c10ch button{border:0;background:transparent;color:var(--accent);font:inherit;padding:5px 9px;border-radius:8px}
+.c10code pre{margin:0;padding:10px 12px;overflow-x:auto;font:.86em/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,"Noto Sans Mono CJK TC",monospace;white-space:pre;tab-size:2}
+.body .c10code code{background:none;padding:0;font:inherit;border-radius:0}
+.c10math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:1.04em}
+.c10math.blk{display:block;text-align:center;margin:.7em 0;overflow-x:auto;padding:6px 0;white-space:nowrap}
+.c10fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;font-size:.92em;line-height:1.25}
+.c10fr i{font-style:normal;padding:0 3px}.c10fr i:first-child{border-bottom:1px solid currentColor}
+.c10sq{border-top:1px solid currentColor;padding:0 2px}
 /* ct8-1113 敬拜家庭宣教 */
 .c8score{text-align:center;padding:10px 0}.c8score b{font-size:1.5em;color:var(--accent)}.c8score div{margin-top:4px}
 .c8ref{font-weight:700;margin:8px 0 4px}
@@ -3374,6 +3406,7 @@ function ctSheetAfter(x){ ct2After(); ct7After();
  var at=$('ctfbatt'); if(at) at.onchange=function(){ if(S.ctFb) S.ctFb.att=at.checked; };
 }
 function ctAct(a,b,i,fid,v){
+ if(ct10Act(a,b,i,fid,v)) return;
  if(ct8Act(a,b,i,fid,v)) return;
  if(ct7Act(a,b,i,fid,v)) return;
  if(ct6Act(a,b,i,fid,v)) return;
@@ -3609,6 +3642,257 @@ function c9Speak(i){
  c9Tg(m).then(function(tg){ if(SP.gen!==gen) return; c9Play(c9Chunks(tg),gen,function(){ S.speaking=-1; spPaint(); spDone(i); },fallback); },fallback);
 }
 function c9Try(){ stopSpeak(); spUnlock(); var gen=++SP.gen; c9Play([C9('sample')],gen,function(){},function(){ toast(C9('fail')); }); }
+/* ---------- 附加檔案・選取追問・即時思考・表格與程式碼（ct10-1115） ---------- */
+var C10S={
+ attach:'📎 附加檔案（講義、週報、會議紀錄…）|📎 附加文件（讲义、周报、会议纪要…）|📎 Attach a file (notes, reports, minutes…)|📎 파일 첨부(강의안, 보고서, 회의록…)|📎 ファイルを添付（講義録・報告・議事録など）|📎 Lampirkan berkas (catatan, laporan, notulen…)|📎 Ilakip ang file (notes, report, minutes…)',
+ chars:'{0} 字|{0} 字|{0} chars|{0}자|{0}字|{0} karakter|{0} ka karakter',
+ fileReading:'正在讀取「{0}」…|正在读取“{0}”…|Reading "{0}"…|"{0}" 읽는 중…|「{0}」を読み込み中…|Membaca "{0}"…|Gibasa ang "{0}"…',
+ fileReady:'已附加「{0}」，可以直接發問|已附加“{0}”，可以直接提问|Attached "{0}" — ask your question|"{0}" 첨부됨. 바로 질문하세요|「{0}」を添付しました。そのまま質問できます|"{0}" dilampirkan — silakan bertanya|Naka-attach ang "{0}" — pangutana na',
+ fileCut:'檔案較長，只讀取前 {0} 字；整本書請加進「資料夾」|文件较长，只读取前 {0} 字；整本书请加进“文件夹”|Long file — only the first {0} characters are read. For whole books, add it to a folder.|파일이 길어 앞 {0}자만 읽어요. 책 전체는 폴더에 추가하세요|長いファイルのため最初の{0}字だけ読み込みます。本一冊分はフォルダに追加してください|Berkas panjang — hanya {0} karakter pertama dibaca. Untuk buku utuh, tambahkan ke folder.|Taas ang file — {0} ka karakter lang ang mabasa. Para sa tibuok libro, ibutang sa folder.',
+ fileBad:'讀不到這個檔案的文字（掃描的圖片檔無法讀取）|读不到这个文件的文字（扫描的图片文件无法读取）|Could not read text from this file (scanned images cannot be read)|이 파일의 글자를 읽을 수 없어요(스캔 이미지는 읽지 못해요)|このファイルの文字を読み取れませんでした（スキャン画像は読めません）|Tidak bisa membaca teks berkas ini (gambar hasil pindai tidak terbaca)|Dili mabasa ang teksto sa file (dili mabasa ang scanned nga hulagway)',
+ fileAsk:'請幫我整理這份檔案的重點，並指出可以進一步討論的地方。|请帮我整理这份文件的重点，并指出可以进一步讨论的地方。|Please summarize the key points of this file and point out what is worth discussing further.|이 파일의 핵심을 정리하고 더 이야기해 볼 만한 점을 짚어 주세요.|このファイルの要点を整理し、さらに話し合うとよい点を教えてください。|Tolong ringkas poin utama berkas ini dan tunjukkan hal yang layak dibahas lebih lanjut.|Palihog summarya ang mga punto sa file ug ipakita ang angay pa hisgutan.',
+ fileRm:'移除附加檔案|移除附加文件|Remove attachment|첨부 삭제|添付を外す|Hapus lampiran|Tangtanga ang attachment',
+ selE:'解釋這段|解释这段|Explain this|설명해 줘|説明して|Jelaskan|Ipasabot ni',
+ selX:'舉個例子|举个例子|Give an example|예를 들어줘|例を挙げて|Beri contoh|Hatagi og pananglitan',
+ selT:'翻譯|翻译|Translate|번역|翻訳|Terjemahkan|Hubad',
+ selA:'問小智|问小智|Ask Xiaozhi|샤오즈에게 묻기|シャオジーに聞く|Tanya Xiaozhi|Pangutana kang Xiaozhi',
+ qE:'請用淺顯的話，解釋你剛才回答裡的這一段：「{0}」|请用浅显的话，解释你刚才回答里的这一段：“{0}”|Please explain this part of your answer in simple words: "{0}"|방금 답변 중 이 부분을 쉬운 말로 설명해 주세요: "{0}"|さきほどの回答のこの部分を、やさしい言葉で説明してください：「{0}」|Tolong jelaskan bagian jawabanmu ini dengan kata sederhana: "{0}"|Palihog ipasabot sa yano nga pulong kini nga bahin sa imong tubag: "{0}"',
+ qX:'請針對你剛才回答裡的這一段，舉一個生活中的例子：「{0}」|请针对你刚才回答里的这一段，举一个生活中的例子：“{0}”|For this part of your answer, please give one everyday example: "{0}"|방금 답변 중 이 부분에 대해 생활 속 예를 하나 들어 주세요: "{0}"|さきほどの回答のこの部分について、日常の例をひとつ挙げてください：「{0}」|Untuk bagian jawabanmu ini, beri satu contoh dalam kehidupan sehari-hari: "{0}"|Alang sa kini nga bahin sa imong tubag, hatagi og usa ka pananglitan sa adlaw-adlaw: "{0}"',
+ qT:'請把這段話翻譯成{1}，保留原意與語氣：「{0}」|请把这段话翻译成{1}，保留原意与语气：“{0}”|Please translate this into {1}, keeping the meaning and tone: "{0}"|이 문장을 {1}(으)로 번역해 주세요. 뜻과 어조를 살려 주세요: "{0}"|次の文を{1}に翻訳してください。意味と口調は保ってください：「{0}」|Tolong terjemahkan ke {1}, pertahankan makna dan nada: "{0}"|Palihog hubara ngadto sa {1}, ipabilin ang kahulogan ug tono: "{0}"',
+ trTo:'English|English|繁體中文|English|English|English|English',
+ selQuote:'關於你剛才說的「{0}」，我想問：|关于你刚才说的“{0}”，我想问：|About what you said: "{0}" — my question: |방금 하신 말씀 "{0}"에 대해 질문이 있어요: |さきほどの「{0}」について質問です：|Tentang yang kamu katakan: "{0}" — pertanyaanku: |Mahitungod sa imong giingon: "{0}" — akong pangutana: ',
+ busy:'小智還在回答，請稍等一下|小智还在回答，请稍等一下|Xiaozhi is still answering — one moment|샤오즈가 아직 답하는 중이에요|シャオジーが回答中です。少々お待ちください|Xiaozhi masih menjawab — tunggu sebentar|Nagtubag pa si Xiaozhi — hulat gamay',
+ thinking:'🤔 小智正在思考…|🤔 小智正在思考…|🤔 Xiaozhi is thinking…|🤔 샤오즈가 생각하는 중…|🤔 シャオジーが考え中…|🤔 Xiaozhi sedang berpikir…|🤔 Naghunahuna si Xiaozhi…',
+ tblCopy:'📋 複製表格|📋 复制表格|📋 Copy table|📋 표 복사|📋 表をコピー|📋 Salin tabel|📋 Kopyaha ang table',
+ tblDone:'表格已複製，可以貼到 Excel 或試算表|表格已复制，可以粘贴到 Excel 或电子表格|Table copied — paste it into Excel or a spreadsheet|표를 복사했어요. 엑셀이나 스프레드시트에 붙여넣으세요|表をコピーしました。Excelやスプレッドシートに貼り付けられます|Tabel disalin — tempel ke Excel atau spreadsheet|Na-copy ang table — i-paste sa Excel o spreadsheet',
+ codeCopy:'複製|复制|Copy|복사|コピー|Salin|Kopyaha',
+ codeDone:'已複製|已复制|Copied|복사했어요|コピーしました|Disalin|Na-copy'
+};
+function C10(k,a,b){ var s=C5L(C10S[k]||k); if(a!=null) s=s.split('{0}').join(a); if(b!=null) s=s.split('{1}').join(b); return s; }
+function c10Sys(){
+ if(c4Kid()) return '';
+ return '\n\n[Formatting] Only when the content is genuinely numeric or tabular (offering totals, attendance, reading-plan progress, comparisons of numbers): use a Markdown table, put the unit in the column header, keep number cells plain (e.g. 1,200 or 80% or 12/30) and end with a 合計/Total row when a sum makes sense. Put any code or commands in fenced code blocks with a language tag. Write a formula on its own line with plain symbols (×, ÷, =) or LaTeX inside $…$. Never use tables for ordinary explanations.';
+}
+var c10_sp=sysPrompt; sysPrompt=function(){ return c10_sp()+c10Sys(); };
+var c10_pl=plain; plain=function(s){ return c10_pl(String(s||'').replace(/```(?!mermaid)[^\n`]*\n[\s\S]*?(?:```|$)/g,'')); };
+
+/* ===== 1. 附加檔案 ===== */
+var C10_MAX=14000;
+function c10Prev(){
+ var p=$('c10prev'),box=document.querySelector('.composer .cbox'),F=S.c10F;
+ if(!F||!box){ if(p&&p.parentNode) p.parentNode.removeChild(p); return; }
+ if(!p){ p=document.createElement('div'); p.id='c10prev'; box.parentNode.insertBefore(p,box); }
+ p.innerHTML='<span>📎 '+esc(F.name)+' <small>'+esc(C10('chars',F.chars))+'</small></span><button data-act="ctfilerm" aria-label="'+esc(C10('fileRm'))+'">'+IC.x+'</button>';
+}
+function c10Pick(){
+ var inp=$('c10file');
+ if(!inp){ inp=document.createElement('input'); inp.type='file'; inp.id='c10file'; inp.accept='.pdf,.docx,.txt,.md,.csv,.html,.htm,application/pdf,text/plain,image/*'; inp.style.display='none'; document.body.appendChild(inp);
+  inp.onchange=function(){ var f=inp.files&&inp.files[0]; inp.value=''; if(f) c10Load(f); }; }
+ closeSheet(); inp.click();
+}
+function c10Load(f){
+ if(/^image\//.test(f.type||'')||/\.(jpe?g|png|gif|webp|heic)$/i.test(f.name)){ c3LoadImg(f); return; }
+ toast(C10('fileReading',f.name));
+ c3ReadFile(f).then(function(t){
+  t=String(t||'').replace(/\u0000/g,'').replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+  if(t.length<10){ toast(C10('fileBad')); return; }
+  var cut=t.length>C10_MAX;
+  S.c10F={name:f.name.slice(0,60),chars:t.length,text:t.slice(0,C10_MAX),cut:cut};
+  c10Prev(); toast(cut?C10('fileCut',C10_MAX):C10('fileReady',f.name));
+  try{ $('q').focus(); }catch(e){}
+ }).catch(function(){ toast(C10('fileBad')); });
+}
+function c10Ctx(F){
+ if(F.ctx) return F.ctx;
+ return '[Attached file "'+F.name+'"'+(F.cut?' (first '+F.text.length+' of '+F.chars+' characters)':'')+'. The user is sharing this document. Base your answer on it, point to the relevant parts, and say so if the file does not cover the question. Do not repeat the whole file.]\n'+F.text;
+}
+var c10_c6=c6UserMsg;
+c6UserMsg=function(u){ u=c10_c6(u); var F=S.c10F; if(F){ u.file=F.name; u.fch=F.chars; u.ctx=(u.ctx?u.ctx+'\n\n':'')+c10Ctx(F); S.c10F=null; c10Prev(); } return u; };
+var c10_send=send;
+send=function(text){ text=String(text||'').trim(); if(!text&&S.c10F&&!S.busy&&!S.c3Img) text=C10('fileAsk'); if(!S.busy) S.c10Pref=''; return c10_send(text); };
+var c10_ra=reAnswerLast;
+reAnswerLast=function(msg){
+ if(S.busy) return false;
+ var u=null; for(var i=S.chat.length-1;i>=0;i--){ if(S.chat[i].role==='user'){ u=S.chat[i]; break; } }
+ if(u&&u.file&&u.ctx) S.c10F={name:u.file,chars:u.fch||0,ctx:u.ctx};
+ var r=c10_ra(msg); if(!r) S.c10F=null; return r;
+};
+var c10_uh=ctUserHTML;
+ctUserHTML=function(m,i){ var h=c10_uh(m,i); if(m&&m.file) h=h.replace('<div class="bub">',function(){ return '<div class="c10fchip">📎 '+esc(m.file)+'</div><div class="bub">'; }); return h; };
+var c10_ph=c3PlusHTML;
+c3PlusHTML=function(){
+ var h=c10_ph(),a='<button class="wide" data-act="bank">',k=h.indexOf(a); if(k<0) return h;
+ return h.slice(0,k)+'<button class="wide" data-act="ctfile"><span>'+esc(C10('attach'))+'</span><span>›</span></button>'+h.slice(k);
+};
+
+/* ===== 2. 選取文字追問 ===== */
+var C10SEL={t:'',hold:0},c10T=0;
+function c10SelEl(){
+ var el=$('c10sel');
+ if(!el){ el=document.createElement('div'); el.id='c10sel'; el.setAttribute('role','toolbar'); document.body.appendChild(el);
+  function hold(){ C10SEL.hold=Date.now()+900; }
+  el.addEventListener('mousedown',function(e){ hold(); e.preventDefault(); }); el.addEventListener('touchstart',hold,{passive:true}); }
+ return el;
+}
+function c10SelHide(){ var el=$('c10sel'); if(el) el.className=''; }
+function c10SelShow(){
+ if(Date.now()<C10SEL.hold) return;
+ var sel=window.getSelection?window.getSelection():null;
+ if(!sel||sel.isCollapsed||!sel.rangeCount||S.sheet||S.drawer||document.body.classList.contains('kid')){ c10SelHide(); return; }
+ var t=String(sel.toString()).replace(/\s+/g,' ').trim(); if(t.length<2){ c10SelHide(); return; }
+ var r=sel.getRangeAt(0),n=r.commonAncestorContainer,el=n.nodeType===1?n:n.parentNode;
+ if(!el||!el.closest||!el.closest('.msg.ai .body')){ c10SelHide(); return; }
+ C10SEL.t=t.slice(0,500);
+ var bar=c10SelEl();
+ bar.innerHTML='<button data-act="ctselgo" data-v="e">'+esc(C10('selE'))+'</button><button data-act="ctselgo" data-v="x">'+esc(C10('selX'))+'</button><button data-act="ctselgo" data-v="t">'+esc(C10('selT'))+'</button><button data-act="ctselgo" data-v="a">'+esc(C10('selA'))+'</button>';
+ bar.className='on';
+ var rc=r.getBoundingClientRect(),w=bar.offsetWidth,h=bar.offsetHeight,vw=window.innerWidth,vh=window.innerHeight;
+ var x=Math.max(8,Math.min(vw-w-8,rc.left+rc.width/2-w/2)),y=rc.bottom+12;
+ if(y+h>vh-8) y=Math.max(8,rc.top-h-12);
+ bar.style.left=x+'px'; bar.style.top=y+'px';
+}
+function c10SelSoon(ms){ clearTimeout(c10T); c10T=setTimeout(c10SelShow,ms||380); }
+document.addEventListener('selectionchange',function(){ if(Date.now()<C10SEL.hold) return; c10SelHide(); c10SelSoon(380); });
+document.addEventListener('scroll',function(){ var el=$('c10sel'); if(el&&el.className){ c10SelHide(); c10SelSoon(450); } },true);
+function c10SelGo(v){
+ var t=C10SEL.t; c10SelHide(); try{ window.getSelection().removeAllRanges(); }catch(e){}
+ if(!t) return;
+ if(v==='a'){ var q=$('q'); q.value=C10('selQuote',t.length>80?t.slice(0,80)+'…':t)+'\n'; autosize(); q.focus(); try{ q.setSelectionRange(q.value.length,q.value.length); }catch(e){} return; }
+ if(S.busy){ toast(C10('busy')); return; }
+ send(v==='e'?C10('qE',t):v==='x'?C10('qX',t):C10('qT',t,C10('trTo')));
+}
+
+/* ===== 3. 即時顯示思考過程（深思模式：回答開頭的 <think>…</think>）===== */
+function c10Think(rest){
+ var e=rest.search(/<\/think>/i),done=e>=0,th=done?rest.slice(0,e):rest,ans=done?rest.slice(e).replace(/^<\/think>\s*/i,''):'';
+ var open=S.c10Pref?S.c10Pref==='o':!ans.trim(),thH=th.trim()?c10Body(th):'';
+ var h='<details class="c4think c10live'+(done?'':' run')+'"'+(open?' open':'')+'><summary>'+esc(done?C4('thinkSteps'):C10('thinking'))+'</summary><div>'+(thH||'<span class="typing"><span></span><span></span><span></span></span>')+'</div></details>';
+ if(!done) return h;
+ return h+(ans.trim()?c10Body(ans):'<span class="typing"><span></span><span></span><span></span></span>');
+}
+document.addEventListener('click',function(e){
+ var s=e.target.closest?e.target.closest('.c10live summary'):null; if(!s) return;
+ var d=s.parentNode; e.preventDefault(); d.open=!d.open; S.c10Pref=d.open?'o':'c';
+});
+
+/* ===== 4. 表格・公式・程式碼 ===== */
+var c10_md=c5md;
+c5md=function(src){
+ var s=String(src||''),tk=/^\s*<think>/i.exec(s);
+ if(tk) return c10Think(s.slice(tk[0].length));
+ return c10Body(s);
+};
+function c10Body(s){
+ var re=/```mermaid[ \t]*\n[\s\S]*?(?:```|$)|```([^\n`]*)\n([\s\S]*?)(?:```|$)/g,last=0,m,out='';
+ while((m=re.exec(s))){
+  if(m[0].length===0){ re.lastIndex++; continue; }
+  if(m[0].indexOf('```mermaid')===0) continue;
+  out+=c10Txt(s.slice(last,m.index))+c10Code(m[1],m[2]); last=m.index+m[0].length;
+ }
+ out+=c10Txt(s.slice(last));
+ return c10Tables(out);
+}
+function c10Code(lang,code){
+ code=String(code||'').replace(/\n+$/,'');
+ return '<div class="c10code"><div class="c10ch"><span>'+esc(String(lang||'').trim().slice(0,20))+'</span><button data-act="ctc10code">'+esc(C10('codeCopy'))+'</button></div><pre><code>'+esc(code)+'</code></pre></div>';
+}
+function c10Txt(seg){
+ if(!seg) return '';
+ var ph=[],h=c10_md(c10MathIn(seg,ph));
+ if(ph.length) h=h.replace(/\uE000(\d+)\uE001/g,function(_,n){ return ph[+n]||''; });
+ return h;
+}
+function c10Hold(html,ph){ ph.push(html); return '\uE000'+(ph.length-1)+'\uE001'; }
+function c10MathIn(s,ph){
+ if(s.indexOf('$')<0&&s.indexOf('\\(')<0&&s.indexOf('\\[')<0) return s;
+ s=s.replace(/\$\$([\s\S]+?)\$\$/g,function(_,x){ return c10Hold('<span class="c10math blk">'+c10Tex(x.trim())+'</span>',ph); });
+ s=s.replace(/\\\[([\s\S]+?)\\\]/g,function(_,x){ return c10Hold('<span class="c10math blk">'+c10Tex(x.trim())+'</span>',ph); });
+ s=s.replace(/\\\(([\s\S]+?)\\\)/g,function(_,x){ return c10Hold('<span class="c10math">'+c10Tex(x.trim())+'</span>',ph); });
+ s=s.replace(/\$([^\s$](?:[^$\n]*?[^\s$])?)\$/g,function(all,x){ if(!/\\[A-Za-z]|[\^_=]/.test(x)||/^[\d.,]+$/.test(x)) return all; return c10Hold('<span class="c10math">'+c10Tex(x)+'</span>',ph); });
+ return s;
+}
+var C10SYM={times:'×',div:'÷',cdot:'·',approx:'≈',neq:'≠',ne:'≠',leq:'≤',le:'≤',geq:'≥',ge:'≥',pm:'±',sum:'Σ',pi:'π',infty:'∞',rightarrow:'→',to:'→',Rightarrow:'⇒',alpha:'α',beta:'β',gamma:'γ',delta:'δ',Delta:'Δ',theta:'θ',lambda:'λ',mu:'μ',sigma:'σ',circ:'°',degree:'°',ldots:'…',dots:'…',left:'',right:'',quad:'  ',qquad:'    ',',':' ',';':' ','%':'%','$':'$','&':'&','_':'_','#':'#','{':'{','}':'}',' ':' ',lbrace:'{',rbrace:'}',cdots:'⋯',therefore:'∴',because:'∵'};
+function c10Tex(s){
+ s=String(s); var i=0,out='';
+ function grp(){
+  if(s.charAt(i)==='{'){ var d=1,j=i+1; while(j<s.length&&d>0){ var c=s.charAt(j); if(c==='{') d++; else if(c==='}') d--; j++; } var inner=s.slice(i+1,d===0?j-1:j); i=j; return inner; }
+  if(s.charAt(i)==='\\'){ var m=/^\\[A-Za-z]+/.exec(s.slice(i)); if(m){ i+=m[0].length; return m[0]; } }
+  var ch=s.charAt(i); i++; return ch;
+ }
+ while(i<s.length){
+  var c=s.charAt(i);
+  if(c==='\\'){
+   var m2=/^\\([A-Za-z]+|[\s\S])/.exec(s.slice(i)),cmd=m2?m2[1]:''; i+=m2?m2[0].length:1;
+   if(cmd==='frac'||cmd==='dfrac'||cmd==='tfrac'){ var a=grp(),b=grp(); out+='<span class="c10fr"><i>'+c10Tex(a)+'</i><i>'+c10Tex(b)+'</i></span>'; }
+   else if(cmd==='sqrt'){ var r=grp(); out+='√<span class="c10sq">'+c10Tex(r)+'</span>'; }
+   else if(/^(text|mathrm|textbf|mathbf|operatorname|mbox|mathit)$/.test(cmd)){ out+=c10Tex(grp()); }
+   else if(cmd==='\\'){ out+=' '; }
+   else if(Object.prototype.hasOwnProperty.call(C10SYM,cmd)) out+=C10SYM[cmd];
+   else out+=esc(cmd);
+  } else if(c==='^'||c==='_'){ i++; var g=grp(); out+=(c==='^'?'<sup>':'<sub>')+c10Tex(g)+(c==='^'?'</sup>':'</sub>'); }
+  else if(c==='{'||c==='}'){ i++; }
+  else { out+=esc(c); i++; }
+ }
+ return out;
+}
+var C10TOT=/^(合計|合计|總計|总计|小計|小计|總共|总共|共計|共计|總額|总额|Grand\s*total|Sub-?total|Total|Sum|합계|총계|소계|合計金額|Jumlah|Subtotal|Kabuuan)/i;
+function c10Num(t){
+ t=String(t||'').replace(/[\s,，]/g,'').replace(/^(NT\$|NTD|TWD|USD|US\$|RMB|HK\$|\$|¥|￥|NT)/i,'');
+ var m=/^([+\-−–]?)(\d+(?:\.\d+)?)(%|％|元|圓|塊|人|次|章|節|篇|天|週|周|分|個|位|萬|千|點|張|本|卷|頁|小時)?$/.exec(t);
+ if(m){ var neg=!!m[1]&&m[1]!=='+'; return {v:(neg?-1:1)*parseFloat(m[2]),p:/[%％]/.test(m[3]||''),neg:neg}; }
+ var f=/^(\d+)\/(\d+)$/.exec(t); if(f&&+f[2]>0) return {v:+f[1],p:false,fr:+f[1]/+f[2],neg:false};
+ return null;
+}
+function c10Enh(tb){
+ var rows=tb.rows,nc=0,r,c; if(rows.length<2) return;
+ for(r=0;r<rows.length;r++) nc=Math.max(nc,rows[r].cells.length);
+ var isTot=[]; for(r=1;r<rows.length;r++){ var f0=rows[r].cells[0]; if(f0&&C10TOT.test(f0.textContent.trim())){ isTot[r]=true; rows[r].className='tot'; } }
+ for(c=0;c<nc;c++){
+  var vals=[],cnt=0,hit=0,anyPct=false,head=rows[0].cells[c]?rows[0].cells[c].textContent:'';
+  for(r=1;r<rows.length;r++){ var cell=rows[r].cells[c]; if(!cell) continue; var tx=cell.textContent.trim(); if(!tx||/^[-—–]+$/.test(tx)) continue; cnt++; var n=c10Num(tx); vals[r]=n; if(n){ hit++; if(n.p||n.fr!=null) anyPct=true; } }
+  if(!hit||hit<cnt*0.7) continue;
+  var skip=/年|月份|日期|序號|序号|編號|编号|週次|周次|第.*[章節节]|No\.?|#|\bID\b|Year|Date/i.test(head);
+  if(skip&&!anyPct) continue;
+  var mx=0; for(r=1;r<rows.length;r++){ var v=vals[r]; if(v&&!isTot[r]&&!v.neg&&!v.p&&v.fr==null&&v.v>mx) mx=v.v; }
+  if(rows[0].cells[c]) rows[0].cells[c].className='n';
+  for(r=1;r<rows.length;r++){
+   var cl=rows[r].cells[c]; if(!cl) continue; cl.classList.add('n'); var nv=vals[r]; if(!nv) continue;
+   if(nv.neg) cl.classList.add('neg');
+   var pct=null; if(nv.fr!=null) pct=nv.fr*100; else if(nv.p) pct=nv.v; else if(!skip&&mx>0&&rows.length>=4&&nv.v>0) pct=nv.v/mx*100;
+   if(pct!=null&&!isTot[r]){ cl.classList.add('bar'); cl.style.setProperty('--p',Math.max(0,Math.min(100,pct)).toFixed(1)+'%'); }
+  }
+ }
+}
+function c10Tables(html){
+ if(html.indexOf('class="tbl"')<0) return html;
+ var d=document.createElement('div'); d.innerHTML=html;
+ var L=d.querySelectorAll('.tbl');
+ for(var i=0;i<L.length;i++){
+  var tb=L[i].querySelector('table'); if(tb){ try{ c10Enh(tb); }catch(e){} }
+  var w=document.createElement('div'); w.className='c10tw'; L[i].parentNode.insertBefore(w,L[i]); w.appendChild(L[i]);
+  var bar=document.createElement('div'); bar.className='c10tb'; bar.innerHTML='<button data-act="ctc10tbl">'+esc(C10('tblCopy'))+'</button>'; w.appendChild(bar);
+ }
+ return d.innerHTML;
+}
+function c10TblCopy(b){
+ var w=b&&b.closest?b.closest('.c10tw'):null,tb=w&&w.querySelector('table'); if(!tb) return;
+ var out=[]; for(var r=0;r<tb.rows.length;r++){ var row=[]; for(var c=0;c<tb.rows[r].cells.length;c++) row.push(tb.rows[r].cells[c].textContent.replace(/\s+/g,' ').trim()); out.push(row.join('\t')); }
+ copyText(out.join('\n'),C10('tblDone'));
+}
+function c10CodeCopy(b){
+ var w=b&&b.closest?b.closest('.c10code'):null,cd=w&&w.querySelector('code'); if(!cd) return;
+ copyText(cd.textContent,C10('codeDone'));
+}
+function ct10Act(a,b,i,fid,v){
+ if(a==='ctfile') c10Pick();
+ else if(a==='ctfilerm'){ S.c10F=null; c10Prev(); }
+ else if(a==='ctselgo') c10SelGo(v);
+ else if(a==='ctc10tbl') c10TblCopy(b);
+ else if(a==='ctc10code') c10CodeCopy(b);
+ else if(a==='cteditgo'){ var u=S.chat[i],ed=$('ctEditQ'); if(u&&u.file&&u.ctx&&!S.busy&&ed&&String(ed.value||'').trim()) S.c10F={name:u.file,chars:u.fch||0,ctx:u.ctx}; return false; }
+ else return false;
+ return true;
+}
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -3730,7 +4014,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.1900',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.1940',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
