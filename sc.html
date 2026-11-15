@@ -6,21 +6,21 @@
 <title>小智问答</title>
 <meta name="description" content="小智问答：圣经・信仰・生活・智慧问答，国度321空中团契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2010">
-<link rel="icon" href="favicon.ico?v=v2026.1115.2010" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2010">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2010">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2010">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2010">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2010">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2030">
+<link rel="icon" href="favicon.ico?v=v2026.1115.2030" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2030">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2030">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2030">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2030">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2030">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智问答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.2010"></script>
-<script src="xzplus.js?v=v2026.1115.2010" defer></script>
+<script src="k321gate.js?v=v2026.1115.2030"></script>
+<script src="xzplus.js?v=v2026.1115.2030" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='zs';</script>
@@ -3763,8 +3763,11 @@ function c10SelShow(){
  bar.innerHTML='<button data-act="ctselgo" data-v="e">'+esc(C10('selE'))+'</button><button data-act="ctselgo" data-v="x">'+esc(C10('selX'))+'</button><button data-act="ctselgo" data-v="t">'+esc(C10('selT'))+'</button><button data-act="ctselgo" data-v="a">'+esc(C10('selA'))+'</button>';
  bar.className='on';
  var rc=r.getBoundingClientRect(),w=bar.offsetWidth,h=bar.offsetHeight,vw=window.innerWidth,vh=window.innerHeight;
- var x=Math.max(8,Math.min(vw-w-8,rc.left+rc.width/2-w/2)),y=rc.bottom+12;
- if(y+h>vh-8) y=Math.max(8,rc.top-h-12);
+ /* 手機原生的「拷貝／翻譯」選單會出現在選取文字的上方或下方，所以不貼著選取處，固定停在輸入框上方；選取處剛好在那裡就改停到頂端標題列下方 */
+ var cp=document.querySelector('.composer'),cr=cp?cp.getBoundingClientRect():null,hd=document.querySelector('header,.top,.topbar'),hb=hd?hd.getBoundingClientRect().bottom:0;
+ var x=Math.max(8,(vw-w)/2),y=(cr?cr.top:vh-8)-h-10;
+ if(rc.bottom>y-6&&rc.top<y+h+6) y=Math.max(8,hb)+8;
+ if(y<8) y=8;
  bar.style.left=x+'px'; bar.style.top=y+'px';
 }
 function c10SelSoon(ms){ clearTimeout(c10T); c10T=setTimeout(c10SelShow,ms||380); }
@@ -4225,7 +4228,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.2010',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.2030',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
