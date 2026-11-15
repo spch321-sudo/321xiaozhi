@@ -84,8 +84,8 @@
 
   /* ---------- 3. 經文核對：回答裡引用的經文，逐一和互動聖經的經文比對 ---------- */
   var CK = {
-    zh: { ver: '和合本', ok: '✓ 和{0}相符', near: '⚠ 和{0}的字句略有不同', loc: '⚠ 這段經文在 {0}，不是 {1}', bad: '⚠ 和{0}的經文對不上，請以聖經為準', h: '📖 經文核對', xz: '小智引用的', bible: '聖經原文（{0}）', sum: '📖 經文核對（{0}）：✓ {1} 處相符', sumW: '・⚠ {0} 處要留意', note: '核對只比對字句是否一致，不代表解釋一定正確；請以聖經為準。' },
-    zs: { ver: '和合本', ok: '✓ 和{0}相符', near: '⚠ 和{0}的字句略有不同', loc: '⚠ 这段经文在 {0}，不是 {1}', bad: '⚠ 和{0}的经文对不上，请以圣经为准', h: '📖 经文核对', xz: '小智引用的', bible: '圣经原文（{0}）', sum: '📖 经文核对（{0}）：✓ {1} 处相符', sumW: '・⚠ {0} 处要留意', note: '核对只比对字句是否一致，不代表解释一定正确；请以圣经为准。' },
+    zh: { ver: '和合本', ok: '✓ 和{0}相符', near: '⚠ 和{0}的字句略有不同', loc: '⚠ 這段經文在 {0}，不是 {1}', bad: '⚠ 和{0}的經文對不上，請以聖經為準', fixed: '✓ 小智引用的字句和{0}不同，已自動換成{0}原文', h: '📖 經文核對', xz: '小智引用的', bible: '聖經原文（{0}）', sum: '📖 經文核對（{0}）：✓ {1} 處相符', sumW: '・⚠ {0} 處要留意', note: '核對只比對字句是否一致，不代表解釋一定正確；請以聖經為準。' },
+    zs: { ver: '和合本', ok: '✓ 和{0}相符', near: '⚠ 和{0}的字句略有不同', loc: '⚠ 这段经文在 {0}，不是 {1}', bad: '⚠ 和{0}的经文对不上，请以圣经为准', fixed: '✓ 小智引用的字句和{0}不同，已自动换成{0}原文', h: '📖 经文核对', xz: '小智引用的', bible: '圣经原文（{0}）', sum: '📖 经文核对（{0}）：✓ {1} 处相符', sumW: '・⚠ {0} 处要留意', note: '核对只比对字句是否一致，不代表解释一定正确；请以圣经为准。' },
     en: { ver: 'WEB', ok: '✓ Matches the {0}', near: '⚠ Wording differs slightly from the {0}', loc: '⚠ This is {0}, not {1}', bad: '⚠ Doesn’t match the {0} — please check your Bible', h: '📖 Scripture check', xz: 'Xiaozhi quoted', bible: 'Bible text ({0})', sum: '📖 Scripture check ({0}): ✓ {1} match', sumW: ' · ⚠ {0} to review', note: 'This only compares wording; it doesn’t prove the interpretation is right. Scripture is the standard.' },
     ko: { ver: '개역한글', ok: '✓ {0}과 일치', near: '⚠ {0}과 표현이 조금 달라요', loc: '⚠ 이 말씀은 {0}이고 {1}이 아니에요', bad: '⚠ {0}과 맞지 않아요. 성경을 확인하세요', h: '📖 성경 구절 확인', xz: '샤오즈가 인용한 말씀', bible: '성경 본문({0})', sum: '📖 성경 구절 확인({0}): ✓ {1}곳 일치', sumW: ' · ⚠ {0}곳 확인 필요', note: '표현이 같은지만 비교해요. 해석이 옳다는 뜻은 아니에요. 성경이 기준이에요.' },
     ja: { ver: '口語訳', ok: '✓ {0}と一致', near: '⚠ {0}と表現が少し違います', loc: '⚠ この聖句は {0} で、{1} ではありません', bad: '⚠ {0}と一致しません。聖書で確かめてください', h: '📖 聖句チェック', xz: 'シャオジーの引用', bible: '聖書本文（{0}）', sum: '📖 聖句チェック（{0}）：✓ {1} か所一致', sumW: '・⚠ {0} か所要確認', note: '言葉が一致しているかだけを確認しています。解釈の正しさを保証するものではありません。' },
@@ -132,6 +132,19 @@
     return best;
   }
   function refName(b, c, v) { var a = document.querySelector('a.xzref[data-b="' + b + '"][data-c="' + c + '"]'); var nm = a ? a.textContent.replace(/\s*\d.*$/, '').replace(/第\s*$/, '') : b; return nm + ' ' + c + ':' + v; }
+  function fixQuote(a, q, rt) {
+    try {
+      var blk = a.closest('p,li,blockquote,td,h3,h4,h5') || a.parentNode, w = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT, null, false), n, hit = null;
+      while ((n = w.nextNode())) { if (a.contains(n) || (n.parentNode.closest && n.parentNode.closest('.xzck,.xzref'))) continue; if (n.nodeValue.indexOf(q) >= 0) { hit = n; break; } }
+      if (!hit) return false;
+      var nt = rt.replace(/\s+/g, ''); if (!/[。！？；，：]$/.test(q)) nt = nt.replace(/[。！？；，：]+$/, '');
+      if (!nt || nt.length > 400) return false;
+      hit.nodeValue = hit.nodeValue.split(q).join(nt);
+      var me = blk.closest('.msg'), ix = me && /^m\d+$/.test(me.id) ? +me.id.slice(1) : -1;
+      if (ix >= 0 && typeof window.XZ_FIXQ === 'function') window.XZ_FIXQ(ix, q, nt);
+      return true;
+    } catch (e) { return false; }
+  }
   function vcheck(body) {
     var refs = body.querySelectorAll('a.xzref[data-v]'), lg = L(), jobs = [];
     for (var i = 0; i < refs.length; i++) (function (a) {
@@ -144,7 +157,9 @@
         else { var hit = 0; for (var x in V) { if (+x > 0 && piecesIn(q, V[x] + (V[+x + 1] || ''))) { hit = +x; break; } }
           if (hit && (hit < v || hit > v2)) { st = 'loc'; at = hit; }
           else st = contain(q, rt) >= 0.72 ? 'near' : 'bad'; }
-        var r = { a: a, q: q, b: b, c: c, v: v, v2: v2, t: rng.map(function (s, j) { return (v + j) + ' ' + s; }).join('\n'), st: st, at: at };
+        var q0 = q, fx = false;
+        if (st !== 'ok' && st !== 'loc' && (lg === 'zh' || lg === 'zs')) fx = fixQuote(a, q, rt); if (fx) st = 'fixed';
+        var r = { a: a, q: q0, b: b, c: c, v: v, v2: v2, t: rng.map(function (s, j) { return (v + j) + ' ' + s; }).join('\n'), st: st, at: at };
         r.id = CKR.push(r) - 1; return r;
       }).catch(function () { return null; }));
     })(refs[i]);
@@ -152,14 +167,14 @@
     Promise.all(jobs).then(function (rs) {
       rs = rs.filter(Boolean); if (!rs.length || !body.isConnected) return;
       var ok = 0, w = 0, ids = [];
-      rs.forEach(function (r) { if (r.st === 'ok') ok++; else w++; ids.push(r.id);
-        var bt = document.createElement('button'); bt.type = 'button'; bt.className = 'xzck ' + r.st; bt.setAttribute('data-ck', r.id); bt.textContent = r.st === 'ok' ? '✓' : '⚠'; bt.title = ckMsg(r);
+      rs.forEach(function (r) { if (r.st === 'ok' || r.st === 'fixed') ok++; else w++; ids.push(r.id);
+        var bt = document.createElement('button'); bt.type = 'button'; bt.className = 'xzck ' + r.st; bt.setAttribute('data-ck', r.id); bt.textContent = (r.st === 'ok' || r.st === 'fixed') ? '✓' : '⚠'; bt.title = ckMsg(r);
         r.a.parentNode.insertBefore(bt, r.a.nextSibling); });
       var sm = document.createElement('button'); sm.type = 'button'; sm.className = 'xzck-sum' + (w ? ' w' : ''); sm.setAttribute('data-cks', ids.join(','));
       sm.textContent = K('sum', K('ver'), ok) + (w ? K('sumW', w) : ''); body.appendChild(sm);
     });
   }
-  function ckMsg(r) { var V = K('ver'); return r.st === 'ok' ? K('ok', V) : r.st === 'near' ? K('near', V) : r.st === 'loc' ? K('loc', r.c + ':' + r.at, r.c + ':' + r.v + (r.v2 > r.v ? '-' + r.v2 : '')) : K('bad', V); }
+  function ckMsg(r) { var V = K('ver'); return r.st === 'fixed' ? K('fixed', V) : r.st === 'ok' ? K('ok', V) : r.st === 'near' ? K('near', V) : r.st === 'loc' ? K('loc', r.c + ':' + r.at, r.c + ':' + r.v + (r.v2 > r.v ? '-' + r.v2 : '')) : K('bad', V); }
   function openCk(ids) {
     var h = '<div class="xzp-bd">';
     ids.forEach(function (id) { var r = CKR[id]; if (!r) return; var url = BIBLE + '?lang321=' + L() + '#/read/' + r.b + '/' + r.c + '/' + (r.at || r.v);
@@ -192,10 +207,10 @@
     '#xzpMask .xzp-msg{margin-top:10px;font-weight:700}#xzpMask .xzp-msg.ok{color:#2F7D32}#xzpMask .xzp-msg.bad{color:#C0392B}' +
     '#xzpMask .xzp-sec{display:inline-block;margin-top:10px;padding:9px 14px;border-radius:12px;border:1.5px solid rgba(0,0,0,.14);color:inherit;text-decoration:none;font-weight:700}' +
     '.xzck{display:inline-grid;place-items:center;min-width:20px;height:20px;margin:0 2px;padding:0 4px;border:0;border-radius:10px;font-size:12px;font-weight:800;vertical-align:1px;line-height:1;cursor:pointer}' +
-    '.xzck.ok{background:rgba(47,125,50,.14);color:#2F7D32}.xzck.near,.xzck.loc{background:rgba(184,134,46,.18);color:#8A5F12}.xzck.bad{background:rgba(194,69,61,.14);color:#C2453D}' +
+    '.xzck.ok,.xzck.fixed{background:rgba(47,125,50,.14);color:#2F7D32}.xzck.near,.xzck.loc{background:rgba(184,134,46,.18);color:#8A5F12}.xzck.bad{background:rgba(194,69,61,.14);color:#C2453D}' +
     '.xzck-sum{display:block;margin:12px 0 0;border:1px solid rgba(47,125,50,.35);background:rgba(47,125,50,.06);color:#2F7D32;border-radius:12px;padding:7px 12px;font-size:.82em;text-align:left;width:auto}.xzck-sum.w{border-color:rgba(184,134,46,.5);background:rgba(184,134,46,.08);color:#8A5F12}' +
-    '.xzck-item{border:1px solid var(--line,#e5e6ea);border-radius:14px;padding:12px 14px;margin:0 0 12px}.xzck-item.ok{border-color:rgba(47,125,50,.4)}.xzck-item.bad{border-color:rgba(194,69,61,.45)}.xzck-item.near,.xzck-item.loc{border-color:rgba(184,134,46,.5)}' +
-    '.xzck-st{font-weight:800;margin-bottom:4px}.xzck-item.ok .xzck-st{color:#2F7D32}.xzck-item.bad .xzck-st{color:#C2453D}.xzck-item.near .xzck-st,.xzck-item.loc .xzck-st{color:#8A5F12}' +
+    '.xzck-item{border:1px solid var(--line,#e5e6ea);border-radius:14px;padding:12px 14px;margin:0 0 12px}.xzck-item.fixed{border-color:rgba(47,125,50,.4)}.xzck-item.ok{border-color:rgba(47,125,50,.4)}.xzck-item.bad{border-color:rgba(194,69,61,.45)}.xzck-item.near,.xzck-item.loc{border-color:rgba(184,134,46,.5)}' +
+    '.xzck-st{font-weight:800;margin-bottom:4px}.xzck-item.ok .xzck-st,.xzck-item.fixed .xzck-st{color:#2F7D32}.xzck-item.bad .xzck-st{color:#C2453D}.xzck-item.near .xzck-st,.xzck-item.loc .xzck-st{color:#8A5F12}' +
     '.xzck-ref{font-weight:700;margin-bottom:6px}.xzck-lb{font-size:.78em;opacity:.65;margin-top:6px}.xzck-q{line-height:1.6}.xzck-t{line-height:1.7;background:rgba(127,127,127,.08);border-radius:10px;padding:8px 10px;margin-top:2px}.xzp-note{font-size:13px;opacity:.7}' +
     '#xzpMask .xzp-spin{display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,.2);border-top-color:var(--accent,#1E3F8F);border-radius:50%;animation:xzpS .8s linear infinite;vertical-align:-3px;margin-right:6px}@keyframes xzpS{to{transform:rotate(360deg)}}';
   function css() { if (document.getElementById('xzpcss')) return; var s = document.createElement('style'); s.id = 'xzpcss'; s.appendChild(document.createTextNode(CSS)); document.head.appendChild(s); }
