@@ -6,21 +6,21 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0245">
-<link rel="icon" href="favicon.ico?v=v2026.1116.0245" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0245">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0245">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0245">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0245">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0245">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0700">
+<link rel="icon" href="favicon.ico?v=v2026.1116.0700" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0700">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0700">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0700">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0700">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0700">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1116.0245"></script>
-<script src="xzplus.js?v=v2026.1116.0245" defer></script>
+<script src="k321gate.js?v=v2026.1116.0700"></script>
+<script src="xzplus.js?v=v2026.1116.0700" defer></script>
 </head>
 <body>
 
@@ -1464,7 +1464,7 @@ function send(text){
   else if(e&&e.code==='rate_limited') m.t=T('errRate');
   else if(navigator.onLine===false) m.t=T('errOffline');
   else if(S.c3Sent&&e&&e.http&&e.http>=400&&e.http<500) m.t=C3('imgFail');
-  else m.t=T('errConn',(e&&e.http?' (http '+e.http+')':(e&&e.message?' ('+String(e.message).slice(0,30)+')':'')));
+  else m.t=T('errConn',(e&&e.http?' (http '+e.http+')':(e&&e.message?' ('+String(e.message).slice(0,64)+')':'')));
  }).then(function(){
   m.pending=false; m.cont=false; S.busy=false; S.ctl=null;
   foldOld(idx); save(); render();
@@ -4533,7 +4533,7 @@ function c15Gen(ask,k){
   return c13Try({max_tokens:k?7000:6000,system:C15SYS,tier:'deep',messages:msgs},150000,0).then(function(r){
    var t=extractReply(r); acc=n?acc+t:t;
    if(window.__c13stop==='max_tokens'){
-    if(n>=3||!t) throw new Error('cut');
+    if(n>=7||!t) throw new Error('cut');
     msgs=[{role:'user',content:ask},{role:'assistant',content:acc.replace(/\s+$/,'')},{role:'user',content:'Your reply was cut off. Continue EXACTLY where you stopped and output only the remaining part of the HTML document (do not repeat anything, no commentary, no code fence). Finish with </html>.'}];
     return round(n+1);
    }
@@ -4643,6 +4643,48 @@ var c16_a=ct12Act;
 ct12Act=function(a,b,i,fid,v){
  if(a==='cttfold'){ var o=c16St(),k=String(v||''); if(k.charAt(0)==='g') o.g[k]=!o.g[k]; else o[k]=o[k]?0:1; if(k==='d') renderDrawer(); else renderSheet(); return true; }
  return c16_a(a,b,i,fid,v);
+};
+
+/* ---------- 連不上時自動備援・長輸出自動接續（ct17-1116） ----------
+   Worker 把 max_tokens 壓在 1024，所以長的回答、JSON 都會被截斷：這裡把截斷改成「接著寫」。
+   小智「(empty)」＝串流回來了卻沒有文字：改成依序換「非串流 → 另一個模型 → 備用舊模型」重試，並把原因顯示出來。 */
+function c17Why(d){ if(!d) return 'no data'; if(d.error) return String(d.error.message||d.error).slice(0,36); var ty={}; (d.content||[]).forEach(function(b){ if(b&&b.type) ty[b.type]=1; }); return String(d.stop_reason||'?')+(ty.thinking?'+thinking':'')+(d.content&&d.content.length?'':'+nocontent'); }
+function c17Fallback(msgs,onPart,signal,tier,e0){
+ var t0=tier||'fast',t1=t0==='deep'?'fast':'deep',steps=[{tier:t0},{tier:t1},{model:t0==='deep'?'claude-haiku-4-5':'claude-sonnet-4-6'}],why=[String(e0&&(e0.http?'http '+e0.http:e0.message)||e0).slice(0,16)];
+ function req(m,i){ var body={max_tokens:maxTok(),system:sysPrompt(),messages:m}; if(steps[i].tier) body.tier=steps[i].tier; else body.model=steps[i].model; return postOnce(body,signal); }
+ function more(acc,sr,i,n){
+  if(n>=4||X.truncated(acc,sr)!=='sure') return Promise.resolve(acc);
+  return req(msgs.concat([{role:'assistant',content:acc},{role:'user',content:X.contAsk()}]),i).then(function(d){ var t=extractReply(d); if(!t) return acc; acc=X.join(acc,t); onPart(acc,true); return more(acc,d.stop_reason,i,n+1); },function(e){ if(e&&e.name==='AbortError') throw e; return acc; });
+ }
+ function one(i){
+  if(i>=steps.length){ window.__xzdiag=why; throw new Error(why.join(' › ').slice(0,64)); }
+  return req(msgs,i).then(function(d){ var t=extractReply(d); if(t){ onPart(t,false); return more(t,d.stop_reason,i,0); } why.push(c17Why(d)); return one(i+1); },function(e){ if(e&&e.name==='AbortError') throw e; why.push(String(e&&(e.http?'http '+e.http:e.message)).slice(0,16)); return one(i+1); });
+ }
+ return one(0);
+}
+var c17_vp=viaProxy;
+viaProxy=function(msgs,onPart,signal,tier){
+ var got=false;
+ return c17_vp(msgs,function(t,c){ got=true; onPart(t,c); },signal,tier).catch(function(e){
+  if(got||!e||e.name==='AbortError'||e.code==='aborted'||e.code==='not_granted'||e.code==='rate_limited'||(signal&&signal.aborted)) throw e;
+  return c17Fallback(msgs,onPart,signal,tier,e);
+ });
+};
+/* 短任務（JSON、改寫、建議）：被截斷就接著寫 */
+var c17_qa=quickAsk;
+quickAsk=function(ask,maxT){
+ return getSample().then(function(sm){
+  if(sm) return c17_qa(ask,maxT);
+  var msgs=[{role:'user',content:ask}],acc='';
+  function round(n){
+   window.__c13stop=null;
+   return c13Try({max_tokens:maxT||700,system:T('jsonOnly'),tier:'fast',messages:msgs},60000,0).then(function(r){
+    var t=extractReply(r); acc=n?acc+t:t;
+    if(window.__c13stop==='max_tokens'&&t&&n<6){ msgs=[{role:'user',content:ask},{role:'assistant',content:acc.replace(/\s+$/,'')},{role:'user',content:'Your reply was cut off. Continue EXACTLY where you stopped and output only the remaining text (no repetition, no commentary, no code fence).'}]; return round(n+1); }
+    return acc; });
+  }
+  return round(0);
+ });
 };
 
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
@@ -4766,7 +4808,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1116.0245',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1116.0700',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
