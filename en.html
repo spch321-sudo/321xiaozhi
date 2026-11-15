@@ -6,21 +6,21 @@
 <title>Xiaozhi Q&A</title>
 <meta name="description" content="Xiaozhi Q&A: Bible, faith and everyday questions, Kingdom 321 Fellowship.">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.0935">
-<link rel="icon" href="favicon.ico?v=v2026.1115.0935" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.0935">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.0935">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.0935">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.0935">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.0935">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.0955">
+<link rel="icon" href="favicon.ico?v=v2026.1115.0955" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.0955">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.0955">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.0955">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.0955">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.0955">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.0935"></script>
-<script src="xzplus.js?v=v2026.1115.0935" defer></script>
+<script src="k321gate.js?v=v2026.1115.0955"></script>
+<script src="xzplus.js?v=v2026.1115.0955" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='en';</script>
@@ -626,6 +626,14 @@ body.kid #flow{font-size:1.16em}body.kid .msg.ai .body{line-height:1.8}
   };
   X.alen = () => { const s = load(); return LEN_KEYS.indexOf(s.alen) >= 0 ? s.alen : 's'; };
   X.setLen = k => { if (LEN_KEYS.indexOf(k) < 0) return; load().alen = k; load().alenSet = 1; save(); };
+  /* 回答模式：自動（解經、爭議、關懷、長問題用深入，其餘快速）／深入（Sonnet）／快速（Haiku） */
+  const DEPTH_KEYS = ['auto', 'deep', 'fast'];
+  X.DEPTH_KEYS = DEPTH_KEYS;
+  X.depthName = k => ({ auto: L3('自動', '自动', 'Auto'), deep: L3('深入', '深入', 'Deep'), fast: L3('快速', '快速', 'Fast') })[k];
+  X.depthSub = k => ({ auto: L3('依問題選', '依问题选', 'By question'), deep: L3('更細緻', '更细致', 'More thorough'), fast: L3('更快', '更快', 'Faster') })[k];
+  X.depthLabel = () => L3('回答模式', '回答模式', 'Answer mode');
+  X.adepth = () => { const s = load(); return DEPTH_KEYS.indexOf(s.adepth) >= 0 ? s.adepth : 'auto'; };
+  X.setDepth = k => { if (DEPTH_KEYS.indexOf(k) < 0) return; load().adepth = k; save(); };
   X.skbg = () => load().skbg;
   X.setBg = k => { if (SKBG_KEYS.indexOf(k) < 0) return; load().skbg = k; save(); };
 
@@ -895,8 +903,10 @@ body.kid #flow{font-size:1.16em}body.kid .msg.ai .body{line-height:1.8}
 <div class="xz2-seg" style="margin-top:8px" ${a === 'seeker' ? '' : 'hidden'}>${bgSegHtml('sBg')}</div></div>
 <div class="xz2-row"><div class="xz2-lab">${esc(L3('讀者資料', '读者资料', 'About me'))}<div class="xz2-hint">${esc(L3('暱稱、年齡、身分、就職、在學、信仰——讓小智量身回答', '昵称、年龄、身份、就职、在学、信仰——让小智量身回答', 'Nickname, age, status, work, study, faith — so Xiaozhi tailors answers'))}</div></div>
 <div class="xz2-seg"><button type="button" class="xz2-chip" id="setProfile" onclick="XZ2.act('pf')">${esc(pfBtnText().replace('我的資料', L3('設定', '设置', 'Set up')).replace('我的资料', '设置').replace('About me', 'Set up'))}</button></div></div>
-<div class="xz2-row"><div class="xz2-lab">${esc(L3('回答長度', '回答长度', 'Answer length'))}<div class="xz2-hint">${esc(L3('極短 100 字內，到極長 2000～3000 字；預設「中」', '极短 100 字内，到极长 2000～3000 字；默认“中”', 'From very short (about 100 characters) to very long (2000–3000); default Medium'))}</div></div>
-<div class="xz2-seg" id="setLen">${LEN_KEYS.map(k => `<button type="button" class="${X.alen() === k ? 'on' : ''}" onclick="XZ2.act('sLen','${k}')">${esc(X.lenName(k))}</button>`).join('')}</div></div>`;
+<div class="xz2-row"><div class="xz2-lab">${esc(L3('回答長度', '回答长度', 'Answer length'))}<div class="xz2-hint">${esc(L3('極短 100 字內，到極長 2000～3000 字；預設「短」', '极短 100 字内，到极长 2000～3000 字；默认“短”', 'From very short (about 100 characters) to very long (2000–3000); default Short'))}</div></div>
+<div class="xz2-seg" id="setLen">${LEN_KEYS.map(k => `<button type="button" class="${X.alen() === k ? 'on' : ''}" onclick="XZ2.act('sLen','${k}')">${esc(X.lenName(k))}</button>`).join('')}</div></div>
+<div class="xz2-row"><div class="xz2-lab">${esc(X.depthLabel())}<div class="xz2-hint">${esc(L3('自動：解經、爭議議題、關懷與長問題用深入，其餘用快速。深入較細緻但慢，快速回答更快。', '自动：解经、争议议题、关怀与长问题用深入，其余用快速。深入较细致但慢，快速回答更快。', 'Auto uses Deep for Bible study, controversial topics, care and long questions, and Fast for the rest. Deep is more thorough but slower; Fast answers sooner.'))}</div></div>
+<div class="xz2-seg" id="setDepth">${DEPTH_KEYS.map(k => `<button type="button" class="${X.adepth() === k ? 'on' : ''}" onclick="XZ2.act('sDepth','${k}')">${esc(X.depthName(k))}</button>`).join('')}</div></div>`;
   }
   X.settingsHtml = () => { css(); return `<div class="xz2s" data-xz2s>${settingsInner()}</div>`; };
   X.mountSettings = (el) => { css(); el.innerHTML = X.settingsHtml(); return el; };
@@ -945,6 +955,11 @@ body.kid #flow{font-size:1.16em}body.kid .msg.ai .body{line-height:1.8}
       if (X.aud() === a) { UI.audOpen = false; refresh(); return; }
       X.setAud(a); UI.audOpen = false; refresh(); try { if (O.onAudChange) O.onAudChange(a); } catch (e) {}
       toast(L3('回答對象：', '回答对象：', 'Answering for: ') + X.audName(a), 2000); return;
+    }
+    if (n === 'sDepth') {
+      if (X.adepth() === a) return;
+      X.setDepth(a); refresh();
+      toast(X.depthLabel() + L3('：', '：', ': ') + X.depthName(a), 1800); return;
     }
     if (n === 'len' || n === 'sLen') {
       if (X.alen() === a) return;
@@ -1265,6 +1280,7 @@ var DEEP_RE=new RegExp('解經|釋經|原文|希臘|希伯來|原意|翻譯|矛�
  +'exegesis|greek|hebrew|contradict|predestin|tongues|homosex|abortion|suicid|depress|cancer|grief|divorce|hell\\b|trinity|rapture|'
  +'원어|해석|신학|교리|이혼|우울|자살|聖書の解釈|原語|神学|うつ|自殺|離婚|penafsiran|bahasa asli|perceraian|depresi|bunuh diri|kanser|pagpasabut|diborsyo','i');
 function chatTier(text){
+ var dm=X.adepth(); if(dm==='deep'||dm==='fast') return dm;   /* 使用者手動選了就照選 */
  var t=String(text||''); if(t.length>=120||DEEP_RE.test(t)) return 'deep';
  try{ if(X.crisisHit(t)) return 'deep'; }catch(e){}
  return 'fast';
@@ -1549,6 +1565,11 @@ function lenSeg(){
  for(var i=0;i<X.LEN_KEYS.length;i++){ var k=X.LEN_KEYS[i]; h+='<button class="'+(X.alen()===k?'on':'')+'" data-act="len" data-v="'+k+'"><b>'+esc(X.lenName(k))+'</b><small>'+T(LEN_SUB_K[k])+'</small></button>'; }
  return h+'</div>';
 }
+function depthSeg(){
+ var h='<div style="margin:16px 2px 6px;font-weight:700">'+esc(X.depthLabel())+'</div><div class="lenseg">';
+ for(var i=0;i<X.DEPTH_KEYS.length;i++){ var k=X.DEPTH_KEYS[i]; h+='<button class="'+(X.adepth()===k?'on':'')+'" data-act="depth" data-v="'+k+'"><b>'+esc(X.depthName(k))+'</b><small>'+esc(X.depthSub(k))+'</small></button>'; }
+ return h+'</div>';
+}
 function langBtns(cls){ var N={zh:'繁',zs:'简',en:'EN',ko:'한',ja:'日',id:'ID',ceb:'CEB'},h='<div class="'+cls+'">'; for(var i=0;i<LANGS.length;i++) h+='<button class="'+(LANG===LANGS[i]?'on':'')+'" data-act="lang" data-v="'+LANGS[i]+'">'+(cls==='langseg'?T('langName_'+LANGS[i]):N[LANGS[i]])+'</button>'; return h+'</div>'; }
 function ab(act,i,icon,label,extra){ return '<button class="ib'+(extra||'')+'" data-act="'+act+'" data-i="'+i+'" title="'+esc(label)+'" aria-label="'+esc(label)+'">'+icon+'</button>'; }
 function msgHTML(m,i,lastOk){
@@ -1737,7 +1758,7 @@ function renderSheet(){
  } else if(S.sheet==='meet'){
   h+=meetSheetHTML();
  } else if(S.sheet==='lenmenu'){
-  h+='<div class="sheethead"><h2>'+T('lenH')+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>'+lenSeg()+'<p class="hint" style="margin-top:10px">'+T('lenHint')+'</p>';
+  h+='<div class="sheethead"><h2>'+T('lenH')+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>'+lenSeg()+depthSeg()+'<p class="hint" style="margin-top:10px">'+T('lenHint')+'</p>';
  } else if(S.sheet==='bank'){
   h+='<div class="sheethead"><h2>'+T('bankTitle')+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>'+bankHTML();
  } else if(S.sheet==='favs'){
@@ -2768,7 +2789,7 @@ function c3Rewrite(i,key){
  var msgs=[{role:'user',content:q||'(question)'},{role:'assistant',content:old},{role:'user',content:'Please rewrite your answer above. '+C3_RWI[key]+' Keep it faithful to Scripture and accurate, keep any Bible quotations word for word, and reply only with the rewritten answer in the same language.'}];
  stopSpeak(); m.pending=true; m.t=''; S.busy=true; S.ctl=window.AbortController?new AbortController():null; render(); scrollTo(i);
  var sig=S.ctl?S.ctl.signal:undefined;
- viaProxy(msgs,function(t,cont){ var el=$('m'+i); if(el){ var bb=el.querySelector('.body'); if(bb) bb.innerHTML=md(t); } },sig).then(function(t){
+ viaProxy(msgs,function(t,cont){ var el=$('m'+i); if(el){ var bb=el.querySelector('.body'); if(bb) bb.innerHTML=md(t); } },sig,chatTier('')).then(function(t){
   t=String(t||'').trim(); if(!t) throw new Error('empty');
   if(!m.orig) m.orig=old; m.t=t; m.rw=key; m.fu=null; m.memNote=null; m.qz=null;
  },function(){ m.t=old; toast(C3('rwFail')); }).then(function(){ m.pending=false; S.busy=false; S.ctl=null; save(); render(); scrollTo(i); });
@@ -3577,6 +3598,7 @@ document.addEventListener('click',function(e){
  else if(a==='aud'){ if(v===X.aud()) return; X.setAud(v); S.cat=-1; render(); toast(T('audSet')+X.AUD_ICON[v]+' '+X.audName(v)); }
  else if(a==='bg'){ if(v===X.skbg()) return; X.setBg(v); render(); if(!reAnswerLast(T('bgRe',X.skName(v)))) toast(T('bgSet',X.skName(v))); }
  else if(a==='len'){ if(v===X.alen()){ if(S.sheet==='lenmenu') closeSheet(); return; } X.setLen(v); if(S.sheet==='lenmenu') closeSheet(); render(); if(!reAnswerLast(T('lenRe',X.lenName(v)))) toast(T('lenSet',X.lenName(v),T(LEN_SUB_K[v]))); }
+ else if(a==='depth'){ if(v===X.adepth()){ if(S.sheet==='lenmenu') closeSheet(); return; } X.setDepth(v); if(S.sheet==='lenmenu') closeSheet(); render(); if(!reAnswerLast(T('lenRe',X.depthName(v)))) toast(X.depthLabel()+'：'+X.depthName(v)); }
  else if(a==='bi'){ lsSet('bi_'+LANG,v); render(); if(v){ if(!reAnswerLast(T('biOn',T('langName_'+v)))) toast(T('biOn',T('langName_'+v))); } else toast(T('biOffT')); }
  else if(a==='fs'){ S.fs=parseInt(v,10); lsSet('fs',S.fs); render(); }
  else if(a==='profile'){ closeSheet(); closeDrawer(); X.openProfile(function(){ render(); }); }
@@ -3682,7 +3704,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.0935',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.0955',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
