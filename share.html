@@ -21,6 +21,11 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 40px}
 .meta{color:var(--muted);font-size:.85em;margin:0}
 .go{display:block;text-align:center;margin:28px 0 8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:14px;padding:13px}
 .err{color:var(--muted);text-align:center;padding:40px 0}
+.art h1{font-size:1.45em;line-height:1.35;margin:18px 0 6px}.art .lead{font-size:1.05em;color:var(--muted);margin:0 0 10px}
+.art h3{margin:20px 0 4px;font-size:1.1em;color:var(--accent)}.art p{margin:8px 0}
+.art blockquote{margin:14px 0;padding:10px 14px;border-left:4px solid var(--gold);background:var(--soft);border-radius:0 12px 12px 0}
+.art cite{display:block;margin-top:4px;color:var(--muted);font-style:normal;font-size:.9em}
+.take{margin:18px 0 6px;padding:12px 14px;border:1px solid var(--gold);border-radius:14px}.take b{display:block;color:var(--gold);margin-bottom:2px}
 footer{color:var(--muted);font-size:.82em;text-align:center;padding:0 16px 30px}
 </style>
 </head>
@@ -54,7 +59,23 @@ footer{color:var(--muted);font-size:.82em;text-align:center;padding:0 16px 30px}
   }
   close(); return out; }
  function b64(s){ s=s.replace(/-/g,'+').replace(/_/g,'/'); while(s.length%4) s+='='; var bin=atob(s),u=new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) u[i]=bin.charCodeAt(i); return u; }
+ var TK={zh:'带着走的一句',zs:'带着走的一句',en:'Take it with you',ko:'오늘 가져갈 한마디',ja:'持ち帰りの一言',id:'Bawa pulang',ceb:'Dad-a ni'};
+ TK.zh='帶著走的一句';
+ var NOTE={zh:'本文由小智依一則問答改寫，經文請以聖經為準。',zs:'本文由小智依一则问答改写，经文请以圣经为准。',en:'Rewritten by Xiaozhi from a Q&A — please check Scripture against your Bible.',ko:'샤오즈가 문답을 글로 고쳤어요. 성경 구절은 성경으로 확인하세요.',ja:'シャオジーがQ&Aを記事に書き直しました。聖句は聖書でご確認ください。',id:'Ditulis ulang Xiaozhi dari tanya-jawab — periksa ayat dengan Alkitab Anda.',ceb:'Gisulat pag-usab ni Xiaozhi gikan sa Q&A — susiha ang bersikulo sa imong Biblia.'};
+ function paras(t){ return String(t||'').split(/\n+/).filter(function(x){ return x.trim(); }).map(function(x){ return '<p>'+inl(x)+'</p>'; }).join(''); }
+ function showArt(d){
+  var lg=L[d.l]?d.l:'zh',S=L[lg],a=d.a||{}; document.documentElement.lang={zh:'zh-Hant',zs:'zh-Hans'}[lg]||lg;
+  document.title=(a.title||S[0])+'・'+S[0];
+  document.getElementById('hT').textContent='📰 '+S[0]; document.getElementById('hS').textContent=S[7]+' '+new Date(d.ts||Date.now()).toLocaleDateString();
+  var h='<article class="art"><h1>'+esc(a.title)+'</h1>'+(a.lead?'<p class="lead">'+esc(a.lead)+'</p>':'');
+  (a.sections||[]).forEach(function(x){ h+=(x.h?'<h3>'+esc(x.h)+'</h3>':'')+paras(x.p); });
+  (a.verses||[]).forEach(function(v){ h+='<blockquote>'+esc(v.text)+'<cite>— '+esc(v.ref)+'</cite></blockquote>'; });
+  if(a.takeaway) h+='<div class="take"><b>'+esc(TK[lg])+'</b>'+esc(a.takeaway)+'</div>';
+  h+='<p class="meta">'+esc(NOTE[lg])+'</p></article><a class="go" href="'+PG[lg]+'?lang321='+lg+'">'+esc(S[4])+' ›</a>';
+  document.getElementById('main').innerHTML=h; document.getElementById('foot').textContent='— '+S[0]+' · '+S[6];
+ }
  function show(d){
+  if(d&&d.a) return showArt(d);
   var lg=L[d.l]?d.l:'zh',S=L[lg]; document.documentElement.lang={zh:'zh-Hant',zs:'zh-Hans'}[lg]||lg;
   document.title=S[0]+(d.t?'・'+d.t:'');
   document.getElementById('hT').textContent='💬 '+S[0]; document.getElementById('hS').textContent=d.t||S[1];

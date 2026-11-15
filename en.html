@@ -6,21 +6,21 @@
 <title>Xiaozhi Q&A</title>
 <meta name="description" content="Xiaozhi Q&A: Bible, faith and everyday questions, Kingdom 321 Fellowship.">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.1940">
-<link rel="icon" href="favicon.ico?v=v2026.1115.1940" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.1940">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.1940">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.1940">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.1940">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.1940">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2010">
+<link rel="icon" href="favicon.ico?v=v2026.1115.2010" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2010">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2010">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2010">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2010">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2010">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.1940"></script>
-<script src="xzplus.js?v=v2026.1115.1940" defer></script>
+<script src="k321gate.js?v=v2026.1115.2010"></script>
+<script src="xzplus.js?v=v2026.1115.2010" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='en';</script>
@@ -386,6 +386,19 @@ body.kid #c10sel{display:none!important}
 .c10fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;font-size:.92em;line-height:1.25}
 .c10fr i{font-style:normal;padding:0 3px}.c10fr i:first-child{border-bottom:1px solid currentColor}
 .c10sq{border-top:1px solid currentColor;padding:0 2px}
+/* ct11-1115 先問清楚、回答範圍、每日探索、文章頁 */
+.c11day{margin:6px 0 14px;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:16px;padding:14px 16px;background:linear-gradient(180deg,var(--gold-soft),transparent 140%)}
+.c11dh{display:flex;justify-content:space-between;gap:8px;font-size:.85em;color:var(--muted);margin-bottom:6px}.c11dh b{color:var(--gold);font-size:1.05em}
+.c11dv{margin:0 0 6px;font-size:1.08em;line-height:1.85;font-weight:500}
+.c11dr{font-size:.9em;color:var(--muted);margin-bottom:10px}
+.c11dq{display:flex;flex-wrap:wrap;gap:8px}
+.c11dq button{border:1px solid var(--line);background:var(--page);color:var(--ink);border-radius:999px;padding:8px 14px;font:inherit;font-size:.88em;font-weight:600}
+.c11q{font-size:1.08em;font-weight:700;margin:6px 0 10px;line-height:1.6}
+.c11opts{display:flex;flex-wrap:wrap;gap:8px}
+.wide.c11on{border-color:var(--accent);background:var(--soft)}
+.c11art{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--soft);margin:6px 0 10px}
+.c11art b{display:block;font-size:1.08em;margin-bottom:4px}.c11art p{margin:0 0 8px;color:var(--muted);font-size:.92em}
+.c11art small{display:inline-block;margin:0 6px 4px 0;padding:2px 10px;border-radius:999px;background:var(--page);border:1px solid var(--line);font-size:.78em;color:var(--muted)}
 /* ct8-1113 敬拜家庭宣教 */
 .c8score{text-align:center;padding:10px 0}.c8score b{font-size:1.5em;color:var(--accent)}.c8score div{margin-top:4px}
 .c8ref{font-weight:700;margin:8px 0 4px}
@@ -3366,6 +3379,7 @@ function ctFbText(kind,i,reasons,note,attach){
 }
 function ctSheetHTML(){
  var k=S.sheet,h='';
+ var x11=ct11Sheet(k); if(x11!=null) return x11;
  var x8=ct8Sheet(k); if(x8!=null) return x8;
  var x7=ct7Sheet(k); if(x7!=null) return x7;
  var x6=ct6Sheet(k); if(x6!=null) return x6;
@@ -3407,6 +3421,7 @@ function ctSheetAfter(x){ ct2After(); ct7After();
  var at=$('ctfbatt'); if(at) at.onchange=function(){ if(S.ctFb) S.ctFb.att=at.checked; };
 }
 function ctAct(a,b,i,fid,v){
+ if(ct11Act(a,b,i,fid,v)) return;
  if(ct10Act(a,b,i,fid,v)) return;
  if(ct8Act(a,b,i,fid,v)) return;
  if(ct7Act(a,b,i,fid,v)) return;
@@ -3894,6 +3909,201 @@ function ct10Act(a,b,i,fid,v){
  else return false;
  return true;
 }
+/* ---------- 先問清楚・回答範圍・每日探索・做成文章頁（ct11-1115） ---------- */
+var C11S={
+ clarT:'🙋 先問清楚|🙋 先问清楚|🙋 Ask to clarify first|🙋 먼저 확인하기|🙋 先に確認する|🙋 Tanya dulu|🙋 Pangutana una',
+ clarHint:'第一個問題太模糊時，小智先讓你點選要問哪一方面|第一个问题太模糊时，小智先让你点选要问哪一方面|If your first question is too vague, Xiaozhi first lets you tap what you mean|첫 질문이 모호하면 먼저 어떤 점인지 고르게 해요|最初の質問があいまいなとき、先に何を知りたいか選べます|Jika pertanyaan pertama terlalu umum, pilih dulu maksudnya|Kung dili klaro ang unang pangutana, pilia una ang buot ipasabot',
+ clarOn:'已開啟「先問清楚」|已开启“先问清楚”|Clarifying questions on|먼저 확인하기 켜짐|先に確認：オン|Tanya dulu: aktif|Pangutana una: naka-on',
+ clarOff:'已關閉「先問清楚」|已关闭“先问清楚”|Clarifying questions off|먼저 확인하기 꺼짐|先に確認：オフ|Tanya dulu: nonaktif|Pangutana una: napalong',
+ clarH:'先確認一下|先确认一下|Let me check first|먼저 확인할게요|先に確認させてください|Saya pastikan dulu|Ipamatuod una nako',
+ clarWait:'小智想先確認你的意思…|小智想先确认你的意思…|Xiaozhi wants to understand you first…|샤오즈가 먼저 뜻을 확인하는 중…|シャオジーが意図を確認中…|Xiaozhi memastikan maksudmu…|Gi-sure ni Xiaozhi ang imong buot ipasabot…',
+ clarSkip:'不用確認，直接回答|不用确认，直接回答|Skip — just answer|확인 없이 바로 답하기|確認せずそのまま回答|Lewati — langsung jawab|Laktawi — tubaga na lang',
+ clarOwn:'自己補充一句…|自己补充一句…|Add a few words…|직접 한마디 덧붙이기…|ひとこと補足…|Tambahkan sedikit…|Dugangi og pulong…',
+ clarSend:'送出|送出|Send|보내기|送信|Kirim|Ipadala',
+ scopeT:'🎯 回答範圍|🎯 回答范围|🎯 Answer scope|🎯 답변 범위|🎯 回答の範囲|🎯 Cakupan jawaban|🎯 Sakop sa tubag',
+ scopeH:'回答範圍|回答范围|Answer scope|답변 범위|回答の範囲|Cakupan jawaban|Sakop sa tubag',
+ scopeHint:'決定小智回答時可以用哪些資料。設定後每一題都會照這個範圍。|决定小智回答时可以用哪些资料。设定后每一题都会照这个范围。|Choose what Xiaozhi may draw on when answering. It applies to every question until you change it.|샤오즈가 답할 때 쓸 수 있는 자료를 정해요. 바꾸기 전까지 모든 질문에 적용돼요.|シャオジーが答えるときに使える資料を選びます。変更するまで毎回適用されます。|Pilih sumber yang boleh dipakai Xiaozhi. Berlaku untuk setiap pertanyaan sampai diubah.|Pilia ang mga gamiton ni Xiaozhi sa pagtubag. Magamit sa tanang pangutana hangtod usbon.',
+ sFree:'🌐 一般|🌐 一般|🌐 General|🌐 일반|🌐 一般|🌐 Umum|🌐 Kinatibuk-an',
+ sFreeD:'聖經、生活經驗與一般知識都可以用（原本的做法）|圣经、生活经验与一般知识都可以用（原本的做法）|Scripture, life experience and general knowledge (the usual way)|성경, 삶의 경험, 일반 지식 모두 사용(기본)|聖書・生活経験・一般知識を使う（従来どおり）|Alkitab, pengalaman hidup dan pengetahuan umum (biasa)|Kasulatan, kasinatian ug kinatibuk-ang kahibalo (naandan)',
+ sBible:'📖 只依聖經|📖 只依圣经|📖 Scripture only|📖 성경만|📖 聖書のみ|📖 Hanya Alkitab|📖 Kasulatan ra',
+ sBibleD:'只用經文與上下文回答，不加個人意見或外來說法；聖經沒說的就老實說沒有|只用经文与上下文回答，不加个人意见或外来说法；圣经没说的就老实说没有|Answer only from the text and its context — no personal opinion or outside claims; if the Bible is silent, say so|성경 본문과 문맥만으로 답하고, 성경이 말하지 않으면 그렇다고 말해요|聖書の本文と文脈だけで答え、個人の意見は加えません。聖書が語らないことはそう伝えます|Jawab hanya dari teks dan konteksnya — tanpa opini pribadi; jika Alkitab tidak menyebutnya, katakan begitu|Tubag lang gikan sa teksto ug konteksto — walay personal nga opinyon; kung wala giingon sa Biblia, ingna',
+ sFolder:'📁 只依我的資料夾|📁 只依我的文件夹|📁 My folder only|📁 내 폴더만|📁 マイフォルダのみ|📁 Hanya folder saya|📁 Folder ra nako',
+ sFolderD:'只用目前資料夾裡你放進去的資料回答；資料裡沒有就說沒有|只用目前文件夹里你放进去的资料回答；资料里没有就说没有|Answer only from the sources in the current folder; if they do not cover it, say so|현재 폴더에 넣은 자료로만 답하고, 없으면 없다고 말해요|現在のフォルダの資料だけで答え、なければそう伝えます|Jawab hanya dari sumber di folder ini; jika tidak ada, katakan|Tubag lang gikan sa mga gigikanan sa folder; kung wala, ingna',
+ sFolderNo:'（先在「資料夾」開一個並加入資料）|（先在“文件夹”开一个并加入资料）|(first open a folder and add sources)|(먼저 폴더를 열고 자료를 추가하세요)|（先にフォルダを開いて資料を追加）|(buka folder dan tambah sumber dulu)|(abri una ang folder ug dugangi og sources)',
+ scopeBar:'回答範圍：{0}|回答范围：{0}|Answer scope: {0}|답변 범위: {0}|回答の範囲：{0}|Cakupan jawaban: {0}|Sakop sa tubag: {0}',
+ scopeBarNo:'（沒有資料夾，暫時照一般回答）|（没有文件夹，暂时照一般回答）|(no folder — answering generally for now)|(폴더가 없어 일반 답변)|（フォルダなし。一般回答になります）|(tanpa folder — jawaban umum)|(walay folder — kinatibuk-an una)',
+ scopeBarEdit:'更改|更改|Change|변경|変更|Ubah|Usba',
+ scopeSet:'已設定回答範圍：{0}|已设定回答范围：{0}|Answer scope set: {0}|답변 범위 설정: {0}|回答の範囲を設定：{0}|Cakupan diatur: {0}|Gitakda ang sakop: {0}',
+ dayH:'☀️ 今日經文|☀️ 今日经文|☀️ Verse of the day|☀️ 오늘의 말씀|☀️ 今日の聖句|☀️ Ayat hari ini|☀️ Bersikulo karong adlawa',
+ dayQ1:'背景與意思|背景与意思|Background|배경과 뜻|背景と意味|Latar belakang|Kaligdanan',
+ dayQ2:'今天怎麼用|今天怎么用|Live it today|오늘 실천|今日どう生かす|Terapkan hari ini|Gamiton karong adlawa',
+ dayQ3:'帶小組|带小组|For my group|소그룹용|グループ用|Untuk kelompok|Alang sa grupo',
+ dayA1:'請說明{0}的背景與意思：「{1}」|请说明{0}的背景与意思：“{1}”|Please explain the background and meaning of {0}: "{1}"|{0}의 배경과 뜻을 설명해 주세요: "{1}"|{0}の背景と意味を説明してください：「{1}」|Tolong jelaskan latar belakang dan makna {0}: "{1}"|Palihog ipasabot ang kaligdanan ug kahulogan sa {0}: "{1}"',
+ dayA2:'請幫我把{0}變成今天可以做的一件小事：「{1}」|请帮我把{0}变成今天可以做的一件小事：“{1}”|Help me turn {0} into one small thing I can do today: "{1}"|{0} 말씀을 오늘 할 수 있는 작은 실천 하나로 바꿔 주세요: "{1}"|{0}を、今日できる小さな一歩にしてください：「{1}」|Bantu ubah {0} menjadi satu hal kecil yang bisa saya lakukan hari ini: "{1}"|Tabangi ko himoong gamay nga lakang karong adlawa ang {0}: "{1}"',
+ dayA3:'請為{0}設計三個帶小組的討論問題：「{1}」|请为{0}设计三个带小组的讨论问题：“{1}”|Write three small-group discussion questions for {0}: "{1}"|{0}으로 소그룹 나눔 질문 세 가지를 만들어 주세요: "{1}"|{0}でグループの分かち合いの質問を3つ作ってください：「{1}」|Buatkan tiga pertanyaan diskusi kelompok untuk {0}: "{1}"|Paghimo og tulo ka pangutana sa grupo alang sa {0}: "{1}"',
+ artBtn:'📰 做成文章頁|📰 做成文章页|📰 Make an article page|📰 글 페이지로 만들기|📰 記事ページにする|📰 Jadikan halaman artikel|📰 Himoong article page',
+ artH:'做成文章頁|做成文章页|Article page|글 페이지|記事ページ|Halaman artikel|Article page',
+ artWait:'小智正在整理成文章…|小智正在整理成文章…|Xiaozhi is turning this into an article…|샤오즈가 글로 정리하는 중…|シャオジーが記事にまとめています…|Xiaozhi menyusun artikel…|Gihimo ni Xiaozhi nga article…',
+ artFail:'整理失敗，請稍後再試|整理失败，请稍后再试|Could not make the article — please try again|정리하지 못했어요. 잠시 후 다시 시도해 주세요|まとめられませんでした。しばらくしてからもう一度|Gagal menyusun — coba lagi nanti|Napakyas — sulayi pag-usab unya',
+ artHint:'這是小智把這則問答改寫成的短文，用連結分享給小家。經文請以聖經為準。|这是小智把这则问答改写成的短文，用链接分享给小家。经文请以圣经为准。|Xiaozhi rewrote this Q&A as a short article you can share by link. Please check Scripture against your Bible.|샤오즈가 이 문답을 짧은 글로 고쳐 링크로 나눌 수 있게 했어요. 성경 구절은 성경으로 확인하세요.|このQ&Aを短い記事に書き直し、リンクで共有できます。聖句は聖書でご確認ください。|Xiaozhi menulis ulang tanya-jawab ini jadi artikel singkat untuk dibagikan lewat tautan. Periksa ayat dengan Alkitab Anda.|Gisulat pag-usab ni Xiaozhi kini nga Q&A ingon article nga ipaambit sa link. Susiha ang bersikulo sa imong Biblia.',
+ artShare:'📤 分享連結|📤 分享链接|📤 Share link|📤 링크 공유|📤 リンクを共有|📤 Bagikan tautan|📤 Ipaambit ang link',
+ artCopy:'🔗 複製連結|🔗 复制链接|🔗 Copy link|🔗 링크 복사|🔗 リンクをコピー|🔗 Salin tautan|🔗 Kopyaha ang link',
+ artOpen:'👁 開啟預覽|👁 打开预览|👁 Open preview|👁 미리보기|👁 プレビュー|👁 Buka pratinjau|👁 Ablihi ang preview',
+ artAgain:'↻ 重新整理一次|↻ 重新整理一次|↻ Rewrite again|↻ 다시 정리|↻ もう一度まとめる|↻ Tulis ulang|↻ Isulat pag-usab',
+ artCopied:'連結已複製|链接已复制|Link copied|링크를 복사했어요|リンクをコピーしました|Tautan disalin|Na-copy ang link'
+};
+function C11(k,a,b){ var s=C5L(C11S[k]||k); if(a!=null) s=s.split('{0}').join(a); if(b!=null) s=s.split('{1}').join(b); return s; }
+var C11DATA=[["Genesis 28:15","Behold, I am with you, and will keep you, wherever you go, and will bring you again into this land. For I will not leave you until I have done that which I have spoken of to you.","Genesis",28,15],["Exodus 14:14","The LORD will fight for you, and you shall be still.","Exodus",14,14],["Exodus 33:14","He said, “My presence will go with you, and I will give you rest.”","Exodus",33,14],["Numbers 6:24-26","‘The LORD bless you, and keep you. The LORD make his face to shine on you, and be gracious to you. The LORD lift up his face toward you, and give you peace.’","Numbers",6,24],["Deuteronomy 31:6","Be strong and courageous. Don’t be afraid or scared of them, for the LORD your God himself is who goes with you. He will not fail you nor forsake you.","Deuteronomy",31,6],["Joshua 1:9","Haven’t I commanded you? Be strong and courageous. Don’t be afraid. Don’t be dismayed, for the LORD your God  is with you wherever you go.","Joshua",1,9],["1 Samuel 16:7","But the LORD said to Samuel, “Don’t look on his face, or on the height of his stature, because I have rejected him; for I don’t see as man sees. For man looks at the outward appearance, but the LORD looks at the heart.”","1Samuel",16,7],["2 Chronicles 7:14","if my people who are called by my name will humble themselves, pray, seek my face, and turn from their wicked ways, then I will hear from heaven, will forgive their sin, and will heal their land.","2Chronicles",7,14],["Nehemiah 8:10","Then he said to them, “Go your way. Eat the fat, drink the sweet, and send portions to him for whom nothing is prepared, for today is holy to our Lord. Don’t be grieved, for the joy of the LORD is your strength.”","Nehemiah",8,10],["Esther 4:14","For if you remain silent now, then relief and deliverance will come to the Jews from another place, but you and your father’s house will perish. Who knows if you haven’t come to the kingdom for such a time as this?","Esther",4,14],["Psalms 16:11","You will show me the path of life. In your presence is fullness of joy. In your right hand there are pleasures forever more.","Psalms",16,11],["Psalms 19:14","Let the words of my mouth and the meditation of my heart be acceptable in your sight, LORD, my rock, and my redeemer.","Psalms",19,14],["Psalms 23:1-3","The LORD is my shepherd; I shall lack nothing. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul. He guides me in the paths of righteousness for his name’s sake.","Psalms",23,1],["Psalms 23:4","Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me. Your rod and your staff, they comfort me.","Psalms",23,4],["Psalms 27:1","The LORD is my light and my salvation. Whom shall I fear? The LORD is the strength of my life. Of whom shall I be afraid?","Psalms",27,1],["Psalms 34:8","Oh taste and see that the LORD is good. Blessed is the man who takes refuge in him.","Psalms",34,8],["Psalms 37:4","Also delight yourself in the LORD, and he will give you the desires of your heart.","Psalms",37,4],["Psalms 46:1","God is our refuge and strength, a very present help in trouble.","Psalms",46,1],["Psalms 46:10","“Be still, and know that I am God. I will be exalted among the nations. I will be exalted on the earth.”","Psalms",46,10],["Psalms 51:10","Create in me a clean heart, O God. Renew a right spirit within me.","Psalms",51,10],["Psalms 55:22","Cast your burden on the LORD and he will sustain you. He will never allow the righteous to be moved.","Psalms",55,22],["Psalms 62:1-2","My soul rests in God alone. My salvation is from him. He alone is my rock, my salvation, and my fortress. I will never be greatly shaken.","Psalms",62,1],["Psalms 90:12","So teach us to count our days, that we may gain a heart of wisdom.","Psalms",90,12],["Psalms 91:1-2","He who dwells in the secret place of the Most High will rest in the shadow of the Almighty. I will say of the LORD, “He is my refuge and my fortress; my God, in whom I trust.”","Psalms",91,1],["Psalms 103:1","Praise the LORD, my soul! All that is within me, praise his holy name!","Psalms",103,1],["Psalms 119:105","Your word is a lamp to my feet, and a light for my path.","Psalms",119,105],["Psalms 121:1-2","I will lift up my eyes to the hills. Where does my help come from? My help comes from the LORD, who made heaven and earth.","Psalms",121,1],["Psalms 126:5-6","Those who sow in tears will reap in joy. He who goes out weeping, carrying seed for sowing, will certainly come again with joy, carrying his sheaves.","Psalms",126,5],["Psalms 139:23-24","Search me, God, and know my heart. Try me, and know my thoughts. See if there is any wicked way in me, and lead me in the everlasting way.","Psalms",139,23],["Psalms 145:18","The LORD is near to all those who call on him, to all who call on him in truth.","Psalms",145,18],["Proverbs 3:5-6","Trust in the LORD with all your heart, and don’t lean on your own understanding. In all your ways acknowledge him, and he will make your paths straight.","Proverbs",3,5],["Proverbs 4:23","Keep your heart with all diligence, for out of it is the wellspring of life.","Proverbs",4,23],["Proverbs 9:10","The fear of the LORD is the beginning of wisdom. The knowledge of the Holy One is understanding.","Proverbs",9,10],["Proverbs 15:1","A gentle answer turns away wrath, but a harsh word stirs up anger.","Proverbs",15,1],["Proverbs 16:3","Commit your deeds to the LORD, and your plans shall succeed.","Proverbs",16,3],["Proverbs 16:9","A man’s heart plans his course, but the LORD directs his steps.","Proverbs",16,9],["Proverbs 18:10","The LORD’s name is a strong tower: the righteous run to him, and are safe.","Proverbs",18,10],["Proverbs 22:6","Train up a child in the way he should go, and when he is old he will not depart from it.","Proverbs",22,6],["Ecclesiastes 3:11","He has made everything beautiful in its time. He has also set eternity in their hearts, yet so that man can’t find out the work that God has done from the beginning even to the end.","Ecclesiastes",3,11],["Isaiah 26:3","You will keep whoever’s mind is steadfast in perfect peace, because he trusts in you.","Isaiah",26,3],["Isaiah 40:31","but those who wait for the LORD will renew their strength. They will mount up with wings like eagles. They will run, and not be weary. They will walk, and not faint.","Isaiah",40,31],["Isaiah 41:10","Don’t you be afraid, for I am with you. Don’t be dismayed, for I am your God. I will strengthen you. Yes, I will help you. Yes, I will uphold you with the right hand of my righteousness.","Isaiah",41,10],["Isaiah 43:1","But now the LORD who created you, Jacob, and he who formed you, Israel, says: “Don’t be afraid, for I have redeemed you. I have called you by your name. You are mine.","Isaiah",43,1],["Isaiah 43:19","Behold, I will do a new thing. It springs out now. Don’t you know it? I will even make a way in the wilderness, and rivers in the desert.","Isaiah",43,19],["Isaiah 53:5","But he was pierced for our transgressions. He was crushed for our iniquities. The punishment that brought our peace was on him; and by his wounds we are healed.","Isaiah",53,5],["Isaiah 55:8-9","For my thoughts are not your thoughts, and your ways are not my ways,” says the LORD. “For as the heavens are higher than the earth, so are my ways higher than your ways, and my thoughts than your thoughts.","Isaiah",55,8],["Isaiah 58:11","and the LORD will guide you continually, satisfy your soul in dry places, and make your bones strong. You will be like a watered garden, and like a spring of water whose waters don’t fail.","Isaiah",58,11],["Jeremiah 29:11","For I know the thoughts that I think toward you,” says the LORD, “thoughts of peace, and not of evil, to give you hope and a future.","Jeremiah",29,11],["Jeremiah 33:3","‘Call to me, and I will answer you, and will show you great and difficult things, which you don’t know.","Jeremiah",33,3],["Lamentations 3:22-23","It is because of the LORD’s loving kindnesses that we are not consumed, because his mercies don’t fail. They are new every morning. Great is your faithfulness.","Lamentations",3,22],["Ezekiel 36:26","I will also give you a new heart, and I will put a new spirit within you. I will take away the stony heart out of your flesh, and I will give you a heart of flesh.","Ezekiel",36,26],["Micah 6:8","He has shown you, O man, what is good. What does the LORD require of you, but to act justly, to love mercy, and to walk humbly with your God?","Micah",6,8],["Habakkuk 3:17-18","For even though the fig tree doesn’t flourish, nor fruit be in the vines, the labor of the olive fails, the fields yield no food, the flocks are cut off from the fold, and there is no herd in the stalls, yet I will rejoice in the LORD. I will be joyful in the God of my salvation!","Habakkuk",3,17],["Matthew 5:3","Blessed are the poor in spirit, for theirs is the Kingdom of Heaven.","Matthew",5,3],["Matthew 5:16","Even so, let your light shine before men, that they may see your good works and glorify your Father who is in heaven.","Matthew",5,16],["Matthew 6:33","But seek first God’s Kingdom and his righteousness; and all these things will be given to you as well.","Matthew",6,33],["Matthew 6:34","Therefore don’t be anxious for tomorrow, for tomorrow will be anxious for itself. Each day’s own evil is sufficient.","Matthew",6,34],["Matthew 7:7","Ask, and it will be given you. Seek, and you will find. Knock, and it will be opened for you.","Matthew",7,7],["Matthew 11:28-29","Come to me, all you who labor and are heavily burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart; and you will find rest for your souls.","Matthew",11,28],["Matthew 16:24","Then Jesus said to his disciples, “If anyone desires to come after me, let him deny himself, take up his cross, and follow me.","Matthew",16,24],["Matthew 18:20","For where two or three are gathered together in my name, there I am in the middle of them.","Matthew",18,20],["Matthew 22:37-39","Jesus said to him, “‘You shall love the Lord your God with all your heart, with all your soul, and with all your mind.’ This is the first and great commandment. A second likewise is this, ‘You shall love your neighbor as yourself.’","Matthew",22,37],["Matthew 28:19-20","Go  and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all things that I commanded you. Behold, I am with you always, even to the end of the age.” Amen.","Matthew",28,19],["Mark 10:45","For the Son of Man also came not to be served but to serve, and to give his life as a ransom for many.","Mark",10,45],["Luke 6:31","As you would like people to do to you, do exactly so to them.","Luke",6,31],["Luke 19:10","For the Son of Man came to seek and to save that which was lost.","Luke",19,10],["John 1:12","But as many as received him, to them he gave the right to become God’s children, to those who believe in his name:","John",1,12],["John 3:16","For God so loved the world, that he gave his only born  Son, that whoever believes in him should not perish, but have eternal life.","John",3,16],["John 8:12","Again, therefore, Jesus spoke to them, saying, “I am the light of the world. He who follows me will not walk in the darkness, but will have the light of life.”","John",8,12],["John 8:32","You will know the truth, and the truth will make you free.","John",8,32],["John 10:10","The thief only comes to steal, kill, and destroy. I came that they may have life, and may have it abundantly.","John",10,10],["John 11:25-26","Jesus said to her, “I am the resurrection and the life. He who believes in me will still live, even if he dies. Whoever lives and believes in me will never die. Do you believe this?”","John",11,25],["John 13:34-35","A new commandment I give to you, that you love one another. Just as I have loved you, you also love one another. By this everyone will know that you are my disciples, if you have love for one another.","John",13,34],["John 14:6","Jesus said to him, “I am the way, the truth, and the life. No one comes to the Father, except through me.","John",14,6],["John 14:27","Peace I leave with you. My peace I give to you; not as the world gives, I give to you. Don’t let your heart be troubled, neither let it be fearful.","John",14,27],["John 15:5","I am the vine. You are the branches. He who remains in me and I in him bears much fruit, for apart from me you can do nothing.","John",15,5],["John 15:12","This is my commandment, that you love one another, even as I have loved you.","John",15,12],["John 16:33","I have told you these things, that in me you may have peace. In the world you have trouble; but cheer up! I have overcome the world.","John",16,33],["Acts 1:8","But you will receive power when the Holy Spirit has come upon you. You will be witnesses to me in Jerusalem, in all Judea and Samaria, and to the uttermost parts of the earth.","Acts",1,8],["Acts 4:12","There is salvation in no one else, for there is no other name under heaven that is given among men, by which we must be saved!","Acts",4,12],["Acts 20:35","In all things I gave you an example, that so laboring you ought to help the weak, and to remember the words of the Lord Jesus, that he himself said, ‘It is more blessed to give than to receive.’","Acts",20,35],["Romans 3:23","for all have sinned, and fall short of the glory of God;","Romans",3,23],["Romans 5:8","But God commends his own love toward us, in that while we were yet sinners, Christ died for us.","Romans",5,8],["Romans 6:23","For the wages of sin is death, but the free gift of God is eternal life in Christ Jesus our Lord.","Romans",6,23],["Romans 8:1","There is therefore now no condemnation to those who are in Christ Jesus, who don’t walk according to the flesh, but according to the Spirit.","Romans",8,1],["Romans 8:28","We know that all things work together for good for those who love God, for those who are called according to his purpose.","Romans",8,28],["Romans 8:38-39","For I am persuaded that neither death, nor life, nor angels, nor principalities, nor things present, nor things to come, nor powers, nor height, nor depth, nor any other created thing will be able to separate us from God’s love which is in Christ Jesus our Lord.","Romans",8,38],["Romans 10:9","that if you will confess with your mouth that Jesus is Lord and believe in your heart that God raised him from the dead, you will be saved.","Romans",10,9],["Romans 12:1-2","Therefore I urge you, brothers, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God, which is your spiritual service. Don’t be conformed to this world, but be transformed by the renewing of your mind, so that you may prove what is the good, well-pleasing, and perfect will of God.","Romans",12,1],["Romans 12:21","Don’t be overcome by evil, but overcome evil with good.","Romans",12,21],["1 Corinthians 10:13","No temptation has taken you except what is common to man. God is faithful, who will not allow you to be tempted above what you are able, but will with the temptation also make the way of escape, that you may be able to endure it.","1Corinthians",10,13],["1 Corinthians 13:4-7","Love is patient and is kind. Love doesn’t envy. Love doesn’t brag, is not proud, doesn’t behave itself inappropriately, doesn’t seek its own way, is not provoked, takes no account of evil; doesn’t rejoice in unrighteousness, but rejoices with the truth; bears all things, believes all things, hopes all things, and endures all things.","1Corinthians",13,4],["1 Corinthians 13:13","But now faith, hope, and love remain—these three. The greatest of these is love.","1Corinthians",13,13],["1 Corinthians 15:58","Therefore, my beloved brothers, be steadfast, immovable, always abounding in the Lord’s work, because you know that your labor is not in vain in the Lord.","1Corinthians",15,58],["2 Corinthians 5:7","for we walk by faith, not by sight.","2Corinthians",5,7],["2 Corinthians 5:17","Therefore if anyone is in Christ, he is a new creation. The old things have passed away. Behold,  all things have become new.","2Corinthians",5,17],["2 Corinthians 12:9","He has said to me, “My grace is sufficient for you, for my power is made perfect in weakness.” Most gladly therefore I will rather glory in my weaknesses, that the power of Christ may rest on me.","2Corinthians",12,9],["Galatians 2:20","I have been crucified with Christ, and it is no longer I who live, but Christ lives in me. That life which I now live in the flesh, I live by faith in the Son of God, who loved me and gave himself up for me.","Galatians",2,20],["Galatians 5:22-23","But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faith, gentleness, and self-control. Against such things there is no law.","Galatians",5,22],["Galatians 6:9","Let’s not be weary in doing good, for we will reap in due season if we don’t give up.","Galatians",6,9],["Ephesians 2:8-9","for by grace you have been saved through faith, and that not of yourselves; it is the gift of God, not of works, that no one would boast.","Ephesians",2,8],["Ephesians 4:2-3","with all lowliness and humility, with patience, bearing with one another in love, being eager to keep the unity of the Spirit in the bond of peace.","Ephesians",4,2],["Ephesians 6:10","Finally, be strong in the Lord and in the strength of his might.","Ephesians",6,10],["Philippians 2:3-4","doing nothing through rivalry or through conceit, but in humility, each counting others better than himself; each of you not just looking to his own things, but each of you also to the things of others.","Philippians",2,3],["Philippians 3:13-14","Brothers, I don’t regard myself as yet having taken hold, but one thing I do: forgetting the things which are behind and stretching forward to the things which are before, I press on toward the goal for the prize of the high calling of God in Christ Jesus.","Philippians",3,13],["Philippians 4:4","Rejoice in the Lord always! Again I will say, “Rejoice!”","Philippians",4,4],["Philippians 4:6-7","In nothing be anxious, but in everything, by prayer and petition with thanksgiving, let your requests be made known to God. And the peace of God, which surpasses all understanding, will guard your hearts and your thoughts in Christ Jesus.","Philippians",4,6],["Philippians 4:13","I can do all things through Christ who strengthens me.","Philippians",4,13],["Colossians 3:17","Whatever you do, in word or in deed, do all in the name of the Lord Jesus, giving thanks to God the Father through him.","Colossians",3,17],["1 Thessalonians 5:16-18","Always rejoice. Pray without ceasing. In everything give thanks, for this is the will of God in Christ Jesus toward you.","1Thessalonians",5,16],["2 Timothy 1:7","For God didn’t give us a spirit of fear, but of power, love, and self-control.","2Timothy",1,7],["2 Timothy 3:16-17","Every Scripture is God-breathed and  profitable for teaching, for reproof, for correction, and for instruction in righteousness, that each person who belongs to God may be complete, thoroughly equipped for every good work.","2Timothy",3,16],["Hebrews 4:12","For the word of God is living and active, and sharper than any two-edged sword, piercing even to the dividing of soul and spirit, of both joints and marrow, and is able to discern the thoughts and intentions of the heart.","Hebrews",4,12],["Hebrews 4:16","Let’s therefore draw near with boldness to the throne of grace, that we may receive mercy and may find grace for help in time of need.","Hebrews",4,16],["Hebrews 11:1","Now faith is assurance of things hoped for, proof of things not seen.","Hebrews",11,1],["Hebrews 12:1-2","Therefore let’s also, seeing we are surrounded by so great a cloud of witnesses, lay aside every weight and the sin which so easily entangles us, and let’s run with perseverance the race that is set before us, looking to Jesus, the author and perfecter of faith, who for the joy that was set before him endured the cross, despising its shame, and has sat down at the right hand of the throne of God.","Hebrews",12,1],["Hebrews 13:8","Jesus Christ is the same yesterday, today, and forever.","Hebrews",13,8],["James 1:5","But if any of you lacks wisdom, let him ask of God, who gives to all liberally and without reproach, and it will be given to him.","James",1,5],["James 1:22","But be doers of the word, and not only hearers, deluding your own selves.","James",1,22],["James 4:6","But he gives more grace. Therefore it says, “God resists the proud, but gives grace to the humble.”","James",4,6],["James 4:10","Humble yourselves in the sight of the Lord, and he will exalt you.","James",4,10],["1 Peter 5:5-7","Likewise, you younger ones, be subject to the elder. Yes, all of you clothe yourselves with humility and subject yourselves to one another; for “God resists the proud, but gives grace to the humble.” Humble yourselves therefore under the mighty hand of God, that he may exalt you in due time, casting all your worries on him, because he cares for you.","1Peter",5,5],["1 John 1:9","If we confess our sins, he is faithful and righteous to forgive us the sins and to cleanse us from all unrighteousness.","1John",1,9],["1 John 4:19","We love him,  because he first loved us.","1John",4,19],["Revelation 3:20","Behold, I stand at the door and knock. If anyone hears my voice and opens the door, then I will come in to him and will dine with him, and he with me.","Revelation",3,20],["Revelation 21:4","He will wipe away every tear from their eyes. Death will be no more; neither will there be mourning, nor crying, nor pain any more. The first things have passed away.","Revelation",21,4]];
+var C11LN={zh:'Traditional Chinese (Taiwan usage)',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'};
+
+/* ===== 2. 回答範圍 ===== */
+function c11Scope(){ var v=lsGet('scope','free'); return (v==='bible'||v==='folder')?v:'free'; }
+function c11FolderOk(){ var fd=S.fid?c2Folder(S.fid):null; return !!(fd&&c3SrcMeta(fd).length); }
+function c11Eff(){ var v=c11Scope(); return (v==='folder'&&!c11FolderOk())?'free':v; }
+function c11ScopeName(v){ return C11(v==='bible'?'sBible':v==='folder'?'sFolder':'sFree'); }
+function c11Sys(){
+ var e=c11Eff();
+ if(e==='bible') return '\n\n[Answer scope: Scripture only — this overrides any looser instruction above] Answer ONLY from what the Bible itself says. Quote the relevant verses verbatim with their references and explain only what the text and its immediate context say. Do not add personal opinions, denominational positions, outside stories or speculation. If the Bible does not address the question, say so plainly and point to what Scripture does say nearby.';
+ if(e==='folder') return '\n\n[Answer scope: the user\'s folder only — this overrides any looser instruction above] Answer ONLY from the reference excerpts of the current folder given above. If they do not cover the question, say so plainly and do not answer from general knowledge. Cite the source name in brackets. Quote Scripture only if it appears in the excerpts.';
+ return '';
+}
+var c11_sp=sysPrompt; sysPrompt=function(){ return c11_sp()+c11Sys(); };
+var c11_m4=c4Meta; c4Meta=function(){ var e=c11Eff(); return c11_m4()+(e==='bible'?' · 📖':e==='folder'?' · 📁':''); };
+function c11Bar(){
+ var f=$('flow'); if(!f) return;
+ var old=$('c11bar'); if(old&&old.parentNode) old.parentNode.removeChild(old);
+ var sc=c11Scope(); if(sc==='free') return;
+ var d=document.createElement('div'); d.id='c11bar'; d.className='c4rbar';
+ d.innerHTML='<span>🎯 '+esc(C11('scopeBar',c11ScopeName(sc).replace(/^\S+\s/,'')))+(c11Eff()!==sc?' '+esc(C11('scopeBarNo')):'')+'</span><button class="ctbtn" data-act="ctscope">'+esc(C11('scopeBarEdit'))+'</button>';
+ f.insertBefore(d,f.firstChild);
+}
+var c11_r=render; render=function(){ c11_r(); c11Bar(); };
+function c11ScopeHTML(){
+ var cur=c11Scope(),ok=c11FolderOk(),h='<div class="sheethead"><h2>'+esc(C11('scopeH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C11('scopeHint'))+'</p><div class="sec">';
+ var L=[['free','sFree','sFreeD'],['bible','sBible','sBibleD'],['folder','sFolder','sFolderD']];
+ for(var i=0;i<L.length;i++){ var v=L[i][0],dis=(v==='folder'&&!ok); h+='<button class="wide'+(cur===v?' c11on':'')+'" data-act="ctscopego" data-v="'+v+'"'+(dis?' disabled style="opacity:.55"':'')+'><span>'+esc(C11(L[i][1]))+'<br><small class="hint">'+esc(C11(L[i][2])+(dis?' '+C11('sFolderNo'):''))+'</small></span><span>'+(cur===v?'✓':'›')+'</span></button>'; }
+ return h+'</div>';
+}
+
+/* ===== 1. 先問清楚 ===== */
+function c11ClarOn(){ return lsGet('clar',1)===1; }
+var C11VAGUE=/怎麼辦|怎么办|什麼意思|什么意思|怎麼做|怎么做|怎麼看|怎么看|為什麼|为什么|可以嗎|可以吗|好嗎|對嗎|对吗|行嗎|行吗|what should i do|what does (this|that|it) mean|what do i do|how (do|can|should) i|why\b|is it ok|어떻게|무슨 뜻|どうすれば|どういう意味|bagaimana|apa maksud|unsa man|unsaon/i;
+function c11Vague(t){
+ if(S.chat.length||S.c10F||S.c3Img||S.asst||S.persona||c4Kid()||S.voiceNext||(typeof CALL!=='undefined'&&CALL.on)) return false;
+ if(/\d+\s*[:：]\s*\d+/.test(t)) return false;
+ try{ if(X.crisisHit(t)) return false; }catch(e){}
+ var cj=(t.match(/[぀-ヿ㐀-鿿가-힯]/g)||[]).length,words=t.split(/\s+/).filter(Boolean).length;
+ if(cj>=4?cj>14:words>7) return false;
+ return C11VAGUE.test(t);
+}
+var c11_send=send;
+send=function(text){
+ text=String(text||'').trim();
+ if(S.c11Skip){ S.c11Skip=false; return c11_send(text); }
+ if(text&&!S.busy&&c11ClarOn()&&c11Vague(text)){ c11Clar(text); return; }
+ return c11_send(text);
+};
+function c11Clar(text){
+ var C={q:text,busy:true}; S.c11C=C; openSheet('ctclar');
+ var done=false,tm=0;
+ function fin(r){
+  if(done) return; done=true; clearTimeout(tm);
+  if(S.c11C!==C||S.sheet!=='ctclar') return;
+  if(r&&r.q&&r.o&&r.o.length>=2){ C.busy=false; C.cq=r.q; C.o=r.o; renderSheet(); }
+  else { closeSheet(); S.c11Skip=true; send(text); }
+ }
+ tm=setTimeout(function(){ fin(null); },9000);
+ var ask='A reader of a Christian pastoral Q&A app asked this question: "'+text.replace(/"/g,"'")+'"\nIf it is too vague to answer well, write ONE short clarifying question in '+(C11LN[LANG]||'English')+' and 3 short answer options (each under 16 characters or 4 words) that would let you answer precisely. If it is already clear enough, return {"q":"","o":[]}. Return ONLY JSON like {"q":"...","o":["...","...","..."]}.';
+ quickAsk(ask,400).then(function(t){
+  var m=String(t||'').match(/\{[\s\S]*\}/),j=null; try{ j=JSON.parse(m[0]); }catch(e){}
+  fin(j&&j.q?{q:String(j.q).slice(0,120),o:(j.o||[]).map(function(x){ return String(x).trim().slice(0,40); }).filter(Boolean).slice(0,4)}:null);
+ },function(){ fin(null); });
+}
+function c11ClarHTML(){
+ var C=S.c11C||{},h='<div class="sheethead"><h2>'+esc(C11('clarH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">「'+esc(String(C.q||'').slice(0,100))+'」</p>';
+ if(C.busy) return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C11('clarWait'))+'</p><button class="ctbtn" data-act="ctclarskip">'+esc(C11('clarSkip'))+'</button>';
+ h+='<p class="c11q">'+esc(C.cq)+'</p><div class="c11opts">';
+ for(var k=0;k<C.o.length;k++) h+='<button class="chip" data-act="ctclarpick" data-v="'+k+'">'+esc(C.o[k])+'</button>';
+ return h+'</div><div class="ctrow" style="margin-top:12px"><input id="c11own" class="ctin" maxlength="80" placeholder="'+esc(C11('clarOwn'))+'"><button class="ctbtn pri" data-act="ctclarown">'+esc(C11('clarSend'))+'</button></div><button class="ctbtn" data-act="ctclarskip" style="margin-top:10px">'+esc(C11('clarSkip'))+'</button>';
+}
+function c11ClarGo(extra){
+ var C=S.c11C; if(!C) return; closeSheet(); S.c11C=null; S.c11Skip=true;
+ send(extra?C.q+'（'+extra+'）':C.q);
+}
+
+/* ===== 3. 每日探索 ===== */
+function c11Day(){
+ var d=new Date(),n=Math.floor((new Date(d.getFullYear(),d.getMonth(),d.getDate())-new Date(d.getFullYear(),0,0))/864e5),L=C11DATA.length;
+ return C11DATA[(((n+(d.getFullYear()-2026)*37)%L)+L)%L];
+}
+function c11DayHTML(){
+ var v=c11Day(); if(!v) return '';
+ var ds=''; try{ ds=new Date().toLocaleDateString(LANG==='zs'?'zh-CN':LANG==='zh'?'zh-TW':LANG==='ceb'?'fil':LANG,{month:'long',day:'numeric',weekday:'short'}); }catch(e){}
+ var lab='<a class="xzref" href="javascript:void 0" data-b="'+esc(v[2])+'" data-c="'+v[3]+'" data-v="'+v[4]+'">'+esc(v[0])+'</a>';
+ var qs=['1','2','3'].map(function(k){ return '<button data-act="ask" data-q="'+esc(C11('dayA'+k,v[0],v[1]))+'">'+esc(C11('dayQ'+k))+'</button>'; }).join('');
+ return '<section class="c11day"><div class="c11dh"><b>'+esc(C11('dayH'))+'</b><span>'+esc(ds)+'</span></div><p class="c11dv">'+esc(v[1])+'</p><div class="c11dr">— '+lab+'</div><div class="c11dq">'+qs+'</div></section>';
+}
+var c11_sg=suggestHTML; suggestHTML=function(){ return c11DayHTML()+c11_sg(); };
+
+/* ===== 4. 做成文章頁 ===== */
+function c11Link(data,cb){
+ var raw=new TextEncoder().encode(JSON.stringify(data)),base=location.href.replace(/[?#].*$/,'').replace(/[^\/]*$/,'')+'share.html#';
+ if(window.CompressionStream){
+  try{ var cs=new Blob([raw]).stream().pipeThrough(new CompressionStream('deflate-raw')); new Response(cs).arrayBuffer().then(function(buf){ cb(base+'z='+ctB64u(new Uint8Array(buf))); },function(){ cb(base+'u='+ctB64u(raw)); }); return; }catch(e){}
+ }
+ cb(base+'u='+ctB64u(raw));
+}
+function c11ArtStart(i){
+ var m=S.chat[i]; if(!m) return;
+ var A={i:i,busy:true}; S.c11A=A; openSheet('ctart');
+ var ask='Rewrite the Q&A below as a short, warm article page for a church fellowship, written in '+(C11LN[LANG]||'English')+'. Return ONLY JSON: {"title":"(under 24 characters or 8 words)","lead":"one-sentence summary","sections":[{"h":"short subheading","p":"1-3 short paragraphs separated by \\n"}],"verses":[{"ref":"book chapter:verse","text":"verse text"}],"takeaway":"one sentence of application"}. Use 2-4 sections. Use only the content and Scripture quotations that appear in the ANSWER; copy any quoted verse exactly as written there; add no new claims, and no new verses.\nQUESTION:\n'+String(qOf(i)||'').slice(0,600)+'\nANSWER:\n'+plain(m.t).slice(0,5000);
+ quickAsk(ask,2600).then(function(t){
+  var mm=String(t||'').match(/\{[\s\S]*\}/),j=null; try{ j=JSON.parse(mm[0]); }catch(e){}
+  if(!j||!j.title||!j.sections||!j.sections.length) throw new Error('bad');
+  var art={title:String(j.title).slice(0,60),lead:String(j.lead||'').slice(0,300),sections:j.sections.slice(0,5).map(function(s){ return {h:String(s.h||'').slice(0,60),p:String(s.p||'').slice(0,1400)}; }),verses:(j.verses||[]).slice(0,4).map(function(v){ return {ref:String(v.ref||'').slice(0,40),text:String(v.text||'').slice(0,400)}; }).filter(function(v){ return v.ref&&v.text; }),takeaway:String(j.takeaway||'').slice(0,300)};
+  c11Link({v:2,l:LANG,ts:Date.now(),t:art.title,a:art},function(url){ A.busy=false; A.art=art; A.url=url; if(S.c11A===A&&S.sheet==='ctart') renderSheet(); });
+ }).catch(function(){ A.busy=false; A.fail=true; if(S.c11A===A&&S.sheet==='ctart') renderSheet(); });
+}
+function c11ArtHTML(){
+ var A=S.c11A||{},h='<div class="sheethead"><h2>'+esc(C11('artH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+ if(A.busy) return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C11('artWait'))+'</p>';
+ if(A.fail) return h+'<p class="hint">'+esc(C11('artFail'))+'</p><button class="ctbtn" data-act="ctartagain" data-i="'+A.i+'">'+esc(C11('artAgain'))+'</button>';
+ var a=A.art; h+='<div class="c11art"><b>'+esc(a.title)+'</b><p>'+esc(a.lead)+'</p>';
+ for(var k=0;k<a.sections.length;k++) h+='<small>'+esc(a.sections[k].h)+'</small>';
+ h+='</div><p class="hint">'+esc(C11('artHint'))+'</p><div class="ctrow2"><button class="ctbtn pri" data-act="ctartshare">'+esc(C11('artShare'))+'</button><button class="ctbtn" data-act="ctartcopy">'+esc(C11('artCopy'))+'</button></div><div class="ctrow2" style="margin-top:8px"><button class="ctbtn" data-act="ctartopen">'+esc(C11('artOpen'))+'</button><button class="ctbtn" data-act="ctartagain" data-i="'+A.i+'">'+esc(C11('artAgain'))+'</button></div>';
+ return h;
+}
+var c11_mx=c5MsgExtra;
+c5MsgExtra=function(i){ var h=c11_mx(i),k=h.lastIndexOf('</div>'); if(k<0) return h; return h.slice(0,k)+'<button class="wide" data-act="ctart" data-i="'+i+'"><span>'+esc(C11('artBtn'))+'</span><span>›</span></button>'+h.slice(k); };
+
+/* ===== 面板與事件 ===== */
+var c11_ph=c3PlusHTML;
+c3PlusHTML=function(){
+ var h=c11_ph(),a='<button class="wide" data-act="ctfile">',k=h.indexOf(a); if(k<0){ a='<button class="wide" data-act="bank">'; k=h.indexOf(a); } if(k<0) return h;
+ var sc=c11Scope(),on=c11ClarOn();
+ return h.slice(0,k)+'<button class="wide" data-act="ctscope"><span>'+esc(C11('scopeT'))+'：'+esc(c11ScopeName(sc).replace(/^\S+\s/,''))+'</span><span>›</span></button><button class="wide" data-act="ctclartog"><span>'+esc(C11('clarT'))+'<br><small class="hint">'+esc(C11('clarHint'))+'</small></span><span class="ctsw'+(on?' on':'')+'" style="border:0;padding:0"><i></i></span></button>'+h.slice(k);
+};
+function ct11Sheet(k){
+ if(k==='ctclar') return c11ClarHTML();
+ if(k==='ctscope') return c11ScopeHTML();
+ if(k==='ctart') return c11ArtHTML();
+ return null;
+}
+function ct11Act(a,b,i,fid,v){
+ if(a==='ctscope'){ closeDrawer(); openSheet('ctscope'); }
+ else if(a==='ctscopego'){ lsSet('scope',v); renderSheet(); render(); toast(C11('scopeSet',c11ScopeName(v))); }
+ else if(a==='ctclartog'){ var on=!c11ClarOn(); lsSet('clar',on?1:0); if(S.sheet==='ctplus') renderSheet(); toast(on?C11('clarOn'):C11('clarOff')); }
+ else if(a==='ctclarpick'){ var C=S.c11C; c11ClarGo(C&&C.o?C.o[+v]:''); }
+ else if(a==='ctclarown'){ var o=$('c11own'),t=o?o.value.trim():''; if(!t){ if(o) o.focus(); return true; } c11ClarGo(t); }
+ else if(a==='ctclarskip') c11ClarGo('');
+ else if(a==='ctart') c11ArtStart(i);
+ else if(a==='ctartagain') c11ArtStart(i);
+ else if(a==='ctartshare'){ var A=S.c11A; if(!A||!A.url) return true; if(navigator.share){ navigator.share({title:A.art.title,text:A.art.title,url:A.url}).catch(function(e){ if(e&&e.name!=='AbortError') copyText(A.url,C11('artCopied')); }); } else copyText(A.url,C11('artCopied')); }
+ else if(a==='ctartcopy'){ var A2=S.c11A; if(A2&&A2.url) copyText(A2.url,C11('artCopied')); }
+ else if(a==='ctartopen'){ var A3=S.c11A; if(A3&&A3.url) window.open(A3.url,'_blank'); }
+ else return false;
+ return true;
+}
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -4015,7 +4225,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.1940',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.2010',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}

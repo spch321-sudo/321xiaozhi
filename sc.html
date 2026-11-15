@@ -6,21 +6,21 @@
 <title>小智问答</title>
 <meta name="description" content="小智问答：圣经・信仰・生活・智慧问答，国度321空中团契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.1940">
-<link rel="icon" href="favicon.ico?v=v2026.1115.1940" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.1940">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.1940">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.1940">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.1940">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.1940">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2010">
+<link rel="icon" href="favicon.ico?v=v2026.1115.2010" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2010">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2010">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2010">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2010">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2010">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智问答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.1940"></script>
-<script src="xzplus.js?v=v2026.1115.1940" defer></script>
+<script src="k321gate.js?v=v2026.1115.2010"></script>
+<script src="xzplus.js?v=v2026.1115.2010" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='zs';</script>
@@ -386,6 +386,19 @@ body.kid #c10sel{display:none!important}
 .c10fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;font-size:.92em;line-height:1.25}
 .c10fr i{font-style:normal;padding:0 3px}.c10fr i:first-child{border-bottom:1px solid currentColor}
 .c10sq{border-top:1px solid currentColor;padding:0 2px}
+/* ct11-1115 先問清楚、回答範圍、每日探索、文章頁 */
+.c11day{margin:6px 0 14px;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:16px;padding:14px 16px;background:linear-gradient(180deg,var(--gold-soft),transparent 140%)}
+.c11dh{display:flex;justify-content:space-between;gap:8px;font-size:.85em;color:var(--muted);margin-bottom:6px}.c11dh b{color:var(--gold);font-size:1.05em}
+.c11dv{margin:0 0 6px;font-size:1.08em;line-height:1.85;font-weight:500}
+.c11dr{font-size:.9em;color:var(--muted);margin-bottom:10px}
+.c11dq{display:flex;flex-wrap:wrap;gap:8px}
+.c11dq button{border:1px solid var(--line);background:var(--page);color:var(--ink);border-radius:999px;padding:8px 14px;font:inherit;font-size:.88em;font-weight:600}
+.c11q{font-size:1.08em;font-weight:700;margin:6px 0 10px;line-height:1.6}
+.c11opts{display:flex;flex-wrap:wrap;gap:8px}
+.wide.c11on{border-color:var(--accent);background:var(--soft)}
+.c11art{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--soft);margin:6px 0 10px}
+.c11art b{display:block;font-size:1.08em;margin-bottom:4px}.c11art p{margin:0 0 8px;color:var(--muted);font-size:.92em}
+.c11art small{display:inline-block;margin:0 6px 4px 0;padding:2px 10px;border-radius:999px;background:var(--page);border:1px solid var(--line);font-size:.78em;color:var(--muted)}
 /* ct8-1113 敬拜家庭宣教 */
 .c8score{text-align:center;padding:10px 0}.c8score b{font-size:1.5em;color:var(--accent)}.c8score div{margin-top:4px}
 .c8ref{font-weight:700;margin:8px 0 4px}
@@ -3366,6 +3379,7 @@ function ctFbText(kind,i,reasons,note,attach){
 }
 function ctSheetHTML(){
  var k=S.sheet,h='';
+ var x11=ct11Sheet(k); if(x11!=null) return x11;
  var x8=ct8Sheet(k); if(x8!=null) return x8;
  var x7=ct7Sheet(k); if(x7!=null) return x7;
  var x6=ct6Sheet(k); if(x6!=null) return x6;
@@ -3407,6 +3421,7 @@ function ctSheetAfter(x){ ct2After(); ct7After();
  var at=$('ctfbatt'); if(at) at.onchange=function(){ if(S.ctFb) S.ctFb.att=at.checked; };
 }
 function ctAct(a,b,i,fid,v){
+ if(ct11Act(a,b,i,fid,v)) return;
  if(ct10Act(a,b,i,fid,v)) return;
  if(ct8Act(a,b,i,fid,v)) return;
  if(ct7Act(a,b,i,fid,v)) return;
@@ -3894,6 +3909,201 @@ function ct10Act(a,b,i,fid,v){
  else return false;
  return true;
 }
+/* ---------- 先問清楚・回答範圍・每日探索・做成文章頁（ct11-1115） ---------- */
+var C11S={
+ clarT:'🙋 先問清楚|🙋 先问清楚|🙋 Ask to clarify first|🙋 먼저 확인하기|🙋 先に確認する|🙋 Tanya dulu|🙋 Pangutana una',
+ clarHint:'第一個問題太模糊時，小智先讓你點選要問哪一方面|第一个问题太模糊时，小智先让你点选要问哪一方面|If your first question is too vague, Xiaozhi first lets you tap what you mean|첫 질문이 모호하면 먼저 어떤 점인지 고르게 해요|最初の質問があいまいなとき、先に何を知りたいか選べます|Jika pertanyaan pertama terlalu umum, pilih dulu maksudnya|Kung dili klaro ang unang pangutana, pilia una ang buot ipasabot',
+ clarOn:'已開啟「先問清楚」|已开启“先问清楚”|Clarifying questions on|먼저 확인하기 켜짐|先に確認：オン|Tanya dulu: aktif|Pangutana una: naka-on',
+ clarOff:'已關閉「先問清楚」|已关闭“先问清楚”|Clarifying questions off|먼저 확인하기 꺼짐|先に確認：オフ|Tanya dulu: nonaktif|Pangutana una: napalong',
+ clarH:'先確認一下|先确认一下|Let me check first|먼저 확인할게요|先に確認させてください|Saya pastikan dulu|Ipamatuod una nako',
+ clarWait:'小智想先確認你的意思…|小智想先确认你的意思…|Xiaozhi wants to understand you first…|샤오즈가 먼저 뜻을 확인하는 중…|シャオジーが意図を確認中…|Xiaozhi memastikan maksudmu…|Gi-sure ni Xiaozhi ang imong buot ipasabot…',
+ clarSkip:'不用確認，直接回答|不用确认，直接回答|Skip — just answer|확인 없이 바로 답하기|確認せずそのまま回答|Lewati — langsung jawab|Laktawi — tubaga na lang',
+ clarOwn:'自己補充一句…|自己补充一句…|Add a few words…|직접 한마디 덧붙이기…|ひとこと補足…|Tambahkan sedikit…|Dugangi og pulong…',
+ clarSend:'送出|送出|Send|보내기|送信|Kirim|Ipadala',
+ scopeT:'🎯 回答範圍|🎯 回答范围|🎯 Answer scope|🎯 답변 범위|🎯 回答の範囲|🎯 Cakupan jawaban|🎯 Sakop sa tubag',
+ scopeH:'回答範圍|回答范围|Answer scope|답변 범위|回答の範囲|Cakupan jawaban|Sakop sa tubag',
+ scopeHint:'決定小智回答時可以用哪些資料。設定後每一題都會照這個範圍。|决定小智回答时可以用哪些资料。设定后每一题都会照这个范围。|Choose what Xiaozhi may draw on when answering. It applies to every question until you change it.|샤오즈가 답할 때 쓸 수 있는 자료를 정해요. 바꾸기 전까지 모든 질문에 적용돼요.|シャオジーが答えるときに使える資料を選びます。変更するまで毎回適用されます。|Pilih sumber yang boleh dipakai Xiaozhi. Berlaku untuk setiap pertanyaan sampai diubah.|Pilia ang mga gamiton ni Xiaozhi sa pagtubag. Magamit sa tanang pangutana hangtod usbon.',
+ sFree:'🌐 一般|🌐 一般|🌐 General|🌐 일반|🌐 一般|🌐 Umum|🌐 Kinatibuk-an',
+ sFreeD:'聖經、生活經驗與一般知識都可以用（原本的做法）|圣经、生活经验与一般知识都可以用（原本的做法）|Scripture, life experience and general knowledge (the usual way)|성경, 삶의 경험, 일반 지식 모두 사용(기본)|聖書・生活経験・一般知識を使う（従来どおり）|Alkitab, pengalaman hidup dan pengetahuan umum (biasa)|Kasulatan, kasinatian ug kinatibuk-ang kahibalo (naandan)',
+ sBible:'📖 只依聖經|📖 只依圣经|📖 Scripture only|📖 성경만|📖 聖書のみ|📖 Hanya Alkitab|📖 Kasulatan ra',
+ sBibleD:'只用經文與上下文回答，不加個人意見或外來說法；聖經沒說的就老實說沒有|只用经文与上下文回答，不加个人意见或外来说法；圣经没说的就老实说没有|Answer only from the text and its context — no personal opinion or outside claims; if the Bible is silent, say so|성경 본문과 문맥만으로 답하고, 성경이 말하지 않으면 그렇다고 말해요|聖書の本文と文脈だけで答え、個人の意見は加えません。聖書が語らないことはそう伝えます|Jawab hanya dari teks dan konteksnya — tanpa opini pribadi; jika Alkitab tidak menyebutnya, katakan begitu|Tubag lang gikan sa teksto ug konteksto — walay personal nga opinyon; kung wala giingon sa Biblia, ingna',
+ sFolder:'📁 只依我的資料夾|📁 只依我的文件夹|📁 My folder only|📁 내 폴더만|📁 マイフォルダのみ|📁 Hanya folder saya|📁 Folder ra nako',
+ sFolderD:'只用目前資料夾裡你放進去的資料回答；資料裡沒有就說沒有|只用目前文件夹里你放进去的资料回答；资料里没有就说没有|Answer only from the sources in the current folder; if they do not cover it, say so|현재 폴더에 넣은 자료로만 답하고, 없으면 없다고 말해요|現在のフォルダの資料だけで答え、なければそう伝えます|Jawab hanya dari sumber di folder ini; jika tidak ada, katakan|Tubag lang gikan sa mga gigikanan sa folder; kung wala, ingna',
+ sFolderNo:'（先在「資料夾」開一個並加入資料）|（先在“文件夹”开一个并加入资料）|(first open a folder and add sources)|(먼저 폴더를 열고 자료를 추가하세요)|（先にフォルダを開いて資料を追加）|(buka folder dan tambah sumber dulu)|(abri una ang folder ug dugangi og sources)',
+ scopeBar:'回答範圍：{0}|回答范围：{0}|Answer scope: {0}|답변 범위: {0}|回答の範囲：{0}|Cakupan jawaban: {0}|Sakop sa tubag: {0}',
+ scopeBarNo:'（沒有資料夾，暫時照一般回答）|（没有文件夹，暂时照一般回答）|(no folder — answering generally for now)|(폴더가 없어 일반 답변)|（フォルダなし。一般回答になります）|(tanpa folder — jawaban umum)|(walay folder — kinatibuk-an una)',
+ scopeBarEdit:'更改|更改|Change|변경|変更|Ubah|Usba',
+ scopeSet:'已設定回答範圍：{0}|已设定回答范围：{0}|Answer scope set: {0}|답변 범위 설정: {0}|回答の範囲を設定：{0}|Cakupan diatur: {0}|Gitakda ang sakop: {0}',
+ dayH:'☀️ 今日經文|☀️ 今日经文|☀️ Verse of the day|☀️ 오늘의 말씀|☀️ 今日の聖句|☀️ Ayat hari ini|☀️ Bersikulo karong adlawa',
+ dayQ1:'背景與意思|背景与意思|Background|배경과 뜻|背景と意味|Latar belakang|Kaligdanan',
+ dayQ2:'今天怎麼用|今天怎么用|Live it today|오늘 실천|今日どう生かす|Terapkan hari ini|Gamiton karong adlawa',
+ dayQ3:'帶小組|带小组|For my group|소그룹용|グループ用|Untuk kelompok|Alang sa grupo',
+ dayA1:'請說明{0}的背景與意思：「{1}」|请说明{0}的背景与意思：“{1}”|Please explain the background and meaning of {0}: "{1}"|{0}의 배경과 뜻을 설명해 주세요: "{1}"|{0}の背景と意味を説明してください：「{1}」|Tolong jelaskan latar belakang dan makna {0}: "{1}"|Palihog ipasabot ang kaligdanan ug kahulogan sa {0}: "{1}"',
+ dayA2:'請幫我把{0}變成今天可以做的一件小事：「{1}」|请帮我把{0}变成今天可以做的一件小事：“{1}”|Help me turn {0} into one small thing I can do today: "{1}"|{0} 말씀을 오늘 할 수 있는 작은 실천 하나로 바꿔 주세요: "{1}"|{0}を、今日できる小さな一歩にしてください：「{1}」|Bantu ubah {0} menjadi satu hal kecil yang bisa saya lakukan hari ini: "{1}"|Tabangi ko himoong gamay nga lakang karong adlawa ang {0}: "{1}"',
+ dayA3:'請為{0}設計三個帶小組的討論問題：「{1}」|请为{0}设计三个带小组的讨论问题：“{1}”|Write three small-group discussion questions for {0}: "{1}"|{0}으로 소그룹 나눔 질문 세 가지를 만들어 주세요: "{1}"|{0}でグループの分かち合いの質問を3つ作ってください：「{1}」|Buatkan tiga pertanyaan diskusi kelompok untuk {0}: "{1}"|Paghimo og tulo ka pangutana sa grupo alang sa {0}: "{1}"',
+ artBtn:'📰 做成文章頁|📰 做成文章页|📰 Make an article page|📰 글 페이지로 만들기|📰 記事ページにする|📰 Jadikan halaman artikel|📰 Himoong article page',
+ artH:'做成文章頁|做成文章页|Article page|글 페이지|記事ページ|Halaman artikel|Article page',
+ artWait:'小智正在整理成文章…|小智正在整理成文章…|Xiaozhi is turning this into an article…|샤오즈가 글로 정리하는 중…|シャオジーが記事にまとめています…|Xiaozhi menyusun artikel…|Gihimo ni Xiaozhi nga article…',
+ artFail:'整理失敗，請稍後再試|整理失败，请稍后再试|Could not make the article — please try again|정리하지 못했어요. 잠시 후 다시 시도해 주세요|まとめられませんでした。しばらくしてからもう一度|Gagal menyusun — coba lagi nanti|Napakyas — sulayi pag-usab unya',
+ artHint:'這是小智把這則問答改寫成的短文，用連結分享給小家。經文請以聖經為準。|这是小智把这则问答改写成的短文，用链接分享给小家。经文请以圣经为准。|Xiaozhi rewrote this Q&A as a short article you can share by link. Please check Scripture against your Bible.|샤오즈가 이 문답을 짧은 글로 고쳐 링크로 나눌 수 있게 했어요. 성경 구절은 성경으로 확인하세요.|このQ&Aを短い記事に書き直し、リンクで共有できます。聖句は聖書でご確認ください。|Xiaozhi menulis ulang tanya-jawab ini jadi artikel singkat untuk dibagikan lewat tautan. Periksa ayat dengan Alkitab Anda.|Gisulat pag-usab ni Xiaozhi kini nga Q&A ingon article nga ipaambit sa link. Susiha ang bersikulo sa imong Biblia.',
+ artShare:'📤 分享連結|📤 分享链接|📤 Share link|📤 링크 공유|📤 リンクを共有|📤 Bagikan tautan|📤 Ipaambit ang link',
+ artCopy:'🔗 複製連結|🔗 复制链接|🔗 Copy link|🔗 링크 복사|🔗 リンクをコピー|🔗 Salin tautan|🔗 Kopyaha ang link',
+ artOpen:'👁 開啟預覽|👁 打开预览|👁 Open preview|👁 미리보기|👁 プレビュー|👁 Buka pratinjau|👁 Ablihi ang preview',
+ artAgain:'↻ 重新整理一次|↻ 重新整理一次|↻ Rewrite again|↻ 다시 정리|↻ もう一度まとめる|↻ Tulis ulang|↻ Isulat pag-usab',
+ artCopied:'連結已複製|链接已复制|Link copied|링크를 복사했어요|リンクをコピーしました|Tautan disalin|Na-copy ang link'
+};
+function C11(k,a,b){ var s=C5L(C11S[k]||k); if(a!=null) s=s.split('{0}').join(a); if(b!=null) s=s.split('{1}').join(b); return s; }
+var C11DATA=[["创世记28:15","我也与你同在。你无论往哪里去，我必保佑你，领你归回这地，总不离弃你，直到我成全了向你所应许的。","Genesis",28,15],["出埃及记14:14","耶和华必为你们争战；你们只管静默，不要作声。","Exodus",14,14],["出埃及记33:14","耶和华说：“我必亲自和你同去，使你得安息。”","Exodus",33,14],["民数记6:24-26","‘愿耶和华赐福给你，保护你。愿耶和华使他的脸光照你，赐恩给你。愿耶和华向你仰脸，赐你平安。’","Numbers",6,24],["申命记31:6","你们当刚强壮胆，不要害怕，也不要畏惧他们，因为耶和华－你的神和你同去。他必不撇下你，也不丢弃你。","Deuteronomy",31,6],["约书亚记1:9","我岂没有吩咐你吗？你当刚强壮胆！不要惧怕，也不要惊惶；因为你无论往哪里去，耶和华－你的神必与你同在。","Joshua",1,9],["撒母耳记上16:7","耶和华却对撒母耳说：“不要看他的外貌和他身材高大，我不拣选他。因为，耶和华不像人看人：人是看外貌；耶和华是看内心。”","1Samuel",16,7],["历代志下7:14","这称为我名下的子民，若是自卑、祷告，寻求我的面，转离他们的恶行，我必从天上垂听，赦免他们的罪，医治他们的地。","2Chronicles",7,14],["尼希米记8:10","又对他们说：“你们去吃肥美的，喝甘甜的，有不能预备的就分给他，因为今日是我们主的圣日。你们不要忧愁，因靠耶和华而得的喜乐是你们的力量。”","Nehemiah",8,10],["以斯帖记4:14","此时你若闭口不言，犹大人必从别处得解脱，蒙拯救；你和你父家必致灭亡。焉知你得了王后的位分不是为现今的机会吗？","Esther",4,14],["诗篇16:11","你必将生命的道路指示我。在你面前有满足的喜乐；在你右手中有永远的福乐。","Psalms",16,11],["诗篇19:14","耶和华－我的磐石，我的救赎主啊，愿我口中的言语、心里的意念在你面前蒙悦纳。","Psalms",19,14],["诗篇23:1-3","耶和华是我的牧者，我必不致缺乏。他使我躺卧在青草地上，领我在可安歇的水边。他使我的灵魂苏醒，为自己的名引导我走义路。","Psalms",23,1],["诗篇23:4","我虽然行过死荫的幽谷，也不怕遭害，因为你与我同在；你的杖，你的竿，都安慰我。","Psalms",23,4],["诗篇27:1","耶和华是我的亮光，是我的拯救，我还怕谁呢？耶和华是我性命的保障，我还惧谁呢？","Psalms",27,1],["诗篇34:8","你们要尝尝主恩的滋味，便知道他是美善；投靠他的人有福了！","Psalms",34,8],["诗篇37:4","又要以耶和华为乐，他就将你心里所求的赐给你。","Psalms",37,4],["诗篇46:1","神是我们的避难所，是我们的力量，是我们在患难中随时的帮助。","Psalms",46,1],["诗篇46:10","你们要休息，要知道我是神！我必在外邦中被尊崇，在遍地上也被尊崇。","Psalms",46,10],["诗篇51:10","神啊，求你为我造清洁的心，使我里面重新有正直的灵。","Psalms",51,10],["诗篇55:22","你要把你的重担卸给耶和华，他必抚养你；他永不叫义人动摇。","Psalms",55,22],["诗篇62:1-2","我的心默默无声，专等候神；我的救恩是从他而来。惟独他是我的磐石，我的拯救；他是我的高台，我必不很动摇。","Psalms",62,1],["诗篇90:12","求你指教我们怎样数算自己的日子，好叫我们得着智慧的心。","Psalms",90,12],["诗篇91:1-2","住在至高者隐密处的，必住在全能者的荫下。我要论到耶和华说：他是我的避难所，是我的山寨，是我的神，是我所倚靠的。","Psalms",91,1],["诗篇103:1","我的心哪，你要称颂耶和华！凡在我里面的，也要称颂他的圣名！","Psalms",103,1],["诗篇119:105","你的话是我脚前的灯，是我路上的光。","Psalms",119,105],["诗篇121:1-2","我要向山举目；我的帮助从何而来？我的帮助从造天地的耶和华而来。","Psalms",121,1],["诗篇126:5-6","流泪撒种的，必欢呼收割！那带种流泪出去的，必要欢欢乐乐地带禾捆回来！","Psalms",126,5],["诗篇139:23-24","神啊，求你鉴察我，知道我的心思，试炼我，知道我的意念，看在我里面有什么恶行没有，引导我走永生的道路。","Psalms",139,23],["诗篇145:18","凡求告耶和华的，就是诚心求告他的，耶和华便与他们相近。","Psalms",145,18],["箴言3:5-6","你要专心仰赖耶和华，不可倚靠自己的聪明，在你一切所行的事上都要认定他，他必指引你的路。","Proverbs",3,5],["箴言4:23","你要保守你心，胜过保守一切，因为一生的果效是由心发出。","Proverbs",4,23],["箴言9:10","敬畏耶和华是智慧的开端；认识至圣者便是聪明。","Proverbs",9,10],["箴言15:1","回答柔和，使怒消退；言语暴戾，触动怒气。","Proverbs",15,1],["箴言16:3","你所做的，要交托耶和华，你所谋的，就必成立。","Proverbs",16,3],["箴言16:9","人心筹算自己的道路；惟耶和华指引他的脚步。","Proverbs",16,9],["箴言18:10","耶和华的名是坚固台；义人奔入便得安稳。","Proverbs",18,10],["箴言22:6","教养孩童，使他走当行的道，就是到老他也不偏离。","Proverbs",22,6],["传道书3:11","神造万物，各按其时成为美好，又将永生安置在世人心里。然而神从始至终的作为，人不能参透。","Ecclesiastes",3,11],["以赛亚书26:3","坚心倚赖你的，你必保守他十分平安，因为他倚靠你。","Isaiah",26,3],["以赛亚书40:31","但那等候耶和华的必重新得力。他们必如鹰展翅上腾；他们奔跑却不困倦，行走却不疲乏。","Isaiah",40,31],["以赛亚书41:10","你不要害怕，因为我与你同在；不要惊惶，因为我是你的神。我必坚固你，我必帮助你；我必用我公义的右手扶持你。","Isaiah",41,10],["以赛亚书43:1","雅各啊，创造你的耶和华，以色列啊，造成你的那位，现在如此说：你不要害怕！因为我救赎了你。我曾提你的名召你，你是属我的。","Isaiah",43,1],["以赛亚书43:19","看哪，我要做一件新事；如今要发现，你们岂不知道吗？我必在旷野开道路，在沙漠开江河。","Isaiah",43,19],["以赛亚书53:5","哪知他为我们的过犯受害，为我们的罪孽压伤。因他受的刑罚，我们得平安；因他受的鞭伤，我们得医治。","Isaiah",53,5],["以赛亚书55:8-9","耶和华说：我的意念非同你们的意念；我的道路非同你们的道路。天怎样高过地，照样，我的道路高过你们的道路；我的意念高过你们的意念。","Isaiah",55,8],["以赛亚书58:11","耶和华也必时常引导你，在干旱之地使你心满意足，骨头强壮。你必像浇灌的园子，又像水流不绝的泉源。","Isaiah",58,11],["耶利米书29:11","耶和华说：我知道我向你们所怀的意念是赐平安的意念，不是降灾祸的意念，要叫你们末后有指望。","Jeremiah",29,11],["耶利米书33:3","你求告我，我就应允你，并将你所不知道、又大又难的事指示你。","Jeremiah",33,3],["耶利米哀歌3:22-23","我们不致消灭，是出于耶和华诸般的慈爱；是因他的怜悯不致断绝。每早晨，这都是新的；你的诚实极其广大！","Lamentations",3,22],["以西结书36:26","我也要赐给你们一个新心，将新灵放在你们里面，又从你们的肉体中除掉石心，赐给你们肉心。","Ezekiel",36,26],["弥迦书6:8","世人哪，耶和华已指示你何为善。他向你所要的是什么呢？只要你行公义，好怜悯，存谦卑的心，与你的神同行。","Micah",6,8],["哈巴谷书3:17-18","虽然无花果树不发旺，葡萄树不结果，橄榄树也不效力，田地不出粮食，圈中绝了羊，棚内也没有牛；然而，我要因耶和华欢欣，因救我的神喜乐。","Habakkuk",3,17],["马太福音5:3","虚心的人有福了！因为天国是他们的。","Matthew",5,3],["马太福音5:16","你们的光也当这样照在人前，叫他们看见你们的好行为，便将荣耀归给你们在天上的父。","Matthew",5,16],["马太福音6:33","你们要先求他的国和他的义，这些东西都要加给你们了。","Matthew",6,33],["马太福音6:34","所以，不要为明天忧虑，因为明天自有明天的忧虑；一天的难处一天当就够了。","Matthew",6,34],["马太福音7:7","你们祈求，就给你们；寻找，就寻见；叩门，就给你们开门。","Matthew",7,7],["马太福音11:28-29","凡劳苦担重担的人可以到我这里来，我就使你们得安息。我心里柔和谦卑，你们当负我的轭，学我的样式；这样，你们心里就必得享安息。","Matthew",11,28],["马太福音16:24","于是耶稣对门徒说：“若有人要跟从我，就当舍己，背起他的十字架来跟从我。","Matthew",16,24],["马太福音18:20","因为无论在哪里，有两三个人奉我的名聚会，那里就有我在他们中间。","Matthew",18,20],["马太福音22:37-39","耶稣对他说：“你要尽心、尽性、尽意爱主－你的神。这是诫命中的第一，且是最大的。其次也相仿，就是要爱人如己。","Matthew",22,37],["马太福音28:19-20","所以，你们要去，使万民作我的门徒，奉父、子、圣灵的名给他们施洗。凡我所吩咐你们的，都教训他们遵守，我就常与你们同在，直到世界的末了。","Matthew",28,19],["马可福音10:45","因为人子来，并不是要受人的服事，乃是要服事人，并且要舍命作多人的赎价。","Mark",10,45],["路加福音6:31","你们愿意人怎样待你们，你们也要怎样待人。","Luke",6,31],["路加福音19:10","人子来，为要寻找、拯救失丧的人。","Luke",19,10],["约翰福音1:12","凡接待他的，就是信他名的人，他就赐他们权柄作神的儿女。","John",1,12],["约翰福音3:16","神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不致灭亡，反得永生。","John",3,16],["约翰福音8:12","耶稣又对众人说：“我是世界的光。跟从我的，就不在黑暗里走，必要得着生命的光。”","John",8,12],["约翰福音8:32","你们必晓得真理，真理必叫你们得以自由。","John",8,32],["约翰福音10:10","盗贼来，无非要偷窃，杀害，毁坏；我来了，是要叫羊得生命，并且得的更丰盛。","John",10,10],["约翰福音11:25-26","耶稣对她说：“复活在我，生命也在我。信我的人虽然死了，也必复活；凡活着信我的人必永远不死。你信这话吗？”","John",11,25],["约翰福音13:34-35","我赐给你们一条新命令，乃是叫你们彼此相爱；我怎样爱你们，你们也要怎样相爱。你们若有彼此相爱的心，众人因此就认出你们是我的门徒了。","John",13,34],["约翰福音14:6","耶稣说：“我就是道路、真理、生命；若不借着我，没有人能到父那里去。","John",14,6],["约翰福音14:27","我留下平安给你们；我将我的平安赐给你们。我所赐的，不像世人所赐的。你们心里不要忧愁，也不要胆怯。","John",14,27],["约翰福音15:5","我是葡萄树，你们是枝子。常在我里面的，我也常在他里面，这人就多结果子；因为离了我，你们就不能做什么。","John",15,5],["约翰福音15:12","你们要彼此相爱，像我爱你们一样；这就是我的命令。","John",15,12],["约翰福音16:33","我将这些事告诉你们，是要叫你们在我里面有平安。在世上，你们有苦难；但你们可以放心，我已经胜了世界。","John",16,33],["使徒行传1:8","但圣灵降临在你们身上，你们就必得着能力，并要在耶路撒冷、犹太全地，和撒马利亚，直到地极，作我的见证。","Acts",1,8],["使徒行传4:12","除他以外，别无拯救；因为在天下人间，没有赐下别的名，我们可以靠着得救。","Acts",4,12],["使徒行传20:35","我凡事给你们作榜样，叫你们知道应当这样劳苦，扶助软弱的人，又当记念主耶稣的话，说：‘施比受更为有福。’","Acts",20,35],["罗马书3:23","因为世人都犯了罪，亏缺了神的荣耀；","Romans",3,23],["罗马书5:8","惟有基督在我们还作罪人的时候为我们死，神的爱就在此向我们显明了。","Romans",5,8],["罗马书6:23","因为罪的工价乃是死；惟有神的恩赐，在我们的主基督耶稣里，乃是永生。","Romans",6,23],["罗马书8:1","如今，那些在基督耶稣里的就不定罪了。","Romans",8,1],["罗马书8:28","我们晓得万事都互相效力，叫爱神的人得益处，就是按他旨意被召的人。","Romans",8,28],["罗马书8:38-39","因为我深信无论是死，是生，是天使，是掌权的，是有能的，是现在的事，是将来的事，是高处的，是低处的，是别的受造之物，都不能叫我们与神的爱隔绝；这爱是在我们的主基督耶稣里的。","Romans",8,38],["罗马书10:9","你若口里认耶稣为主，心里信神叫他从死里复活，就必得救。","Romans",10,9],["罗马书12:1-2","所以，弟兄们，我以神的慈悲劝你们，将身体献上，当作活祭，是圣洁的，是神所喜悦的；你们如此事奉乃是理所当然的。不要效法这个世界，只要心意更新而变化，叫你们察验何为神的善良、纯全、可喜悦的旨意。","Romans",12,1],["罗马书12:21","你不可为恶所胜，反要以善胜恶。","Romans",12,21],["哥林多前书10:13","你们所遇见的试探，无非是人所能受的。神是信实的，必不叫你们受试探过于所能受的；在受试探的时候，总要给你们开一条出路，叫你们能忍受得住。","1Corinthians",10,13],["哥林多前书13:4-7","爱是恒久忍耐，又有恩慈；爱是不嫉妒；爱是不自夸，不张狂，不做害羞的事，不求自己的益处，不轻易发怒，不计算人的恶，不喜欢不义，只喜欢真理；凡事包容，凡事相信，凡事盼望，凡事忍耐。","1Corinthians",13,4],["哥林多前书13:13","如今常存的有信，有望，有爱这三样，其中最大的是爱。","1Corinthians",13,13],["哥林多前书15:58","所以，我亲爱的弟兄们，你们务要坚固，不可摇动，常常竭力多做主工；因为知道，你们的劳苦在主里面不是徒然的。","1Corinthians",15,58],["哥林多后书5:7","因我们行事为人是凭着信心，不是凭着眼见。","2Corinthians",5,7],["哥林多后书5:17","若有人在基督里，他就是新造的人，旧事已过，都变成新的了。","2Corinthians",5,17],["哥林多后书12:9","他对我说：“我的恩典够你用的，因为我的能力是在人的软弱上显得完全。”所以，我更喜欢夸自己的软弱，好叫基督的能力覆庇我。","2Corinthians",12,9],["加拉太书2:20","我已经与基督同钉十字架，现在活着的不再是我，乃是基督在我里面活着；并且我如今在肉身活着，是因信神的儿子而活；他是爱我，为我舍己。","Galatians",2,20],["加拉太书5:22-23","圣灵所结的果子，就是仁爱、喜乐、和平、忍耐、恩慈、良善、信实、温柔、节制。这样的事没有律法禁止。","Galatians",5,22],["加拉太书6:9","我们行善，不可丧志；若不灰心，到了时候就要收成。","Galatians",6,9],["以弗所书2:8-9","你们得救是本乎恩，也因着信；这并不是出于自己，乃是神所赐的；也不是出于行为，免得有人自夸。","Ephesians",2,8],["以弗所书4:2-3","凡事谦虚、温柔、忍耐，用爱心互相宽容，用和平彼此联络，竭力保守圣灵所赐合而为一的心。","Ephesians",4,2],["以弗所书6:10","我还有末了的话：你们要靠着主，倚赖他的大能大力作刚强的人。","Ephesians",6,10],["腓立比书2:3-4","凡事不可结党，不可贪图虚浮的荣耀；只要存心谦卑，各人看别人比自己强。各人不要单顾自己的事，也要顾别人的事。","Philippians",2,3],["腓立比书3:13-14","弟兄们，我不是以为自己已经得着了；我只有一件事，就是忘记背后，努力面前的，向着标竿直跑，要得神在基督耶稣里从上面召我来得的奖赏。","Philippians",3,13],["腓立比书4:4","你们要靠主常常喜乐。我再说，你们要喜乐。","Philippians",4,4],["腓立比书4:6-7","应当一无挂虑，只要凡事借着祷告、祈求，和感谢，将你们所要的告诉神。神所赐、出人意外的平安必在基督耶稣里保守你们的心怀意念。","Philippians",4,6],["腓立比书4:13","我靠着那加给我力量的，凡事都能做。","Philippians",4,13],["歌罗西书3:17","无论做什么，或说话或行事，都要奉主耶稣的名，借着他感谢父神。","Colossians",3,17],["帖撒罗尼迦前书5:16-18","要常常喜乐，不住地祷告，凡事谢恩；因为这是神在基督耶稣里向你们所定的旨意。","1Thessalonians",5,16],["提摩太后书1:7","因为神赐给我们，不是胆怯的心，乃是刚强、仁爱、谨守的心。","2Timothy",1,7],["提摩太后书3:16-17","圣经都是神所默示的，于教训、督责、使人归正、教导人学义都是有益的，叫属神的人得以完全，预备行各样的善事。","2Timothy",3,16],["希伯来书4:12","神的道是活泼的，是有功效的，比一切两刃的剑更快，甚至魂与灵，骨节与骨髓，都能刺入、剖开，连心中的思念和主意都能辨明。","Hebrews",4,12],["希伯来书4:16","所以，我们只管坦然无惧地来到施恩的宝座前，为要得怜恤，蒙恩惠，作随时的帮助。","Hebrews",4,16],["希伯来书11:1","信就是所望之事的实底，是未见之事的确据。","Hebrews",11,1],["希伯来书12:1-2","我们既有这许多的见证人，如同云彩围着我们，就当放下各样的重担，脱去容易缠累我们的罪，存心忍耐，奔那摆在我们前头的路程，仰望为我们信心创始成终的耶稣。他因那摆在前面的喜乐，就轻看羞辱，忍受了十字架的苦难，便坐在神宝座的右边。","Hebrews",12,1],["希伯来书13:8","耶稣基督昨日、今日、一直到永远，是一样的。","Hebrews",13,8],["雅各书1:5","你们中间若有缺少智慧的，应当求那厚赐与众人、也不斥责人的神，主就必赐给他。","James",1,5],["雅各书1:22","只是你们要行道，不要单单听道，自己欺哄自己。","James",1,22],["雅各书4:6","但他赐更多的恩典，所以经上说：神阻挡骄傲的人，赐恩给谦卑的人。","James",4,6],["雅各书4:10","务要在主面前自卑，主就必叫你们升高。","James",4,10],["彼得前书5:5-7","你们年幼的，也要顺服年长的。就是你们众人也都要以谦卑束腰，彼此顺服；因为神阻挡骄傲的人，赐恩给谦卑的人。所以，你们要自卑，服在神大能的手下，到了时候，他必叫你们升高。你们要将一切的忧虑卸给神，因为他顾念你们。","1Peter",5,5],["约翰一书1:9","我们若认自己的罪，神是信实的，是公义的，必要赦免我们的罪，洗净我们一切的不义。","1John",1,9],["约翰一书4:19","我们爱，因为神先爱我们。","1John",4,19],["启示录3:20","看哪，我站在门外叩门，若有听见我声音就开门的，我要进到他那里去，我与他，他与我一同坐席。","Revelation",3,20],["启示录21:4","神要擦去他们一切的眼泪；不再有死亡，也不再有悲哀、哭号、疼痛，因为以前的事都过去了。","Revelation",21,4]];
+var C11LN={zh:'Traditional Chinese (Taiwan usage)',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'};
+
+/* ===== 2. 回答範圍 ===== */
+function c11Scope(){ var v=lsGet('scope','free'); return (v==='bible'||v==='folder')?v:'free'; }
+function c11FolderOk(){ var fd=S.fid?c2Folder(S.fid):null; return !!(fd&&c3SrcMeta(fd).length); }
+function c11Eff(){ var v=c11Scope(); return (v==='folder'&&!c11FolderOk())?'free':v; }
+function c11ScopeName(v){ return C11(v==='bible'?'sBible':v==='folder'?'sFolder':'sFree'); }
+function c11Sys(){
+ var e=c11Eff();
+ if(e==='bible') return '\n\n[Answer scope: Scripture only — this overrides any looser instruction above] Answer ONLY from what the Bible itself says. Quote the relevant verses verbatim with their references and explain only what the text and its immediate context say. Do not add personal opinions, denominational positions, outside stories or speculation. If the Bible does not address the question, say so plainly and point to what Scripture does say nearby.';
+ if(e==='folder') return '\n\n[Answer scope: the user\'s folder only — this overrides any looser instruction above] Answer ONLY from the reference excerpts of the current folder given above. If they do not cover the question, say so plainly and do not answer from general knowledge. Cite the source name in brackets. Quote Scripture only if it appears in the excerpts.';
+ return '';
+}
+var c11_sp=sysPrompt; sysPrompt=function(){ return c11_sp()+c11Sys(); };
+var c11_m4=c4Meta; c4Meta=function(){ var e=c11Eff(); return c11_m4()+(e==='bible'?' · 📖':e==='folder'?' · 📁':''); };
+function c11Bar(){
+ var f=$('flow'); if(!f) return;
+ var old=$('c11bar'); if(old&&old.parentNode) old.parentNode.removeChild(old);
+ var sc=c11Scope(); if(sc==='free') return;
+ var d=document.createElement('div'); d.id='c11bar'; d.className='c4rbar';
+ d.innerHTML='<span>🎯 '+esc(C11('scopeBar',c11ScopeName(sc).replace(/^\S+\s/,'')))+(c11Eff()!==sc?' '+esc(C11('scopeBarNo')):'')+'</span><button class="ctbtn" data-act="ctscope">'+esc(C11('scopeBarEdit'))+'</button>';
+ f.insertBefore(d,f.firstChild);
+}
+var c11_r=render; render=function(){ c11_r(); c11Bar(); };
+function c11ScopeHTML(){
+ var cur=c11Scope(),ok=c11FolderOk(),h='<div class="sheethead"><h2>'+esc(C11('scopeH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C11('scopeHint'))+'</p><div class="sec">';
+ var L=[['free','sFree','sFreeD'],['bible','sBible','sBibleD'],['folder','sFolder','sFolderD']];
+ for(var i=0;i<L.length;i++){ var v=L[i][0],dis=(v==='folder'&&!ok); h+='<button class="wide'+(cur===v?' c11on':'')+'" data-act="ctscopego" data-v="'+v+'"'+(dis?' disabled style="opacity:.55"':'')+'><span>'+esc(C11(L[i][1]))+'<br><small class="hint">'+esc(C11(L[i][2])+(dis?' '+C11('sFolderNo'):''))+'</small></span><span>'+(cur===v?'✓':'›')+'</span></button>'; }
+ return h+'</div>';
+}
+
+/* ===== 1. 先問清楚 ===== */
+function c11ClarOn(){ return lsGet('clar',1)===1; }
+var C11VAGUE=/怎麼辦|怎么办|什麼意思|什么意思|怎麼做|怎么做|怎麼看|怎么看|為什麼|为什么|可以嗎|可以吗|好嗎|對嗎|对吗|行嗎|行吗|what should i do|what does (this|that|it) mean|what do i do|how (do|can|should) i|why\b|is it ok|어떻게|무슨 뜻|どうすれば|どういう意味|bagaimana|apa maksud|unsa man|unsaon/i;
+function c11Vague(t){
+ if(S.chat.length||S.c10F||S.c3Img||S.asst||S.persona||c4Kid()||S.voiceNext||(typeof CALL!=='undefined'&&CALL.on)) return false;
+ if(/\d+\s*[:：]\s*\d+/.test(t)) return false;
+ try{ if(X.crisisHit(t)) return false; }catch(e){}
+ var cj=(t.match(/[぀-ヿ㐀-鿿가-힯]/g)||[]).length,words=t.split(/\s+/).filter(Boolean).length;
+ if(cj>=4?cj>14:words>7) return false;
+ return C11VAGUE.test(t);
+}
+var c11_send=send;
+send=function(text){
+ text=String(text||'').trim();
+ if(S.c11Skip){ S.c11Skip=false; return c11_send(text); }
+ if(text&&!S.busy&&c11ClarOn()&&c11Vague(text)){ c11Clar(text); return; }
+ return c11_send(text);
+};
+function c11Clar(text){
+ var C={q:text,busy:true}; S.c11C=C; openSheet('ctclar');
+ var done=false,tm=0;
+ function fin(r){
+  if(done) return; done=true; clearTimeout(tm);
+  if(S.c11C!==C||S.sheet!=='ctclar') return;
+  if(r&&r.q&&r.o&&r.o.length>=2){ C.busy=false; C.cq=r.q; C.o=r.o; renderSheet(); }
+  else { closeSheet(); S.c11Skip=true; send(text); }
+ }
+ tm=setTimeout(function(){ fin(null); },9000);
+ var ask='A reader of a Christian pastoral Q&A app asked this question: "'+text.replace(/"/g,"'")+'"\nIf it is too vague to answer well, write ONE short clarifying question in '+(C11LN[LANG]||'English')+' and 3 short answer options (each under 16 characters or 4 words) that would let you answer precisely. If it is already clear enough, return {"q":"","o":[]}. Return ONLY JSON like {"q":"...","o":["...","...","..."]}.';
+ quickAsk(ask,400).then(function(t){
+  var m=String(t||'').match(/\{[\s\S]*\}/),j=null; try{ j=JSON.parse(m[0]); }catch(e){}
+  fin(j&&j.q?{q:String(j.q).slice(0,120),o:(j.o||[]).map(function(x){ return String(x).trim().slice(0,40); }).filter(Boolean).slice(0,4)}:null);
+ },function(){ fin(null); });
+}
+function c11ClarHTML(){
+ var C=S.c11C||{},h='<div class="sheethead"><h2>'+esc(C11('clarH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">「'+esc(String(C.q||'').slice(0,100))+'」</p>';
+ if(C.busy) return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C11('clarWait'))+'</p><button class="ctbtn" data-act="ctclarskip">'+esc(C11('clarSkip'))+'</button>';
+ h+='<p class="c11q">'+esc(C.cq)+'</p><div class="c11opts">';
+ for(var k=0;k<C.o.length;k++) h+='<button class="chip" data-act="ctclarpick" data-v="'+k+'">'+esc(C.o[k])+'</button>';
+ return h+'</div><div class="ctrow" style="margin-top:12px"><input id="c11own" class="ctin" maxlength="80" placeholder="'+esc(C11('clarOwn'))+'"><button class="ctbtn pri" data-act="ctclarown">'+esc(C11('clarSend'))+'</button></div><button class="ctbtn" data-act="ctclarskip" style="margin-top:10px">'+esc(C11('clarSkip'))+'</button>';
+}
+function c11ClarGo(extra){
+ var C=S.c11C; if(!C) return; closeSheet(); S.c11C=null; S.c11Skip=true;
+ send(extra?C.q+'（'+extra+'）':C.q);
+}
+
+/* ===== 3. 每日探索 ===== */
+function c11Day(){
+ var d=new Date(),n=Math.floor((new Date(d.getFullYear(),d.getMonth(),d.getDate())-new Date(d.getFullYear(),0,0))/864e5),L=C11DATA.length;
+ return C11DATA[(((n+(d.getFullYear()-2026)*37)%L)+L)%L];
+}
+function c11DayHTML(){
+ var v=c11Day(); if(!v) return '';
+ var ds=''; try{ ds=new Date().toLocaleDateString(LANG==='zs'?'zh-CN':LANG==='zh'?'zh-TW':LANG==='ceb'?'fil':LANG,{month:'long',day:'numeric',weekday:'short'}); }catch(e){}
+ var lab='<a class="xzref" href="javascript:void 0" data-b="'+esc(v[2])+'" data-c="'+v[3]+'" data-v="'+v[4]+'">'+esc(v[0])+'</a>';
+ var qs=['1','2','3'].map(function(k){ return '<button data-act="ask" data-q="'+esc(C11('dayA'+k,v[0],v[1]))+'">'+esc(C11('dayQ'+k))+'</button>'; }).join('');
+ return '<section class="c11day"><div class="c11dh"><b>'+esc(C11('dayH'))+'</b><span>'+esc(ds)+'</span></div><p class="c11dv">'+esc(v[1])+'</p><div class="c11dr">— '+lab+'</div><div class="c11dq">'+qs+'</div></section>';
+}
+var c11_sg=suggestHTML; suggestHTML=function(){ return c11DayHTML()+c11_sg(); };
+
+/* ===== 4. 做成文章頁 ===== */
+function c11Link(data,cb){
+ var raw=new TextEncoder().encode(JSON.stringify(data)),base=location.href.replace(/[?#].*$/,'').replace(/[^\/]*$/,'')+'share.html#';
+ if(window.CompressionStream){
+  try{ var cs=new Blob([raw]).stream().pipeThrough(new CompressionStream('deflate-raw')); new Response(cs).arrayBuffer().then(function(buf){ cb(base+'z='+ctB64u(new Uint8Array(buf))); },function(){ cb(base+'u='+ctB64u(raw)); }); return; }catch(e){}
+ }
+ cb(base+'u='+ctB64u(raw));
+}
+function c11ArtStart(i){
+ var m=S.chat[i]; if(!m) return;
+ var A={i:i,busy:true}; S.c11A=A; openSheet('ctart');
+ var ask='Rewrite the Q&A below as a short, warm article page for a church fellowship, written in '+(C11LN[LANG]||'English')+'. Return ONLY JSON: {"title":"(under 24 characters or 8 words)","lead":"one-sentence summary","sections":[{"h":"short subheading","p":"1-3 short paragraphs separated by \\n"}],"verses":[{"ref":"book chapter:verse","text":"verse text"}],"takeaway":"one sentence of application"}. Use 2-4 sections. Use only the content and Scripture quotations that appear in the ANSWER; copy any quoted verse exactly as written there; add no new claims, and no new verses.\nQUESTION:\n'+String(qOf(i)||'').slice(0,600)+'\nANSWER:\n'+plain(m.t).slice(0,5000);
+ quickAsk(ask,2600).then(function(t){
+  var mm=String(t||'').match(/\{[\s\S]*\}/),j=null; try{ j=JSON.parse(mm[0]); }catch(e){}
+  if(!j||!j.title||!j.sections||!j.sections.length) throw new Error('bad');
+  var art={title:String(j.title).slice(0,60),lead:String(j.lead||'').slice(0,300),sections:j.sections.slice(0,5).map(function(s){ return {h:String(s.h||'').slice(0,60),p:String(s.p||'').slice(0,1400)}; }),verses:(j.verses||[]).slice(0,4).map(function(v){ return {ref:String(v.ref||'').slice(0,40),text:String(v.text||'').slice(0,400)}; }).filter(function(v){ return v.ref&&v.text; }),takeaway:String(j.takeaway||'').slice(0,300)};
+  c11Link({v:2,l:LANG,ts:Date.now(),t:art.title,a:art},function(url){ A.busy=false; A.art=art; A.url=url; if(S.c11A===A&&S.sheet==='ctart') renderSheet(); });
+ }).catch(function(){ A.busy=false; A.fail=true; if(S.c11A===A&&S.sheet==='ctart') renderSheet(); });
+}
+function c11ArtHTML(){
+ var A=S.c11A||{},h='<div class="sheethead"><h2>'+esc(C11('artH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div>';
+ if(A.busy) return h+'<p class="hint c3wait"><span class="typing"><span></span><span></span><span></span></span> '+esc(C11('artWait'))+'</p>';
+ if(A.fail) return h+'<p class="hint">'+esc(C11('artFail'))+'</p><button class="ctbtn" data-act="ctartagain" data-i="'+A.i+'">'+esc(C11('artAgain'))+'</button>';
+ var a=A.art; h+='<div class="c11art"><b>'+esc(a.title)+'</b><p>'+esc(a.lead)+'</p>';
+ for(var k=0;k<a.sections.length;k++) h+='<small>'+esc(a.sections[k].h)+'</small>';
+ h+='</div><p class="hint">'+esc(C11('artHint'))+'</p><div class="ctrow2"><button class="ctbtn pri" data-act="ctartshare">'+esc(C11('artShare'))+'</button><button class="ctbtn" data-act="ctartcopy">'+esc(C11('artCopy'))+'</button></div><div class="ctrow2" style="margin-top:8px"><button class="ctbtn" data-act="ctartopen">'+esc(C11('artOpen'))+'</button><button class="ctbtn" data-act="ctartagain" data-i="'+A.i+'">'+esc(C11('artAgain'))+'</button></div>';
+ return h;
+}
+var c11_mx=c5MsgExtra;
+c5MsgExtra=function(i){ var h=c11_mx(i),k=h.lastIndexOf('</div>'); if(k<0) return h; return h.slice(0,k)+'<button class="wide" data-act="ctart" data-i="'+i+'"><span>'+esc(C11('artBtn'))+'</span><span>›</span></button>'+h.slice(k); };
+
+/* ===== 面板與事件 ===== */
+var c11_ph=c3PlusHTML;
+c3PlusHTML=function(){
+ var h=c11_ph(),a='<button class="wide" data-act="ctfile">',k=h.indexOf(a); if(k<0){ a='<button class="wide" data-act="bank">'; k=h.indexOf(a); } if(k<0) return h;
+ var sc=c11Scope(),on=c11ClarOn();
+ return h.slice(0,k)+'<button class="wide" data-act="ctscope"><span>'+esc(C11('scopeT'))+'：'+esc(c11ScopeName(sc).replace(/^\S+\s/,''))+'</span><span>›</span></button><button class="wide" data-act="ctclartog"><span>'+esc(C11('clarT'))+'<br><small class="hint">'+esc(C11('clarHint'))+'</small></span><span class="ctsw'+(on?' on':'')+'" style="border:0;padding:0"><i></i></span></button>'+h.slice(k);
+};
+function ct11Sheet(k){
+ if(k==='ctclar') return c11ClarHTML();
+ if(k==='ctscope') return c11ScopeHTML();
+ if(k==='ctart') return c11ArtHTML();
+ return null;
+}
+function ct11Act(a,b,i,fid,v){
+ if(a==='ctscope'){ closeDrawer(); openSheet('ctscope'); }
+ else if(a==='ctscopego'){ lsSet('scope',v); renderSheet(); render(); toast(C11('scopeSet',c11ScopeName(v))); }
+ else if(a==='ctclartog'){ var on=!c11ClarOn(); lsSet('clar',on?1:0); if(S.sheet==='ctplus') renderSheet(); toast(on?C11('clarOn'):C11('clarOff')); }
+ else if(a==='ctclarpick'){ var C=S.c11C; c11ClarGo(C&&C.o?C.o[+v]:''); }
+ else if(a==='ctclarown'){ var o=$('c11own'),t=o?o.value.trim():''; if(!t){ if(o) o.focus(); return true; } c11ClarGo(t); }
+ else if(a==='ctclarskip') c11ClarGo('');
+ else if(a==='ctart') c11ArtStart(i);
+ else if(a==='ctartagain') c11ArtStart(i);
+ else if(a==='ctartshare'){ var A=S.c11A; if(!A||!A.url) return true; if(navigator.share){ navigator.share({title:A.art.title,text:A.art.title,url:A.url}).catch(function(e){ if(e&&e.name!=='AbortError') copyText(A.url,C11('artCopied')); }); } else copyText(A.url,C11('artCopied')); }
+ else if(a==='ctartcopy'){ var A2=S.c11A; if(A2&&A2.url) copyText(A2.url,C11('artCopied')); }
+ else if(a==='ctartopen'){ var A3=S.c11A; if(A3&&A3.url) window.open(A3.url,'_blank'); }
+ else return false;
+ return true;
+}
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -4015,7 +4225,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.1940',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.2010',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
