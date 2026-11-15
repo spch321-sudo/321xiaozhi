@@ -6,21 +6,21 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2130">
-<link rel="icon" href="favicon.ico?v=v2026.1115.2130" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2130">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2130">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2130">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2130">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2130">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2200">
+<link rel="icon" href="favicon.ico?v=v2026.1115.2200" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2200">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2200">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2200">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2200">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2200">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.2130"></script>
-<script src="xzplus.js?v=v2026.1115.2130" defer></script>
+<script src="k321gate.js?v=v2026.1115.2200"></script>
+<script src="xzplus.js?v=v2026.1115.2200" defer></script>
 </head>
 <body>
 
@@ -4288,6 +4288,17 @@ function c12Make(){
 /* ===== 2. 畫布式改寫 ===== */
 var C12CV=['spoken','short','warm','elder','verse','long','trans'];
 var C12INS={spoken:'Make it more conversational and natural to say aloud.',short:'Make it shorter and tighter while keeping the key points.',warm:'Make the tone warmer, gentler and more encouraging.',elder:'Rewrite it for older readers: short sentences, plain words, short paragraphs.',verse:'Add one fitting Bible verse where it fits best, quoted exactly from the standard translation of the text\'s language with its reference.',long:'Expand it with a little more explanation and one everyday example.'};
+function c12Plain(s){
+ s=String(s||'').replace(/\r/g,'').replace(/```[a-z]*\n?/gi,'');
+ var out=[],L=s.split('\n');
+ for(var i=0;i<L.length;i++){ var x=L[i];
+  if(/^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/.test(x)) continue;
+  if(/^\s*\|.*\|\s*$/.test(x)) x=x.replace(/^\s*\||\|\s*$/g,'').split('|').map(function(c){ return c.trim(); }).join('　');
+  x=x.replace(/^\s{0,3}#{1,6}\s*/,'').replace(/^\s*>\s?/,'').replace(/^\s*[-*+]\s+/,'・').replace(/^(\s*)(\d+)\.\s+/,'$1$2. ');
+  x=x.replace(/!?\[([^\]]*)\]\([^)]*\)/g,'$1').replace(/(\*\*|__)(.+?)\1/g,'$2').replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g,'$1$2').replace(/`([^`]*)`/g,'$1').replace(/\*\*|__/g,'');
+  out.push(x); }
+ return out.join('\n').replace(/\n{3,}/g,'\n\n').replace(/[ \t]+$/gm,'').trim();
+}
 function c12CvStatus(){ var el=$('c12st'),ta=$('c12ta'); if(!el||!ta) return; var s=ta.selectionStart,e=ta.selectionEnd; if(e>s) S.c12C.sel=[s,e]; var sel=S.c12C.sel; el.textContent=(sel&&sel[1]>sel[0]&&sel[1]<=ta.value.length)?C12('cvSel',sel[1]-sel[0]):C12('cvAll'); }
 function c12CvHTML(){
  var C=S.c12C||{text:''},h='<div class="sheethead"><h2>'+esc(C12('cvH'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint">'+esc(C12('cvHint'))+'</p>';
@@ -4306,8 +4317,8 @@ function c12CvGo(v){
  var part=e>s,seg=part?full.slice(s,e):full;
  if(seg.length>8000){ toast(C12('cvTooLong')); return; }
  C.busy=true; c12CvBusy(true);
- postRetry({max_tokens:3000,tier:'deep',system:'You are a careful editor for a Christian fellowship app. Follow the instruction and return ONLY the rewritten text — no preface, no explanation, no quotation marks around it. Keep the language of the text unless told to translate. Keep Bible quotations word for word. Do not add facts that are not in the text. Keep Markdown structure if present.',messages:[{role:'user',content:'INSTRUCTION: '+ins+'\n\nTEXT:\n'+seg}]}).then(extractReply).then(function(out){
-  out=String(out||'').trim(); if(!out) throw new Error('empty');
+ postRetry({max_tokens:3000,tier:'deep',system:'You are a careful editor for a Christian fellowship app. Follow the instruction and return ONLY the rewritten text — no preface, no explanation, no quotation marks around it. Keep the language of the text unless told to translate. Keep Bible quotations word for word. Do not add facts that are not in the text. Output plain text only: never use Markdown or any symbols such as #, *, **, -, >, backticks or tables; show headings as ordinary short lines and lists as lines starting with 1. 2. 3. or ・.',messages:[{role:'user',content:'INSTRUCTION: '+ins+'\n\nTEXT:\n'+seg}]}).then(extractReply).then(function(out){
+  out=c12Plain(out); if(!out) throw new Error('empty');
   C.undo=(C.undo||[]); C.undo.push(full); if(C.undo.length>15) C.undo.shift();
   var nv=part?full.slice(0,s)+out+full.slice(e):out; C.text=nv; C.sel=null; var t2=$('c12ta'); if(t2) t2.value=nv;
  }).catch(function(){ toast(C12('cvFail')); }).then(function(){ C.busy=false; c12CvBusy(false); c12CvStatus(); });
@@ -4339,7 +4350,7 @@ function ct12Act(a,b,i,fid,v){
  else if(a==='ctnoteask'){ var N5=c12N(); closeSheet(); var q=$('q'); q.value=C12('noteAskQ')+'\n\n'+String(N5.sum||N5.tr).slice(0,3500); autosize(); q.focus(); }
  else if(a==='ctnoteopen'){ var L=c12Notes(),n=null; for(var k=0;k<L.length;k++) if(L[k].id===fid) n=L[k]; if(n){ S.c12N={tr:n.tr,sum:n.sum,busy:false,id:n.id}; C12R.base=''; renderSheet(); } }
  else if(a==='ctnotedel'){ lsSet('notes',c12Notes().filter(function(x){ return x.id!==fid; })); if(S.c12N&&S.c12N.id===fid) S.c12N={tr:'',sum:'',busy:false,id:''}; renderSheet(); }
- else if(a==='ctcv'){ var m=S.chat[i]; if(!m) return true; S.c12C={i:i,text:String(m.t||''),undo:[],sel:null,busy:false}; openSheet('ctcanvas'); }
+ else if(a==='ctcv'){ var m=S.chat[i]; if(!m) return true; S.c12C={i:i,text:c12Plain(m.t),undo:[],sel:null,busy:false}; openSheet('ctcanvas'); }
  else if(a==='ctcvgo') c12CvGo(v);
  else if(a==='ctcvundo'){ var C=S.c12C; if(!C||C.busy||!C.undo||!C.undo.length) return true; C.text=C.undo.pop(); C.sel=null; var ta=$('c12ta'); if(ta) ta.value=C.text; c12CvStatus(); }
  else if(a==='ctcvcopy'){ var C2=S.c12C; if(C2) copyText(C2.text,C12('noteCopied')); }
@@ -4474,7 +4485,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.2130',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.2200',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
