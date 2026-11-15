@@ -6,21 +6,21 @@
 <title>Pangutana kang Xiaozhi</title>
 <meta name="description" content="Pangutana kang Xiaozhi: Bibliya, pagtuo ug kinabuhi · Kingdom 321 Air Fellowship">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2300">
-<link rel="icon" href="favicon.ico?v=v2026.1115.2300" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2300">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2300">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2300">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2300">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2300">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2330">
+<link rel="icon" href="favicon.ico?v=v2026.1115.2330" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2330">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2330">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2330">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2330">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2330">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.2300"></script>
-<script src="xzplus.js?v=v2026.1115.2300" defer></script>
+<script src="k321gate.js?v=v2026.1115.2330"></script>
+<script src="xzplus.js?v=v2026.1115.2330" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ceb';</script>
@@ -4435,6 +4435,14 @@ c5Lib=function(url,name){
  function load(k){ return new Promise(function(res,rej){ var s=document.createElement('script'); s.src=url+(k?(url.indexOf('?')<0?'?':'&')+'r='+Date.now():''); s.onload=function(){ window[name]?res(window[name]):rej(new Error('lib')); }; s.onerror=function(){ try{ s.remove(); }catch(e){} rej(new Error('lib')); }; document.head.appendChild(s); }); }
  return load(0).catch(function(){ return new Promise(function(r){ setTimeout(r,1200); }).then(function(){ return load(1); }); }).catch(function(){ return new Promise(function(r){ setTimeout(r,2500); }).then(function(){ return load(2); }); });
 };
+/* ---------- 「＋」選單不再重複側邊選單的項目（ct14-1115） ---------- */
+var C14DUP={bank:1,cttools:1,ctrole:1,ctcards:1,ctas:1,cttr:1,ctcall:1,ctwall:1,ctstyle:1,ctkid:1};
+var C14T='加入相片、檔案或輸入工具|加入相片、文件或输入工具|Add photos, files or input tools|사진, 파일, 입력 도구 추가|写真・ファイル・入力ツールを追加|Tambah foto, berkas, atau alat input|Magdugang og litrato, file, o himan sa pag-input';
+var c14_ph=c3PlusHTML;
+c3PlusHTML=function(){
+ var h=c14_ph().replace(/<button class="wide" data-act="(\w+)"[^>]*>[\s\S]*?<\/button>/g,function(m,a){ return C14DUP[a]?'':m; });
+ return h.replace(/<h2>[\s\S]*?<\/h2>/,'<h2>'+esc(C5L(C14T))+'</h2>');
+};
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -4556,7 +4564,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.2300',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.2330',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
