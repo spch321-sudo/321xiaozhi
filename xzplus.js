@@ -251,7 +251,7 @@
     x.setRequestHeader('Content-Type', 'application/json'); x.timeout = 60000;
     x.onreadystatechange = function () { if (x.readyState !== 4) return; var j = null; try { j = JSON.parse(x.responseText); } catch (e) { } cb(x.status >= 200 && x.status < 300 ? extract(j).replace(/\*\*/g, '').replace(/^#+\s*/gm, '').trim() : ''); };
     x.ontimeout = function () { cb(''); };
-    x.send(JSON.stringify({ model: MODEL, max_tokens: 900, system: 'You prepare concise, warm small-group discussion material for a Christian fellowship. Follow the requested language and format exactly.', messages: [{ role: 'user', content: prompt(d) }] }));
+    x.send(JSON.stringify({ tier: 'deep', max_tokens: 900, system: 'You prepare concise, warm small-group discussion material for a Christian fellowship. Follow the requested language and format exactly.', messages: [{ role: 'user', content: prompt(d) }] }));
   }
   function groups() { var g = lj('fl321_xjs', []) || []; return g.filter(function (x) { return x && x.code; }); }
   function devId() { var d = lg('fl321_xjdev'); if (!d) { d = 'f' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10); ls('fl321_xjdev', d); } return d; }

@@ -6,21 +6,21 @@
 <title>샤오즈 Q&A</title>
 <meta name="description" content="샤오즈 Q&A: 성경, 신앙, 생활 질문 · 킹덤 321 공중 펠로십">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.0910">
-<link rel="icon" href="favicon.ico?v=v2026.1115.0910" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.0910">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.0910">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.0910">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.0910">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.0910">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.0935">
+<link rel="icon" href="favicon.ico?v=v2026.1115.0935" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.0935">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.0935">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.0935">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.0935">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.0935">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="샤오즈 Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.0910"></script>
-<script src="xzplus.js?v=v2026.1115.0910" defer></script>
+<script src="k321gate.js?v=v2026.1115.0935"></script>
+<script src="xzplus.js?v=v2026.1115.0935" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ko';</script>
@@ -1255,25 +1255,92 @@ function postRetry(body,signal){
  function go(k){ return postOnce(body,signal).catch(function(e){ if(e&&e.name==='AbortError') throw e; if(k<waits.length) return new Promise(function(r){setTimeout(r,waits[k]);}).then(function(){return go(k+1);}); throw e; }); }
  return go(0);
 }
-function viaProxy(msgs,onPart,signal){
- var acc='',sure=0,guess=0;
+/* ---------- 逐字顯示（串流）與快速／深入分流（v2026.1115）----------
+   Worker 回 text/event-stream 就邊收邊畫；回 JSON（舊 Worker）就照舊一次顯示。
+   tier：'fast'＝Haiku（快、便宜），'deep'＝Sonnet（解經、爭議、關懷、長問題）。舊 Worker 不認識這個欄位，會忽略。 */
+var STREAM_OK=typeof ReadableStream==='function'&&typeof TextDecoder==='function'&&typeof Response!=='undefined'&&'body' in Response.prototype&&!!window.AbortController;
+var DEEP_RE=new RegExp('解經|釋經|原文|希臘|希伯來|原意|翻譯|矛盾|如何解釋|怎麼解釋|神學|教義|背景|同性|墮胎|安樂死|方言|靈恩|預定|揀選|三位一體|末世|被提|千禧|地獄|進化|創造論|離婚|再婚|女人.{0,6}(牧師|講道|教導|傳道)|失去救恩|拜祖|'
+ +'解经|释经|希腊|翻译|如何解释|怎么解释|教义|背景|堕胎|灵恩|拣选|地狱|进化|创造论|离婚|再婚|女人.{0,6}(牧师|讲道|教导|传道)|失去救恩|'
+ +'憂鬱|焦慮|輕生|不想活|自殺|活不下去|撐不下去|癌|去世|過世|離世|外遇|家暴|虐待|絕望|崩潰|哀慟|忧郁|焦虑|轻生|自杀|撑不下去|离世|绝望|崩溃|哀恸|'
+ +'exegesis|greek|hebrew|contradict|predestin|tongues|homosex|abortion|suicid|depress|cancer|grief|divorce|hell\\b|trinity|rapture|'
+ +'원어|해석|신학|교리|이혼|우울|자살|聖書の解釈|原語|神学|うつ|自殺|離婚|penafsiran|bahasa asli|perceraian|depresi|bunuh diri|kanser|pagpasabut|diborsyo','i');
+function chatTier(text){
+ var t=String(text||''); if(t.length>=120||DEEP_RE.test(t)) return 'deep';
+ try{ if(X.crisisHit(t)) return 'deep'; }catch(e){}
+ return 'fast';
+}
+function readSSE(res,onDelta,idleMs,ac){
+ var rd=res.body.getReader(),dec=new TextDecoder('utf-8'),buf='',out='',stop='',err='',cut=false,idle=0;
+ function arm(){ clearTimeout(idle); idle=setTimeout(function(){ try{ac.abort();}catch(e){} },idleMs); }
+ function eat(blk){ blk.split(/\r?\n/).forEach(function(line){
+  if(line.indexOf('data:')!==0) return;
+  var j; try{ j=JSON.parse(line.slice(5).trim()); }catch(e){ return; } if(!j) return;
+  if(j.type==='content_block_delta'&&j.delta&&j.delta.type==='text_delta'&&j.delta.text){ out+=j.delta.text; if(onDelta) onDelta(out); }
+  else if(j.type==='message_delta'&&j.delta&&j.delta.stop_reason) stop=j.delta.stop_reason;
+  else if(j.type==='error') err=(j.error&&j.error.message)||'stream error';
+ }); }
+ arm();
+ function pump(){ return rd.read().then(function(x){
+  if(x.done) return; arm(); buf+=dec.decode(x.value,{stream:true});
+  var k; while((k=buf.search(/\r?\n\r?\n/))>=0){ var blk=buf.slice(0,k); buf=buf.slice(k).replace(/^\r?\n\r?\n/,''); eat(blk); }
+  return pump();
+ }); }
+ return pump().then(function(){ if(buf.trim()) eat(buf); },function(){ cut=true; }).then(function(){ clearTimeout(idle); return {out:out,stop:stop,err:err,cut:cut}; });
+}
+function postStream(body,signal,onDelta){
+ var ac=new AbortController(),tm=setTimeout(function(){ ac.abort(); },75000);
+ if(signal){ if(signal.aborted) ac.abort(); else signal.addEventListener('abort',function(){ ac.abort(); }); }
+ function userAbort(){ var e=new Error('abort'); e.name='AbortError'; return e; }
+ return fetch(PROXY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:ac.signal}).then(function(res){
+  if(!res.ok){ clearTimeout(tm); var e=new Error('http '+res.status); e.http=res.status; throw e; }
+  var ct=(res.headers&&res.headers.get&&res.headers.get('content-type'))||'';
+  if(/text\/event-stream/i.test(ct)&&res.body&&res.body.getReader){
+   clearTimeout(tm);   /* 已經開始收字，改由「閒置 30 秒」把關 */
+   return readSSE(res,onDelta,30000,ac).then(function(g){ if(signal&&signal.aborted) throw userAbort(); return {sse:g}; });
+  }
+  clearTimeout(tm); return res.json().then(function(d){ return {json:d}; });
+ },function(e){
+  clearTimeout(tm);
+  if(signal&&signal.aborted) throw userAbort();
+  if(e&&e.name==='AbortError') throw new Error('timeout');   /* 逾時不是使用者按停止，交給重試 */
+  throw e;
+ });
+}
+function viaProxy(msgs,onPart,signal,tier){
+ var acc='',sure=0,guess=0,pend=null,tmr=0,first=true,tr0=tier||'fast';
+ function flush(){ clearTimeout(tmr); tmr=0; if(pend){ var p=pend; pend=null; onPart(p[0],p[1]); } }
+ function paint(txt,cont){
+  if(first){ first=false; onPart(txt,cont); return; }   /* 第一個字馬上畫，之後約每 0.1 秒更新一次 */
+  pend=[txt,cont]; if(!tmr) tmr=setTimeout(function(){ tmr=0; var p=pend; pend=null; if(p) onPart(p[0],p[1]); },100);
+ }
+ function call(m,base){
+  var want=STREAM_OK,waits=[900,1800];
+  var body={max_tokens:maxTok(),system:sysPrompt(),messages:m,tier:tr0,stream:want||undefined};
+  function go(k){
+   var p=want?postStream(body,signal,function(txt){ paint(base?X.join(base,txt):txt,!!base); }):postOnce(body,signal).then(function(d){ return {json:d}; });
+   return p['catch'](function(e){ if(e&&e.name==='AbortError') throw e; if(k<waits.length) return new Promise(function(r){setTimeout(r,waits[k]);}).then(function(){return go(k+1);}); throw e; });
+  }
+  return go(0);
+ }
  function round(m){
-  return postRetry({model:MODEL,max_tokens:maxTok(),system:sysPrompt(),messages:m},signal).then(function(d){
-   var t=extractReply(d),sr=d&&(d.stop_reason||(d.choices&&d.choices[0]&&d.choices[0].finish_reason));
-   if(!t&&!acc) throw new Error('empty');
-   acc=acc?X.join(acc,t):t;
+  var base=acc;
+  return call(m,base).then(function(r){
+   var t,sr;
+   if(r.sse){ var g=r.sse; t=g.out; sr=g.stop; if(!t&&!acc) throw new Error(g.err||'empty'); if(g.cut||g.err) sr='max_tokens'; }
+   else { var d=r.json; t=extractReply(d); sr=d&&(d.stop_reason||(d.choices&&d.choices[0]&&d.choices[0].finish_reason)); if(!t&&!acc) throw new Error('empty'); }
+   acc=acc?X.join(acc,t||''):t;
    var tr=X.truncated(acc,sr);
-   if((tr==='sure'&&sure<4)||(tr==='guess'&&guess<1)){ if(tr==='sure') sure++; else guess++; onPart(acc,true); return round(msgs.concat([{role:'assistant',content:acc},{role:'user',content:X.contAsk()}])); }
+   if((tr==='sure'&&sure<4)||(tr==='guess'&&guess<1)){ if(tr==='sure') sure++; else guess++; flush(); onPart(acc,true); return round(msgs.concat([{role:'assistant',content:acc},{role:'user',content:X.contAsk()}])); }
    return acc;
   });
  }
- return round(msgs);
+ return round(msgs).then(function(t){ clearTimeout(tmr); tmr=0; pend=null; return t; },function(e){ flush(); throw e; });
 }
 
 function quickAsk(ask,maxT){
  return getSample().then(function(sm){
   if(sm) return sm(ask,{cache:false,modelTier:'quick'}).then(function(r){return r&&r.text||'';});
-  return postRetry({model:MODEL,max_tokens:maxT||700,system:T('jsonOnly'),messages:[{role:'user',content:ask}]}).then(extractReply);
+  return postRetry({max_tokens:maxT||700,system:T('jsonOnly'),messages:[{role:'user',content:ask}]}).then(extractReply);
  });
 }
 function parseArr(t){ var m=String(t||'').match(/\[[\s\S]*\]/); try{ return JSON.parse(m?m[0]:'[]')||[]; }catch(e){ return []; } }
@@ -1302,7 +1369,7 @@ function send(text){
   var n=el.querySelector('.contnote'); if(n) n.hidden=!cont;
  }
  var sig=S.ctl?S.ctl.signal:undefined;
- c3Ready().then(getSample).then(function(sm){ return (sm&&!S.c3Sent)?viaSample(sm,msgs,onPart,sig):viaProxy(msgs,onPart,sig); }).then(function(t){
+ c3Ready().then(getSample).then(function(sm){ return (sm&&!S.c3Sent)?viaSample(sm,msgs,onPart,sig):viaProxy(msgs,onPart,sig,chatTier(text)); }).then(function(t){
   m.t=String(t||'').trim()||T('noAnswer'); m.ok=true; c4Split(m);
  },function(e){
   if(e&&(e.name==='AbortError'||e.code==='aborted')){ m.t=(m.t?m.t+'\n\n':'')+T('stopped'); m.ok=m.t.length>12; return; }
@@ -2130,7 +2197,7 @@ function c6Init(){
 }
 setTimeout(c6Init,400);
 /* ---------- 直接呼叫小智（純文字） ---------- */
-function c6Ask(sys,user,maxT,sig){ return postRetry({model:MODEL,max_tokens:maxT||2000,system:sys,messages:[{role:'user',content:user}]},sig).then(extractReply).then(function(t){ return String(t||'').trim(); }); }
+function c6Ask(sys,user,maxT,sig){ return postRetry({tier:'deep',max_tokens:maxT||2000,system:sys,messages:[{role:'user',content:user}]},sig).then(extractReply).then(function(t){ return String(t||'').trim(); }); }
 function c6LNM(){ return {zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English'; }
 function c6Push(userT,aiT,ctx,meta){
  var u={role:'user',t:userT,ts:Date.now()}; if(ctx) u.ctx=ctx; S.chat.push(u);
@@ -2399,7 +2466,7 @@ function c5MakeStyle(){
  S.c5Edit={busy:true,name:nm,text:tx}; renderSheet();
  var LNM={zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English';
  var ask='Analyze the WRITING SAMPLES below and write a concise STYLE GUIDE in '+LNM+' (at most 900 characters, bullet points) that another writer could follow to sound like this author: voice and tone; how the author addresses the reader; sentence length and rhythm; typical structure; favorite expressions, phrases and terminology (quote short examples); how Scripture is used; illustrations and humor; how pieces open and close. Do not summarize the content. Output only the guide.\nWRITING SAMPLES:\n'+tx.slice(0,14000);
- getSample().then(function(sm){ if(sm) return sm(ask,{cache:false}).then(function(r){ return r&&r.text||''; }); return postRetry({model:MODEL,max_tokens:1400,system:'You are a careful writing coach.',messages:[{role:'user',content:ask}]}).then(extractReply); }).then(function(g){
+ getSample().then(function(sm){ if(sm) return sm(ask,{cache:false}).then(function(r){ return r&&r.text||''; }); return postRetry({tier:'deep',max_tokens:1400,system:'You are a careful writing coach.',messages:[{role:'user',content:ask}]}).then(extractReply); }).then(function(g){
   g=String(g||'').trim(); if(g.length<20) throw new Error('short');
   var L=c5Styles(),st={id:'w'+Date.now().toString(36),name:nm,guide:g,ts:Date.now()}; L.push(st); lsSet('styles',L); lsSet('style',st.id);
   S.c5Edit={id:st.id,name:st.name,guide:st.guide}; if(S.sheet==='ctstyle') renderSheet(); toast(C5('stSaved'));
@@ -3379,7 +3446,7 @@ function c8MzGo(){
   var lnm={zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English';
   var ask=(Z.img?'The image shows a person\'s handwritten attempt to write a Bible verse from memory. Transcribe EXACTLY what is written (keep their mistakes; do not correct anything). ':'')+'Then give one short, practical tip in '+lnm+' to help memorize the correct verse below (under 60 Chinese characters or 40 words). Return ONLY JSON {"written":"'+(Z.img?'exact transcription':'')+'","tip":""}.\nCORRECT VERSE:\n'+correct+(Z.img?'':'\n\nTHEIR TYPED ATTEMPT:\n'+Z.txt);
   var content=Z.img?[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:Z.img.full.split(',')[1]}},{type:'text',text:ask}]:ask;
-  return postRetry({model:MODEL,max_tokens:800,system:'You transcribe handwriting faithfully and help people memorize Scripture. Reply with JSON only.',messages:[{role:'user',content:content}]}).then(extractReply).then(function(t){
+  return postRetry({tier:'deep',max_tokens:800,system:'You transcribe handwriting faithfully and help people memorize Scripture. Reply with JSON only.',messages:[{role:'user',content:content}]}).then(extractReply).then(function(t){
    var s=String(t||''),a=s.indexOf('{'),b=s.lastIndexOf('}'),d={}; try{ d=JSON.parse(s.slice(a,b+1)); }catch(e){}
    var written=Z.img?String(d.written||''):String(Z.txt||''); if(Z.img&&!written) throw 1;
    var cjk=/[぀-鿿가-힯]/.test(correct)&&!/[가-힯]/.test(correct),A=c8Norm(correct,cjk),B=c8Norm(written,cjk),df=c8Diff(A,B),extra=B.length-df.same;
@@ -3412,7 +3479,7 @@ function c8Speak(text,voice){
 function c8Translate(side,text){
  text=String(text||'').trim(); if(!text) return; c8TrSave(); var d=c8TrDef(),from=c8L(side==='me'?d[0]:d[1]),to=c8L(side==='me'?d[1]:d[0]);
  TR.busy='tr'; if(S.sheet==='cttr') renderSheet();
- postRetry({model:MODEL,max_tokens:600,system:'You are a live interpreter for a Christian fellowship conversation. Translate the user\'s message from '+from[3]+' into '+to[3]+'. Keep the meaning, tone and warmth; use natural spoken language; for Bible verses use the standard Bible translation of the target language. Output ONLY the translation.',messages:[{role:'user',content:text}]}).then(extractReply).then(function(t){
+ postRetry({max_tokens:600,system:'You are a live interpreter for a Christian fellowship conversation. Translate the user\'s message from '+from[3]+' into '+to[3]+'. Keep the meaning, tone and warmth; use natural spoken language; for Bible verses use the standard Bible translation of the target language. Output ONLY the translation.',messages:[{role:'user',content:text}]}).then(extractReply).then(function(t){
   t=String(t||'').trim(); if(!t) throw 0; TR.log.push({side:side,o:text,t:t,voice:to[2]}); TR.busy=''; if(S.sheet==='cttr'){ renderSheet(); var lg=$('c8tlog'); if(lg) lg.scrollTop=lg.scrollHeight; } c8Speak(t,to[2]);
  }).catch(function(){ TR.busy=''; if(S.sheet==='cttr') renderSheet(); toast(C8('trFail')); });
 }
@@ -3472,7 +3539,7 @@ function c9Kip(text){
 function c9Tg(m){
  if(m&&m.tg) return Promise.resolve(m.tg);
  var src=speakText(m?m.t:'');
- return postRetry({model:MODEL,max_tokens:2600,system:'Translate the text into natural spoken Taiwanese Hokkien (臺灣台語), written in Taiwanese Han characters following the Ministry of Education recommended characters (教育部臺灣台語推薦用字). Output ONLY the translation as plain sentences ending with 。！？ — no romanization, no markdown, no emojis, no lists. Write numbers and Bible references as words (e.g. 約翰福音第三章第十六節). Keep the meaning and the warm tone.',messages:[{role:'user',content:src.slice(0,3000)}]}).then(extractReply).then(function(t){ t=String(t||'').replace(/[*#>`_]/g,'').trim(); if(!t) throw new Error('empty'); if(m){ m.tg=t; save(); } return t; });
+ return postRetry({tier:'deep',max_tokens:2600,system:'Translate the text into natural spoken Taiwanese Hokkien (臺灣台語), written in Taiwanese Han characters following the Ministry of Education recommended characters (教育部臺灣台語推薦用字). Output ONLY the translation as plain sentences ending with 。！？ — no romanization, no markdown, no emojis, no lists. Write numbers and Bible references as words (e.g. 約翰福音第三章第十六節). Keep the meaning and the warm tone.',messages:[{role:'user',content:src.slice(0,3000)}]}).then(extractReply).then(function(t){ t=String(t||'').replace(/[*#>`_]/g,'').trim(); if(!t) throw new Error('empty'); if(m){ m.tg=t; save(); } return t; });
 }
 function c9Chunks(t){ var out=[],cur='',ss=String(t).match(/[^。！？!?\n]+[。！？!?]*|\n/g)||[t]; for(var i=0;i<ss.length;i++){ var s=ss[i].trim(); if(!s) continue; if((cur+s).length>120&&cur){ out.push(cur); cur=''; } cur+=s; } if(cur) out.push(cur); return out; }
 function c9Play(texts,gen,onDone,onFail){
@@ -3615,7 +3682,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.0910',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.0935',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
