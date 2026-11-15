@@ -6,21 +6,21 @@
 <title>小智问答</title>
 <meta name="description" content="小智问答：圣经・信仰・生活・智慧问答，国度321空中团契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2230">
-<link rel="icon" href="favicon.ico?v=v2026.1115.2230" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2230">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2230">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2230">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2230">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2230">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2300">
+<link rel="icon" href="favicon.ico?v=v2026.1115.2300" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2300">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2300">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2300">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2300">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2300">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智问答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.2230"></script>
-<script src="xzplus.js?v=v2026.1115.2230" defer></script>
+<script src="k321gate.js?v=v2026.1115.2300"></script>
+<script src="xzplus.js?v=v2026.1115.2300" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='zs';</script>
@@ -2644,7 +2644,7 @@ function c5Slides(i){
  var LNM={zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English';
  var ask='Turn the ANSWER into sermon/teaching slides in '+LNM+'. Return ONLY JSON: {"title":"","subtitle":"","slides":[{"t":"slide title","p":["short point"],"v":"full Bible verse text or empty","r":"verse reference or empty"}]}. 6-10 slides; at most 4 points per slide; each point under 20 Chinese characters or 10 English words; verse slides may have no points; keep verse quotations exactly as in the answer; last slide is a short application or prayer.\nQUESTION:\n'+String(qOf(i)).slice(0,300)+'\nANSWER:\n'+plain(m.t).slice(0,5000);
  Promise.all([c13Json(ask,3600,function(d){ return d&&d.slides&&d.slides.length; }),c5Lib(C5PPT,'PptxGenJS')]).then(function(r){
-  var d=r[0]; if(!d||!d.slides||!d.slides.length) throw new Error('bad');
+  var d=c13NormPpt(r[0]); if(!d||!d.slides||!d.slides.length) throw new Error('bad');
   var P=new window.PptxGenJS(); P.layout='LAYOUT_16x9'; var F={zh:'PMingLiU',zs:'SimSun',ja:'Yu Mincho',ko:'Malgun Gothic'}[LANG]||'Calibri',NAVY='1E3F8F',GOLD='B8862E';
   var t0=P.addSlide(); t0.background={color:NAVY}; t0.addShape(P.ShapeType.rect,{x:0,y:4.9,w:10,h:0.08,fill:{color:GOLD}});
   t0.addText(String(d.title||qOf(i)).slice(0,60),{x:0.5,y:1.4,w:9,h:1.8,fontFace:F,fontSize:48,bold:true,color:'FFFFFF',align:'center',valign:'middle',fit:'shrink'});
@@ -2655,7 +2655,7 @@ function c5Slides(i){
    if(pts.length){ sl.addText(pts.map(function(x){ return {text:String(x),options:{bullet:true,breakLine:true}}; }),{x:0.6,y:y,w:8.8,h:sd.v?2.2:3.9,fontFace:F,fontSize:30,color:'222222',valign:'top',paraSpaceAfter:8,fit:'shrink'}); y+=2.3; }
    if(sd.v) sl.addText([{text:String(sd.v),options:{breakLine:true}},{text:sd.r?'—— '+sd.r:'',options:{fontSize:22,color:GOLD}}],{x:0.6,y:pts.length?y:1.4,w:8.8,h:pts.length?1.6:3.6,fontFace:F,fontSize:28,color:'333333',italic:false,valign:'middle',fill:{color:'F7EFDD'},margin:0.2,fit:'shrink'}); });
   return P.write({outputType:'blob'}).then(function(bl){ c5SaveBlob(bl,c5FileName(d.title||qOf(i),'.pptx')); toast(C5('fileDone')); });
- }).catch(function(){ toast(C5('pptFail')); });
+ }).catch(function(e){ toast(C5('pptFail')+' ['+c13Why(e)+']'); });
 }
 /* ---------- 圖表與關係圖（Mermaid） ---------- */
 var C5MM='https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js',C5MMI=0;
@@ -2881,7 +2881,7 @@ function c3Quiz(i,fresh){
  QZ={i:i,d:null,mode:'quiz',k:0,pick:[],card:0,flip:false,busy:true}; openSheet('ctquiz');
  var LNM={zh:'Traditional Chinese',zs:'Simplified Chinese',en:'English',ko:'Korean',ja:'Japanese',id:'Indonesian',ceb:'Cebuano'}[LANG]||'English';
  var ask='Make a short Bible-study quiz and flashcards from the ANSWER below, in '+LNM+'. Return ONLY JSON: {"quiz":[{"q":"question","o":["option A","option B","option C","option D"],"a":0,"why":"one-sentence explanation"}],"cards":[{"f":"front (a term, verse reference or question)","b":"back (short answer)"}]}. 5 quiz questions (each with exactly 4 options, "a" is the index of the correct one; vary the position of the correct answer) and 6 cards. Questions must be answerable from the answer and faithful to Scripture; quote verses exactly as in the answer.\nQUESTION:\n'+String(qOf(i)).slice(0,400)+'\nANSWER:\n'+plain(m.t).slice(0,3500);
- c13Json(ask,2800,function(d){ return d&&((d.quiz&&d.quiz.length)||(d.cards&&d.cards.length)); }).then(function(d){
+ c13Json(ask,2800,function(d){ d=c13NormQz(d); return d.quiz.length&&d.cards.length; },function(d){ d=c13NormQz(d); return d.quiz.length||d.cards.length; }).then(function(d){ d=c13NormQz(d);
   var qz=(d&&d.quiz||[]).filter(function(x){ return x&&x.q&&x.o&&x.o.length>=2&&x.a>=0&&x.a<x.o.length; }).slice(0,8);
   var cards=(d&&d.cards||[]).filter(function(x){ return x&&x.f&&x.b; }).slice(0,12);
   if(!qz.length&&!cards.length) throw new Error('bad');
@@ -4402,13 +4402,34 @@ quickAsk=function(ask,maxT){
   return c13Try({max_tokens:maxT,system:T('jsonOnly'),tier:maxT>=1200?'deep':'fast',messages:[{role:'user',content:ask}]},maxT>=1200?90000:45000,0).then(extractReply);
  });
 };
-function c13Json(ask,maxT,check){
+function c13Json(ask,maxT,check,soft){
+ var last=null;
  function one(k){
-  return quickAsk(k?ask+'\n\nIMPORTANT: your previous reply could not be read. Reply with ONE valid JSON object only: no commentary, no code fence, and write any line break inside a string as \\n.':ask,maxT).then(function(t){
-   var d=c13Parse(t); if(d&&(!check||check(d))) return d; throw new Error('bad'); });
+  return quickAsk(k?ask+'\n\nIMPORTANT: your previous reply could not be used. Reply with ONE valid JSON object only: no commentary, no code fence, every field filled in, and write any line break inside a string as \\n.':ask,maxT).then(function(t){
+   var d=c13Parse(t); if(d&&(!soft||soft(d))) last=d; if(d&&(!check||check(d))) return d; throw new Error('bad'); });
  }
- return one(0).catch(function(){ return one(1); });
+ return one(0).catch(function(){ return one(1); }).catch(function(e){ if(last) return last; throw e; });
 }
+function c13Str(x){ return x==null?'':(typeof x==='string'?x:(typeof x==='number'?String(x):'')); }
+function c13NormPpt(d){
+ if(!d) return null; var L=d.slides||d.pages||d.slide; if(!(L instanceof Array)) return null;
+ var out=[]; L.forEach(function(sd){ if(!sd||typeof sd!=='object') return;
+  var p=sd.p!=null?sd.p:(sd.points!=null?sd.points:sd.bullets); if(typeof p==='string') p=p.split(/\n+/); if(!(p instanceof Array)) p=[];
+  p=p.map(function(x){ return c13Str(x).trim(); }).filter(function(x){ return x; });
+  out.push({t:c13Str(sd.t||sd.title||sd.h),p:p,v:c13Str(sd.v||sd.verse||sd.text),r:c13Str(sd.r||sd.ref||sd.reference)}); });
+ d.slides=out.filter(function(x){ return x.t||x.p.length||x.v; }); d.title=c13Str(d.title); d.subtitle=c13Str(d.subtitle); return d;
+}
+function c13NormQz(d){
+ var R={quiz:[],cards:[]}; if(!d||typeof d!=='object') return R;
+ (d.quiz||d.questions||[]).forEach(function(x){ if(!x||typeof x!=='object') return;
+  var q=c13Str(x.q||x.question),o=x.o||x.options||x.choices; if(!(o instanceof Array)) return; o=o.map(c13Str).filter(function(z){ return z; });
+  var a=x.a!=null?x.a:(x.answer!=null?x.answer:x.correct); if(typeof a==='string'){ var t=a.trim(); if(/^\d+$/.test(t)) a=parseInt(t,10); else if(/^[A-Fa-f]$/.test(t)) a='ABCDEF'.indexOf(t.toUpperCase()); else { var ix=o.indexOf(t); a=ix; } }
+  if(q&&o.length>=2&&typeof a==='number'&&a>=0&&a<o.length) R.quiz.push({q:q,o:o,a:a,why:c13Str(x.why||x.explanation)}); });
+ (d.cards||d.flashcards||d.card||[]).forEach(function(x){ if(!x||typeof x!=='object') return;
+  var f=c13Str(x.f||x.front||x.term||x.q||x.question),b=c13Str(x.b||x.back||x.answer||x.def||x.definition||x.a); if(f&&b) R.cards.push({f:f,b:b}); });
+ return R;
+}
+function c13Why(e){ var m=String(e&&(e.message||e.name)||e||'?').replace(/\s+/g,' ').slice(0,24); try{ window.__c13why=e; }catch(x){} return m; }
 c5Lib=function(url,name){
  if(window[name]) return Promise.resolve(window[name]);
  function load(k){ return new Promise(function(res,rej){ var s=document.createElement('script'); s.src=url+(k?(url.indexOf('?')<0?'?':'&')+'r='+Date.now():''); s.onload=function(){ window[name]?res(window[name]):rej(new Error('lib')); }; s.onerror=function(){ try{ s.remove(); }catch(e){} rej(new Error('lib')); }; document.head.appendChild(s); }); }
@@ -4535,7 +4556,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.2230',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.2300',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
