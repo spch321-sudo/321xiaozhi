@@ -6,21 +6,21 @@
 <title>シャオジー Q&A</title>
 <meta name="description" content="シャオジー Q&A：聖書・信仰・生活の質問 · キングダム321空中フェローシップ">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0150">
-<link rel="icon" href="favicon.ico?v=v2026.1116.0150" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0150">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0150">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0150">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0150">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0150">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0210">
+<link rel="icon" href="favicon.ico?v=v2026.1116.0210" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0210">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0210">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0210">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0210">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0210">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="シャオジー Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1116.0150"></script>
-<script src="xzplus.js?v=v2026.1116.0150" defer></script>
+<script src="k321gate.js?v=v2026.1116.0210"></script>
+<script src="xzplus.js?v=v2026.1116.0210" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ja';</script>
@@ -415,6 +415,12 @@ body.kid #c10sel{display:none!important}
 #c15big{position:fixed;inset:0;z-index:99999;background:#fff;display:flex;flex-direction:column}
 #c15big .c15x{flex:0 0 auto;border:0;border-bottom:1px solid #ddd;background:#f4f4f4;color:#222;padding:14px;font-size:1em;text-align:right}
 #c15big .c15fr2{flex:1 1 auto;width:100%;border:0;background:#fff}
+/* ct16-1116 預設收合 */
+.tile.c16h{display:none}
+.c16more{display:block;width:100%;margin:10px 0 2px;padding:11px 12px;border:1px dashed var(--line);border-radius:12px;background:transparent;color:var(--muted);font:inherit;font-size:.92em;text-align:center;cursor:pointer}
+.c16rest{display:contents}.c16rest.c16c{display:none}
+.ditem.c16dm{border:0;text-align:left;color:var(--muted);margin:2px 0}
+.ditem.c16dm::before{content:"⋯";display:inline-block;width:28px;text-align:center}
 /* ct8-1113 敬拜家庭宣教 */
 .c8score{text-align:center;padding:10px 0}.c8score b{font-size:1.5em;color:var(--accent)}.c8score div{margin-top:4px}
 .c8ref{font-weight:700;margin:8px 0 4px}
@@ -4568,6 +4574,65 @@ c5Lib=function(url,name){ if(window[name]) return Promise.resolve(window[name]);
 function c15Load(u,name){ return new Promise(function(res,rej){ var s=document.createElement('script'); s.src=u; s.onload=function(){ window[name]?res(window[name]):rej(new Error('lib')); }; s.onerror=function(){ try{ s.remove(); }catch(e){} rej(new Error('lib')); }; document.head.appendChild(s); }); }
 C3PDF='vendor/pdfjs/';
 
+/* ---------- 預設收合：範例問題每欄、側欄、＋選單、回答延伸欄（ct16-1116） ---------- */
+var C16S={
+ more:"更多（{0}）|更多（{0}）|More ({0})|더 보기 ({0})|もっと見る（{0}）|Selengkapnya ({0})|Daghan pa ({0})",
+ less:"收合|收合|Show less|접기|閉じる|Sembunyikan|Tagoa",
+ dmore:"更多功能（{0}）|更多功能（{0}）|More features ({0})|기능 더 보기 ({0})|その他の機能（{0}）|Fitur lainnya ({0})|Daghang bahin ({0})"
+};
+
+function C16(k,a){ var s=C5L(C16S[k]||k); if(a!=null) s=s.split('{0}').join(a); return s; }
+function c16St(){ if(!S.c16) S.c16={d:0,p:0,m:0,g:{}}; return S.c16; }
+function c16Open(key){ var o=c16St(); if(key.charAt(0)==='g') return !!o.g[key]; return !!o[key]; }
+/* 範例問題：每一欄只展開前三項（字串層級，搜尋與切換都適用） */
+var c16_bb=bankBody;
+bankBody=function(){
+ var h=c16_bb(); if(S.cat!==-2||String(S.bankQ||'').trim()) return h;
+ var n=0;
+ return h.replace(/(<div class="grp"><h3>[\s\S]*?<\/h3><div class="tiles">)([\s\S]*?)(<\/div><\/div>)/g,function(m,a,t,z){
+  var tiles=t.match(/<button class="tile"[\s\S]*?<\/button>/g)||[]; var key='g'+(n++); if(tiles.length<=3) return m;
+  var open=c16Open(key),out='';
+  for(var i=0;i<tiles.length;i++) out+=(i<3||open)?tiles[i]:tiles[i].replace('class="tile"','class="tile c16h"');
+  return a+out+'</div><button class="c16more" data-act="cttfold" data-v="'+key+'">'+esc(open?C16('less'):C16('more',tiles.length-3))+'</button></div>';
+ });
+};
+/* 把一個容器裡「不在保留清單」的子項收進一個可收合的區塊 */
+function c16Key(el){ var a=el.getAttribute&&el.getAttribute('data-act'); if(a) return a; var d=el.querySelector&&el.querySelector('[data-act]'); return d?d.getAttribute('data-act'):''; }
+function c16Btn(key,label,cls){ return '<button class="'+cls+'" data-act="cttfold" data-v="'+key+'">'+label+'</button>'; }
+function c16FoldList(parent,keep,key,labelFn,cls){
+ if(!parent||parent.getAttribute('data-c16')) return; var kids=Array.prototype.slice.call(parent.children),front=[],rest=[];
+ keep.forEach(function(k){ for(var i=0;i<kids.length;i++) if(kids[i]&&c16Key(kids[i])===k){ front.push(kids[i]); kids[i]=null; break; } });
+ kids.forEach(function(e){ if(e) rest.push(e); });
+ if(!rest.length) return; parent.setAttribute('data-c16','1');
+ var open=c16Open(key),w=document.createElement('div'); w.className='c16rest'+(open?'':' c16c'); rest.forEach(function(e){ w.appendChild(e); });
+ var tg=document.createElement('div'); tg.innerHTML=c16Btn(key,esc(open?C16('less'):labelFn(rest.length)),cls); 
+ front.forEach(function(e){ parent.appendChild(e); }); parent.appendChild(tg.firstChild); parent.appendChild(w);
+}
+function c16Sheet(){
+ var sh=document.querySelector('#sheetmask .sheet'); if(!sh) return;
+ if(S.sheet==='ctplus'){ var sec=sh.querySelector('.sec'); c16FoldList(sec,['ctcam','ctnote','ctlurl'],'p',function(n){ return C16('more',n); },'c16more'); }
+ else if(S.sheet==='ctmsg'){
+  var secs=sh.querySelectorAll('.sec'); if(secs.length<2||sh.getAttribute('data-c16')) return; sh.setAttribute('data-c16','1');
+  var keepK=['ctquiz','ctdia','ctppt','ctart'],keep=document.createElement('div'); keep.className='sec'; var all=[];
+  for(var i=1;i<secs.length;i++) all=all.concat(Array.prototype.slice.call(secs[i].children));
+  keepK.forEach(function(k){ for(var j=0;j<all.length;j++) if(all[j]&&c16Key(all[j])===k){ keep.appendChild(all[j]); all[j]=null; break; } });
+  var left=all.filter(function(e){ return e; }); if(!left.length) return;
+  var open=c16Open('m'),w=document.createElement('div'); w.className='c16rest'+(open?'':' c16c');
+  for(var q=1;q<secs.length;q++) w.appendChild(secs[q]);
+  var tg=document.createElement('div'); tg.innerHTML=c16Btn('m',esc(open?C16('less'):C16('more',left.length)),'c16more');
+  secs[0].insertAdjacentElement('afterend',keep); keep.insertAdjacentElement('afterend',tg.firstChild); sh.querySelector('.c16more[data-v=m]').insertAdjacentElement('afterend',w);
+ }
+}
+var c16_rs=renderSheet;
+renderSheet=function(){ c16_rs(); try{ c16Sheet(); }catch(e){} };
+var c16_rd=renderDrawer;
+renderDrawer=function(){ c16_rd(); try{ var d=$('drawer'),nav=d&&d.querySelector('.dnav'); c16FoldList(nav,['newchat','bank','cttools','ctrole'],'d',function(n){ return C16('dmore',n); },'ditem c16more c16dm'); }catch(e){} };
+var c16_a=ct12Act;
+ct12Act=function(a,b,i,fid,v){
+ if(a==='cttfold'){ var o=c16St(),k=String(v||''); if(k.charAt(0)==='g') o.g[k]=!o.g[k]; else o[k]=o[k]?0:1; if(k==='d') renderDrawer(); else renderSheet(); return true; }
+ return c16_a(a,b,i,fid,v);
+};
+
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -4689,7 +4754,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1116.0150',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1116.0210',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
