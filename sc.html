@@ -6,21 +6,21 @@
 <title>小智问答</title>
 <meta name="description" content="小智问答：圣经・信仰・生活・智慧问答，国度321空中团契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.1700">
-<link rel="icon" href="favicon.ico?v=v2026.1115.1700" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.1700">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.1700">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.1700">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.1700">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.1700">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.1730">
+<link rel="icon" href="favicon.ico?v=v2026.1115.1730" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.1730">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.1730">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.1730">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.1730">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.1730">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智问答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.1700"></script>
-<script src="xzplus.js?v=v2026.1115.1700" defer></script>
+<script src="k321gate.js?v=v2026.1115.1730"></script>
+<script src="xzplus.js?v=v2026.1115.1730" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='zs';</script>
@@ -142,6 +142,8 @@ body.empty #flow{justify-content:flex-end;gap:14px}
 .fu button{display:flex;align-items:center;gap:10px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;padding:10px 2px;font-size:.92em;color:var(--ink)}
 .fu button::after{content:"＋";margin-left:auto;color:var(--faint);font-size:.9em}
 .fu button:hover{background:var(--soft)}
+.fu button.fure{color:var(--muted);font-size:.84em}
+.fu button.fure::after{content:none}
 .fuwait{display:flex;align-items:center;gap:8px;font-size:.84em;color:var(--muted);padding:10px 2px}
 .typing{display:inline-flex;gap:4px;padding:6px 0}
 .typing span{width:7px;height:7px;border-radius:50%;background:var(--faint);animation:dot 1.2s infinite}
@@ -1356,7 +1358,7 @@ function viaProxy(msgs,onPart,signal,tier){
 function quickAsk(ask,maxT){
  return getSample().then(function(sm){
   if(sm) return sm(ask,{cache:false,modelTier:'quick'}).then(function(r){return r&&r.text||'';});
-  return postRetry({max_tokens:maxT||700,system:T('jsonOnly'),messages:[{role:'user',content:ask}]}).then(extractReply);
+  return postRetry({max_tokens:maxT||700,system:T('jsonOnly'),tier:'fast',messages:[{role:'user',content:ask}]}).then(extractReply);
  });
 }
 function parseArr(t){ var m=String(t||'').match(/\[[\s\S]*\]/); try{ return JSON.parse(m?m[0]:'[]')||[]; }catch(e){ return []; } }
@@ -1416,10 +1418,28 @@ function fuHTML(m){
  if(m.fuBusy&&!m.fu) return '<span class="fuwait"><span class="typing"><span></span><span></span><span></span></span> '+T('fuWait')+'</span>';
  var own=!!(m.fu&&m.fu.length),fu=own?m.fu:(STR[LANG].FU_GEN||STR.zh.FU_GEN),h='';
  for(var k=0;k<fu.length;k++) h+='<button data-act="ask" data-q="'+esc(fu[k][2])+'"><span>'+fu[k][0]+'</span><span>'+esc(own?fu[k][2]:fu[k][1])+'</span></button>';
+ if(!own){ var ix=S.chat.indexOf(m); if(ix>=0) h+='<button class="fure" data-act="furetry" data-i="'+ix+'"><span>'+esc(FURE[LANG]||FURE.zh)+'</span></button>'; }
  return h;
 }
 function paintFU(idx){ var el=$('fu'+idx); if(el&&S.chat[idx]) el.innerHTML=fuHTML(S.chat[idx]); }
-function genFU(idx){
+var FURE={"zh": "🔄 重新產生相關問題", "zs": "🔄 重新生成相关问题", "en": "🔄 Suggest related questions again", "ko": "🔄 관련 질문 다시 만들기", "ja": "🔄 関連する質問を作り直す", "id": "🔄 Buat ulang pertanyaan terkait", "ceb": "🔄 Himoa pag-usab ang may kalambigitan nga pangutana"};
+function parseQs(t){
+ t=String(t||'').replace(/```[a-z]*/gi,'');
+ var arr=parseArr(t).filter(function(o){ return o&&typeof o.q==='string'&&o.q.length>=4&&o.q.length<=200; }).map(function(o){ return [String(o.i||'💬').slice(0,4),String(o.t||o.q).slice(0,24),o.q]; });
+ if(arr.length) return arr.slice(0,5);
+ var ls=t.split(/\n+/).map(function(x){ return x.replace(/^\s*(?:[-*•·]|\d+[.)、．]|[一二三四五][、.])\s*/,'').replace(/^["'“「]|["'”」,，]$/g,'').trim(); }).filter(function(x){ return x.length>=4&&x.length<=200&&/[?？]$/.test(x); });
+ return ls.slice(0,5).map(function(q){ return ['💬',q.slice(0,24),q]; });
+}
+function genFU(idx,force){
+ var m=S.chat[idx]; if(!m||(m.fu&&!force)||m.fuBusy) return;
+ var ask=T('fuAsk',qOf(idx),plain(m.t).slice(0,900),X.audName(X.aud()));
+ m.fuBusy=true; if(force) m.fu=null; paintFU(idx);
+ function once(){ return quickAsk(ask,700).then(parseQs); }
+ once().catch(function(){ return []; }).then(function(a){ return a.length?a:once().catch(function(){ return []; }); }).then(function(arr){
+  if(arr.length) m.fu=arr;
+ }).then(function(){ m.fuBusy=false; save(); paintFU(idx); });
+}
+/*OLDGEN*/function genFU_old(idx){
  var m=S.chat[idx]; if(!m||m.fu) return;
  var ask=T('fuAsk',qOf(idx),plain(m.t).slice(0,900),X.audName(X.aud()));
  m.fuBusy=true; paintFU(idx);
@@ -3592,6 +3612,7 @@ document.addEventListener('click',function(e){
  if(a.indexOf('ct')===0){ ctAct(a,b,i,fid,v); return; }
  if(a==='send'){ if(S.busy){ if(S.ctl) S.ctl.abort(); } else send($('q').value); }
  else if(a==='ask') send(b.getAttribute('data-q'));
+ else if(a==='furetry') genFU(+b.getAttribute('data-i'),true);
  else if(a==='cat'){ S.cat=i; S.bankQ=''; var bq=$('bankq'); if(bq) bq.value=''; var bb=$('bankbody'); if(bb){ bb.innerHTML=bankBody(); var sh0=document.querySelector('#sheetmask .sheet'); if(sh0) sh0.scrollTop=0; } else render(); }
  else if(a==='moreq') moreQ();
  else if(a==='lang') setLang(v);
@@ -3704,7 +3725,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.1700',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.1730',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
