@@ -6,21 +6,21 @@
 <title>Tanya Xiaozhi</title>
 <meta name="description" content="Tanya Xiaozhi: pertanyaan Alkitab, iman dan kehidupan · Persekutuan Udara Kerajaan 321">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0720">
-<link rel="icon" href="favicon.ico?v=v2026.1116.0720" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0720">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0720">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0720">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0720">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0720">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0740">
+<link rel="icon" href="favicon.ico?v=v2026.1116.0740" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0740">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0740">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0740">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0740">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0740">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tanya Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1116.0720"></script>
-<script src="xzplus.js?v=v2026.1116.0720" defer></script>
+<script src="k321gate.js?v=v2026.1116.0740"></script>
+<script src="xzplus.js?v=v2026.1116.0740" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='id';</script>
@@ -4450,7 +4450,7 @@ function c13NormQz(d){
   var f=c13Str(x.f||x.front||x.term||x.q||x.question),b=c13Str(x.b||x.back||x.answer||x.def||x.definition||x.a); if(f&&b) R.cards.push({f:f,b:b}); });
  return R;
 }
-function c13Why(e){ var m=String(e&&(e.message||e.name)||e||'?').replace(/\s+/g,' ').slice(0,24); try{ window.__c13why=e; }catch(x){} return m; }
+function c13Why(e){ var m=String(e&&(e.message||e.name)||e||'?').replace(/\s+/g,' ').slice(0,40); try{ window.__c13why=e; }catch(x){} return m; }
 c5Lib=function(url,name){
  if(window[name]) return Promise.resolve(window[name]);
  var cands=[url]; if(name==='PptxGenJS') cands.unshift('pptxgen.bundle.js');
@@ -4696,10 +4696,10 @@ function c18Call(ask,maxT,o){ o=o||{};
   return c13Try({max_tokens:Math.min(maxT,1000),system:o.sys||T('jsonOnly'),tier:o.tier||'fast',messages:[{role:'user',content:ask}]},o.ms||60000,0).then(function(r){ var t=extractReply(r); return {t:t,cut:window.__c13stop==='max_tokens'}; });
  });
 }
-function c18J(ask,maxT,check){
+function c18J(ask,maxT,check,tag){
  function one(k){
   var q=k?ask+'\n\nYour previous reply was cut off or unreadable. Be much shorter. ONE valid JSON object only, no code fence, line breaks inside strings written as \\n.':ask;
-  return c18Call(q,maxT).then(function(r){ var d=c13Parse(r.t),rep=c13Parse.repaired; if(d&&!r.cut&&!rep&&(!check||check(d))) return d; throw new Error(r.cut?'cut':'bad'); });
+  return c18Call(q,maxT).then(function(r){ var d=c13Parse(r.t),rep=c13Parse.repaired; if(d&&!r.cut&&!rep&&(!check||check(d))) return d; var er=new Error(r.cut?'cut':'bad'); er.c18=(tag||'?')+':'+(r.cut?'cut':'bad')+':'+String(r.t||'').length+'c'; throw er; });
  }
  return one(0).catch(function(){ return one(1); });
 }
@@ -4712,7 +4712,7 @@ function c18Pool(fs,n){
 function c18Slides(q,a){
  var L=c15Lang(),ctx='\nQUESTION:\n'+q.slice(0,300)+'\nANSWER:\n'+a.slice(0,4500);
  var o='Plan sermon/teaching slides in '+L+' from the ANSWER below. Return ONLY JSON: {"title":"short deck title","subtitle":"short subtitle","slides":["slide title 1","slide title 2"]}. 7-9 slide titles in order, covering every main section of the ANSWER (main teaching, key verses, key terms, application, practice steps for the week, a closing prayer if present). Each title under 12 Chinese characters or 6 English words. Nothing else.'+ctx;
- return c18J(o,600,function(d){ return d&&d.slides instanceof Array&&d.slides.length>=3; }).then(function(pl){
+ return c18J(o,600,function(d){ return d&&d.slides instanceof Array&&d.slides.length>=3; },'plan').then(function(pl){
   var T0=pl.slides.slice(0,9).map(function(x){ return c13Str(x&&typeof x==='object'?(x.t||x.title):x).trim(); }).filter(function(x){ return x; });
   var fs=T0.map(function(t,k){ return function(){
    return c18J('Write ONE slide in '+L+' for a teaching deck. Deck outline in order: '+T0.join(' | ')+'. This is slide '+(k+1)+' of '+T0.length+', titled "'+t+'". Return ONLY JSON: {"p":["short point"],"v":"full Bible verse text or empty","r":"verse reference or empty"}. At most 4 points, each under 20 Chinese characters or 10 English words; a verse slide may have no points; copy any verse exactly as it is in the ANSWER and never invent one; a prayer slide gets 2-3 short lines in "p".'+ctx,500,function(d){ return d&&(d.p instanceof Array||d.v); }).then(function(d){ return {t:t,p:d.p instanceof Array?d.p:[],v:c13Str(d.v),r:c13Str(d.r)}; });
@@ -4750,7 +4750,7 @@ var c18_cj=c13Json;
 c13Json=function(ask,maxT,check,soft){
  var s=String(ask),qa=s.match(/\nQUESTION:\n([\s\S]*?)\nANSWER:\n([\s\S]*)$/);
  if(qa){
-  var fb=function(){ return c18_cj(ask,maxT,check,soft); };
+  var e1=null,fb=function(e){ e1=e; return c18_cj(ask,maxT,check,soft).catch(function(e2){ var m=(e1&&e1.c18)||(e1&&e1.message)||'?'; var er=new Error('c18 '+m+(e2&&e2.message?' / '+e2.message:'')); throw er; }); };
   if(/^Turn the ANSWER into sermon\/teaching slides/.test(s)) return c18Slides(qa[1],qa[2]).catch(fb);
   if(/^Make a short Bible-study quiz/.test(s)) return c18Quiz(qa[1],qa[2]).catch(fb);
   if(/^Rewrite the Q&A below as a short, warm article page/.test(s)) return c18Art(qa[1],qa[2]).catch(fb);
@@ -4908,7 +4908,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1116.0720',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1116.0740',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
