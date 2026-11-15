@@ -6,21 +6,21 @@
 <title>샤오즈 Q&A</title>
 <meta name="description" content="샤오즈 Q&A: 성경, 신앙, 생활 질문 · 킹덤 321 공중 펠로십">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1114.2130">
-<link rel="icon" href="favicon.ico?v=v2026.1114.2130" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1114.2130">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1114.2130">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1114.2130">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1114.2130">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1114.2130">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.0910">
+<link rel="icon" href="favicon.ico?v=v2026.1115.0910" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.0910">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.0910">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.0910">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.0910">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.0910">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="샤오즈 Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1114.2130"></script>
-<script src="xzplus.js?v=v2026.1114.2130" defer></script>
+<script src="k321gate.js?v=v2026.1115.0910"></script>
+<script src="xzplus.js?v=v2026.1115.0910" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ko';</script>
@@ -607,8 +607,9 @@ body.kid #flow{font-size:1.16em}body.kid .msg.ai .body{line-height:1.8}
     if (typeof ST !== 'object') ST = {};
     if (LEN_KEYS.indexOf(ST.alen) < 0) {
       let v = ''; try { v = O.legacyLen ? O.legacyLen() : ''; } catch (e) {}
-      ST.alen = ({ brief: 's', full: 'long' })[v] || (LEN_KEYS.indexOf(v) >= 0 ? v : 'mid');
+      ST.alen = ({ brief: 's', full: 'long' })[v] || (LEN_KEYS.indexOf(v) >= 0 ? v : 's');
     }
+    if (!ST.alenSet && ST.alen === 'mid') ST.alen = 's';   /* 預設改「短」：沒自己選過長度的人一次性改過來 */
     if (SKBG_KEYS.indexOf(ST.skbg) < 0) ST.skbg = 'none';
     return ST;
   }
@@ -623,8 +624,8 @@ body.kid #flow{font-size:1.16em}body.kid .msg.ai .body{line-height:1.8}
     if (O.aud) { try { O.aud.set(k); } catch (e) {} } else { load().aud = k; }
     save();
   };
-  X.alen = () => { const s = load(); return LEN_KEYS.indexOf(s.alen) >= 0 ? s.alen : 'mid'; };
-  X.setLen = k => { if (LEN_KEYS.indexOf(k) < 0) return; load().alen = k; save(); };
+  X.alen = () => { const s = load(); return LEN_KEYS.indexOf(s.alen) >= 0 ? s.alen : 's'; };
+  X.setLen = k => { if (LEN_KEYS.indexOf(k) < 0) return; load().alen = k; load().alenSet = 1; save(); };
   X.skbg = () => load().skbg;
   X.setBg = k => { if (SKBG_KEYS.indexOf(k) < 0) return; load().skbg = k; save(); };
 
@@ -3614,7 +3615,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1114.2130',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.0910',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
