@@ -6,21 +6,21 @@
 <title>シャオジー Q&A</title>
 <meta name="description" content="シャオジー Q&A：聖書・信仰・生活の質問 · キングダム321空中フェローシップ">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0210">
-<link rel="icon" href="favicon.ico?v=v2026.1116.0210" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0210">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0210">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0210">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0210">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0210">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0245">
+<link rel="icon" href="favicon.ico?v=v2026.1116.0245" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0245">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0245">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0245">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0245">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0245">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="シャオジー Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1116.0210"></script>
-<script src="xzplus.js?v=v2026.1116.0210" defer></script>
+<script src="k321gate.js?v=v2026.1116.0245"></script>
+<script src="xzplus.js?v=v2026.1116.0245" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ja';</script>
@@ -415,6 +415,7 @@ body.kid #c10sel{display:none!important}
 #c15big{position:fixed;inset:0;z-index:99999;background:#fff;display:flex;flex-direction:column}
 #c15big .c15x{flex:0 0 auto;border:0;border-bottom:1px solid #ddd;background:#f4f4f4;color:#222;padding:14px;font-size:1em;text-align:right}
 #c15big .c15fr2{flex:1 1 auto;width:100%;border:0;background:#fff}
+.c15ta{display:block;width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit;background:var(--page);color:inherit;resize:vertical}
 /* ct16-1116 預設收合 */
 .tile.c16h{display:none}
 .c16more{display:block;width:100%;margin:10px 0 2px;padding:11px 12px;border:1px dashed var(--line);border-radius:12px;background:transparent;color:var(--muted);font:inherit;font-size:.92em;text-align:center;cursor:pointer}
@@ -4510,9 +4511,9 @@ function c15Title(doc,fallback){ var m=String(doc||'').match(/<title[^>]*>([\s\S
 function c15St(){ if(!S.c15) S.c15={q:'',mod:'',doc:'',title:'',busy:false,saved:false}; return S.c15; }
 function c15List(){ var l=lsGet('tools',[]); return l instanceof Array?l:[]; }
 function c15HTML(){
- var D=c15St(),h='<h2>'+esc(C15('T'))+'</h2><p class="hint">'+esc(C15('short'))+'</p>';
+ var D=c15St(),h='<div class="sheethead"><h2>'+esc(C15('T'))+'</h2><button class="xbtn" data-act="close">'+T('close')+'</button></div><p class="hint" style="margin:0 0 10px">'+esc(C15('short'))+'</p>';
  if(!D.doc||D.busy){
-  h+='<textarea id="c15q" class="c12ta" rows="3" maxlength="300" placeholder="'+esc(C15('ph'))+'"'+(D.busy?' disabled':'')+'>'+esc(D.q)+'</textarea>';
+  h+='<textarea id="c15q" class="c12ta c15ta" rows="3" maxlength="300" placeholder="'+esc(C15('ph'))+'"'+(D.busy?' disabled':'')+'>'+esc(D.q)+'</textarea>';
   if(!D.busy){ var ch=C15CH[LANG]||C15CH.zh; h+='<p class="hint" style="margin:4px 0">'+esc(C15('try'))+'</p><div class="c15chips">'; for(var i=0;i<ch.length;i++) h+='<button class="c15chip" data-act="cttchip" data-v="'+esc(ch[i])+'">'+esc(ch[i])+'</button>'; h+='</div>'; }
   h+='<div class="ctrow2" style="margin-top:10px"><button class="ctbtn pri" data-act="cttgo"'+(D.busy?' disabled':'')+'>'+esc(D.busy?C15('making'):C15('go'))+'</button></div>';
  } else {
@@ -4526,14 +4527,27 @@ function c15HTML(){
  if(L.length&&!D.busy){ h+='<div class="sec"><h3>'+esc(C15('mine',L.length))+'</h3>'; for(var k=0;k<L.length&&k<10;k++) h+='<div class="ctmemrow"><span><a href="javascript:void 0" data-act="cttopen" data-id="'+L[k].id+'">'+esc(L[k].title)+'</a></span><button class="ctbtn" data-act="cttdel" data-id="'+L[k].id+'">'+esc(C15('del'))+'</button></div>'; h+='</div>'; }
  return h;
 }
+function c15Gen(ask,k){
+ var msgs=[{role:'user',content:ask}],acc='';
+ function round(n){
+  window.__c13stop=null;
+  return c13Try({max_tokens:k?7000:6000,system:C15SYS,tier:'deep',messages:msgs},150000,0).then(function(r){
+   var t=extractReply(r); acc=n?acc+t:t;
+   if(window.__c13stop==='max_tokens'){
+    if(n>=3||!t) throw new Error('cut');
+    msgs=[{role:'user',content:ask},{role:'assistant',content:acc.replace(/\s+$/,'')},{role:'user',content:'Your reply was cut off. Continue EXACTLY where you stopped and output only the remaining part of the HTML document (do not repeat anything, no commentary, no code fence). Finish with </html>.'}];
+    return round(n+1);
+   }
+   var doc=c15Doc(acc); if(!doc) throw new Error('bad'); return doc; });
+ }
+ return round(0);
+}
 function c15Make(base,instr){
  var D=c15St(); if(D.busy) return; D.busy=true; if(S.sheet==='cttool') renderSheet();
  function one(k){
   var ask=base?('Here is the current tool (HTML):\n'+base.slice(0,16000)+'\n\nRevise it as follows and return the COMPLETE updated HTML document: '+instr):('Build this tool: '+instr);
-  ask+='\n\nAll visible text must be in '+c15Lang()+'.'+(k?' Your previous attempt was cut off or invalid. Make it SHORTER and simpler (under 150 lines) and make sure the document is complete and ends with </html>.':'');
-  window.__c13stop=null;
-  return c13Try({max_tokens:k?7000:6000,system:C15SYS,tier:'deep',messages:[{role:'user',content:ask}]},k?150000:120000,0).then(function(r){
-   var cut=window.__c13stop==='max_tokens',doc=cut?'':c15Doc(extractReply(r)); if(!doc) throw new Error(cut?'cut':'bad'); return doc; });
+  ask+='\n\nAll visible text must be in '+c15Lang()+'. Keep the code compact: short CSS, no comments, no unnecessary features.'+(k?' Your previous attempt failed. Make it SHORTER and simpler (under 120 lines) and make sure the document is complete and ends with </html>.':'');
+  return c15Gen(ask,k);
  }
  return one(0).catch(function(){ return one(1); }).then(function(doc){ D.doc=doc; D.title=c15Title(doc,base?D.title:instr); D.saved=false; D.mod=''; },function(e){ toast(((e&&e.message==='cut')?C15('cut'):C15('fail'))+' ['+c13Why(e)+']'); }).then(function(){ D.busy=false; if(S.sheet==='cttool') renderSheet(); });
 }
@@ -4573,7 +4587,6 @@ var c15_lib=c5Lib;
 c5Lib=function(url,name){ if(window[name]) return Promise.resolve(window[name]); if(name==='mermaid'){ return c15Load('vendor/mermaid.min.js','mermaid').catch(function(){ return c15_lib(url,name); }); } return c15_lib(url,name); };
 function c15Load(u,name){ return new Promise(function(res,rej){ var s=document.createElement('script'); s.src=u; s.onload=function(){ window[name]?res(window[name]):rej(new Error('lib')); }; s.onerror=function(){ try{ s.remove(); }catch(e){} rej(new Error('lib')); }; document.head.appendChild(s); }); }
 C3PDF='vendor/pdfjs/';
-
 /* ---------- 預設收合：範例問題每欄、側欄、＋選單、回答延伸欄（ct16-1116） ---------- */
 var C16S={
  more:"更多（{0}）|更多（{0}）|More ({0})|더 보기 ({0})|もっと見る（{0}）|Selengkapnya ({0})|Daghan pa ({0})",
@@ -4754,7 +4767,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1116.0210',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1116.0245',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
