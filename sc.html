@@ -6,21 +6,21 @@
 <title>小智问答</title>
 <meta name="description" content="小智问答：圣经・信仰・生活・智慧问答，国度321空中团契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2330">
-<link rel="icon" href="favicon.ico?v=v2026.1115.2330" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2330">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2330">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2330">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2330">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2330">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1115.2350">
+<link rel="icon" href="favicon.ico?v=v2026.1115.2350" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1115.2350">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1115.2350">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1115.2350">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1115.2350">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1115.2350">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智问答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1115.2330"></script>
-<script src="xzplus.js?v=v2026.1115.2330" defer></script>
+<script src="k321gate.js?v=v2026.1115.2350"></script>
+<script src="xzplus.js?v=v2026.1115.2350" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='zs';</script>
@@ -4432,8 +4432,10 @@ function c13NormQz(d){
 function c13Why(e){ var m=String(e&&(e.message||e.name)||e||'?').replace(/\s+/g,' ').slice(0,24); try{ window.__c13why=e; }catch(x){} return m; }
 c5Lib=function(url,name){
  if(window[name]) return Promise.resolve(window[name]);
- function load(k){ return new Promise(function(res,rej){ var s=document.createElement('script'); s.src=url+(k?(url.indexOf('?')<0?'?':'&')+'r='+Date.now():''); s.onload=function(){ window[name]?res(window[name]):rej(new Error('lib')); }; s.onerror=function(){ try{ s.remove(); }catch(e){} rej(new Error('lib')); }; document.head.appendChild(s); }); }
- return load(0).catch(function(){ return new Promise(function(r){ setTimeout(r,1200); }).then(function(){ return load(1); }); }).catch(function(){ return new Promise(function(r){ setTimeout(r,2500); }).then(function(){ return load(2); }); });
+ var cands=[url]; if(name==='PptxGenJS') cands.unshift('pptxgen.bundle.js');
+ function load(u,bust){ return new Promise(function(res,rej){ var s=document.createElement('script'); s.src=u+(bust?(u.indexOf('?')<0?'?':'&')+'r='+Date.now():''); s.onload=function(){ window[name]?res(window[name]):rej(new Error('lib')); }; s.onerror=function(){ try{ s.remove(); }catch(e){} rej(new Error('lib')); }; document.head.appendChild(s); }); }
+ function round(k){ var p=Promise.reject(); cands.forEach(function(u){ p=p.catch(function(){ return load(u,k>0); }); }); return p; }
+ return round(0).catch(function(){ return new Promise(function(r){ setTimeout(r,1200); }).then(function(){ return round(1); }); });
 };
 /* ---------- 「＋」選單不再重複側邊選單的項目（ct14-1115） ---------- */
 var C14DUP={bank:1,cttools:1,ctrole:1,ctcards:1,ctas:1,cttr:1,ctcall:1,ctwall:1,ctstyle:1,ctkid:1};
@@ -4564,7 +4566,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1115.2330',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1115.2350',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
