@@ -6,21 +6,21 @@
 <title>シャオジー Q&A</title>
 <meta name="description" content="シャオジー Q&A：聖書・信仰・生活の質問 · キングダム321空中フェローシップ">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.1910">
-<link rel="icon" href="favicon.ico?v=v2026.1116.1910" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.1910">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.1910">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.1910">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.1910">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.1910">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.2010">
+<link rel="icon" href="favicon.ico?v=v2026.1116.2010" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.2010">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.2010">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.2010">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.2010">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.2010">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="シャオジー Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1116.1910"></script>
-<script src="xzplus.js?v=v2026.1116.1910" defer></script>
+<script src="k321gate.js?v=v2026.1116.2010"></script>
+<script src="xzplus.js?v=v2026.1116.2010" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ja';</script>
@@ -4895,6 +4895,91 @@ ct12Act=function(a,b,i,fid,v){
  return c21_a(a,b,i,fid,v);
 };
 
+/* ct22-1116 聽講筆記：純文字分段整理（不再回 JSON、不怕 1024 上限）＋聽寫更穩 */
+(function(){
+var P22='Reply in plain Markdown text only. Never use JSON, never wrap the answer in a code fence. Be concise.';
+function c22Clean(x){
+ x=String(x||'').trim();
+ x=x.replace(/^```[a-zA-Z]*\s*/,'').replace(/```\s*$/,'').trim();
+ if(/^\s*\{/.test(x)||/"notes_markdown"/.test(x)){
+  try{ var o=JSON.parse(x); for(var k in o){ if(typeof o[k]==='string'){ x=o[k]; break; } } }
+  catch(e){ var m=x.match(/"[a-z_]+"\s*:\s*"((?:\\.|[^"\\])*)/i); if(m){ x=m[1].replace(/\\n/g,'\n').replace(/\\"/g,'"').replace(/\\\\/g,'\\'); } }
+ }
+ return x.replace(/^```[a-zA-Z]*\s*/,'').replace(/```\s*$/,'').trim();
+}
+function c22Part(prompt,maxT){
+ function one(sh){ return c18Call(sh?prompt+'\nKeep it much shorter.':prompt,maxT,{sys:P22,tier:'deep',ms:70000}).then(function(r){ var t=c22Clean(r.t); if(t.length<8) throw new Error('empty'); return t+(r.cut?' …':''); }); }
+ return one(0).catch(function(){ return one(1); });
+}
+c12Sum=function(tr,done,fail){
+ var LN=C11LN[LANG]||'English',
+ base='This is a speech-recognized (possibly error-prone) transcript of a sermon or meeting. Write in '+LN+'. Fix obvious recognition errors only when sure; never invent content that is not in the transcript.';
+ function chunks(t){ var out=[],i=0; while(i<t.length){ var e=Math.min(t.length,i+6000); if(e<t.length){ var c=Math.max(t.lastIndexOf('。',e),t.lastIndexOf('. ',e),t.lastIndexOf('\n',e)); if(c>i+2500) e=c+1; } out.push(t.slice(i,e)); i=e; } return out; }
+ var t=tr.slice(0,60000),src;
+ var pre=(t.length<=6000)?Promise.resolve(t):(function(){ var cs=chunks(t).slice(0,10),notes=[]; return c18Pool(cs.map(function(c,k){ return function(){ return c22Part(base+' (part '+(k+1)+' of '+cs.length+'.) In under 150 words list its key points, every Bible reference mentioned, and any application or question raised.\nTRANSCRIPT:\n'+c,600).then(function(x){ notes[k]='['+(k+1)+'] '+x; return x; }); }; }),3).then(function(){ return '(condensed notes of the transcript, in order)\n'+notes.filter(Boolean).join('\n'); }); })();
+ pre.then(function(s){
+  src=s;
+  var A=c22Part(base+' Start with one "# " title line, then the main theme in one sentence, then a "## " heading for key points (3-6 short bullets).\nTRANSCRIPT:\n'+src,800);
+  var B=c22Part(base+' Write only: a "## " heading for Scripture mentioned (list only references or verses actually mentioned; if unsure of exact wording give only the reference), then a "## " heading for take-home actions (1-3 concrete steps).\nTRANSCRIPT:\n'+src,700);
+  var Cq=c22Part(base+' Write only: a "## " heading for small-group discussion questions, then 3 numbered questions.\nTRANSCRIPT:\n'+src,500).catch(function(){ return ''; });
+  return Promise.all([A,B,Cq]);
+ }).then(function(p){ var x=p.filter(Boolean).join('\n\n'); if(x.length<20) throw new Error('short'); done(x); },function(e){ fail(e); });
+};
+/* ---- 聽寫：更穩的接續與提示 ---- */
+var C22={err:'',last:0,bad:0,chk:0};
+var UA=navigator.userAgent||'';
+function c22InApp(){ return /Line\/|FBAN|FBAV|Instagram|MicroMessenger|; wv\)/i.test(UA); }
+var C22S={
+ inapp:'你目前在 LINE／App 內建瀏覽器，通常不支援語音辨識。請改用 Safari 或 Chrome 開啟，或用鍵盤上的麥克風聽寫。|你目前在 LINE／App 内置浏览器，通常不支持语音识别。请改用 Safari 或 Chrome 打开，或用键盘上的麦克风听写。|You are in an in-app browser (LINE, etc.), which usually cannot do speech recognition. Open in Safari or Chrome, or use your keyboard microphone.|앱 내 브라우저에서는 음성 인식이 안 될 수 있어요. Safari나 Chrome으로 열거나 키보드 마이크를 쓰세요.|アプリ内ブラウザでは音声認識が使えないことがあります。SafariかChromeで開くか、キーボードのマイクを使ってください。|Browser dalam aplikasi biasanya tidak bisa mengenali suara. Buka di Safari/Chrome atau pakai mikrofon keyboard.|In-app browser kasagaran dili makahibalo og tingog. Ablihi sa Safari/Chrome o gamita ang mikropono sa keyboard.',
+ quiet:'還沒聽到聲音，請靠近麥克風大聲一點。|还没听到声音，请靠近麦克风大声一点。|No speech heard yet — move closer to the mic.|아직 소리가 들리지 않아요. 마이크에 가까이 말해 주세요.|まだ音が聞こえません。マイクに近づいて話してください。|Belum terdengar suara — dekatkan ke mikrofon.|Wala pay madungog — duol sa mikropono.',
+ net:'語音辨識需要網路，目前連不上。逐字稿已保留，可稍後再按開始。|语音识别需要网络，目前连不上。逐字稿已保留，可稍后再按开始。|Speech recognition needs internet and cannot connect. Your text is kept — try again later.|음성 인식은 인터넷이 필요해요. 글은 그대로 있어요.|音声認識にはネットが必要です。文字は残っています。|Pengenalan suara butuh internet. Teks tetap tersimpan.|Kinahanglan og internet. Ang teksto gihuptan.',
+ stuck:'聽寫一直無法接續，已暫停。已記下的文字還在，可再按開始，或改用鍵盤聽寫。|听写一直无法接续，已暂停。已记下的文字还在，可再按开始，或改用键盘听写。|Dictation keeps stopping and was paused. Your text is kept — press start again or use keyboard dictation.|받아쓰기가 계속 멈춰 일시정지했어요. 글은 그대로 있어요.|音声入力が続かず一時停止しました。文字は残っています。|Dikte terus berhenti dan dijeda. Teks tetap ada.|Paulit-ulit nga mihunong; gipahunong. Naa gihapon ang teksto.'
+};
+function c22T(k){ return C5L(C22S[k]); }
+function c22Note(k){ C22.err=k?c22T(k):''; var el=$('c22msg'); if(el){ el.textContent=C22.err; el.style.display=C22.err?'block':'none'; } }
+var oldNH=c12NoteHTML;
+c12NoteHTML=function(){
+ var h=oldNH();
+ var msg=C22.err||((!C12R.active&&c22InApp())?c22T('inapp'):'');
+ var box='<p id="c22msg" class="hint" style="color:#b45309;'+(msg?'':'display:none')+'">'+esc(msg)+'</p>';
+ var i=h.indexOf('<textarea id="c12tr"'); return i<0?h+box:h.slice(0,i)+box+h.slice(i);
+};
+c12Begin=function(){
+ var r; try{ r=new SRC(); }catch(e){ C12R.active=false; toast(C12('noteNoSR')); c12Paint(); return; }
+ C12R.rec=r; r.lang=MICLANG[LANG]||'en-US'; r.interimResults=true; r.continuous=true; r.maxAlternatives=1;
+ var tmp='',got=false,t0=Date.now();
+ r.onresult=function(ev){
+  got=true; C22.last=Date.now(); C22.bad=0; if(C22.err) c22Note('');
+  tmp='';
+  for(var i=(ev.resultIndex||0);i<ev.results.length;i++){
+   var t=ev.results[i][0].transcript;
+   if(ev.results[i].isFinal){ C12R.base+=t+((!C12ZH&&!/\s$/.test(t))?' ':''); } else tmp+=t;
+  }
+  c12Set(C12R.base+tmp);
+ };
+ r.onerror=function(ev){ var c=ev&&ev.error;
+  if(c==='not-allowed'||c==='service-not-allowed'){ C12R.active=false; toast(C12('noteDenied')); if(c22InApp()) c22Note('inapp'); }
+  else if(c==='network'){ c22Note('net'); C22.bad++; }
+  else if(c==='audio-capture'){ C12R.active=false; toast(C12('noteDenied')); } };
+ r.onend=function(){
+  if(tmp){ C12R.base+=tmp+((!C12ZH&&!/\s$/.test(tmp))?' ':''); tmp=''; c12Set(C12R.base); }
+  if(C12R.rec===r) C12R.rec=null;
+  if(!C12R.active){ c12Paint(); return; }
+  if(!got&&Date.now()-t0<3000) C22.bad++; else C22.bad=0;
+  if(C22.bad>=5){ C12R.active=false; clearInterval(C12R.tm); try{ if(C12R.wl){ C12R.wl.release(); C12R.wl=null; } }catch(e){} c22Note(C22.err?'':(c22InApp()?'inapp':'stuck')); c12Paint(); return; }
+  setTimeout(function(){ if(C12R.active&&!C12R.rec) c12Begin(); },C22.bad?900:300);
+ };
+ try{ r.start(); }catch(e){ C12R.rec=null; C22.bad++; if(C12R.active&&C22.bad<5) setTimeout(function(){ if(C12R.active&&!C12R.rec) c12Begin(); },900); }
+};
+var o22=c12Start;
+c12Start=function(){
+ C22.err=''; C22.bad=0; C22.last=0; clearTimeout(C22.chk);
+ if(c22InApp()&&SRC){ c22Note('inapp'); }
+ o22.apply(this,arguments);
+ C22.chk=setTimeout(function(){ if(C12R.active&&!C22.last){ C22.err=c22T('quiet'); c12Paint(); } },9000);
+};
+})();
+
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -5016,7 +5101,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1116.1910',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1116.2010',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
