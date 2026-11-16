@@ -6,21 +6,21 @@
 <title>Xiaozhi Q&A</title>
 <meta name="description" content="Xiaozhi Q&A: Bible, faith and everyday questions, Kingdom 321 Fellowship.">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0935">
-<link rel="icon" href="favicon.ico?v=v2026.1116.0935" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0935">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0935">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0935">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0935">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0935">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.1910">
+<link rel="icon" href="favicon.ico?v=v2026.1116.1910" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.1910">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.1910">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.1910">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.1910">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.1910">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1116.0935"></script>
-<script src="xzplus.js?v=v2026.1116.0935" defer></script>
+<script src="k321gate.js?v=v2026.1116.1910"></script>
+<script src="xzplus.js?v=v2026.1116.1910" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='en';</script>
@@ -4864,6 +4864,37 @@ c11Link=function(data,cb){
  c20_l(data,function(url){ c20Short(url).then(function(s){ cb(s||url); },function(){ cb(url); }); });
 };
 
+/* ---------- 資料夾：可收合（含目前資料夾）、列上直接刪除（ct21-1116） ---------- */
+var C21S={
+ del:'刪除資料夾「%s」？裡面的對話不會被刪，會移到最近。|删除文件夹「%s」？里面的对话不会被删，会移到最近。|Delete folder “%s”? Its conversations are not deleted; they move back to Recent.|폴더 “%s”을(를) 삭제할까요? 안의 대화는 삭제되지 않고 최근으로 이동해요.|フォルダ「%s」を削除しますか？中の会話は削除されず、最近に戻ります。|Hapus folder “%s”? Percakapan di dalamnya tidak dihapus, hanya pindah ke Terbaru.|Papason ang folder “%s”? Dili mapapas ang mga panag-istoryahay; mobalik sa Bag-o.',
+ dt:'刪除資料夾|删除文件夹|Delete folder|폴더 삭제|フォルダを削除|Hapus folder|Papasa ang folder'
+};
+function c21Del(id){
+ c2SaveFolders(c2Folders().filter(function(x){ return x.id!==id; }));
+ for(var i=0;i<CONVS.length;i++) if(CONVS[i].fid===id) delete CONVS[i].fid;
+ persistConvs(); if(S.fid===id) S.fid=''; render(); renderDrawer(); toast(T('convDeleted'));
+}
+function c21Open(f){ S.fOpen=S.fOpen||{}; return S.fOpen[f.id]===undefined?(f.id===S.fid):!!S.fOpen[f.id]; }
+ctFolderSec=function(){
+ var F=c2Folders(),hid=!!S.c21hide;
+ var h='<button class="dsec" data-act="ctfsec" style="display:flex;width:100%;align-items:center;gap:6px;background:none;border:0;text-align:left;font:inherit;color:inherit;cursor:pointer"><span>'+(hid?'▸':'▾')+'</span><span>'+esc(C2('fH'))+(F.length?' <small>'+F.length+'</small>':'')+'</span></button><div class="ctflist">';
+ if(!hid){
+  for(var i=0;i<F.length;i++){ var f=F[i],cs=CONVS.filter(function(c){ return c.fid===f.id; }),open=c21Open(f);
+   h+='<div class="cvrow ctfrow"><button class="cbtn" data-act="ctftoggle" data-id="'+f.id+'"><span class="ctfi">'+(open?'▾ 📂':'▸ 📁')+'</span>'+esc(f.name)+' <small>'+cs.length+'</small></button><button class="cmore" data-act="ctfopen" data-id="'+f.id+'">'+CTI.dots+'</button><button class="cmore" data-act="ctfrowdel" data-id="'+f.id+'" aria-label="'+esc(C5L(C21S.dt))+'">✕</button></div>';
+   if(open){ h+='<div class="ctfsub">'; for(var j=0;j<cs.length;j++) h+=ctConvRow(cs[j]); h+='<button class="ctfnew" data-act="ctfstart" data-id="'+f.id+'">'+esc(C2('fStart'))+'</button></div>'; }
+  }
+  h+='<button class="ctfnew" data-act="ctfcreate">'+esc(C2('fNew'))+'</button>';
+ }
+ return h+'</div>';
+};
+var c21_a=ct12Act;
+ct12Act=function(a,b,i,fid,v){
+ if(a==='ctftoggle'){ var f=c2Folder(fid); if(f){ S.fOpen=S.fOpen||{}; S.fOpen[fid]=!c21Open(f); renderDrawer(); } return true; }
+ if(a==='ctfsec'){ S.c21hide=!S.c21hide; renderDrawer(); return true; }
+ if(a==='ctfrowdel'){ var g=c2Folder(fid); if(g&&confirm(C5L(C21S.del).replace('%s',g.name))) c21Del(fid); return true; }
+ return c21_a(a,b,i,fid,v);
+};
+
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -4985,7 +5016,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1116.0935',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1116.1910',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
