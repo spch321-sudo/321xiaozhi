@@ -13,6 +13,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--page);color:var(--ink);font:17px/1.7 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei","Malgun Gothic",sans-serif;-webkit-text-size-adjust:100%}
 header{background:var(--accent);color:#fff;padding:calc(18px + env(safe-area-inset-top,0px)) 16px 18px;border-bottom:4px solid var(--gold)}
+#bk{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:999px;font:inherit;font-size:.95em;padding:6px 16px;margin:0 0 10px;cursor:pointer;min-height:40px}
 header b{display:block;font-size:1.25em}header span{opacity:.85;font-size:.92em}
 main{max-width:760px;margin:0 auto;padding:16px 16px 40px}
 .q{margin:22px 0 10px 12%;background:var(--soft);border-radius:20px;padding:10px 16px;white-space:pre-wrap;overflow-wrap:anywhere}
@@ -30,7 +31,7 @@ footer{color:var(--muted);font-size:.82em;text-align:center;padding:0 16px 30px}
 </style>
 </head>
 <body>
-<header><b id="hT">💬 小智問答</b><span id="hS"></span></header>
+<header><button id="bk" type="button" style="display:none">‹</button><b id="hT">💬 小智問答</b><span id="hS"></span></header>
 <main id="main"><p class="err" id="wait">…</p></main>
 <footer id="foot"></footer>
 <script>
@@ -42,6 +43,11 @@ footer{color:var(--muted);font-size:.82em;text-align:center;padding:0 16px 30px}
  ja:['シャオジーQ&A','共有された会話','わたし','シャオジー','シャオジーに聞いてみる','リンクが不完全か壊れています。もう一度共有してもらってください。','キングダム321オンライン教会','共有日'],
  id:['Tanya Jawab Xiaozhi','Percakapan yang dibagikan','Saya','Xiaozhi','Tanya Xiaozhi sendiri','Tautan ini tidak lengkap atau rusak — minta dibagikan ulang.','Persekutuan Kingdom 321','Dibagikan'],
  ceb:['Pangutana ug Tubag ni Xiaozhi','Gipaambit nga panag-istorya','Ako','Xiaozhi','Pangutana kang Xiaozhi','Dili kompleto o guba kini nga link — palihog paambita pag-usab.','Kingdom 321 Fellowship','Gipaambit']};
+ var BK={zh:'‹ 返回',zs:'‹ 返回',en:'‹ Back',ko:'‹ 뒤로',ja:'‹ 戻る',id:'‹ Kembali',ceb:'‹ Balik'};
+ function setBack(lg){ var b=document.getElementById('bk'); if(!b) return; b.textContent=BK[lg]||BK.zh; b.style.display='inline-block';
+  b.onclick=function(){ var back=PG[lg]+'?lang321='+lg;
+   if(history.length>1&&document.referrer){ history.back(); setTimeout(function(){ location.href=back; },700); return; }
+   try{ window.close(); }catch(e){} setTimeout(function(){ location.href=back; },250); }; }
  var PG={zh:'./',zs:'sc.html',en:'en.html',ko:'ko.html',ja:'ja.html',id:'id.html',ceb:'ceb.html'};
  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
  function inl(s){ return esc(s).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\*([^*\s][^*]*)\*/g,'<i>$1</i>'); }
@@ -65,7 +71,7 @@ footer{color:var(--muted);font-size:.82em;text-align:center;padding:0 16px 30px}
  function paras(t){ return String(t||'').split(/\n+/).filter(function(x){ return x.trim(); }).map(function(x){ return '<p>'+inl(x)+'</p>'; }).join(''); }
  function showArt(d){
   var lg=L[d.l]?d.l:'zh',S=L[lg],a=d.a||{}; document.documentElement.lang={zh:'zh-Hant',zs:'zh-Hans'}[lg]||lg;
-  document.title=(a.title||S[0])+'・'+S[0];
+  document.title=(a.title||S[0])+'・'+S[0]; setBack(lg);
   document.getElementById('hT').textContent='📰 '+S[0]; document.getElementById('hS').textContent=S[7]+' '+new Date(d.ts||Date.now()).toLocaleDateString();
   var h='<article class="art"><h1>'+esc(a.title)+'</h1>'+(a.lead?'<p class="lead">'+esc(a.lead)+'</p>':'');
   (a.sections||[]).forEach(function(x){ h+=(x.h?'<h3>'+esc(x.h)+'</h3>':'')+paras(x.p); });
@@ -77,7 +83,7 @@ footer{color:var(--muted);font-size:.82em;text-align:center;padding:0 16px 30px}
  function show(d){
   if(d&&d.a) return showArt(d);
   var lg=L[d.l]?d.l:'zh',S=L[lg]; document.documentElement.lang={zh:'zh-Hant',zs:'zh-Hans'}[lg]||lg;
-  document.title=S[0]+(d.t?'・'+d.t:'');
+  document.title=S[0]+(d.t?'・'+d.t:''); setBack(lg);
   document.getElementById('hT').textContent='💬 '+S[0]; document.getElementById('hS').textContent=d.t||S[1];
   var h='<p class="meta">'+esc(S[7])+' '+esc(new Date(d.ts||Date.now()).toLocaleDateString())+'</p>';
   (d.m||[]).forEach(function(x){ h+=x[0]===0?'<div class="q">'+esc(x[1])+'</div>':'<div class="a"><div class="lb">💡 '+esc(S[3])+'</div>'+md(x[1])+'</div>'; });
