@@ -6,21 +6,21 @@
 <title>Tanya Xiaozhi</title>
 <meta name="description" content="Tanya Xiaozhi: pertanyaan Alkitab, iman dan kehidupan · Persekutuan Udara Kerajaan 321">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0815">
-<link rel="icon" href="favicon.ico?v=v2026.1116.0815" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0815">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0815">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0815">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0815">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0815">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1116.0830">
+<link rel="icon" href="favicon.ico?v=v2026.1116.0830" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1116.0830">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1116.0830">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1116.0830">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1116.0830">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1116.0830">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tanya Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1116.0815"></script>
-<script src="xzplus.js?v=v2026.1116.0815" defer></script>
+<script src="k321gate.js?v=v2026.1116.0830"></script>
+<script src="xzplus.js?v=v2026.1116.0830" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='id';</script>
@@ -4792,6 +4792,7 @@ var C19S={
  dl:'⬇ 下載文章（Word）|⬇ 下载文章（Word）|⬇ Download article (Word)|⬇ 글 다운로드 (Word)|⬇ 記事をダウンロード（Word）|⬇ Unduh artikel (Word)|⬇ I-download ang artikulo (Word)',
  tx:'📄 分享文章全文|📄 分享文章全文|📄 Share article text|📄 글 전문 공유|📄 記事の全文を共有|📄 Bagikan teks artikel|📄 Ipaambit ang teksto',
  cp:'文章已複製|文章已复制|Article copied|글을 복사했어요|記事をコピーしました|Artikel disalin|Na-copy ang artikulo',
+ fo:'📁 存到資料夾|📁 存到文件夹|📁 Save to folder|📁 폴더에 저장|📁 フォルダに保存|📁 Simpan ke folder|📁 I-save sa folder',
  vs:'經文|经文|Scripture|성경 구절|聖句|Ayat|Kasulatan'
 };
 function C19(k){ return C5L(C19S[k]); }
@@ -4813,11 +4814,13 @@ function c19Docx(a){
 var c19_h=c11ArtHTML;
 c11ArtHTML=function(){
  var h=c19_h(),A=S.c11A||{}; if(A.busy||A.fail||!A.art) return h;
+ h=h.replace(/<button class="ctbtn" data-act="ctartcopy">[\s\S]*?<\/button>/,'<button class="ctbtn" data-act="ctartfolder">'+esc(C19('fo'))+'</button>');
  return h+'<div class="ctrow2" style="margin-top:8px"><button class="ctbtn" data-act="ctartdl">'+esc(C19('dl'))+'</button><button class="ctbtn" data-act="ctarttx">'+esc(C19('tx'))+'</button></div>';
 };
 var c19_a=ct12Act;
 ct12Act=function(a,b,i,fid,v){
  if(a==='ctartdl'){ var A=S.c11A; if(!A||!A.art) return true; try{ var bl=c19Docx(A.art); ctDownload(bl,c5FileName(A.art.title,'.docx')); toast(C5('fileDone')); }catch(e){ toast(C15('fail')); } return true; }
+ if(a==='ctartfolder'){ var A3=S.c11A; if(!A3||!A3.art) return true; try{ var b3=c19Docx(A3.art),n3=c5FileName(A3.art.title,'.docx'); ctShareFile(b3,n3,function(){ ctDownload(b3,n3); toast(C5('fileDone')); }); }catch(e){ toast(C15('fail')); } return true; }
  if(a==='ctarttx'){ var A2=S.c11A; if(!A2||!A2.art) return true; var tx=c19Text(A2.art);
   if(navigator.share){ navigator.share({title:A2.art.title,text:tx}).catch(function(e){ if(e&&e.name!=='AbortError') copyText(tx,C19('cp')); }); } else copyText(tx,C19('cp')); return true; }
  return c19_a(a,b,i,fid,v);
@@ -4958,7 +4961,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1116.0815',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1116.0830',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
