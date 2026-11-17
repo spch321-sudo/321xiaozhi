@@ -229,7 +229,8 @@
   }
   function openRef(a) {
     var b = a.getAttribute('data-b'), c = a.getAttribute('data-c'), v = a.getAttribute('data-v');
-    var url = BIBLE + '?lang321=' + L() + '#/read/' + b + '/' + c + (v ? '/' + v : '');
+    var v2 = a.getAttribute('data-v2');
+    var url = BIBLE + '?lang321=' + L() + (v ? '&hl=1' + (v2 ? '&hv2=' + v2 : '') : '') + '#/read/' + b + '/' + c + (v ? '/' + v : '');
     sheet('<b>📖 ' + esc(a.textContent) + '</b><a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(T('open')) + ' ↗</a>', '<iframe src="' + esc(url) + '" title="' + esc(a.textContent) + '" allow="autoplay; clipboard-write"></iframe>');
   }
 
