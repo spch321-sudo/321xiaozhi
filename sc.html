@@ -6,21 +6,21 @@
 <title>小智问答</title>
 <meta name="description" content="小智问答：圣经・信仰・生活・智慧问答，国度321空中团契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2150">
-<link rel="icon" href="favicon.ico?v=v2026.1117.2150" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2150">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2150">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2150">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2150">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2150">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2210">
+<link rel="icon" href="favicon.ico?v=v2026.1117.2210" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2210">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2210">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2210">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2210">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2210">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智问答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1117.2150"></script>
-<script src="xzplus.js?v=v2026.1117.2150" defer></script>
+<script src="k321gate.js?v=v2026.1117.2210"></script>
+<script src="xzplus.js?v=v2026.1117.2210" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='zs';</script>
@@ -537,7 +537,7 @@ body.kid #flow{font-size:1.16em}body.kid .msg.ai .body{line-height:1.8}
 .ctsw i{width:44px;height:26px;border-radius:13px;background:var(--line);position:relative;flex:none;transition:background .2s}
 .ctsw i:after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s}
 .ctsw.on i{background:var(--accent)}.ctsw.on i:after{left:21px}.ctsw[disabled]{opacity:.5}
-.ctmemrow{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding:6px 0}.ctmemrow span{flex:1;min-width:0;overflow-wrap:anywhere}.ctmemrow small{display:block;color:var(--faint);font-size:.75em}
+.ctmemrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding:6px 0}.ctmemrow span{flex:1;min-width:0;overflow-wrap:anywhere}.ctmemrow small{display:block;color:var(--faint);font-size:.75em}
 .wide.cton{border-color:var(--accent)}
 .ctcallbtn svg{width:21px;height:21px}
 @media (max-width:419px){.ctcallbtn{display:none!important}}
@@ -4559,7 +4559,7 @@ function c15HTML(){
   h+='<div class="c15mod"><input id="c15m" type="text" maxlength="200" placeholder="'+esc(C15('mod'))+'" value="'+esc(D.mod)+'"><button class="ctbtn pri" data-act="cttmod">'+esc(C15('modgo'))+'</button></div>';
  }
  var L=c15List();
- if(L.length&&!D.busy){ h+='<div class="sec"><h3>'+esc(C15('mine',L.length))+'</h3>'; for(var k=0;k<L.length&&k<10;k++) h+='<div class="ctmemrow"><span><b>'+esc(L[k].title)+'</b></span><button class="ctbtn pri" data-act="cttopen" data-id="'+L[k].id+'">'+esc(C15('open'))+'</button><button class="ctbtn" data-act="cttdel" data-id="'+L[k].id+'">'+esc(C15('del'))+'</button></div>'; h+='</div>'; }
+ if(L.length&&!D.busy){ h+='<div class="sec"><h3>'+esc(C15('mine',L.length))+'</h3>'; for(var k=0;k<L.length&&k<10;k++) h+='<div class="ctmemrow"><span style="flex-basis:100%"><b>'+esc(L[k].title)+'</b></span><button class="ctbtn pri" data-act="cttopen" data-id="'+L[k].id+'">'+esc(C15('open'))+'</button><button class="ctbtn" data-act="cttldl" data-id="'+L[k].id+'">'+esc(C15('dl'))+'</button><button class="ctbtn" data-act="cttlsh" data-id="'+L[k].id+'">'+esc(C15('sh'))+'</button><button class="ctbtn" data-act="cttdel" data-id="'+L[k].id+'">'+esc(C15('del'))+'</button></div>'; h+='</div>'; }
  return h;
 }
 function c15Gen(ask,k){
@@ -4608,6 +4608,7 @@ ct12Act=function(a,b,i,fid,v){
  if(a==='cttsh'){ var D5=c15St(); if(D5.doc) ctShareFile(c15File(),c5FileName(D5.title,'.html'),function(){ ctDownload(c15File(),c5FileName(D5.title,'.html')); }); return true; }
  if(a==='cttsave'){ var D6=c15St(); if(!D6.doc||D6.saved) return true; if(D6.doc.length>60000){ toast(C15('cut')); return true; } var L=c15List(); L.unshift({id:'t'+Date.now().toString(36),title:D6.title,doc:D6.doc}); L=L.slice(0,10); lsSet('tools',L); D6.saved=true; toast(C15('saved')); renderSheet(); return true; }
  if(a==='cttopen'){ var L2=c15List(),it=null; for(var z=0;z<L2.length;z++) if(L2[z].id===fid) it=L2[z]; if(it){ S.c15={q:'',mod:'',doc:it.doc,title:it.title,busy:false,saved:true}; renderSheet(); } return true; }
+ if(a==='cttldl'||a==='cttlsh'){ var L3=c15List(),it3=null; for(var y=0;y<L3.length;y++) if(L3[y].id===fid) it3=L3[y]; if(it3){ var bl=new Blob([it3.doc],{type:'text/html'}),fn=c5FileName(it3.title,'.html'); if(a==='cttldl') ctDownload(bl,fn); else ctShareFile(bl,fn,function(){ ctDownload(bl,fn); }); } return true; }
  if(a==='cttdel'){ lsSet('tools',c15List().filter(function(x){ return x.id!==fid; })); renderSheet(); return true; }
  return c15_a(a,b,i,fid,v);
 };
@@ -5163,7 +5164,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1117.2150',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1117.2210',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
