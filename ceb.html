@@ -6,21 +6,21 @@
 <title>Pangutana kang Xiaozhi</title>
 <meta name="description" content="Pangutana kang Xiaozhi: Bibliya, pagtuo ug kinabuhi · Kingdom 321 Air Fellowship">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1118.0020">
-<link rel="icon" href="favicon.ico?v=v2026.1118.0020" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1118.0020">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1118.0020">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1118.0020">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1118.0020">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1118.0020">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1118.0100">
+<link rel="icon" href="favicon.ico?v=v2026.1118.0100" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1118.0100">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1118.0100">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1118.0100">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1118.0100">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1118.0100">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1118.0020"></script>
-<script src="xzplus.js?v=v2026.1118.0020" defer></script>
+<script src="k321gate.js?v=v2026.1118.0100"></script>
+<script src="xzplus.js?v=v2026.1118.0100" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ceb';</script>
@@ -5309,6 +5309,65 @@ document.addEventListener("change",function(e){
  c24Put(id,f).then(function(){ c24Upd(id,function(s){ s.audio=true; s.aname=f.name||"song.mp3"; s.atype=f.type||"audio/mpeg"; }); toast(C24("got")); if(S.sheet==="ctsongs") renderSheet(); },function(){ toast(C24("bad")); });
 });
 
+/* ct24b-1118 詩歌創作：兩步驟引導（①風格指令 ②歌詞），修正風格／歌詞擷取 */
+C24S.fh="照著做就好|照着做就好|Just follow the steps|순서대로 하세요|この順番でOK|Ikuti langkah ini|Sunda lang ang lakang";
+C24S.f1t="① 複製「風格指令」，貼在網站的風格欄|① 复制「风格指令」，贴在网站的风格栏|1) Copy the style prompt and paste it in the site's style box|① 스타일 지시문을 복사해 스타일 칸에 붙여넣기|① スタイル指示をコピーしてスタイル欄に貼る|1) Salin prompt gaya, tempel di kotak gaya|1) Kopyaha ang style prompt, i-paste sa style box";
+C24S.f2t="② 回小智複製「歌詞」，貼在網站的歌詞欄|② 回小智复制「歌词」，贴在网站的歌词栏|2) Come back, copy the lyrics and paste them in the lyrics box|② 돌아와 가사를 복사해 가사 칸에 붙여넣기|② 戻って歌詞をコピーして歌詞欄に貼る|2) Kembali, salin lirik, tempel di kotak lirik|2) Balik, kopyaha ang liriko, i-paste sa lyrics box";
+C24S.f1b="📋 複製風格指令並前往|📋 复制风格指令并前往|📋 Copy style & go to|📋 스타일 복사 후 이동|📋 スタイルをコピーして移動|📋 Salin gaya & buka|📋 Kopyaha ang estilo & adto";
+C24S.f2b="📋 複製歌詞|📋 复制歌词|📋 Copy lyrics|📋 가사 복사|📋 歌詞をコピー|📋 Salin lirik|📋 Kopyaha ang liriko";
+C24S.fre="↩ 回到網站貼上（再開一次）|↩ 回到网站贴上（再开一次）|↩ Back to the site|↩ 사이트로 돌아가기|↩ サイトへ戻る|↩ Kembali ke situs|↩ Balik sa site";
+C24S.fdone="✅ 已複製|✅ 已复制|✅ Copied|✅ 복사됨|✅ コピー済み|✅ Tersalin|✅ Na-copy";
+C24S.fnext="風格已複製。到網站貼在風格欄，再回小智按②。|风格已复制。到网站贴在风格栏，再回小智按②。|Style copied. Paste it, then come back for step 2.|스타일을 복사했어요. 붙여넣고 ②로 돌아오세요.|スタイルをコピー。貼ったら②へ。|Gaya tersalin. Tempel, lalu kembali ke langkah 2.|Na-copy ang estilo. I-paste, balik para sa 2.";
+C24S.fback="歡迎回來！現在按②複製歌詞|欢迎回来！现在按②复制歌词|Welcome back! Now tap step 2.|돌아왔어요! ②를 누르세요|おかえり！②を押してください|Selamat datang! Ketuk langkah 2.|Welcome balik! Pindota ang 2.";
+C24S.fpos="風格欄＝「輸入音樂風格／Style of Music」；歌詞欄＝「歌詞／Lyrics」|风格栏＝「输入音乐风格／Style of Music」；歌词栏＝「歌词／Lyrics」|Style box = “Style of Music”; Lyrics box = “Lyrics”.|스타일 칸=「Style of Music」, 가사 칸=「Lyrics」|スタイル欄＝Style of Music／歌詞欄＝Lyrics|Kotak gaya = Style of Music; kotak lirik = Lyrics|Style box = Style of Music; Lyrics box = Lyrics";
+C24S.fsty="風格指令|风格指令|Style prompt|스타일 지시문|スタイル指示|Prompt gaya|Style prompt";
+C24S.fdef="worship, acoustic guitar, gentle, uplifting, warm vocals|worship, acoustic guitar, gentle, uplifting, warm vocals|worship, acoustic guitar, gentle, uplifting, warm vocals|worship, acoustic guitar, gentle, uplifting, warm vocals|worship, acoustic guitar, gentle, uplifting, warm vocals|worship, acoustic guitar, gentle, uplifting, warm vocals|worship, acoustic guitar, gentle, uplifting, warm vocals";
+var C24END=/^[#*>\s\-]*(?:\S{1,3}\s+)?(歌詞使用方式|歌词使用方式|使用方式|小提醒|小提示|Style tags|Suno\b)/i;
+var c24_parse0=c24Parse;
+c24Parse=function(t){
+ var L=String(t||"").replace(/\r/g,"").split("\n"),i,first=-1,cut=L.length;
+ for(i=0;i<L.length;i++) if(C24LB.test(L[i])){ first=i; break; }
+ for(i=Math.max(first,0)+1;i<L.length;i++) if(C24END.test(L[i])||/^\s*```/.test(L[i])){ cut=i; break; }
+ var P=c24_parse0(L.slice(0,cut).join("\n"));
+ P.lyrics=P.lyrics.split("\n").filter(function(x){ return !/^\s*[-*_]{3,}\s*$/.test(x); }).join("\n").replace(/\n{3,}/g,"\n\n").trim();
+ var sty="",si=-1,j;
+ for(i=0;i<L.length;i++) if(/suno/i.test(L[i])&&!/^[\s*>]*[（(]/.test(L[i])&&(/^[#*\s>\-]/.test(L[i])||/[:：]\s*\S/.test(L[i]))&&i>=Math.max(first,0)){ si=i; break; }
+ if(si>=0){
+  var fo=-1,fc=-1;
+  for(j=si;j<L.length;j++){ if(/^\s*```/.test(L[j])){ if(fo<0) fo=j; else { fc=j; break; } } }
+  if(fo>=0&&fc>fo) sty=L.slice(fo+1,fc).join(" ");
+  if(!sty){ for(j=si+1;j<L.length;j++){ var x=L[j].replace(/[*`]/g,"").trim(); if(x.length>15&&(x.replace(/[^\x20-\x7e]/g,"").length/x.length)>0.6&&!/^style tags/i.test(x)){ sty=x; break; } } }
+  if(!sty){ var sp=L[si].replace(/^[#>*\s\-]*/,"").split(/[:：]/); if(sp.length>1&&sp.slice(1).join(":").trim().length>8) sty=sp.slice(1).join(":").trim(); }
+ }
+ sty=sty.replace(/[*`"“”]/g,"").replace(/\s+/g," ").trim().slice(0,300);
+ if(sty) P.sty=sty;
+ return P;
+};
+var C24F={i:-1,site:"tm",s1:false,s2:false};
+function c24Style(i){ var m=S.chat[i],P=m?c24Parse(m.t):{sty:""}; return P.sty||C24("fdef"); }
+function c24FlowHTML(){
+ var m=S.chat[C24F.i]; if(!m) return "<div class=\"sheethead\"><h2>🎵</h2><button class=\"xbtn\" data-act=\"close\">"+T("close")+"</button></div>";
+ var P=c24Parse(m.t),sn=C24F.site==="suno"?"Suno":"TopMediai",h="<div class=\"sheethead\"><h2>🎵 "+esc(P.title)+"</h2><button class=\"xbtn\" data-act=\"close\">"+T("close")+"</button></div><p class=\"hint\">"+esc(C24("fpos"))+"</p>";
+ h+="<div class=\"sec\" style=\"border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:8px\"><b>"+esc(C24("f1t"))+"</b><div style=\"white-space:pre-wrap;background:var(--bg2,rgba(127,127,127,.12));border-radius:10px;padding:8px;margin:8px 0;font-size:13px\">"+esc(c24Style(C24F.i))+"</div>"
+ +"<button class=\"ctgo\" data-act=\"ctflow1\">"+esc(C24F.s1?C24("fdone")+" · "+C24("fre"):C24("f1b")+" "+sn)+"</button></div>";
+ h+="<div class=\"sec\" style=\"border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:10px\"><b>"+esc(C24("f2t"))+"</b><div style=\"white-space:pre-wrap;max-height:120px;overflow:auto;background:var(--bg2,rgba(127,127,127,.12));border-radius:10px;padding:8px;margin:8px 0;font-size:13px\">"+esc(P.lyrics)+"</div>"
+ +"<button class=\"ctgo\" data-act=\"ctflow2\">"+esc(C24F.s2?C24("fdone"):C24("f2b"))+"</button>"
+ +(C24F.s2?"<button class=\"ctbtn\" style=\"width:100%;margin-top:8px\" data-act=\"ctflow3\">"+esc(C24("fre"))+"</button>":"")+"</div>";
+ h+="<div class=\"ctrow2\" style=\"margin-top:10px\"><button class=\"ctbtn\" data-act=\"ctsongsave\" data-i=\""+C24F.i+"\">"+esc(C24("save"))+"</button><button class=\"ctbtn\" data-act=\"ctsongs\">"+esc(C24("mine",c24Songs().length))+"</button></div>";
+ return h;
+}
+var c24b_s=ct12Sheet;
+ct12Sheet=function(k){ if(k==="ctsongflow") return c24FlowHTML(); return c24b_s(k); };
+var c24b_a=ct12Act;
+ct12Act=function(a,b,i,fid,v){
+ if(a==="ctsongsite"&&i!==""&&i!=null&&S.chat[i]){ C24F={i:+i,site:v||"tm",s1:false,s2:false}; openSheet("ctsongflow"); return true; }
+ if(a==="ctflow1"){ copyText(c24Style(C24F.i),C24("fnext")); C24F.s1=true; window.open(C24U[C24F.site]||C24U.tm,"_blank"); renderSheet(); return true; }
+ if(a==="ctflow2"){ var m=S.chat[C24F.i]; if(m) copyText(c24Parse(m.t).lyrics,C24("cL")); C24F.s2=true; renderSheet(); return true; }
+ if(a==="ctflow3"){ window.open(C24U[C24F.site]||C24U.tm,"_blank"); return true; }
+ return c24b_a.apply(this,arguments);
+};
+document.addEventListener("visibilitychange",function(){ if(!document.hidden&&S.sheet==="ctsongflow"&&C24F.s1&&!C24F.s2) toast(C24("fback")); });
+
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -5432,7 +5491,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1118.0020',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1118.0100',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
