@@ -6,21 +6,21 @@
 <title>샤오즈 Q&A</title>
 <meta name="description" content="샤오즈 Q&A: 성경, 신앙, 생활 질문 · 킹덤 321 공중 펠로십">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.1810">
-<link rel="icon" href="favicon.ico?v=v2026.1117.1810" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.1810">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.1810">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.1810">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.1810">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.1810">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2030">
+<link rel="icon" href="favicon.ico?v=v2026.1117.2030" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2030">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2030">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2030">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2030">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2030">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="샤오즈 Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1117.1810"></script>
-<script src="xzplus.js?v=v2026.1117.1810" defer></script>
+<script src="k321gate.js?v=v2026.1117.2030"></script>
+<script src="xzplus.js?v=v2026.1117.2030" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ko';</script>
@@ -4795,10 +4795,29 @@ var C18RULE='Rules: single self-contained page; NO external files, fonts, images
 var C18SYSA='You are a senior front-end developer. You are writing the FIRST HALF of a small single-file HTML tool. Output ONLY raw HTML (no explanation, no code fence) from <!DOCTYPE html> to the end of the visible page content: <meta charset="utf-8">, <meta name="viewport" content="width=device-width,initial-scale=1">, a short <title>, ONE compact <style> (under 25 lines), then <body> with all visible elements, each interactive element with a unique id. Do NOT write any <script> and do NOT close </body> or </html>; a second developer will add the script. Keep it very compact: under 40 lines in total. '+C18RULE;
 var C18SYSB='You are a senior front-end developer. You are writing the SECOND HALF of a small single-file HTML tool whose first half (markup and CSS) is given. Output ONLY one <script>...<\/script> followed by </body></html>: no explanation, no code fence, no repeated markup. Use only the element ids that exist in the given markup. Plain ES5/ES6 JavaScript, keep state in variables, validate inputs, show friendly messages in the page, and make sure any calculation is correct. Keep it compact: under 45 lines. '+C18RULE;
 function c18Txt(ask,sys,k0){
- function one(k){
-  return c18Call(k?ask+'\n\nYour previous attempt was cut off. Make it much shorter and simpler (about half the length), and finish completely.':ask,1000,{sys:sys,tier:'deep',ms:90000}).then(function(r){ if(r.cut||!String(r.t||'').trim()) throw new Error(r.cut?'cut':'bad'); return String(r.t).replace(/^\s*```(?:html|javascript|js)?\s*/i,'').replace(/```\s*$/,'').trim(); });
- }
- return one(k0||0).catch(function(){ return one(1); });
+ function clean(t){ return String(t).replace(/^\s*```(?:html|javascript|js)?\s*/i,'').replace(/```\s*$/,'').trim(); }
+ return getSample().then(function(sm){
+  if(sm) return quickAsk(ask,1000).then(function(t){ if(!String(t||'').trim()) throw new Error('bad'); return clean(t); });
+  var msgs=[{role:'user',content:ask}],acc='';
+  function round(n){
+   window.__c13stop=null;
+   return c13Try({max_tokens:1000,system:sys,tier:'deep',messages:msgs},90000,0).then(function(r){
+    var t=extractReply(r); acc=n?acc+t:t;
+    if(window.__c13stop==='max_tokens'){
+     if(!t||n>=5) throw new Error('cut');
+     msgs=[{role:'user',content:ask},{role:'assistant',content:acc.replace(/\s+$/,'')},{role:'user',content:'Your reply was cut off. Continue EXACTLY where you stopped and output only the remaining part (do not repeat anything, no commentary, no code fence). Finish completely.'}];
+     return round(n+1);
+    }
+    if(!acc.trim()) throw new Error('bad');
+    return clean(acc); });
+  }
+  return round(0);
+ });
+}
+function c18Syn(doc){
+ var re=/<script[^>]*>([\s\S]*?)<\/script>/ig,m;
+ while((m=re.exec(doc))){ try{ new Function(m[1]); }catch(e){ if(e&&e.name==='SyntaxError') return String(e.message||'syntax').slice(0,80); } }
+ return '';
 }
 function c18Tool(base,instr){
  var lang='All visible text must be in '+c15Lang()+'.',ref='';
@@ -4810,8 +4829,13 @@ function c18Tool(base,instr){
   return c18Txt(task+'\n\nFIRST HALF (markup and CSS, already written):\n'+A,C18SYSB).then(function(B){
    var j=B.search(/<script[\s>]/i); if(j<0){ B='<script>'+B.replace(/<\/?(body|html)>/ig,'')+'<\/script>'; } else B=B.slice(j);
    B=B.replace(/<\/body>[\s\S]*$/i,'').replace(/<\/html>\s*$/i,'');
-   if(!/<\/script>/i.test(B)) throw new Error('cut');
-   return A+'\n'+B+'\n</body></html>';
+   if(!/<\/script>/i.test(B)) B+='<\/script>';
+   var doc=A+'\n'+B+'\n</body></html>',er=c18Syn(doc);
+   if(!er) return doc;
+   return c18Txt(task+'\n\nFIRST HALF (markup and CSS, already written):\n'+A+'\n\nThe script you wrote had a JavaScript syntax error ('+er+'). Write the script again, simpler and carefully checked, with balanced brackets and quotes.',C18SYSB).then(function(B2){
+    var j2=B2.search(/<script[\s>]/i); if(j2<0){ B2='<script>'+B2.replace(/<\/?(body|html)>/ig,'')+'<\/script>'; } else B2=B2.slice(j2);
+    B2=B2.replace(/<\/body>[\s\S]*$/i,'').replace(/<\/html>\s*$/i,''); if(!/<\/script>/i.test(B2)) B2+='<\/script>';
+    var d2=A+'\n'+B2+'\n</body></html>'; if(c18Syn(d2)) throw new Error('syntax'); return d2; });
   });
  });
 }
@@ -5135,7 +5159,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1117.1810',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1117.2030',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
