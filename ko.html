@@ -6,21 +6,21 @@
 <title>샤오즈 Q&A</title>
 <meta name="description" content="샤오즈 Q&A: 성경, 신앙, 생활 질문 · 킹덤 321 공중 펠로십">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2340">
-<link rel="icon" href="favicon.ico?v=v2026.1117.2340" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2340">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2340">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2340">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2340">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2340">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2350">
+<link rel="icon" href="favicon.ico?v=v2026.1117.2350" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2350">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2350">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2350">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2350">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2350">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="샤오즈 Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1117.2340"></script>
-<script src="xzplus.js?v=v2026.1117.2340" defer></script>
+<script src="k321gate.js?v=v2026.1117.2350"></script>
+<script src="xzplus.js?v=v2026.1117.2350" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ko';</script>
@@ -2646,12 +2646,12 @@ function c5ToolGo(){
 var C5CRC=null;
 function c5crc(u){ if(!C5CRC){ C5CRC=[]; for(var n=0;n<256;n++){ var c=n; for(var k=0;k<8;k++) c=c&1?0xEDB88320^(c>>>1):c>>>1; C5CRC[n]=c>>>0; } } var x=0xFFFFFFFF; for(var i=0;i<u.length;i++) x=C5CRC[(x^u[i])&255]^(x>>>8); return (x^0xFFFFFFFF)>>>0; }
 function c5Zip(files){
- var enc=new TextEncoder(),parts=[],cen=[],off=0;
+ var enc=new TextEncoder(),parts=[],cen=[],off=0,nw=new Date(),dT=(nw.getHours()<<11)|(nw.getMinutes()<<5)|(nw.getSeconds()>>1),dD=(Math.max(0,nw.getFullYear()-1980)<<9)|((nw.getMonth()+1)<<5)|nw.getDate();
  function u16(v){ return [v&255,(v>>8)&255]; } function u32(v){ return [v&255,(v>>8)&255,(v>>16)&255,(v>>>24)&255]; }
  files.forEach(function(f){ var nm=enc.encode(f[0]),d=enc.encode(f[1]),c=c5crc(d);
-  var lh=[].concat(u32(0x04034b50),u16(20),u16(0x0800),u16(0),u16(0),u16(0),u32(c),u32(d.length),u32(d.length),u16(nm.length),u16(0));
+  var lh=[].concat(u32(0x04034b50),u16(20),u16(0x0800),u16(0),u16(dT),u16(dD),u32(c),u32(d.length),u32(d.length),u16(nm.length),u16(0));
   parts.push(new Uint8Array(lh),nm,d);
-  cen.push(new Uint8Array([].concat(u32(0x02014b50),u16(20),u16(20),u16(0x0800),u16(0),u16(0),u16(0),u32(c),u32(d.length),u32(d.length),u16(nm.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(off))),nm);
+  cen.push(new Uint8Array([].concat(u32(0x02014b50),u16(20),u16(20),u16(0x0800),u16(0),u16(dT),u16(dD),u32(c),u32(d.length),u32(d.length),u16(nm.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(off))),nm);
   off+=lh.length+nm.length+d.length; });
  var cl=0; cen.forEach(function(x){ cl+=x.length; });
  var end=new Uint8Array([].concat(u32(0x06054b50),u16(0),u16(0),u16(files.length),u16(files.length),u32(cl),u32(off),u16(0)));
@@ -3354,7 +3354,7 @@ function ctShareFile(blob,name,fallback){
  try{ var f=new File([blob],name,{type:blob.type}); if(navigator.canShare&&navigator.canShare({files:[f]})){ navigator.share({files:[f],title:name}).catch(function(e){ if(!e||e.name!=='AbortError') fallback(); }); return; } }catch(e){}
  fallback();
 }
-function ctDownload(blob,name){ var u=URL.createObjectURL(blob),a=document.createElement('a'); a.href=u; a.download=name; a.rel='noopener'; document.body.appendChild(a); a.click(); setTimeout(function(){ a.parentNode&&a.parentNode.removeChild(a); URL.revokeObjectURL(u); },4000); toast(CT('saved')); }
+function ctDownload(blob,name){ var u=URL.createObjectURL(blob),a=document.createElement('a'); a.href=u; a.download=name; a.rel='noopener'; document.body.appendChild(a); a.click(); setTimeout(function(){ a.parentNode&&a.parentNode.removeChild(a); },4000); setTimeout(function(){ URL.revokeObjectURL(u); },300000); toast(CT('saved')); }
 function ctB64u(bytes){ var s='',CH=0x8000; for(var i=0;i<bytes.length;i+=CH) s+=String.fromCharCode.apply(null,bytes.subarray(i,i+CH)); return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
 function ctLink(msgs,title,cb){
  var data=JSON.stringify({v:1,l:LANG,t:title||'',ts:Date.now(),m:msgs.map(function(m){ return [m.role==='user'?0:1,m.t]; })});
@@ -5145,7 +5145,7 @@ ct12Act=function(a,b,i,fid,v){
  if(a==="ctnotefix"){ c23Fix(); return true; }
  if(a==="ctnoteundo"){ var N=c12N(); if(N.undoTr){ N.tr=N.undoTr; N.undoTr=""; lsSet("notedraft",N.tr.slice(-60000)); C12R.base=""; renderSheet(); } return true; }
  if(a==="ctnotekb"){ if(C12R.active) c12Stop(); var ta=$("c12tr"); if(ta){ try{ ta.focus(); ta.setSelectionRange(ta.value.length,ta.value.length); }catch(e){} } toast(C23("kbtip")); return true; }
- if(a==="ctnotedl"){ var N2=c12N(),tx=N2.sum||N2.tr; if(!tx) return true; var ti=c23Title(); if(v==="w") c5SaveBlob(c5Docx(ti,[{t:tx}]),c5FileName(ti,".docx")); else c5SaveBlob(new Blob([tx],{type:"text/plain;charset=utf-8"}),c5FileName(ti,".txt")); return true; }
+ if(a==="ctnotedl"){ var N2=c12N(),tx=N2.sum||N2.tr; if(!tx) return true; var ti=c23Title(); tx=tx.replace(/^\s*#\s+.+\n+/,""); if(v==="w") c5SaveBlob(c5Docx(ti,[{t:tx}]),c5FileName(ti,".docx")); else c5SaveBlob(new Blob([tx],{type:"text/plain;charset=utf-8"}),c5FileName(ti,".txt")); return true; }
  return c23_a.apply(this,arguments);
 };
 document.addEventListener("change",function(e){
@@ -5283,7 +5283,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1117.2340',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1117.2350',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
