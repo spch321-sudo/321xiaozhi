@@ -6,21 +6,21 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2330">
-<link rel="icon" href="favicon.ico?v=v2026.1117.2330" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2330">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2330">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2330">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2330">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2330">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1118.0020">
+<link rel="icon" href="favicon.ico?v=v2026.1118.0020" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1118.0020">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1118.0020">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1118.0020">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1118.0020">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1118.0020">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1117.2330"></script>
-<script src="xzplus.js?v=v2026.1117.2330" defer></script>
+<script src="k321gate.js?v=v2026.1118.0020"></script>
+<script src="xzplus.js?v=v2026.1118.0020" defer></script>
 </head>
 <body>
 
@@ -5183,6 +5183,8 @@ var C24S={
  card:"用這首詩歌去創作|用这首诗歌去创作|Create this song|이 노래 만들기|この賛美歌を作る|Buat lagu ini|Himoa kini nga kanta",
  how:"步驟：①按「到 Suno／TopMediai」（歌詞會自動複製）→ 到網站貼上歌詞與風格，產生歌曲。②做好後回到小智，開「我的詩歌」，匯入歌曲檔或貼上連結，就能播放、下載、分享。|步骤：①按「到 Suno／TopMediai」（歌词会自动复制）→ 到网站贴上歌词与风格，生成歌曲。②做好后回到小智，开「我的诗歌」，导入歌曲文件或贴上链接，就能播放、下载、分享。|Steps: 1) Tap Suno/TopMediai (lyrics are copied) and paste lyrics and style there. 2) Come back, open My songs, import the song file or paste the link to play, download and share.|①Suno/TopMediai 버튼(가사 자동 복사) → 사이트에 붙여넣어 노래를 만드세요. ②돌아와서 내 노래에서 파일 가져오기/링크 붙여넣기.|①Suno/TopMediai を押す（歌詞は自動コピー）→サイトに貼り付けて作曲。②戻って「マイ賛美歌」で曲ファイルを読み込むかリンクを貼る。|1) Ketuk Suno/TopMediai (lirik tersalin), tempel di situs. 2) Kembali, buka Lagu saya, impor berkas atau tempel tautan.|1) Pindota ang Suno/TopMediai (makopya ang liriko). 2) Balik, ablihi ang Akong mga kanta, i-import o i-paste ang link.",
  cl:"📋 複製歌詞|📋 复制歌词|📋 Copy lyrics|📋 가사 복사|📋 歌詞をコピー|📋 Salin lirik|📋 Kopyaha ang liriko",
+ cl1:"📋 一鍵複製歌詞|📋 一键复制歌词|📋 Copy lyrics (one tap)|📋 가사 한 번에 복사|📋 歌詞をワンタップでコピー|📋 Salin lirik sekali ketuk|📋 Kopyaha ang liriko",
+ cs1:"📋 一鍵複製 Suno 指令|📋 一键复制 Suno 指令|📋 Copy Suno prompt (one tap)|📋 Suno 프롬프트 복사|📋 Suno 用プロンプトをコピー|📋 Salin prompt Suno|📋 Kopyaha ang Suno prompt",
  cs:"📋 複製風格|📋 复制风格|📋 Copy style|📋 스타일 복사|📋 スタイルをコピー|📋 Salin gaya|📋 Kopyaha ang estilo",
  suno:"🎼 到 Suno 創作|🎼 到 Suno 创作|🎼 Make it on Suno|🎼 Suno에서 만들기|🎼 Suno で作る|🎼 Buat di Suno|🎼 Himoa sa Suno",
  tm:"🎶 到 TopMediai 創作|🎶 到 TopMediai 创作|🎶 Make it on TopMediai|🎶 TopMediai에서 만들기|🎶 TopMediai で作る|🎶 Buat di TopMediai|🎶 Himoa sa TopMediai",
@@ -5216,11 +5218,11 @@ function c24Db(){ return new Promise(function(res,rej){ try{ var r=indexedDB.ope
 function c24Put(id,blob){ return c24Db().then(function(db){ return new Promise(function(res,rej){ var t=db.transaction("a","readwrite"); t.objectStore("a").put(blob,id); t.oncomplete=function(){ res(); }; t.onerror=function(){ rej(t.error); }; }); }); }
 function c24Get(id){ return c24Db().then(function(db){ return new Promise(function(res,rej){ var q=db.transaction("a","readonly").objectStore("a").get(id); q.onsuccess=function(){ res(q.result); }; q.onerror=function(){ rej(q.error); }; }); }); }
 function c24Del(id){ return c24Db().then(function(db){ return new Promise(function(res){ var t=db.transaction("a","readwrite"); t.objectStore("a").delete(id); t.oncomplete=function(){ res(); }; t.onerror=function(){ res(); }; }); }).catch(function(){}); }
-var C24LB=/^[#*>\s\-]*[\[（(【]?\s*(verse|chorus|pre-?chorus|bridge|intro|outro|interlude|主歌|副歌|橋段|桥段|間奏|间奏|前奏|尾奏|導歌|导歌)\s*\d*[\]）)】]?\s*[:：]?\s*[*]*\s*$/i;
+var C24LB=/^[#*>\s\-]*[\[（(【]?\s*(verse|chorus|pre-?chorus|bridge|intro|outro|interlude|主歌|副歌|橋段|桥段|間奏|间奏|前奏|尾奏|導歌|导歌|ending|結尾|结尾|tag|coda)\s*\d*[\]）)】]?\s*[:：]?\s*[*]*\s*$/i;
 function c24Parse(t){
  var L=String(t||"").replace(/\r/g,"").split("\n"),i,j,sty="",si=-1,title="";
  for(i=0;i<L.length;i++){ var tl=L[i].replace(/^[#>*\s\-・]+/,"").replace(/[*`]/g,"").replace(/^(title|song title|標題|标题|歌名|歌曲名稱)\s*[:：]\s*/i,"").trim(); if(tl&&!/^\d+[.)、]\s*$/.test(tl)){ title=tl.replace(/^\d+[.)、]\s*/,"").replace(/^[「《"“]|[」》"”]$/g,"").slice(0,40); break; } }
- for(i=L.length-1;i>=0;i--) if(/suno/i.test(L[i])){ si=i; break; }
+ for(i=0;i<L.length;i++) if(/suno/i.test(L[i])&&!/^[\s*>]*[（(]/.test(L[i])&&(/^[#*\s>\-]/.test(L[i])||/[:：]\s*\S/.test(L[i]))){ si=i; break; }
  if(si>=0){ var sp=L[si].replace(/^[#>*\s\-]*/,"").split(/[:：]/); if(sp.length>1&&sp.slice(1).join(":").trim().length>8) sty=sp.slice(1).join(":").trim(); else for(j=si+1;j<L.length;j++){ if(L[j].trim()){ sty=L[j].trim(); break; } } }
  sty=sty.replace(/[*`"“”]/g,"").replace(/^[-・>\s]+/,"").slice(0,200);
  var st=-1,first="";
@@ -5237,7 +5239,8 @@ function c24Parse(t){
  if(lyr.length<20) lyr=c12Plain(t);
  return {title:title||C24("title"),lyrics:lyr,sty:sty};
 }
-function c24IsSong(i){ var m=S.chat[i]; if(!m||m.role==="user"||m.pending||m.err||!m.t||m.t.length<150) return false; var t=c5Tool("song"); if(!t) return false; var q=String(qOf(i)||"").split("\n")[0]; return q.indexOf(t.ic+" "+C5L(t.n))===0; }
+function c24IsSong(i){ var m=S.chat[i]; if(!m||m.role==="user"||m.pending||m.err||!m.t||m.t.length<150) return false; var t=c5Tool("song"); if(t){ var q=String(qOf(i)||"").split("\n")[0]; if(q.indexOf(t.ic+" "+C5L(t.n))===0) return true; } return /suno/i.test(m.t)&&/(verse|chorus|主歌|副歌)/i.test(m.t); }
+function c24Btn(v,i){ return "<button class=\"ctbtn pri\" style=\"display:block;margin:6px 0 10px\" data-act=\"ctsongcopy\" data-v=\""+v+"\" data-i=\""+i+"\">"+esc(v==="sty"?C24("cs1"):C24("cl1"))+"</button>"; }
 function c24Card(i){
  var n=c24Songs().length;
  return "<div class=\"c24card\" style=\"border:1px solid var(--line);border-radius:14px;padding:10px;margin-top:8px\"><b>🎵 "+esc(C24("card"))+"</b><p class=\"hint\" style=\"margin:4px 0 8px\">"+esc(C24("how"))+"</p>"
@@ -5248,7 +5251,9 @@ function c24Card(i){
 var c24_mh=msgHTML;
 msgHTML=function(m,i,lastOk){
  var h=c24_mh(m,i,lastOk); try{ if(!c24IsSong(i)) return h; }catch(e){ return h; }
- var k=h.indexOf("<div class=\"fu\""); if(k<0) k=h.lastIndexOf("</div>"); if(k<0) return h;
+ h=h.replace(/(<h[1-4][^>]*>[^<]*(?:歌詞|歌词|Lyrics|가사|歌詞|Lirik|Liriko)[^<]*<\/h[1-4]>)/i,function(x){ return x+c24Btn("lyr",i); });
+ h=h.replace(/(<h[1-4][^>]*>[^<]*Suno[^<]*<\/h[1-4]>)/i,function(x){ return x+c24Btn("sty",i); });
+ var k=h.indexOf("<div class=\"acts\""); if(k<0) k=h.lastIndexOf("</div>"); if(k<0) return h;
  return h.slice(0,k)+c24Card(i)+h.slice(k);
 };
 var c24_th=c5ToolHTML;
@@ -5426,7 +5431,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1117.2330',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1118.0020',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
