@@ -6,21 +6,21 @@
 <title>샤오즈 Q&A</title>
 <meta name="description" content="샤오즈 Q&A: 성경, 신앙, 생활 질문 · 킹덤 321 공중 펠로십">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2310">
-<link rel="icon" href="favicon.ico?v=v2026.1117.2310" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2310">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2310">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2310">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2310">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2310">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2340">
+<link rel="icon" href="favicon.ico?v=v2026.1117.2340" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2340">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2340">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2340">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2340">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2340">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="샤오즈 Q&A">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1117.2310"></script>
-<script src="xzplus.js?v=v2026.1117.2310" defer></script>
+<script src="k321gate.js?v=v2026.1117.2340"></script>
+<script src="xzplus.js?v=v2026.1117.2340" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ko';</script>
@@ -4325,7 +4325,7 @@ function c12Sum(tr,done,fail){
 }
 function c12Make(){
  var N=c12N(); if(N.busy) return; var tr=(N.tr||'').trim();
- if(tr.length<30){ toast(C12('noteLittle')); return; }
+ if(tr.length<12){ toast(C12('noteLittle')); return; }
  N.busy=true; N.sum=''; renderSheet();
  c12Sum(tr,function(sum){ N.busy=false; N.sum=sum;
   var m=sum.match(/^\s*#\s+(.+)$/m),title=(m?m[1]:tr.slice(0,24)).replace(/[#*]/g,'').trim().slice(0,40)||tr.slice(0,24);
@@ -5012,7 +5012,7 @@ function c22Part(prompt,maxT){
 }
 c12Sum=function(tr,done,fail){
  var LN=C11LN[LANG]||'English',
- base='This is a speech-recognized (possibly error-prone) transcript of a sermon or meeting. Write in '+LN+'. Fix obvious recognition errors only when sure; never invent content that is not in the transcript.';
+ base='This is a speech-recognized (possibly error-prone) transcript of a sermon or meeting. Write in '+LN+'. Fix obvious recognition errors only when sure; never invent content that is not in the transcript. Lines starting with the star sign were marked by the speaker as especially important: make sure each of them appears in the key points.';
  function chunks(t){ var out=[],i=0; while(i<t.length){ var e=Math.min(t.length,i+6000); if(e<t.length){ var c=Math.max(t.lastIndexOf('。',e),t.lastIndexOf('. ',e),t.lastIndexOf('\n',e)); if(c>i+2500) e=c+1; } out.push(t.slice(i,e)); i=e; } return out; }
  var t=tr.slice(0,60000),src;
  var pre=(t.length<=6000)?Promise.resolve(t):(function(){ var cs=chunks(t).slice(0,10),notes=[]; return c18Pool(cs.map(function(c,k){ return function(){ return c22Part(base+' (part '+(k+1)+' of '+cs.length+'.) In under 150 words list its key points, every Bible reference mentioned, and any application or question raised.\nTRANSCRIPT:\n'+c,600).then(function(x){ notes[k]='['+(k+1)+'] '+x; return x; }); }; }),3).then(function(){ return '(condensed notes of the transcript, in order)\n'+notes.filter(Boolean).join('\n'); }); })();
@@ -5045,14 +5045,14 @@ c12NoteHTML=function(){
 };
 c12Begin=function(){
  var r; try{ r=new SRC(); }catch(e){ C12R.active=false; toast(C12('noteNoSR')); c12Paint(); return; }
- C12R.rec=r; r.lang=MICLANG[LANG]||'en-US'; r.interimResults=true; r.continuous=true; r.maxAlternatives=1;
+ C12R.rec=r; r.lang=c23Lang(); r.interimResults=true; r.continuous=true; r.maxAlternatives=1;
  var tmp='',got=false,t0=Date.now();
  r.onresult=function(ev){
   got=true; C22.last=Date.now(); C22.bad=0; if(C22.err) c22Note('');
   tmp='';
   for(var i=(ev.resultIndex||0);i<ev.results.length;i++){
    var t=ev.results[i][0].transcript;
-   if(ev.results[i].isFinal){ C12R.base+=t+((!C12ZH&&!/\s$/.test(t))?' ':''); } else tmp+=t;
+   if(ev.results[i].isFinal){ C12R.base+=t+((!c23Zh()&&!/\s$/.test(t))?' ':''); } else tmp+=t;
   }
   c12Set(C12R.base+tmp);
  };
@@ -5061,7 +5061,7 @@ c12Begin=function(){
   else if(c==='network'){ c22Note('net'); C22.bad++; }
   else if(c==='audio-capture'){ C12R.active=false; toast(C12('noteDenied')); } };
  r.onend=function(){
-  if(tmp){ C12R.base+=tmp+((!C12ZH&&!/\s$/.test(tmp))?' ':''); tmp=''; c12Set(C12R.base); }
+  if(tmp){ C12R.base+=tmp+((!c23Zh()&&!/\s$/.test(tmp))?' ':''); tmp=''; c12Set(C12R.base); }
   if(C12R.rec===r) C12R.rec=null;
   if(!C12R.active){ c12Paint(); return; }
   if(!got&&Date.now()-t0<3000) C22.bad++; else C22.bad=0;
@@ -5078,6 +5078,87 @@ c12Start=function(){
  C22.chk=setTimeout(function(){ if(C12R.active&&!C22.last){ C22.err=c22T('quiet'); c12Paint(); } },9000);
 };
 })();
+
+/* ct23-1117 聽講筆記加強：辨識語言、★標記重點、修正逐字稿、匯入文字檔、鍵盤聽寫、下載 Word／文字 */
+var C23S={
+ lang:"辨識語言：|识别语言：|Language:|인식 언어:|認識言語：|Bahasa pengenalan:|Lengguwahe:",
+ mark:"★ 標記重點|★ 标记重点|★ Mark key point|★ 중요 표시|★ 重要マーク|★ Tandai penting|★ Markahi",
+ marked:"已標記，這一句會特別整理進重點|已标记，这一句会特别整理进重点|Marked. It will be highlighted in the key points.|표시했어요. 핵심에 반영돼요.|マークしました。要点に反映されます。|Ditandai. Akan masuk ke poin penting.|Namarkahan. Apil sa mga punto.",
+ fix:"✨ 修正逐字稿|✨ 修正逐字稿|✨ Clean up transcript|✨ 받아쓰기 다듬기|✨ 文字起こしを整える|✨ Rapikan transkrip|✨ Limpyohi ang transcript",
+ fixing:"小智正在修正錯字與標點…|小智正在修正错字与标点…|Xiaozhi is fixing typos and punctuation…|샤오즈가 오타와 문장부호를 고치는 중…|小智が誤字と句読点を直しています…|Xiaozhi memperbaiki salah ketik dan tanda baca…|Gi-ayo ni Xiaozhi ang sayop ug punctuation…",
+ fixed:"已修正，原文已備份，可按「復原」|已修正，原文已备份，可按「复原」|Fixed. The original is saved: tap Undo to restore.|고쳤어요. 「되돌리기」로 복원할 수 있어요.|直しました。「元に戻す」で復元できます。|Diperbaiki. Ketuk Urungkan untuk memulihkan.|Naayo na. I-tap ang Ibalik aron mabalik.",
+ fixfail:"修正沒有成功，逐字稿維持原樣|修正没有成功，逐字稿维持原样|Could not clean it up; the transcript is unchanged.|다듬지 못했어요. 원문 그대로예요.|整えられませんでした。元のままです。|Gagal merapikan; transkrip tidak berubah.|Wala molampos; wala mausab.",
+ undo:"↩ 復原|↩ 复原|↩ Undo|↩ 되돌리기|↩ 元に戻す|↩ Urungkan|↩ Ibalik",
+ file:"📄 匯入文字檔|📄 导入文本文件|📄 Import text file|📄 텍스트 파일 가져오기|📄 テキスト読込|📄 Impor berkas teks|📄 Mag-import og text file",
+ kb:"⌨️ 鍵盤聽寫|⌨️ 键盘听写|⌨️ Keyboard dictation|⌨️ 키보드 받아쓰기|⌨️ キーボード音声入力|⌨️ Dikte keyboard|⌨️ Keyboard dictation",
+ kbtip:"「開始聽」沒反應或常聽錯時：點文字框，按鍵盤上的 🎤，用手機內建聽寫，通常最準，一樣可以整理成筆記。|「开始听」没反应或常听错时：点文字框，按键盘上的 🎤，用手机内置听写，通常最准，一样可以整理成笔记。|If Start does nothing or mishears: tap the text box and press the 🎤 on your keyboard to use your phone's own dictation, often the most accurate. It works with notes too.|「시작」이 안 되거나 자주 틀리면 입력란을 누르고 키보드의 🎤를 쓰세요. 가장 정확한 경우가 많고 노트로 정리할 수 있어요.|「聞き始める」が動かない・誤認識が多いときは、入力欄をタップしキーボードの🎤を使うと、多くの場合いちばん正確です。|Jika Mulai tidak bekerja atau salah dengar: ketuk kotak teks lalu 🎤 di keyboard, biasanya paling akurat.|Kon dili molihok ang Sugdi: i-tap ang text box ug 🎤 sa keyboard.",
+ dlw:"下載 Word|下载 Word|Download Word|Word 받기|Word 保存|Unduh Word|I-download ang Word",
+ dlt:"下載文字檔|下载文本文件|Download text|텍스트 받기|テキスト保存|Unduh teks|I-download ang text",
+ cnt:"字數：{0}|字数：{0}|Characters: {0}|글자 수: {0}|文字数：{0}|Jumlah karakter: {0}|Ihap: {0}",
+ imp:"已匯入 {0} 字|已导入 {0} 字|Imported {0} characters|{0}자 가져옴|{0}文字を読み込みました|{0} karakter diimpor|Na-import {0}",
+ impbad:"讀不到這個檔案，請選 .txt 文字檔|读不到这个文件，请选 .txt 文本文件|Could not read the file; choose a .txt file.|파일을 읽을 수 없어요. .txt를 선택하세요.|読み込めません。.txt を選んでください。|Berkas tidak terbaca; pilih .txt.|Dili mabasa; pili og .txt."
+};
+function C23(k,a){ var s=C5L(C23S[k]||k); if(a!=null) s=s.split("{0}").join(a); return s; }
+var C23L=[["zh-TW","國語"],["zh-CN","普通话"],["yue-Hant-HK","粵語"],["en-US","English"],["ja-JP","日本語"],["ko-KR","한국어"],["id-ID","Indonesia"],["fil-PH","Filipino"]];
+function c23Lang(){ var v=lsGet("notelang",null); return (typeof v==="string"&&v)?v:(MICLANG[LANG]||"en-US"); }
+function c23Zh(){ return /^(zh|yue|ja)/i.test(c23Lang()); }
+function c23Chunks(t,n){ var out=[],i=0; while(i<t.length){ var e=Math.min(t.length,i+n); if(e<t.length){ var c=Math.max(t.lastIndexOf("。",e),t.lastIndexOf(". ",e),t.lastIndexOf("\n",e),t.lastIndexOf("？",e),t.lastIndexOf("! ",e)); if(c>i+n*0.5) e=c+1; } out.push(t.slice(i,e)); i=e; } return out; }
+function c23Fix(){
+ var N=c12N(); if(N.busy||N.fixing) return; var t=String(N.tr||"").trim(); if(t.length<12){ toast(C12("noteLittle")); return; }
+ if(C12R.active) c12Stop();
+ var cs=c23Chunks(t.slice(0,36000),900),out=new Array(cs.length),ok=0;
+ N.fixing=true; renderSheet();
+ var fs=cs.map(function(c,k){ return function(){
+  return c18Call("Fix speech-recognition mistakes, add proper punctuation and paragraph breaks to this transcript, in its original language. Keep every line that starts with the star sign as it is. Do not summarize, translate, shorten or add anything. Output ONLY the corrected text.\n\nTEXT:\n"+c,1000,{sys:"You are a careful proofreader. Output plain text only: no Markdown, no code fence, no explanation.",tier:"deep",ms:60000}).then(function(r){
+   var x=String(r.t||"").replace(/^\s*```[a-z]*\s*/i,"").replace(/```\s*$/,"").trim();
+   if(!r.cut&&x.length>=c.length*0.55&&x.length<=c.length*1.8){ out[k]=x; ok++; } else out[k]=c; return 1; },function(){ out[k]=c; return 0; }); }; });
+ return c18Pool(fs,3).then(function(){
+  if(!ok){ toast(C23("fixfail")); return; }
+  N.undoTr=N.tr; var rest=t.length<N.tr.trim().length?"\n"+N.tr.trim().slice(t.length):"";
+  N.tr=out.map(function(x,k){ return x||cs[k]; }).join("\n")+rest; lsSet("notedraft",N.tr.slice(-60000)); C12R.base=""; toast(C23("fixed"));
+ }).then(function(){ N.fixing=false; if(S.sheet==="ctnote") renderSheet(); },function(){ N.fixing=false; toast(C23("fixfail")); if(S.sheet==="ctnote") renderSheet(); });
+}
+function c23Title(){ var N=c12N(),m=String(N.sum||"").match(/^\s*#\s+(.+)$/m); return (m?m[1]:String(N.tr||"").slice(0,24)).replace(/[#*]/g,"").trim().slice(0,40)||C12("noteH"); }
+var c23_nh=c12NoteHTML;
+c12NoteHTML=function(){
+ var h=c23_nh(),N=c12N(),cur=c23Lang(),i,ch="<div class=\"ctchips\" style=\"margin:6px 0\"><small class=\"hint\" style=\"margin-right:6px\">"+esc(C23("lang"))+"</small>";
+ for(i=0;i<C23L.length;i++){ var on=C23L[i][0]===cur; ch+="<button class=\"chip\" data-act=\"ctnotelang\" data-v=\""+C23L[i][0]+"\""+(on?" style=\"background:#1e3d8f;color:#fff\"":"")+">"+esc(C23L[i][1])+"</button>"; }
+ ch+="</div>";
+ var k=h.indexOf("<p id=\"c22msg\""); if(k<0) k=h.indexOf("<textarea id=\"c12tr\""); if(k>=0) h=h.slice(0,k)+ch+h.slice(k);
+ var tools="";
+ if(C12R.active) tools+="<div class=\"ctrow2\" style=\"margin-top:6px\"><button class=\"ctbtn\" data-act=\"ctnotemark\">"+esc(C23("mark"))+"</button></div>";
+ else{
+  tools+="<div class=\"ctrow2\" style=\"margin-top:6px\"><button class=\"ctbtn\" data-act=\"ctnotefix\""+((N.fixing||N.busy)?" disabled":"")+">"+esc(C23("fix"))+"</button>"+(N.undoTr?"<button class=\"ctbtn\" data-act=\"ctnoteundo\">"+esc(C23("undo"))+"</button>":"")+"</div>";
+  tools+="<div class=\"ctrow2\" style=\"margin-top:6px\"><label class=\"ctbtn\" style=\"text-align:center\"><input type=\"file\" id=\"c23file\" accept=\".txt,.md,.srt,.vtt,.text,text/plain\" hidden>"+esc(C23("file"))+"</label><button class=\"ctbtn\" data-act=\"ctnotekb\">"+esc(C23("kb"))+"</button></div>";
+  tools+="<p class=\"hint\" style=\"margin:6px 0\">"+esc(C23("cnt",String(N.tr||"").length))+"</p><p class=\"hint\" style=\"margin:0 0 6px\">"+esc(C23("kbtip"))+"</p>";
+ }
+ if(N.fixing) tools+="<p class=\"hint c3wait\"><span class=\"typing\"><span></span><span></span><span></span></span> "+esc(C23("fixing"))+"</p>";
+ var j=h.indexOf("</textarea>"); if(j>=0) h=h.slice(0,j+11)+tools+h.slice(j+11);
+ var g="<div class=\"sec\" style=\"margin-top:8px\"><button class=\"wide\" data-act=\"ctnotegrp\">",gi=h.indexOf(g);
+ if(gi>=0) h=h.slice(0,gi)+"<div class=\"ctrow2\" style=\"margin-top:8px\"><button class=\"ctbtn\" data-act=\"ctnotedl\" data-v=\"w\">"+esc(C23("dlw"))+"</button><button class=\"ctbtn\" data-act=\"ctnotedl\" data-v=\"t\">"+esc(C23("dlt"))+"</button></div>"+h.slice(gi);
+ return h;
+};
+var c23_a=ct12Act;
+ct12Act=function(a,b,i,fid,v){
+ if(a==="ctnotelang"){ lsSet("notelang",v); var r=C12R.rec; if(C12R.active&&r){ try{ r.stop(); }catch(e){} } else if(S.sheet==="ctnote") renderSheet(); if(C12R.active&&S.sheet==="ctnote") renderSheet(); return true; }
+ if(a==="ctnotemark"){ if(!C12R.active) return true; var bs=C12R.base||""; C12R.base=bs+(bs&&!/\n$/.test(bs)?"\n":"")+"★ "; c12Set(C12R.base); toast(C23("marked")); return true; }
+ if(a==="ctnotefix"){ c23Fix(); return true; }
+ if(a==="ctnoteundo"){ var N=c12N(); if(N.undoTr){ N.tr=N.undoTr; N.undoTr=""; lsSet("notedraft",N.tr.slice(-60000)); C12R.base=""; renderSheet(); } return true; }
+ if(a==="ctnotekb"){ if(C12R.active) c12Stop(); var ta=$("c12tr"); if(ta){ try{ ta.focus(); ta.setSelectionRange(ta.value.length,ta.value.length); }catch(e){} } toast(C23("kbtip")); return true; }
+ if(a==="ctnotedl"){ var N2=c12N(),tx=N2.sum||N2.tr; if(!tx) return true; var ti=c23Title(); if(v==="w") c5SaveBlob(c5Docx(ti,[{t:tx}]),c5FileName(ti,".docx")); else c5SaveBlob(new Blob([tx],{type:"text/plain;charset=utf-8"}),c5FileName(ti,".txt")); return true; }
+ return c23_a.apply(this,arguments);
+};
+document.addEventListener("change",function(e){
+ var t=e.target; if(!t||t.id!=="c23file"||!t.files||!t.files[0]) return;
+ var f=t.files[0],fr=new FileReader();
+ fr.onload=function(){
+  var x=String(fr.result||"").replace(/\r/g,"").replace(/^WEBVTT.*$/m,"").replace(/^\d+\s*$/gm,"").replace(/^\d\d:\d\d(:\d\d)?[.,]\d+\s*-->.*$/gm,"").replace(/\n{3,}/g,"\n\n").trim();
+  if(!x||/\u0000/.test(x.slice(0,200))){ toast(C23("impbad")); return; }
+  var N=c12N(); N.tr=(N.tr?String(N.tr).replace(/\s+$/,"")+"\n":"")+x.slice(0,60000); lsSet("notedraft",N.tr.slice(-60000)); C12R.base=""; toast(C23("imp",x.length)); if(S.sheet==="ctnote") renderSheet();
+ };
+ fr.onerror=function(){ toast(C23("impbad")); };
+ fr.readAsText(f);
+});
 
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
@@ -5202,7 +5283,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1117.2310',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1117.2340',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
