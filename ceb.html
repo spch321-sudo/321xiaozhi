@@ -6,21 +6,21 @@
 <title>Pangutana kang Xiaozhi</title>
 <meta name="description" content="Pangutana kang Xiaozhi: Bibliya, pagtuo ug kinabuhi · Kingdom 321 Air Fellowship">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.0925">
-<link rel="icon" href="favicon.ico?v=v2026.1117.0925" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.0925">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.0925">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.0925">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.0925">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.0925">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.1810">
+<link rel="icon" href="favicon.ico?v=v2026.1117.1810" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.1810">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.1810">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.1810">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.1810">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.1810">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1117.0925"></script>
-<script src="xzplus.js?v=v2026.1117.0925" defer></script>
+<script src="k321gate.js?v=v2026.1117.1810"></script>
+<script src="xzplus.js?v=v2026.1117.1810" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='ceb';</script>
@@ -4576,13 +4576,13 @@ function c15Gen(ask,k){
  return round(0);
 }
 function c15Make(base,instr){
- var D=c15St(); if(D.busy) return; D.busy=true; if(S.sheet==='cttool') renderSheet();
+ var D=c15St(); if(D.busy) return; D.busy=true; if(S.sheet==='ctmaker') renderSheet();
  function one(k){
   var ask=base?('Here is the current tool (HTML):\n'+base.slice(0,16000)+'\n\nRevise it as follows and return the COMPLETE updated HTML document: '+instr):('Build this tool: '+instr);
   ask+='\n\nAll visible text must be in '+c15Lang()+'. Keep the code compact: short CSS, no comments, no unnecessary features.'+(k?' Your previous attempt failed. Make it SHORTER and simpler (under 120 lines) and make sure the document is complete and ends with </html>.':'');
   return c15Gen(ask,k);
  }
- return one(0).catch(function(){ return one(1); }).then(function(doc){ D.doc=doc; D.title=c15Title(doc,base?D.title:instr); D.saved=false; D.mod=''; },function(e){ toast(((e&&e.message==='cut')?C15('cut'):C15('fail'))+' ['+c13Why(e)+']'); }).then(function(){ D.busy=false; if(S.sheet==='cttool') renderSheet(); });
+ return one(0).catch(function(){ return one(1); }).then(function(doc){ D.doc=doc; D.title=c15Title(doc,base?D.title:instr); D.saved=false; D.mod=''; },function(e){ toast(((e&&e.message==='cut')?C15('cut'):C15('fail'))+' ['+c13Why(e)+']'); }).then(function(){ D.busy=false; if(S.sheet==='ctmaker') renderSheet(); });
 }
 function c15Big(){
  var D=c15St(); if(!D.doc) return; var old=document.getElementById('c15big'); if(old) old.remove();
@@ -4591,10 +4591,10 @@ function c15Big(){
 }
 function c15File(){ var D=c15St(); return new Blob([D.doc],{type:'text/html'}); }
 var c15_s=ct12Sheet;
-ct12Sheet=function(k){ if(k==='cttool') return c15HTML(); return c15_s(k); };
+ct12Sheet=function(k){ if(k==='ctmaker') return c15HTML(); return c15_s(k); };
 var c15_a=ct12Act;
 ct12Act=function(a,b,i,fid,v){
- if(a==='cttool'){ closeDrawer(); openSheet('cttool'); return true; }
+ if(a==='ctmaker'){ closeDrawer(); openSheet('ctmaker'); return true; }
  if(a==='cttchip'){ var D0=c15St(); D0.q=v||''; var t=$('c15q'); if(t) t.value=D0.q; return true; }
  if(a==='cttgo'){ var D=c15St(),t2=$('c15q'),q=String(t2&&t2.value||'').trim(); if(!q) return true; D.q=q; c15Make('',q); return true; }
  if(a==='cttmod'){ var D2=c15St(),m=$('c15m'),ins=String(m&&m.value||'').trim(); if(!ins||!D2.doc) return true; D2.mod=ins; toast(C15('revising')); c15Make(D2.doc,ins); return true; }
@@ -4611,10 +4611,10 @@ ct12Act=function(a,b,i,fid,v){
 var c15_ph=c3PlusHTML;
 c3PlusHTML=function(){
  var h=c15_ph(),a='<button class="wide" data-act="ctnote">',k=h.indexOf(a); if(k<0){ a='<button class="wide" data-act="ctscope">'; k=h.indexOf(a); } if(k<0){ a='<button class="wide" data-act="bank">'; k=h.indexOf(a); } if(k<0) return h;
- return h.slice(0,k)+'<button class="wide" data-act="cttool"><span>'+esc(C15('T'))+'<br><small class="hint">'+esc(C15('short'))+'</small></span><span>›</span></button>'+h.slice(k);
+ return h.slice(0,k)+'<button class="wide" data-act="ctmaker"><span>'+esc(C15('T'))+'<br><small class="hint">'+esc(C15('short'))+'</small></span><span>›</span></button>'+h.slice(k);
 };
 var c15_he=ctHelloExtra;
-ctHelloExtra=function(){ var h=c15_he(); if(!h) return h; var k=h.lastIndexOf('</div>'); if(k<0) return h; return h.slice(0,k)+'<button class="ctbtn" data-act="cttool"><span>'+esc(C15('T'))+'<small>'+esc(C15('short'))+'</small></span></button>'+h.slice(k); };
+ctHelloExtra=function(){ var h=c15_he(); if(!h) return h; var k=h.lastIndexOf('</div>'); if(k<0) return h; return h.slice(0,k)+'<button class="ctbtn" data-act="ctmaker"><span>'+esc(C15('T'))+'<small>'+esc(C15('short'))+'</small></span></button>'+h.slice(k); };
 /* 圖表（Mermaid）與 PDF 讀取改為本站自己主機載入，連不上外部網站也能用 */
 var c15_lib=c5Lib;
 c5Lib=function(url,name){ if(window[name]) return Promise.resolve(window[name]); if(name==='mermaid'){ return c15Load('vendor/mermaid.min.js','mermaid').catch(function(){ return c15_lib(url,name); }); } return c15_lib(url,name); };
@@ -4816,8 +4816,8 @@ function c18Tool(base,instr){
  });
 }
 c15Make=function(base,instr){
- var D=c15St(); if(D.busy) return; D.busy=true; if(S.sheet==='cttool') renderSheet();
- return c18Tool(base,instr).then(function(raw){ var doc=c15Doc(raw); if(!doc) throw new Error('bad'); D.doc=doc; D.title=c15Title(doc,base?D.title:instr); D.saved=false; D.mod=''; },function(e){ toast(((e&&e.message==='cut')?C15('cut'):C15('fail'))+' ['+c13Why(e)+']'); }).then(function(){ D.busy=false; if(S.sheet==='cttool') renderSheet(); });
+ var D=c15St(); if(D.busy) return; D.busy=true; if(S.sheet==='ctmaker') renderSheet();
+ return c18Tool(base,instr).then(function(raw){ var doc=c15Doc(raw); if(!doc) throw new Error('bad'); D.doc=doc; D.title=c15Title(doc,base?D.title:instr); D.saved=false; D.mod=''; },function(e){ toast(((e&&e.message==='cut')?C15('cut'):C15('fail'))+' ['+c13Why(e)+']'); }).then(function(){ D.busy=false; if(S.sheet==='ctmaker') renderSheet(); });
 };
 
 /* ---------- 文章頁：下載（Word）與分享全文（ct19-1116） ---------- */
@@ -5135,7 +5135,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1117.0925',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1117.1810',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
