@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>小智小工具</title>
+<style>:root{--bg:#f6f7f9;--fg:#1c2330;--mut:#667085;--line:#e3e6ec;--card:#fff}@media(prefers-color-scheme:dark){:root{--bg:#10141b;--fg:#e8ecf3;--mut:#9aa4b5;--line:#2a3140;--card:#181d27}}
+html,body{height:100%;margin:0}body{background:var(--bg);color:var(--fg);font:16px/1.5 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;display:flex;flex-direction:column}
+header{padding:calc(10px + env(safe-area-inset-top,0px)) 14px 8px;border-bottom:1px solid var(--line)}h1{font-size:18px;margin:0}p{margin:2px 0 0;font-size:13px;color:var(--mut)}
+iframe{flex:1;width:100%;border:0;background:#fff}#msg{padding:30px 18px;text-align:center;color:var(--mut)}</style></head>
+<body><header><h1 id="t">小智小工具</h1><p id="w">此小工具由他人用「小智」做成，在隔離小框裡執行，不能上網。請先試用、確認結果正確再使用。</p></header>
+<div id="msg">載入中…</div>
+<script>
+(function(){
+ function out(m){var e=document.getElementById('msg');e.textContent=m;e.hidden=false;}
+ async function dec(s){var k=s.charAt(0),b=s.slice(1).replace(/-/g,'+').replace(/_/g,'/');while(b.length%4)b+='=';
+  var bin=atob(b),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);
+  if(k==='z'){var r=new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream('deflate-raw')));u=new Uint8Array(await r.arrayBuffer());}
+  return JSON.parse(new TextDecoder().decode(u));}
+ var h=location.hash.slice(1);if(!h){out('沒有找到小工具內容');return;}
+ dec(h).then(function(o){
+  if(!o||typeof o.h!=='string'||!/<\/?(body|script|html|div|main)/i.test(o.h)){out('小工具內容無法讀取');return;}
+  document.title=o.t||'小智小工具';document.getElementById('t').textContent=o.t||'小智小工具';
+  document.getElementById('msg').hidden=true;
+  var f=document.createElement('iframe');f.setAttribute('sandbox','allow-scripts allow-modals allow-forms');f.setAttribute('referrerpolicy','no-referrer');f.srcdoc=o.h;document.body.appendChild(f);
+ }).catch(function(){out('連結不完整或已損壞，請請對方重新分享');});
+})();
+</script></body></html>
