@@ -6,21 +6,21 @@
 <title>Tanya Xiaozhi</title>
 <meta name="description" content="Tanya Xiaozhi: pertanyaan Alkitab, iman dan kehidupan · Persekutuan Udara Kerajaan 321">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2350">
-<link rel="icon" href="favicon.ico?v=v2026.1117.2350" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2350">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2350">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2350">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2350">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2350">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2230">
+<link rel="icon" href="favicon.ico?v=v2026.1117.2230" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2230">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2230">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2230">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2230">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2230">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tanya Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1117.2350"></script>
-<script src="xzplus.js?v=v2026.1117.2350" defer></script>
+<script src="k321gate.js?v=v2026.1117.2230"></script>
+<script src="xzplus.js?v=v2026.1117.2230" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='id';</script>
@@ -5138,6 +5138,19 @@ c12NoteHTML=function(){
  if(gi>=0) h=h.slice(0,gi)+"<div class=\"ctrow2\" style=\"margin-top:8px\"><button class=\"ctbtn\" data-act=\"ctnotedl\" data-v=\"w\">"+esc(C23("dlw"))+"</button><button class=\"ctbtn\" data-act=\"ctnotedl\" data-v=\"t\">"+esc(C23("dlt"))+"</button></div>"+h.slice(gi);
  return h;
 };
+function c23ShareFile(blob,name,mime,fb){
+ try{ var f=new File([blob],name,{type:mime}); if(navigator.canShare&&navigator.canShare({files:[f]})){ navigator.share({files:[f],title:name}).catch(function(e){ if(!e||e.name!=="AbortError") fb(); }); return true; } }catch(e){}
+ return false;
+}
+function c23Esc(x){ return String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function c23DocHtml(ti,md){
+ var L=String(md||"").replace(/\r/g,"").split("\n"),b="<h1>"+c23Esc(ti)+"</h1>",m;
+ L.forEach(function(x){ var t=x.trim(); if(!t) return;
+  if((m=t.match(/^(#{1,6})\s+(.*)$/))) b+="<h"+(m[1].length<=2?2:3)+">"+c23Esc(m[2].replace(/\*\*/g,""))+"</h"+(m[1].length<=2?2:3)+">";
+  else if((m=t.match(/^[-*・]\s+(.*)$/))) b+="<p style=\"margin-left:2em;text-indent:-1em\">• "+c23Esc(m[1].replace(/\*\*/g,""))+"</p>";
+  else b+="<p>"+c23Esc(t.replace(/\*\*/g,""))+"</p>"; });
+ return "<html xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:w=\"urn:schemas-microsoft-com:office:word\" xmlns=\"http://www.w3.org/TR/REC-html40\"><head><meta charset=\"utf-8\"><title>"+c23Esc(ti)+"</title><style>body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;font-size:13pt;line-height:1.8}h1{font-size:20pt;color:#1e3f8f;text-align:center}h2{font-size:16pt;color:#1e3f8f}h3{font-size:14pt;color:#8a5f12}</style></head><body>"+b+"</body></html>";
+}
 var c23_a=ct12Act;
 ct12Act=function(a,b,i,fid,v){
  if(a==="ctnotelang"){ lsSet("notelang",v); var r=C12R.rec; if(C12R.active&&r){ try{ r.stop(); }catch(e){} } else if(S.sheet==="ctnote") renderSheet(); if(C12R.active&&S.sheet==="ctnote") renderSheet(); return true; }
@@ -5145,7 +5158,13 @@ ct12Act=function(a,b,i,fid,v){
  if(a==="ctnotefix"){ c23Fix(); return true; }
  if(a==="ctnoteundo"){ var N=c12N(); if(N.undoTr){ N.tr=N.undoTr; N.undoTr=""; lsSet("notedraft",N.tr.slice(-60000)); C12R.base=""; renderSheet(); } return true; }
  if(a==="ctnotekb"){ if(C12R.active) c12Stop(); var ta=$("c12tr"); if(ta){ try{ ta.focus(); ta.setSelectionRange(ta.value.length,ta.value.length); }catch(e){} } toast(C23("kbtip")); return true; }
- if(a==="ctnotedl"){ var N2=c12N(),tx=N2.sum||N2.tr; if(!tx) return true; var ti=c23Title(); tx=tx.replace(/^\s*#\s+.+\n+/,""); if(v==="w") c5SaveBlob(c5Docx(ti,[{t:tx}]),c5FileName(ti,".docx")); else c5SaveBlob(new Blob([tx],{type:"text/plain;charset=utf-8"}),c5FileName(ti,".txt")); return true; }
+ if(a==="ctnotedl"){ var N2=c12N(),tx=N2.sum||N2.tr; if(!tx) return true; var ti=c23Title(),body=tx.replace(/^\s*#\s+.+\n+/,"");
+  if(v==="w"){ var dx=c5Docx(ti,[{t:body}]),dn=c5FileName(ti,".docx");
+   if(!c23ShareFile(dx,dn,dx.type,function(){ ctDownload(dx,dn); })){ var hb=new Blob(["﻿"+c23DocHtml(ti,body)],{type:"text/html"}),hn=c5FileName(ti,".doc"); if(!c23ShareFile(hb,hn,"text/html",function(){ ctDownload(dx,dn); })) ctDownload(dx,dn); } }
+  else{ var pl=c12Plain(tx),tb=new Blob(["﻿"+pl],{type:"text/plain"}),tn=c5FileName(ti,".txt"); if(!c23ShareFile(tb,tn,"text/plain",function(){ ctDownload(tb,tn); })) ctDownload(tb,tn); }
+  return true; }
+ if(a==="ctnotecopy"){ var N6=c12N(); copyText(c12Plain(N6.sum||N6.tr),C12("noteCopied")); return true; }
+ if(a==="ctnoteshare"){ var N7=c12N(),px=c12Plain(N7.sum||N7.tr); if(navigator.share) navigator.share({title:C12("noteH"),text:px}).catch(function(e){ if(e&&e.name!=="AbortError") copyText(px,C12("noteCopied")); }); else copyText(px,C12("noteCopied")); return true; }
  return c23_a.apply(this,arguments);
 };
 document.addEventListener("change",function(e){
@@ -5283,7 +5302,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1117.2350',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1117.2230',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
