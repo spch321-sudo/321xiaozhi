@@ -6,21 +6,21 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2050">
-<link rel="icon" href="favicon.ico?v=v2026.1117.2050" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2050">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2050">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2050">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2050">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2050">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1117.2120">
+<link rel="icon" href="favicon.ico?v=v2026.1117.2120" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1117.2120">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1117.2120">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1117.2120">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1117.2120">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1117.2120">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1117.2050"></script>
-<script src="xzplus.js?v=v2026.1117.2050" defer></script>
+<script src="k321gate.js?v=v2026.1117.2120"></script>
+<script src="xzplus.js?v=v2026.1117.2120" defer></script>
 </head>
 <body>
 
@@ -4548,6 +4548,7 @@ function c15HTML(){
   h+='<textarea id="c15q" class="c12ta c15ta" rows="3" maxlength="300" placeholder="'+esc(C15('ph'))+'"'+(D.busy?' disabled':'')+'>'+esc(D.q)+'</textarea>';
   if(!D.busy){ var ch=C15CH[LANG]||C15CH.zh; h+='<p class="hint" style="margin:4px 0">'+esc(C15('try'))+'</p><div class="c15chips">'; for(var i=0;i<ch.length;i++) h+='<button class="c15chip" data-act="cttchip" data-v="'+esc(ch[i])+'">'+esc(ch[i])+'</button>'; h+='</div>'; }
   h+='<div class="ctrow2" style="margin-top:10px"><button class="ctbtn pri" data-act="cttgo"'+(D.busy?' disabled':'')+'>'+esc(D.busy?C15('making'):C15('go'))+'</button></div>';
+  if(D.err&&!D.busy) h+='<p class="hint" style="margin:8px 0;color:#c0392b;overflow-wrap:anywhere">'+esc(D.err)+'</p>';
  } else {
   h+='<div class="c15bar"><b>'+esc(D.title)+'</b></div><iframe id="c15fr" class="c15fr" sandbox="allow-scripts allow-modals allow-forms" referrerpolicy="no-referrer" srcdoc="'+esc(D.doc)+'"></iframe>';
   h+='<p class="hint" style="margin:6px 0">'+esc(C15('warn'))+'</p>';
@@ -4822,16 +4823,16 @@ function c18Tool(base,instr){
  var lang='All visible text must be in '+c15Lang()+'.',ref='';
  if(base) ref='\n\nCurrent tool (for reference; keep what works):\n'+String(base).replace(/<meta[^>]+http-equiv=["']?Content-Security-Policy[^>]*>/ig,'').slice(0,9000);
  var task=(base?'Revise the tool as follows: ':'Build this tool: ')+instr+'\n'+lang+ref;
- return c18Txt(task,C18SYSA).then(function(A){
+ window.C18ST='A'; return c18Txt(task,C18SYSA).then(function(A){
   var i=A.search(/<script[\s>]/i); if(i>0) A=A.slice(0,i); A=A.replace(/<\/body>[\s\S]*$/i,'').replace(/<\/html>\s*$/i,'');
   if(!/<(body)[\s>]/i.test(A)) throw new Error('bad');
-  return c18Txt(task+'\n\nFIRST HALF (markup and CSS, already written):\n'+A,C18SYSB).then(function(B){
+  window.C18ST='B'; return c18Txt(task+'\n\nFIRST HALF (markup and CSS, already written):\n'+A,C18SYSB).then(function(B){
    var j=B.search(/<script[\s>]/i); if(j<0){ B='<script>'+B.replace(/<\/?(body|html)>/ig,'')+'<\/script>'; } else B=B.slice(j);
    B=B.replace(/<\/body>[\s\S]*$/i,'').replace(/<\/html>\s*$/i,'');
    if(!/<\/script>/i.test(B)) B+='<\/script>';
    var doc=A+'\n'+B+'\n</body></html>',er=c18Syn(doc);
    if(!er) return doc;
-   return c18Txt(task+'\n\nFIRST HALF (markup and CSS, already written):\n'+A+'\n\nThe script you wrote had a JavaScript syntax error ('+er+'). Write the script again, simpler and carefully checked, with balanced brackets and quotes.',C18SYSB).then(function(B2){
+   window.C18ST='B2'; return c18Txt(task+'\n\nFIRST HALF (markup and CSS, already written):\n'+A+'\n\nThe script you wrote had a JavaScript syntax error ('+er+'). Write the script again, simpler and carefully checked, with balanced brackets and quotes.',C18SYSB).then(function(B2){
     var j2=B2.search(/<script[\s>]/i); if(j2<0){ B2='<script>'+B2.replace(/<\/?(body|html)>/ig,'')+'<\/script>'; } else B2=B2.slice(j2);
     B2=B2.replace(/<\/body>[\s\S]*$/i,'').replace(/<\/html>\s*$/i,''); if(!/<\/script>/i.test(B2)) B2+='<\/script>';
     var d2=A+'\n'+B2+'\n</body></html>'; if(c18Syn(d2)) throw new Error('syntax'); return d2; });
@@ -4839,8 +4840,9 @@ function c18Tool(base,instr){
  });
 }
 c15Make=function(base,instr){
- var D=c15St(); if(D.busy) return; D.busy=true; if(S.sheet==='ctmaker') renderSheet();
- return c18Tool(base,instr).then(function(raw){ var doc=c15Doc(raw); if(!doc) throw new Error('bad'); D.doc=doc; D.title=c15Title(doc,base?D.title:instr); D.saved=false; D.mod=''; },function(e){ toast(((e&&e.message==='cut')?C15('cut'):C15('fail'))+' ['+c13Why(e)+']'); }).then(function(){ D.busy=false; if(S.sheet==='ctmaker') renderSheet(); });
+ var D=c15St(); if(D.busy) return; D.busy=true; D.err=''; if(S.sheet==='ctmaker') renderSheet();
+ function go(ins){ return c18Tool(base,ins).then(function(raw){ var doc=c15Doc(raw); if(!doc) throw new Error('bad'); return doc; }); }
+ return go(instr).catch(function(){ return go(instr+'\n(Make it the SIMPLEST possible working version: only the core feature, very few elements, very short script.)'); }).then(function(doc){ D.doc=doc; D.title=c15Title(doc,base?D.title:instr); D.saved=false; D.mod=''; },function(e){ var m=((e&&e.message==='cut')?C15('cut'):C15('fail'))+' ['+c13Why(e)+' @'+(window.C18ST||'?')+']'; D.err=m; toast(m); }).then(function(){ D.busy=false; if(S.sheet==='ctmaker') renderSheet(); });
 };
 
 /* ---------- 文章頁：下載（Word）與分享全文（ct19-1116） ---------- */
@@ -5158,7 +5160,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1117.2050',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1117.2120',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
