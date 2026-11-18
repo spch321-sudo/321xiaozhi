@@ -6,21 +6,21 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1118.0130">
-<link rel="icon" href="favicon.ico?v=v2026.1118.0130" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1118.0130">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1118.0130">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1118.0130">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1118.0130">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1118.0130">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1118.0220">
+<link rel="icon" href="favicon.ico?v=v2026.1118.0220" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1118.0220">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1118.0220">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1118.0220">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1118.0220">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1118.0220">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1118.0130"></script>
-<script src="xzplus.js?v=v2026.1118.0130" defer></script>
+<script src="k321gate.js?v=v2026.1118.0220"></script>
+<script src="xzplus.js?v=v2026.1118.0220" defer></script>
 </head>
 <body>
 
@@ -5391,6 +5391,31 @@ ct12Act=function(a,b,i,fid,v){
  return c24c_a.apply(this,arguments);
 };
 
+/* ct24d-1118 一次貼上：風格指令放在歌詞最上面的 [ ] 標籤，只去網站一趟 */
+C24S.o1="🎵 最簡單：只去網站一趟，貼一次就好|🎵 最简单：只去网站一趟，贴一次就好|🎵 Easiest: one trip, one paste|🎵 가장 쉬운 방법: 한 번만 붙여넣기|🎵 いちばん簡単：1回貼るだけ|🎵 Termudah: satu kali tempel|🎵 Pinakasayon: usa ka paste";
+C24S.o2="①按下面大按鈕（風格＋歌詞一起複製，並打開網站）②在網站「歌詞」欄長按→貼上 ③按「生成」。風格會以 [ ] 標籤放在歌詞最上面，網站會參考它。|①按下面大按钮（风格＋歌词一起复制，并打开网站）②在网站「歌词」栏长按→粘贴 ③按「生成」。风格会以 [ ] 标签放在歌词最上面，网站会参考它。|1) Tap the big button (style + lyrics are copied, site opens). 2) Long-press the Lyrics box → Paste. 3) Generate. The style sits on top in [ ] tags.|①아래 큰 버튼(스타일+가사 복사, 사이트 열림) ②가사 칸에 붙여넣기 ③생성. 스타일은 맨 위 [ ] 태그로 들어가요.|①下の大ボタン（スタイル＋歌詞をコピーしてサイトを開く）②歌詞欄に貼り付け ③生成。スタイルは先頭の [ ] タグに入ります。|1) Ketuk tombol besar. 2) Tempel di kotak Lirik. 3) Buat. Gaya ada di atas dalam tag [ ].|1) Pindota ang dako nga button. 2) I-paste sa Lyrics box. 3) Himoa. Ang style naa sa ibabaw sa [ ] tags.";
+C24S.o3="📋 複製（風格＋歌詞）並前往|📋 复制（风格＋歌词）并前往|📋 Copy style + lyrics & go to|📋 스타일+가사 복사 후 이동|📋 スタイル＋歌詞をコピーして移動|📋 Salin gaya + lirik & buka|📋 Kopyaha ang estilo + liriko & adto";
+C24S.o4="只想單獨複製：|只想单独复制：|Copy only:|따로 복사:|個別にコピー：|Salin saja:|Kopyaha lang:";
+C24S.o5="回到小智只要按左上角「返回」或網站的 ✕。再按一次上面的大按鈕會開新頁面（要重貼）。|回到小智只要按左上角「返回」或网站的 ✕。再按一次上面的大按钮会开新页面（要重贴）。|Return with Back or ✕. Tapping the big button again opens a new page (paste again).|돌아갈 땐 「돌아가기」나 ✕. 큰 버튼을 다시 누르면 새 페이지가 열려요.|戻るには「戻る」か ✕。もう一度押すと新しいページになります。|Kembali dengan Back atau ✕. Mengetuk lagi membuka halaman baru.|Balik gamit ang Back o ✕. Kung pindoton usab, bag-ong page.";
+function c24Combo(i){ var m=S.chat[i]; if(!m) return ""; var P=c24Parse(m.t),st=c24Style(i).replace(/[\[\]]/g,"").trim(); return "["+st+"]\n\n"+P.lyrics; }
+c24FlowHTML=function(){
+ var m=S.chat[C24F.i]; if(!m) return "<div class=\"sheethead\"><h2>🎵</h2><button class=\"xbtn\" data-act=\"close\">"+T("close")+"</button></div>";
+ var P=c24Parse(m.t),sn=C24F.site==="suno"?"Suno":"TopMediai",bx="white-space:pre-wrap;background:var(--bg2,rgba(127,127,127,.12));border-radius:10px;padding:8px;margin:8px 0;font-size:13px;max-height:170px;overflow:auto";
+ var h="<div class=\"sheethead\"><h2>🎵 "+esc(P.title)+"</h2><button class=\"xbtn\" data-act=\"close\">"+T("close")+"</button></div>";
+ h+="<div class=\"sec\" style=\"border:1px solid var(--line);border-radius:14px;padding:12px\"><b>"+esc(C24("o1"))+"</b><p class=\"hint\" style=\"margin:6px 0\">"+esc(C24("o2"))+"</p><div style=\""+bx+"\">"+esc(c24Combo(C24F.i))+"</div>"
+ +"<button class=\"ctgo\" data-act=\"ctflow0\">"+esc(C24("o3")+" "+sn)+"</button>"+(C24F.s1?"<p class=\"hint\" style=\"margin:8px 0 0\">✅ "+esc(C24("o5"))+"</p>":"")+"</div>";
+ h+="<p class=\"hint\" style=\"margin:12px 0 4px\">"+esc(C24("o4"))+"</p><div class=\"ctrow2\"><button class=\"ctbtn\" data-act=\"ctflowa\">"+esc(C24("cs"))+"</button><button class=\"ctbtn\" data-act=\"ctflowb\">"+esc(C24("cl"))+"</button></div>";
+ h+="<div class=\"ctrow2\" style=\"margin-top:10px\"><button class=\"ctbtn\" data-act=\"ctsongsave\" data-i=\""+C24F.i+"\">"+esc(C24("save"))+"</button><button class=\"ctbtn\" data-act=\"ctsongs\">"+esc(C24("mine",c24Songs().length))+"</button></div>";
+ return h;
+};
+var c24d_a=ct12Act;
+ct12Act=function(a,b,i,fid,v){
+ if(a==="ctflow0"){ copyText(c24Combo(C24F.i),C24("cL")); C24F.s1=true; window.open(C24U[C24F.site]||C24U.tm,"_blank"); renderSheet(); return true; }
+ if(a==="ctflowa"){ copyText(c24Style(C24F.i),C24("cS")); return true; }
+ if(a==="ctflowb"){ var m=S.chat[C24F.i]; if(m) copyText(c24Parse(m.t).lyrics,C24("cL")); return true; }
+ return c24d_a.apply(this,arguments);
+};
+
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -5514,7 +5539,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1118.0130',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1118.0220',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
