@@ -6,21 +6,21 @@
 <title>小智問答</title>
 <meta name="description" content="小智問答：聖經・信仰・生活・智慧問答，國度321空中團契。">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1118.0220">
-<link rel="icon" href="favicon.ico?v=v2026.1118.0220" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1118.0220">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1118.0220">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1118.0220">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1118.0220">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1118.0220">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1118.1340">
+<link rel="icon" href="favicon.ico?v=v2026.1118.1340" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1118.1340">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1118.1340">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1118.1340">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1118.1340">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1118.1340">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="小智問答">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1118.0220"></script>
-<script src="xzplus.js?v=v2026.1118.0220" defer></script>
+<script src="k321gate.js?v=v2026.1118.1340"></script>
+<script src="xzplus.js?v=v2026.1118.1340" defer></script>
 </head>
 <body>
 
@@ -5416,6 +5416,31 @@ ct12Act=function(a,b,i,fid,v){
  return c24d_a.apply(this,arguments);
 };
 
+/* ct24e-1118 詩歌創作：風格與其他要求的點選建議 */
+var C24CH={
+ sty:{zh:["小家敬拜","兒童","抒情","輕快","慢板禱告","合唱敬拜","現代流行","民謠吉他","鋼琴抒情","進行曲式","慶典歡呼","安靜默想","詩歌合唱","華語流行","搖滾敬拜","中國風","適合長輩","適合青少年","主日崇拜","禱告會"],
+ zs:["小家敬拜","儿童","抒情","轻快","慢板祷告","合唱敬拜","现代流行","民谣吉他","钢琴抒情","进行曲式","庆典欢呼","安静默想","诗歌合唱","华语流行","摇滚敬拜","中国风","适合长辈","适合青少年","主日崇拜","祷告会"],
+ en:["small group worship","children","ballad","upbeat","slow prayer","choir","modern pop","folk guitar","piano ballad","anthem","celebration","quiet reflection","hymn style","Mandarin pop","worship rock","elderly friendly","youth","Sunday service","prayer meeting"]},
+ nt:{zh:["副歌要好記","四段歌詞","兩段主歌加副歌","加入橋段","每句不超過十字","用簡單白話","適合小朋友唱","適合手勢帶動","音域不要太高","加入一句經文原文","結尾重複副歌","節奏輕快好拍手","情感深刻","帶出感恩","帶出得勝","用比喻表達","加入禱告式歌詞","適合輪唱"],
+ zs:["副歌要好记","四段歌词","两段主歌加副歌","加入桥段","每句不超过十字","用简单白话","适合小朋友唱","适合手势带动","音域不要太高","加入一句经文原文","结尾重复副歌","节奏轻快好拍手","情感深刻","带出感恩","带出得胜","用比喻表达","加入祷告式歌词","适合轮唱"],
+ en:["memorable chorus","four verses","two verses and chorus","add a bridge","short lines","simple everyday words","easy for kids","with hand motions","comfortable vocal range","include a scripture line","repeat chorus at end","clap-along rhythm","deeply emotional","gratitude","victory","use metaphors","prayer-style lyrics","good for call and response"]}
+};
+function c24Chips(f){ var o=C24CH[f],l=o[LANG]||(LANG==="zh"?o.zh:o.en),sep=(LANG==="zh"||LANG==="zs")?"、":", ",h="<div class=\"c24chips\" style=\"display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px\">";
+ l.forEach(function(x){ h+="<button type=\"button\" class=\"c24chip\" data-act=\"ctsongchip\" data-f=\""+f+"\" data-v=\""+esc(x)+"\" style=\"border:1px solid var(--line);border-radius:999px;padding:6px 11px;font-size:13px;background:transparent;color:inherit\">"+esc(x)+"</button>"; });
+ return h+"</div>"; }
+function c24ChipSync(){ var cs=document.querySelectorAll(".c24chip"); for(var i=0;i<cs.length;i++){ var el=document.getElementById("c5f_"+cs[i].getAttribute("data-f")),on=el&&el.value.indexOf(cs[i].getAttribute("data-v"))>=0; cs[i].style.background=on?"var(--accent,#1e3a8a)":"transparent"; cs[i].style.color=on?"#fff":"inherit"; } }
+var c24e_th=c5ToolHTML;
+c5ToolHTML=function(){ var h=c24e_th(); if(S.c5T!=="song") return h;
+ ["sty","nt"].forEach(function(f){ var m="<input id=\"c5f_"+f+"\" class=\"ctin\">"; if(h.indexOf(m)>=0) h=h.replace(m,m+c24Chips(f)); });
+ return h; };
+var c24e_a=ct12Act;
+ct12Act=function(a,b,i,fid,v){
+ if(a==="ctsongchip"){ var f=(b&&b.getAttribute&&b.getAttribute("data-f"))||fid,el=document.getElementById("c5f_"+f); if(!el) return true;
+  var sep=(LANG==="zh"||LANG==="zs")?"、":", ",parts=el.value.split(/[、,，]\s*/).filter(function(x){ return x.trim(); }),k=parts.indexOf(v);
+  if(k>=0) parts.splice(k,1); else parts.push(v); el.value=parts.join(sep); c24ChipSync(); return true; }
+ return c24e_a.apply(this,arguments);
+};
+
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -5539,7 +5564,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1118.0220',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1118.1340',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
