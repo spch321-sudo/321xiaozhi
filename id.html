@@ -6,21 +6,21 @@
 <title>Tanya Xiaozhi</title>
 <meta name="description" content="Tanya Xiaozhi: pertanyaan Alkitab, iman dan kehidupan · Persekutuan Udara Kerajaan 321">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="manifest" href="manifest.webmanifest?v=v2026.1118.1340">
-<link rel="icon" href="favicon.ico?v=v2026.1118.1340" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1118.1340">
-<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1118.1340">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1118.1340">
-<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1118.1340">
-<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1118.1340">
+<link rel="manifest" href="manifest.webmanifest?v=v2026.1119.0730">
+<link rel="icon" href="favicon.ico?v=v2026.1119.0730" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=v2026.1119.0730">
+<link rel="apple-touch-icon" href="icon-180.png?v=v2026.1119.0730">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=v2026.1119.0730">
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png?v=v2026.1119.0730">
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png?v=v2026.1119.0730">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tanya Xiaozhi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta property="og:image" content="icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script src="k321gate.js?v=v2026.1118.1340"></script>
-<script src="xzplus.js?v=v2026.1118.1340" defer></script>
+<script src="k321gate.js?v=v2026.1119.0730"></script>
+<script src="xzplus.js?v=v2026.1119.0730" defer></script>
 </head>
 <body>
 <script>window.XZ_PAGE_LANG='id';</script>
@@ -5442,6 +5442,27 @@ ct12Act=function(a,b,i,fid,v){
  return c24e_a.apply(this,arguments);
 };
 
+/* ct24f-1119 下載＝存到手機「檔案」（分享選單），並可從連結取回 */
+C24S.dl="💾 存到手機檔案|💾 存到手机文件|💾 Save to Files|💾 파일 앱에 저장|💾 「ファイル」に保存|💾 Simpan ke Berkas|💾 I-save sa Files";
+C24S.sv="在 TopMediai 做好後：按畫面下方的分享鈕 ↑ →「儲存到檔案」，再回小智按「匯入歌曲檔」選它。以後就能在小智或手機「檔案」App 裡聽。|在 TopMediai 做好后：按画面下方的分享钮 ↑ →「存储到文件」，再回小智按「导入歌曲文件」选它。以后就能在小智或手机「文件」App 里听。|After making it: tap Share ↑ → “Save to Files”, then come back and tap Import song file.|완성 후 공유 ↑ →「파일에 저장」, 돌아와 「노래 파일 가져오기」.|完成後 共有 ↑ →「ファイルに保存」、戻って「曲ファイルを読込」。|Setelah jadi: Bagikan ↑ → “Simpan ke Berkas”, lalu Impor berkas lagu.|Human himoa: Share ↑ → “Save to Files”, unya Import.";
+C24S.fch="⬇ 從連結取回歌曲|⬇ 从链接取回歌曲|⬇ Fetch song from link|⬇ 링크에서 가져오기|⬇ リンクから取得|⬇ Ambil dari tautan|⬇ Kuhaa gikan sa link";
+C24S.fno="連結無法直接取回（網站不允許）。請照上面說明：分享 → 儲存到檔案 → 匯入歌曲檔|链接无法直接取回（网站不允许）。请照上面说明：分享 → 存储到文件 → 导入歌曲文件|Could not fetch from that link. Use Share → Save to Files → Import song file.|링크에서 가져올 수 없어요. 공유→파일에 저장→가져오기.|取得できません。共有→ファイルに保存→読込。|Tidak bisa diambil. Bagikan → Simpan ke Berkas → Impor.|Dili makuha. Share → Save to Files → Import.";
+var c24f_h=c24HTML;
+c24HTML=function(){
+ var h=c24f_h(),L=c24Songs();
+ h=h.replace("</p>","</p><p class=\"hint\" style=\"margin-top:6px\">"+esc(C24("sv"))+"</p>");
+ L.forEach(function(s){ if(s.link&&!s.audio){ var k="<button class=\"ctbtn\" data-act=\"ctsongopen\" data-id=\""+s.id+"\">"; h=h.replace(k,"<button class=\"ctbtn\" data-act=\"ctsongfetch\" data-id=\""+s.id+"\">"+esc(C24("fch"))+"</button>"+k); } });
+ return h;
+};
+var c24f_a=ct12Act;
+ct12Act=function(a,b,i,fid,v){
+ if(a==="ctsongdl"){ var s=c24Find(fid); if(s) c24Get(fid).then(function(bl){ if(!bl) return; var nm=c5FileName(s.title,(s.aname.match(/\.[A-Za-z0-9]{2,4}$/)||[".mp3"])[0]),ty=bl.type||s.atype||"audio/mpeg"; c24Share(bl,nm,ty); }); return true; }
+ if(a==="ctsongfetch"){ var s2=c24Find(fid); if(!s2||!s2.link) return true;
+  fetch(s2.link).then(function(r){ if(!r.ok) throw 0; return r.blob(); }).then(function(bl){ if(!bl||!bl.size||!/audio|octet|video/.test(bl.type||"audio")) throw 0; var nm=(s2.link.split("?")[0].split("/").pop()||"song.mp3"); return c24Put(fid,bl).then(function(){ c24Upd(fid,function(x){ x.audio=true; x.aname=/\.[A-Za-z0-9]{2,4}$/.test(nm)?nm:"song.mp3"; x.atype=bl.type||"audio/mpeg"; }); toast(C24("got")); if(S.sheet==="ctsongs") renderSheet(); }); }).catch(function(){ toast(C24("fno")); });
+  return true; }
+ return c24f_a.apply(this,arguments);
+};
+
 var C8I={tr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M5.5 5c.5 3 3 6 6 7M10.5 5c-.5 3-3 6-6.5 7"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg>'};
 document.addEventListener('click',function(e){
  var b=e.target.closest?e.target.closest('[data-act]'):null;
@@ -5565,7 +5586,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1118.1340',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1119.0730',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
