@@ -659,7 +659,7 @@ window.XZ_TR=function(e){var m=window.XZTR_DATA[e],i={ko:0,ja:1,id:2,ceb:3}[wind
     if (/hans|^zs$|^sc$|cn$|^zh-sg/i.test(v)) return 'zs';
     return 'zh';
   };
-  const L3 = (a, b, c) => { const l = lg(); return l === 'en' ? c : (l === 'zs' ? b : a); };
+  const L3 = (a, b, c) => { const l = lg(); if (l === 'en') { const t = root.XZ_TR && root.XZ_TR(c); return t || c; } return l === 'zs' ? b : a; };
   const toast = (m, ms) => { try { if (O.toast) return O.toast(m, ms); } catch (e) {} miniToast(m); };
   function miniToast(m) {
     let t = document.getElementById('xz2toast');
@@ -5600,7 +5600,7 @@ if(S.chat.length){ var sc=$('scroll'); sc.scrollTop=sc.scrollHeight; }
 
 <script>
 (function(){
-var APPVER='v2026.1119.1620',PFX='xiaozhi321-';window.APPVER=APPVER;
+var APPVER='v2026.1119.1650',PFX='xiaozhi321-';window.APPVER=APPVER;
 if(location.search.indexOf('u=')>=0) try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
 var reg=null,pending=null;
 function lsG(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
